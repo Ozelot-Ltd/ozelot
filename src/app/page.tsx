@@ -1,6 +1,5 @@
 import { type Metadata } from 'next';
 
-import { asText } from '@prismicio/client';
 import { SliceZone } from '@prismicio/react';
 
 import { createClient } from '@/prismicio';
@@ -29,10 +28,8 @@ export async function generateMetadata(): Promise<Metadata> {
   const client = createClient();
   const home = await client.getByUID('page', 'home');
 
-  console.log(home.data.meta_title);
-
   return {
-    title: asText(home.data.title),
+    title: home.data.meta_title,
     description: home.data.meta_description,
     openGraph: {
       title: home.data.meta_title ?? undefined,
