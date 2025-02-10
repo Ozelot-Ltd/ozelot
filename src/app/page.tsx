@@ -29,6 +29,8 @@ export async function generateMetadata(): Promise<Metadata> {
   const client = createClient();
   const home = await client.getByUID('page', 'home');
 
+  console.log(home.data.meta_title);
+
   return {
     title: asText(home.data.title),
     description: home.data.meta_description,
