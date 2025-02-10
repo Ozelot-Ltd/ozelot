@@ -14,7 +14,12 @@ export default async function Home() {
 
   return (
     <div>
-      <h1>HUSO</h1>
+      <div className="test">
+        <a>
+          <p>PROJECTS</p>
+          <p>01</p>
+        </a>
+      </div>
       <SliceZone slices={home.data.slices} components={components} />
     </div>
   );
