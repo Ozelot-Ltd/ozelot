@@ -84,3 +84,10 @@ h1 {
 
 
 /******** !!!!!!!! MOBILE STYLES !!!!!!!!! ********/
+/* Mobile */
+@media (max-width: 768px) {
+    :root {
+        font-size: 14px;
+    }
+
+}
