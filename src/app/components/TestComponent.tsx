@@ -38,18 +38,34 @@ export default function TestComponent() {
   }, [isClicked]);
 
   return (
-    <div>
-      <div className={styles.div} id="about" ref={aboutRef}>
-        <a onClick={() => setIsClicked('about')}>
-          <p>ABOUT</p>
-          <p>02</p>
-        </a>
+    <div className={styles.container}>
+      <div className={styles.nav}>
+        <div className={styles.div} id="about" ref={aboutRef}>
+          <a onClick={() => setIsClicked('about')}>
+            <p>ABOUT</p>
+            <p>03</p>
+          </a>
+        </div>
+        <div className={styles.div} id="projects" ref={projectsRef}>
+          <a onClick={() => setIsClicked('projects')}>
+            <p>PROJECTS</p>
+            <p>01</p>
+          </a>
+        </div>
       </div>
-      <div className={styles.div} id="projects" ref={projectsRef}>
-        <a onClick={() => setIsClicked('projects')}>
-          <p>PROJECTS</p>
-          <p>01</p>
-        </a>
+      <div className={styles.nav}>
+        <div className={styles.div} id="about" ref={aboutRef}>
+          <a onClick={() => setIsClicked('about')}>
+            <p>RECORDS</p>
+            <p>02</p>
+          </a>
+        </div>
+        <div className={styles.div} id="projects" ref={projectsRef}>
+          <a onClick={() => setIsClicked('projects')}>
+            <p>CONTACT</p>
+            <p>04</p>
+          </a>
+        </div>
       </div>
     </div>
   );
