@@ -13,11 +13,7 @@ const host = Host_Grotesk({
   subsets: ['latin'],
 });
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({}) {
   return (
     <html lang="en">
       <body className={host.className}>
