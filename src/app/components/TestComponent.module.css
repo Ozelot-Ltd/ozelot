@@ -1,0 +1,41 @@
+.div {
+    position: absolute;
+    height: 100vh;
+    width: fit-content;
+    border-right: var(--border);
+    backdrop-filter: var(--blur);
+    background-color: var(--grey-lowopacity);
+    display: flex;
+    align-items: flex-start;
+}
+
+.div:nth-of-type(2) {
+    position: absolute;
+    height: 100vh;
+    width: fit-content;
+    border-right: var(--border-active);
+    backdrop-filter: var(--blur);
+    background-color: var(--grey-lowopacity);
+    display: flex;
+    align-items: flex-start;
+    left: 4.37rem;
+}
+
+.div a {
+    writing-mode: sideways-lr;
+    padding: 1rem 1.5rem;
+    height: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+}
+
+.div a p {
+    color: var(--black-active);
+}
+
+.div a p:nth-of-type(2) {
+    writing-mode: horizontal-tb;
+    font-size: 0.8rem;
+    font-variation-settings: var(--title-weight);
+}

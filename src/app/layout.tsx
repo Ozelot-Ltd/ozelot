@@ -4,6 +4,7 @@ import { repositoryName } from '@/prismicio';
 import { Host_Grotesk } from 'next/font/google';
 
 import './globals.css';
+import TestComponent from './components/TestComponent';
 
 const host = Host_Grotesk({
   weight: 'variable',
@@ -19,7 +20,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={host.className}>{children}</body>
+      <body className={host.className}>
+        <TestComponent />
+      </body>
       <PrismicPreview repositoryName={repositoryName} />
     </html>
   );

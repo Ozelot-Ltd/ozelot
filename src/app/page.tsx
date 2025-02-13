@@ -5,24 +5,15 @@ import { SliceZone } from '@prismicio/react';
 import { createClient } from '@/prismicio';
 import { components } from '@/slices';
 
+import TestComponent from './components/TestComponent';
+
 export default async function Home() {
   const client = createClient();
   const home = await client.getByUID('page', 'home');
 
   return (
     <div>
-      <div className="test">
-        <a>
-          <p>ABOUT</p>
-          <p>02</p>
-        </a>
-      </div>
-      <div className="test">
-        <a>
-          <p>PROJECTS</p>
-          <p>01</p>
-        </a>
-      </div>
+      <TestComponent />
       <SliceZone slices={home.data.slices} components={components} />
     </div>
   );
