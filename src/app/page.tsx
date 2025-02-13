@@ -9,14 +9,12 @@ export default async function Home() {
   const client = createClient();
   const home = await client.getByUID('page', 'home');
 
-  // <SliceZone> renders the page's slices.
-
   return (
     <div>
       <div className="test">
         <a>
-          <p>PROJECTS</p>
-          <p>01</p>
+          <p>ABOUT</p>
+          <p>02</p>
         </a>
       </div>
       <div className="test">
