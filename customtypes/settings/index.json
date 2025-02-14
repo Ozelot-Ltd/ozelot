@@ -1,0 +1,65 @@
+{
+  "format": "custom",
+  "id": "settings",
+  "label": "Settings",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "navigation_items_left": {
+        "type": "Group",
+        "config": {
+          "label": "Navigation Items Left",
+          "repeat": true,
+          "fields": {
+            "navigation_link": {
+              "type": "Link",
+              "config": {
+                "label": "Navigation Link",
+                "placeholder": "",
+                "select": null,
+                "allowTargetBlank": false,
+                "allowText": true,
+                "repeat": false
+              }
+            },
+            "navigation_link_number": {
+              "type": "Text",
+              "config": {
+                "label": "Navigation Link Number",
+                "placeholder": "1"
+              }
+            }
+          }
+        }
+      },
+      "navigation_items_right": {
+        "type": "Group",
+        "config": {
+          "label": "Navigation items Right",
+          "repeat": true,
+          "fields": {
+            "navigation_link": {
+              "type": "Link",
+              "config": {
+                "label": "Navigation Link",
+                "placeholder": "",
+                "select": null,
+                "allowTargetBlank": true,
+                "allowText": true,
+                "repeat": false
+              }
+            },
+            "navigation_link_number": {
+              "type": "Text",
+              "config": {
+                "label": "Navigation Link Number",
+                "placeholder": "1"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

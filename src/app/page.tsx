@@ -1,20 +1,26 @@
 import { type Metadata } from 'next';
 
-import { SliceZone } from '@prismicio/react';
-
 import { createClient } from '@/prismicio';
-import { components } from '@/slices';
-
 import TestComponent from './components/TestComponent';
 
 export default async function Home() {
   const client = createClient();
-  const home = await client.getByUID('page', 'home');
+  // const home = await client.getByUID('page', 'home');
+
+  const settings = await client.getSingle('settings');
+  console.log(settings.data);
+
+  const leftField = settings.data.navigation_items_left;
+  const rightField = settings.data.navigation_items_right;
+
+  const settingsProps = {
+    left: leftField,
+    right: rightField,
+  };
 
   return (
     <div>
-      <TestComponent />
-      <SliceZone slices={home.data.slices} components={components} />
+      <TestComponent {...settingsProps} />
     </div>
   );
 }

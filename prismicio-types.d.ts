@@ -76,7 +76,116 @@ interface PageDocumentData {
 export type PageDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
 
-export type AllDocumentTypes = PageDocument;
+/**
+ * Item in *Settings → Navigation Items Left*
+ */
+export interface SettingsDocumentDataNavigationItemsLeftItem {
+  /**
+   * Navigation Link field in *Settings → Navigation Items Left*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.navigation_items_left[].navigation_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  navigation_link: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+
+  /**
+   * Navigation Link Number field in *Settings → Navigation Items Left*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: 1
+   * - **API ID Path**: settings.navigation_items_left[].navigation_link_number
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  navigation_link_number: prismic.KeyTextField;
+}
+
+/**
+ * Item in *Settings → Navigation items Right*
+ */
+export interface SettingsDocumentDataNavigationItemsRightItem {
+  /**
+   * Navigation Link field in *Settings → Navigation items Right*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.navigation_items_right[].navigation_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  navigation_link: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+
+  /**
+   * Navigation Link Number field in *Settings → Navigation items Right*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: 1
+   * - **API ID Path**: settings.navigation_items_right[].navigation_link_number
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  navigation_link_number: prismic.KeyTextField;
+}
+
+/**
+ * Content for Settings documents
+ */
+interface SettingsDocumentData {
+  /**
+   * Navigation Items Left field in *Settings*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.navigation_items_left[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  navigation_items_left: prismic.GroupField<
+    Simplify<SettingsDocumentDataNavigationItemsLeftItem>
+  >;
+
+  /**
+   * Navigation items Right field in *Settings*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.navigation_items_right[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  navigation_items_right: prismic.GroupField<
+    Simplify<SettingsDocumentDataNavigationItemsRightItem>
+  >;
+}
+
+/**
+ * Settings document from Prismic
+ *
+ * - **API ID**: `settings`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type SettingsDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<SettingsDocumentData>,
+    "settings",
+    Lang
+  >;
+
+export type AllDocumentTypes = PageDocument | SettingsDocument;
 
 /**
  * Primary content in *RichText → Default → Primary*
@@ -147,6 +256,10 @@ declare module "@prismicio/client" {
       PageDocument,
       PageDocumentData,
       PageDocumentDataSlicesSlice,
+      SettingsDocument,
+      SettingsDocumentData,
+      SettingsDocumentDataNavigationItemsLeftItem,
+      SettingsDocumentDataNavigationItemsRightItem,
       AllDocumentTypes,
       RichTextSlice,
       RichTextSliceDefaultPrimary,
