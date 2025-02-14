@@ -29,6 +29,14 @@
                 "label": "Navigation Link Number",
                 "placeholder": "1"
               }
+            },
+            "navigation_icon": {
+              "type": "Image",
+              "config": {
+                "label": "Navigation Icon",
+                "constraint": {},
+                "thumbnails": []
+              }
             }
           }
         }
@@ -55,6 +63,14 @@
               "config": {
                 "label": "Navigation Link Number",
                 "placeholder": "1"
+              }
+            },
+            "navigation_icon": {
+              "type": "Image",
+              "config": {
+                "label": "Navigation Icon",
+                "constraint": {},
+                "thumbnails": []
               }
             }
           }

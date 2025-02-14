@@ -105,6 +105,16 @@ export interface SettingsDocumentDataNavigationItemsLeftItem {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   navigation_link_number: prismic.KeyTextField;
+
+  /**
+   * Navigation Icon field in *Settings → Navigation Items Left*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.navigation_items_left[].navigation_icon
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  navigation_icon: prismic.ImageField<never>;
 }
 
 /**
@@ -136,6 +146,16 @@ export interface SettingsDocumentDataNavigationItemsRightItem {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   navigation_link_number: prismic.KeyTextField;
+
+  /**
+   * Navigation Icon field in *Settings → Navigation items Right*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.navigation_items_right[].navigation_icon
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  navigation_icon: prismic.ImageField<never>;
 }
 
 /**

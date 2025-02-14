@@ -2,7 +2,6 @@
 
 import React, { useRef, useEffect } from 'react';
 import styles from './TestComponent.module.css';
-import { PrismicNextLink } from '@prismicio/next';
 import { GroupField } from '@prismicio/client';
 import { Simplify } from '../../../prismicio-types';
 
@@ -12,6 +11,7 @@ import {
 } from '../../../prismicio-types';
 
 import Logo from './Logo/Logo';
+import { PrismicNextImage } from '@prismicio/next';
 
 export default function TestComponent({
   left,
@@ -62,10 +62,10 @@ export default function TestComponent({
               key={index}
               id={item.navigation_link.text?.toLowerCase()}
             >
-              <PrismicNextLink field={item.navigation_link}>
+              <div className={styles.columnContent}>
                 <p>{item.navigation_link.text}</p>
-                <p>0{item?.navigation_link_number}</p>
-              </PrismicNextLink>
+                <PrismicNextImage field={item.navigation_icon} />
+              </div>
             </div>
           );
         })}
@@ -78,10 +78,10 @@ export default function TestComponent({
               key={index}
               id={item.navigation_link.text?.toLowerCase()}
             >
-              <PrismicNextLink field={item.navigation_link}>
+              <div className={styles.columnContent}>
                 <p>{item.navigation_link.text}</p>
                 <p>0{item?.navigation_link_number}</p>
-              </PrismicNextLink>
+              </div>
             </div>
           );
         })}
