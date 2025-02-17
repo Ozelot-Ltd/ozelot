@@ -84,6 +84,9 @@ export default function TestComponent({
                 <p>{item.navigation_link.text}</p>
                 <PrismicNextImage field={item.navigation_icon} />
               </div>
+              {isClicked === item.navigation_link.text?.toLowerCase() && (
+                <div>TESTTEST</div>
+              )}
             </div>
           );
         })}
