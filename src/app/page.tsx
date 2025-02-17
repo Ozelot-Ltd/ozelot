@@ -1,7 +1,7 @@
 import { type Metadata } from 'next';
 
 import { createClient } from '@/prismicio';
-import TestComponent from './components/TestComponent';
+import MainComponent from './components/MainComponent';
 
 export default async function Home() {
   const client = createClient();
@@ -20,7 +20,7 @@ export default async function Home() {
 
   return (
     <div>
-      <TestComponent {...settingsProps} />
+      <MainComponent {...settingsProps} />
     </div>
   );
 }

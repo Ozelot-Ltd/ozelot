@@ -25,6 +25,7 @@
     display: flex;
     align-items: flex-start;
     transition: all var(--time) var(--bezier);
+    overflow: hidden;
 }
 
 .fullWidth {
@@ -88,7 +89,7 @@
     justify-content: space-between;
     width: 5rem;
     cursor: pointer;
-
+    min-width: 5rem;
 }
 
 .columnContent p {
@@ -110,6 +111,20 @@
     writing-mode: horizontal-tb;
     font-size: 0.8rem;
     font-variation-settings: var(--title-weight);
+}
+
+.section {
+    overflow: hidden;
+}
+
+
+.sectionHeading {
+    transform: translateY(100%);
+    transition: all var(--time) var(--bezier);
+}
+
+.visible {
+    transform: translateY(0);
 }
 
 .logoContainer {

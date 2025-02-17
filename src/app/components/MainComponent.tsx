@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useRef, useEffect, useState } from 'react';
-import styles from './TestComponent.module.css';
+import styles from './MainComponent.module.css';
 import { GroupField } from '@prismicio/client';
 import { Simplify } from '../../../prismicio-types';
 
@@ -13,7 +13,7 @@ import {
 import Logo from './Logo/Logo';
 import { PrismicNextImage } from '@prismicio/next';
 
-export default function TestComponent({
+export default function MainComponent({
   left,
   right,
 }: {
@@ -23,6 +23,7 @@ export default function TestComponent({
   const containerRef = useRef<HTMLDivElement>(null);
   const [isClicked, setIsClicked] = useState('');
   const [side, setSide] = useState<'left' | 'right' | ''>('');
+  const [transitionEnd, setTransitionEnd] = useState(false);
 
   useEffect(() => {
     const updateContainerWidth = () => {
@@ -80,13 +81,21 @@ export default function TestComponent({
               <div
                 className={styles.columnContent}
                 onClick={() => handleClick(item.navigation_link.text, 'left')}
+                onTransitionEnd={() => {
+                  setTransitionEnd(true);
+                }}
               >
                 <p>{item.navigation_link.text}</p>
                 <PrismicNextImage field={item.navigation_icon} />
               </div>
-              {isClicked === item.navigation_link.text?.toLowerCase() && (
-                <div>TESTTEST</div>
-              )}
+              <div className={styles.section}>
+                <h1
+                  id={item.navigation_link.text?.toLowerCase()}
+                  className={`${styles.sectionHeading} ${transitionEnd && isClicked ? styles.visible : ''}`}
+                >
+                  TESTTEST
+                </h1>
+              </div>
             </div>
           );
         })}
