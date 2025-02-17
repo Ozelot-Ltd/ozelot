@@ -1,6 +1,5 @@
 /******** !!!!!!!! DESKTOP STYLES !!!!!!!!! ********/
 
-
 /******** VARIABLES ********/
 
 :root {
@@ -58,7 +57,6 @@ h5 {
     text-transform: uppercase;
 }
 
-
 p,
 a {
     font-variation-settings: var(--text-weight);
@@ -72,15 +70,11 @@ li {
     list-style-type: none;
 }
 
-
-
 h1 {
     border: var(--border);
     border-radius: var(--radius-large);
     padding: 0.25rem 0.75rem
 }
-
-
 
 /******** !!!!!!!! MOBILE STYLES !!!!!!!!! ********/
 /* Mobile */

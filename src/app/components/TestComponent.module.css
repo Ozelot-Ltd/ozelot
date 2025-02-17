@@ -31,7 +31,6 @@
     width: calc(100vw - 15rem);
     transition: all var(--time) var(--bezier);
     z-index: 10;
-
 }
 
 .left .column {
@@ -100,9 +99,6 @@
 .fullWidth p {
     font-variation-settings: "wght" 600;
 }
-
-
-
 
 .columnContent img {
     height: 1.3rem;
