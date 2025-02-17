@@ -106,7 +106,7 @@ export default function TestComponent({
                 onClick={() => handleClick(item.navigation_link.text, 'right')}
               >
                 <p>{item.navigation_link.text}</p>
-                <p>0{item?.navigation_link_number}</p>
+                <PrismicNextImage field={item.navigation_icon} />
               </div>
             </div>
           );
