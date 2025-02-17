@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import styles from './TestComponent.module.css';
 import { GroupField } from '@prismicio/client';
 import { Simplify } from '../../../prismicio-types';
@@ -21,6 +21,7 @@ export default function TestComponent({
   right: GroupField<Simplify<SettingsDocumentDataNavigationItemsRightItem>>;
 }) {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [isClicked, setIsClicked] = useState('');
 
   useEffect(() => {
     const updateContainerWidth = () => {
@@ -34,35 +35,31 @@ export default function TestComponent({
     };
 
     updateContainerWidth();
-
-    window.addEventListener('resize', updateContainerWidth);
-
-    // Update when content might change
-    const resizeObserver = new ResizeObserver(updateContainerWidth);
-    if (containerRef.current) {
-      resizeObserver.observe(containerRef.current);
-    }
-
-    return () => {
-      window.removeEventListener('resize', updateContainerWidth);
-      resizeObserver.disconnect();
-    };
   }, []);
 
   return (
     <div className={styles.container}>
-      <div className={styles.logoContainer}>
-        <Logo height={'50'} />
+      <div className={styles.logoContainer} onClick={() => setIsClicked('')}>
+        <Logo height={'40'} />
       </div>
       <div className={`${styles.nav} ${styles.left}`} ref={containerRef}>
         {left.map((item, index) => {
           return (
             <div
-              className={styles.column}
+              className={`${styles.column} ${isClicked === item.navigation_link.text?.toLowerCase() ? styles.fullWidth : ''}`}
               key={index}
               id={item.navigation_link.text?.toLowerCase()}
             >
-              <div className={styles.columnContent}>
+              <div
+                className={styles.columnContent}
+                onClick={() =>
+                  setIsClicked(
+                    isClicked !== item.navigation_link?.text?.toLowerCase()
+                      ? item.navigation_link?.text?.toLowerCase() || ''
+                      : ''
+                  )
+                }
+              >
                 <p>{item.navigation_link.text}</p>
                 <PrismicNextImage field={item.navigation_icon} />
               </div>
