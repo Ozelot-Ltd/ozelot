@@ -64,6 +64,21 @@
     opacity: 0;
 }
 
+.left .column::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 1px;
+    height: 100%;
+    background-color: var(--black);
+    transition: opacity var(--time) var(--bezier) 0.2s;
+}
+
+.right:has(.fullWidth) .column:nth-of-type(1)::after {
+    opacity: 0;
+}
+
 .columnContent {
     writing-mode: sideways-lr;
     padding: 1rem 0;
