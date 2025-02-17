@@ -118,7 +118,6 @@
 .logoContainer {
     position: fixed;
     width: calc(100% - (var(--container-width) * 2));
-    /* border-bottom: var(--border); */
     top: 0;
     left: 50%;
     transform: translateX(-50%);
