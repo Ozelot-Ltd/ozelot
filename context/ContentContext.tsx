@@ -1,24 +1,35 @@
-'use client';
+import { createContext } from 'react';
 
-import { createContext, useContext } from 'react';
+import { useContext } from 'react';
 
-interface ContentType {
-  contentProps: object[];
-}
+import {
+  StudioDocument,
+  ProjectsDocument,
+  RecordsDocument,
+  ContactDocument,
+  ProjectDocument,
+} from '../prismicio-types';
 
-const ContentContext = createContext<ContentType>({
-  contentProps: [],
-});
+export type ContentProps = {
+  studio: StudioDocument;
+  projects: ProjectsDocument;
+  records: RecordsDocument;
+  contact: ContactDocument;
+  projectArray: ProjectDocument[];
+};
+
+// ContentContext.tsx
+const ContentContext = createContext<ContentProps | undefined>(undefined);
 
 export function ContentProvider({
   children,
   contentProps,
 }: {
   children: React.ReactNode;
-  contentProps: object[];
+  contentProps: ContentProps;
 }) {
   return (
-    <ContentContext.Provider value={{ contentProps }}>
+    <ContentContext.Provider value={contentProps}>
       {children}
     </ContentContext.Provider>
   );

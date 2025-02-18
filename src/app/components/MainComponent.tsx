@@ -32,9 +32,9 @@ export default function MainComponent({
   const router = useRouter();
   const pathname = usePathname();
 
-  const projects = useContents().contentProps[1];
+  const project = useContents().projectArray;
 
-  console.log(projects);
+  console.log(project);
 
   useEffect(() => {
     const updateContainerWidth = () => {
