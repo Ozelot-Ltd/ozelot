@@ -4,18 +4,15 @@ import React, { useRef, useEffect, useState } from 'react';
 import styles from './MainComponent.module.css';
 import { GroupField } from '@prismicio/client';
 import { Simplify } from '../../../prismicio-types';
-
 import { useRouter, usePathname } from 'next/navigation';
-
-import { useContents } from '../../../context/ContentContext';
-
 import {
   SettingsDocumentDataNavigationItemsLeftItem,
   SettingsDocumentDataNavigationItemsRightItem,
 } from '../../../prismicio-types';
-
 import Logo from './Logo/Logo';
 import { PrismicNextImage } from '@prismicio/next';
+
+import ProjectsComponent from './ProjectsComponent/ProjectsComponent';
 
 export default function MainComponent({
   left,
@@ -28,7 +25,6 @@ export default function MainComponent({
   const [isClicked, setIsClicked] = useState('');
   const [side, setSide] = useState<'left' | 'right' | ''>('');
   const [transitionEnd, setTransitionEnd] = useState(false);
-  const [sectionIsActive, setSectionIsActive] = useState<string | null>('');
 
   const router = useRouter();
   const pathname = usePathname();
@@ -51,6 +47,15 @@ export default function MainComponent({
     if (pathname.includes('projects')) {
       setIsClicked('projects');
       setSide('left');
+    } else if (pathname.includes('studio')) {
+      setIsClicked('studio');
+      setSide('left');
+    } else if (pathname.includes('records')) {
+      setIsClicked('records');
+      setSide('right');
+    } else if (pathname.includes('contact')) {
+      setIsClicked('contact');
+      setSide('right');
     }
   }, [pathname]);
 
@@ -59,21 +64,18 @@ export default function MainComponent({
     clickedSide: 'left' | 'right'
   ) => {
     if (!text) return;
+    const lowercaseText = text.toLowerCase();
 
-    if (isClicked === text.toLowerCase() && side === clickedSide) {
+    if (isClicked === lowercaseText && side === clickedSide) {
       setIsClicked('');
       setSide('');
       router.push('/');
     } else {
-      setIsClicked(text.toLowerCase());
+      setIsClicked(lowercaseText);
       setSide(clickedSide);
-      router.push(`/${text.toLowerCase()}`);
+      router.push(`/${lowercaseText}`);
     }
   };
-
-  useEffect(() => {
-    console.log(transitionEnd);
-  }, [transitionEnd]);
 
   return (
     <div className={styles.container}>
@@ -93,30 +95,25 @@ export default function MainComponent({
       </div>
       <div className={`${styles.nav} ${styles.left}`} ref={containerRef}>
         {left.map((item, index) => {
+          const itemId = item.navigation_link.text?.toLowerCase();
           return (
             <div
               className={`${styles.column} ${
-                isClicked === item.navigation_link.text?.toLowerCase() &&
-                side === 'left'
-                  ? styles.fullWidth
-                  : ''
+                isClicked === itemId && side === 'left' ? styles.fullWidth : ''
               }`}
               key={index}
-              id={item.navigation_link.text?.toLowerCase()}
+              id={itemId}
             >
               <div
                 className={styles.columnContent}
                 onClick={() => {
                   handleClick(item.navigation_link.text, 'left');
-                  setSectionIsActive(
-                    item.navigation_link.text?.toLowerCase() || null
-                  );
                 }}
                 onTransitionEnd={() => {
                   setTransitionEnd(true);
                 }}
                 onTransitionStart={() => {
-                  return transitionEnd && setTransitionEnd(false);
+                  setTransitionEnd(false);
                 }}
               >
                 <p>{item.navigation_link.text}</p>
@@ -127,11 +124,30 @@ export default function MainComponent({
                   className={styles.content}
                   data-content={item.navigation_link.text?.toLowerCase()}
                 >
-                  <h1
-                    className={`${styles.sectionHeading} ${transitionEnd && isClicked ? styles.visible : ''}`}
-                  >
-                    TESTTEST
-                  </h1>
+                  {(() => {
+                    const contentId = item.navigation_link.text?.toLowerCase();
+                    const animationClass = `${styles.sectionHeading} ${
+                      transitionEnd && isClicked ? styles.visible : ''
+                    }`;
+
+                    if (contentId === 'studio') {
+                      return <h1 className={animationClass}>STUDIO</h1>;
+                    }
+
+                    if (contentId === 'projects') {
+                      return (
+                        <div className={animationClass}>
+                          <ProjectsComponent />
+                        </div>
+                      );
+                    }
+
+                    return (
+                      <h1 className={animationClass}>
+                        {item.navigation_link.text?.toUpperCase()} CONTENT
+                      </h1>
+                    );
+                  })()}
                 </div>
               </div>
             </div>
@@ -140,23 +156,52 @@ export default function MainComponent({
       </div>
       <div className={`${styles.nav} ${styles.right}`}>
         {right.map((item, index) => {
+          const itemId = item.navigation_link.text?.toLowerCase();
+
           return (
             <div
               className={`${styles.column} ${
-                isClicked === item.navigation_link.text?.toLowerCase() &&
-                side === 'right'
-                  ? styles.fullWidth
-                  : ''
+                isClicked === itemId && side === 'right' ? styles.fullWidth : ''
               }`}
               key={index}
-              id={item.navigation_link.text?.toLowerCase()}
+              id={itemId}
             >
               <div
                 className={styles.columnContent}
                 onClick={() => handleClick(item.navigation_link.text, 'right')}
+                onTransitionEnd={() => {
+                  setTransitionEnd(true);
+                }}
               >
                 <p>{item.navigation_link.text}</p>
                 <PrismicNextImage field={item.navigation_icon} />
+              </div>
+              <div className={styles.section}>
+                <div
+                  className={styles.content}
+                  data-content={item.navigation_link.text?.toLowerCase()}
+                >
+                  {(() => {
+                    const contentId = item.navigation_link.text?.toLowerCase();
+                    const animationClass = `${styles.sectionHeading} ${
+                      transitionEnd && isClicked ? styles.visible : ''
+                    }`;
+
+                    if (contentId === 'studio') {
+                      return <h1 className={animationClass}>STUDIO</h1>;
+                    }
+
+                    if (contentId === 'projects') {
+                      return <h1 className={animationClass}>STUDIO</h1>;
+                    }
+
+                    return (
+                      <h1 className={animationClass}>
+                        {item.navigation_link.text?.toUpperCase()} CONTENT
+                      </h1>
+                    );
+                  })()}
+                </div>
               </div>
             </div>
           );

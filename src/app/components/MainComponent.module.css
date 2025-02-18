@@ -26,12 +26,18 @@
     align-items: flex-start;
     transition: all var(--time) var(--bezier);
     overflow: hidden;
+
+}
+
+.right .column {
+    flex-direction: row-reverse;
 }
 
 .fullWidth {
     width: calc(100vw - 15rem);
     transition: all var(--time) var(--bezier);
     z-index: 10;
+
 }
 
 .left .column {
