@@ -28,13 +28,10 @@ export default function MainComponent({
   const [isClicked, setIsClicked] = useState('');
   const [side, setSide] = useState<'left' | 'right' | ''>('');
   const [transitionEnd, setTransitionEnd] = useState(false);
+  const [sectionIsActive, setSectionIsActive] = useState<string | null>('');
 
   const router = useRouter();
   const pathname = usePathname();
-
-  const project = useContents().projectArray;
-
-  console.log(project);
 
   useEffect(() => {
     const updateContainerWidth = () => {
@@ -57,14 +54,6 @@ export default function MainComponent({
     }
   }, [pathname]);
 
-  useEffect(() => {
-    if (isClicked === 'projects') {
-      router.push('/projects');
-    } else if (isClicked === 'about') {
-      router.push('/about');
-    }
-  }, [isClicked, router]);
-
   const handleClick = (
     text: string | undefined | null,
     clickedSide: 'left' | 'right'
@@ -82,6 +71,10 @@ export default function MainComponent({
     }
   };
 
+  useEffect(() => {
+    console.log(transitionEnd);
+  }, [transitionEnd]);
+
   return (
     <div className={styles.container}>
       <div
@@ -92,7 +85,11 @@ export default function MainComponent({
           router.push('/');
         }}
       >
-        <Logo height={'40'} />
+        <div
+          className={`${styles.logo} ${isClicked !== '' ? styles.animate : ''}`}
+        >
+          <Logo height={'40'} />
+        </div>
       </div>
       <div className={`${styles.nav} ${styles.left}`} ref={containerRef}>
         {left.map((item, index) => {
@@ -111,21 +108,31 @@ export default function MainComponent({
                 className={styles.columnContent}
                 onClick={() => {
                   handleClick(item.navigation_link.text, 'left');
+                  setSectionIsActive(
+                    item.navigation_link.text?.toLowerCase() || null
+                  );
                 }}
                 onTransitionEnd={() => {
                   setTransitionEnd(true);
+                }}
+                onTransitionStart={() => {
+                  return transitionEnd && setTransitionEnd(false);
                 }}
               >
                 <p>{item.navigation_link.text}</p>
                 <PrismicNextImage field={item.navigation_icon} />
               </div>
               <div className={styles.section}>
-                <h1
-                  id={item.navigation_link.text?.toLowerCase()}
-                  className={`${styles.sectionHeading} ${transitionEnd && isClicked ? styles.visible : ''}`}
+                <div
+                  className={styles.content}
+                  data-content={item.navigation_link.text?.toLowerCase()}
                 >
-                  TESTTEST
-                </h1>
+                  <h1
+                    className={`${styles.sectionHeading} ${transitionEnd && isClicked ? styles.visible : ''}`}
+                  >
+                    TESTTEST
+                  </h1>
+                </div>
               </div>
             </div>
           );

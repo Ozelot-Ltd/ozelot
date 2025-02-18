@@ -140,6 +140,19 @@
     z-index: 100;
 }
 
+.logoContainer * {
+    cursor: pointer;
+}
+
+.logo {
+    position: relative;
+}
+
+.animate {
+    animation: scaleUp 4s ease-in-out infinite;
+}
+
+
 
 .fullWidth img {
     animation: rotate 2.5s ease-in-out infinite;
@@ -155,6 +168,27 @@
     }
 }
 
+@keyframes scaleUp {
+    0% {
+        transform: scale(1) rotateY(0);
+    }
+
+    25% {
+        transform: rotateY(30deg);
+    }
+
+    50% {
+        transform: scale(1.1) rotateY(0deg);
+    }
+
+    75% {
+        transform: rotateY(-30deg);
+    }
+
+    100% {
+        transform: scale(1) rotateY(0);
+    }
+}
 
 /* Desktop */
 @media (min-width: 1024px) {}
