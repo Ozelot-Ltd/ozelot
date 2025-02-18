@@ -1,28 +1,9 @@
 import { type Metadata } from 'next';
 
 import { createClient } from '@/prismicio';
-import MainComponent from './components/MainComponent';
 
 export default async function Home() {
-  const client = createClient();
-  // const home = await client.getByUID('page', 'home');
-
-  const settings = await client.getSingle('settings');
-  console.log(settings.data);
-
-  const leftField = settings.data.navigation_items_left;
-  const rightField = settings.data.navigation_items_right;
-
-  const settingsProps = {
-    left: leftField,
-    right: rightField,
-  };
-
-  return (
-    <div>
-      <MainComponent {...settingsProps} />
-    </div>
-  );
+  return <div></div>;
 }
 
 export async function generateMetadata(): Promise<Metadata> {

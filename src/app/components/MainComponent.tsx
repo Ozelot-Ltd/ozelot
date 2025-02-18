@@ -5,6 +5,8 @@ import styles from './MainComponent.module.css';
 import { GroupField } from '@prismicio/client';
 import { Simplify } from '../../../prismicio-types';
 
+import { useRouter, usePathname } from 'next/navigation';
+
 import {
   SettingsDocumentDataNavigationItemsLeftItem,
   SettingsDocumentDataNavigationItemsRightItem,
@@ -25,6 +27,9 @@ export default function MainComponent({
   const [side, setSide] = useState<'left' | 'right' | ''>('');
   const [transitionEnd, setTransitionEnd] = useState(false);
 
+  const router = useRouter();
+  const pathname = usePathname();
+
   useEffect(() => {
     const updateContainerWidth = () => {
       if (containerRef.current) {
@@ -38,6 +43,21 @@ export default function MainComponent({
 
     updateContainerWidth();
   }, []);
+
+  useEffect(() => {
+    if (pathname.includes('projects')) {
+      setIsClicked('projects');
+      setSide('left');
+    }
+  }, [pathname]);
+
+  useEffect(() => {
+    if (isClicked === 'projects') {
+      router.push('/projects');
+    } else if (isClicked === 'about') {
+      router.push('/about');
+    }
+  }, [isClicked, router]);
 
   const handleClick = (
     text: string | undefined | null,
@@ -61,6 +81,7 @@ export default function MainComponent({
         onClick={() => {
           setIsClicked('');
           setSide('');
+          router.push('/');
         }}
       >
         <Logo height={'40'} />
