@@ -7,6 +7,8 @@ import { Simplify } from '../../../prismicio-types';
 
 import { useRouter, usePathname } from 'next/navigation';
 
+import { useContents } from '../../../context/ContentContext';
+
 import {
   SettingsDocumentDataNavigationItemsLeftItem,
   SettingsDocumentDataNavigationItemsRightItem,
@@ -29,6 +31,10 @@ export default function MainComponent({
 
   const router = useRouter();
   const pathname = usePathname();
+
+  const projects = useContents().contentProps[1];
+
+  console.log(projects);
 
   useEffect(() => {
     const updateContainerWidth = () => {

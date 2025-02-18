@@ -6,6 +6,7 @@ import { createClient } from '@/prismicio';
 
 import './globals.css';
 import MainComponent from './components/MainComponent';
+import { Providers } from './components/Providers/Providers';
 
 const host = Host_Grotesk({
   weight: 'variable',
@@ -23,7 +24,13 @@ export default async function RootLayout({
   // const home = await client.getByUID('page', 'home');
 
   const settings = await client.getSingle('settings');
-  console.log(settings.data);
+
+  const studio = await client.getSingle('studio');
+  const projects = await client.getSingle('projects');
+  const records = await client.getSingle('records');
+  const contact = await client.getSingle('contact');
+
+  const contentProps = [studio, projects, records, contact];
 
   const leftField = settings.data.navigation_items_left;
   const rightField = settings.data.navigation_items_right;
@@ -36,8 +43,10 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={host.className}>
-        <MainComponent {...settingsProps} />
-        {children}
+        <Providers contentProps={contentProps}>
+          <MainComponent {...settingsProps} />
+          {children}
+        </Providers>
       </body>
       <PrismicPreview repositoryName={repositoryName} />
     </html>
