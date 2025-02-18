@@ -4,49 +4,49 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type AboutDocumentDataSlicesSlice = never;
+type ContactDocumentDataSlicesSlice = never;
 
 /**
- * Content for about documents
+ * Content for Contact documents
  */
-interface AboutDocumentData {
+interface ContactDocumentData {
   /**
-   * Slice Zone field in *about*
+   * Slice Zone field in *Contact*
    *
    * - **Field Type**: Slice Zone
    * - **Placeholder**: *None*
-   * - **API ID Path**: about.slices[]
+   * - **API ID Path**: contact.slices[]
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/field#slices
    */
-  slices: prismic.SliceZone<AboutDocumentDataSlicesSlice> /**
-   * Meta Title field in *about*
+  slices: prismic.SliceZone<ContactDocumentDataSlicesSlice> /**
+   * Meta Title field in *Contact*
    *
    * - **Field Type**: Text
    * - **Placeholder**: A title of the page used for social media and search engines
-   * - **API ID Path**: about.meta_title
+   * - **API ID Path**: contact.meta_title
    * - **Tab**: SEO & Metadata
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */;
   meta_title: prismic.KeyTextField;
 
   /**
-   * Meta Description field in *about*
+   * Meta Description field in *Contact*
    *
    * - **Field Type**: Text
    * - **Placeholder**: A brief summary of the page
-   * - **API ID Path**: about.meta_description
+   * - **API ID Path**: contact.meta_description
    * - **Tab**: SEO & Metadata
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   meta_description: prismic.KeyTextField;
 
   /**
-   * Meta Image field in *about*
+   * Meta Image field in *Contact*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
-   * - **API ID Path**: about.meta_image
+   * - **API ID Path**: contact.meta_image
    * - **Tab**: SEO & Metadata
    * - **Documentation**: https://prismic.io/docs/field#image
    */
@@ -54,16 +54,20 @@ interface AboutDocumentData {
 }
 
 /**
- * about document from Prismic
+ * Contact document from Prismic
  *
- * - **API ID**: `about`
+ * - **API ID**: `contact`
  * - **Repeatable**: `false`
  * - **Documentation**: https://prismic.io/docs/custom-types
  *
  * @typeParam Lang - Language API ID of the document.
  */
-export type AboutDocument<Lang extends string = string> =
-  prismic.PrismicDocumentWithoutUID<Simplify<AboutDocumentData>, "about", Lang>;
+export type ContactDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<ContactDocumentData>,
+    "contact",
+    Lang
+  >;
 
 type PageDocumentDataSlicesSlice = never;
 
@@ -461,13 +465,79 @@ export type SettingsDocument<Lang extends string = string> =
     Lang
   >;
 
+type StudioDocumentDataSlicesSlice = never;
+
+/**
+ * Content for Studio documents
+ */
+interface StudioDocumentData {
+  /**
+   * Slice Zone field in *Studio*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: studio.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<StudioDocumentDataSlicesSlice> /**
+   * Meta Title field in *Studio*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: studio.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *Studio*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: studio.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Studio*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: studio.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * Studio document from Prismic
+ *
+ * - **API ID**: `studio`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type StudioDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<StudioDocumentData>,
+    "studio",
+    Lang
+  >;
+
 export type AllDocumentTypes =
-  | AboutDocument
+  | ContactDocument
   | PageDocument
   | ProjectDocument
   | ProjectsDocument
   | RecordsDocument
-  | SettingsDocument;
+  | SettingsDocument
+  | StudioDocument;
 
 /**
  * Primary content in *RichText → Default → Primary*
@@ -535,9 +605,9 @@ declare module "@prismicio/client" {
 
   namespace Content {
     export type {
-      AboutDocument,
-      AboutDocumentData,
-      AboutDocumentDataSlicesSlice,
+      ContactDocument,
+      ContactDocumentData,
+      ContactDocumentDataSlicesSlice,
       PageDocument,
       PageDocumentData,
       PageDocumentDataSlicesSlice,
@@ -554,6 +624,9 @@ declare module "@prismicio/client" {
       SettingsDocumentData,
       SettingsDocumentDataNavigationItemsLeftItem,
       SettingsDocumentDataNavigationItemsRightItem,
+      StudioDocument,
+      StudioDocumentData,
+      StudioDocumentDataSlicesSlice,
       AllDocumentTypes,
       RichTextSlice,
       RichTextSliceDefaultPrimary,
