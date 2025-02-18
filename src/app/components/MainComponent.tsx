@@ -68,9 +68,11 @@ export default function MainComponent({
     if (isClicked === text.toLowerCase() && side === clickedSide) {
       setIsClicked('');
       setSide('');
+      router.push('/');
     } else {
       setIsClicked(text.toLowerCase());
       setSide(clickedSide);
+      router.push(`/${text.toLowerCase()}`);
     }
   };
 
@@ -101,7 +103,9 @@ export default function MainComponent({
             >
               <div
                 className={styles.columnContent}
-                onClick={() => handleClick(item.navigation_link.text, 'left')}
+                onClick={() => {
+                  handleClick(item.navigation_link.text, 'left');
+                }}
                 onTransitionEnd={() => {
                   setTransitionEnd(true);
                 }}
