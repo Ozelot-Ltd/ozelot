@@ -41,7 +41,7 @@ const Column: React.FC<ColumnProps> = ({
 
   return (
     <div
-      className={`${itemId === 'services' ? styles.bar : styles.column} ${itemId !== 'services' && isActive ? styles.fullWidth : ''} ${isActive && itemId === 'services' ? styles.fullHeight : ''}`}
+      className={`${itemId === 'services' ? styles.bar : styles.column} ${itemId !== 'services' && isActive ? styles.fullWidth : ''} ${isActive && itemId === 'services' ? styles.fullHeight : ''} `}
       id={itemId}
     >
       <div
@@ -161,17 +161,45 @@ export default function MainComponent({
     if (!text) return;
     const lowercaseText = text.toLowerCase();
 
+    // If already in transition, don't allow new clicks
+    if (!transitionEnd && isClicked !== '') {
+      return;
+    }
+
+    // Closing current section
     if (isClicked === lowercaseText) {
       setIsClicked('');
       setSide('');
       router.push('/');
-    } else {
-      setIsClicked(lowercaseText);
-      setSide(clickedSide);
-      router.push(`/${lowercaseText}`);
+    }
+    // Opening a new section (but wait if any transition is in progress)
+    else {
+      if (isClicked === 'services' && lowercaseText !== 'services') {
+        // First close services
+        setIsClicked('');
+        setSide('');
+
+        setTimeout(() => {
+          setIsClicked(lowercaseText);
+          setSide(clickedSide);
+          router.push(`/${lowercaseText}`);
+        }, 500);
+      } else if (isClicked !== '' && lowercaseText === 'services') {
+        setIsClicked('');
+        setSide('');
+
+        setTimeout(() => {
+          setIsClicked(lowercaseText);
+          setSide(clickedSide);
+          router.push(`/${lowercaseText}`);
+        }, 500);
+      } else {
+        setIsClicked(lowercaseText);
+        setSide(clickedSide);
+        router.push(`/${lowercaseText}`);
+      }
     }
   };
-
   return (
     <div className={styles.container}>
       <div
@@ -275,7 +303,9 @@ export default function MainComponent({
 
       {/************ Services ************/}
 
-      <div className={`${styles.nav} ${styles.services}`}>
+      <div
+        className={`${styles.nav} ${styles.services} ${isClicked === 'services' ? styles.background : ''}`}
+      >
         <Column
           item={right[2]}
           side="bottom"
