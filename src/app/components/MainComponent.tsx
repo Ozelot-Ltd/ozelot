@@ -11,8 +11,54 @@ import {
 } from '../../../prismicio-types';
 import Logo from './Logo/Logo';
 import { PrismicNextImage } from '@prismicio/next';
+import ProjectsComponent from './SectionComponents/ProjectsComponent/ProjectsComponent';
+import StudioComponent from './SectionComponents/StudioComponent/StudioComponent';
+import ContactComponent from './SectionComponents/ContactComponent/ContactComponent';
+import RecordComponent from './SectionComponents/RecordsComponent/RecordComponent';
+interface ColumnProps {
+  item:
+    | SettingsDocumentDataNavigationItemsLeftItem
+    | SettingsDocumentDataNavigationItemsRightItem
+    | undefined;
+  side: string;
+  isActive: boolean;
+  transitionEnd: boolean;
+  onClick: () => void;
+  setTransitionEnd: (value: boolean) => void;
+  children: React.ReactNode;
+}
 
-import ProjectsComponent from './ProjectsComponent/ProjectsComponent';
+const Column: React.FC<ColumnProps> = ({
+  item,
+  isActive,
+  onClick,
+  setTransitionEnd,
+  children,
+}) => {
+  const itemId = item?.navigation_link.text?.toLowerCase();
+
+  return (
+    <div
+      className={`${styles.column} ${isActive ? styles.fullWidth : ''}`}
+      id={itemId}
+    >
+      <div
+        className={styles.columnContent}
+        onClick={onClick}
+        onTransitionEnd={() => setTransitionEnd(true)}
+        onTransitionStart={() => setTransitionEnd(false)}
+      >
+        <p>{item?.navigation_link.text}</p>
+        <PrismicNextImage field={item?.navigation_icon} />
+      </div>
+      <div className={styles.section}>
+        <div className={styles.content} data-content={itemId}>
+          {children}
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export default function MainComponent({
   left,
@@ -25,6 +71,34 @@ export default function MainComponent({
   const [isClicked, setIsClicked] = useState('');
   const [side, setSide] = useState<'left' | 'right' | ''>('');
   const [transitionEnd, setTransitionEnd] = useState(false);
+  const [isProjectsActive, setIsProjectsActive] = useState(false);
+  const [isStudioActive, setIsStudioActive] = useState(false);
+  const [isRecordsActive, setIsRecordsActive] = useState(false);
+  const [isContactActive, setIsContactActive] = useState(false);
+
+  useEffect(() => {
+    if (isClicked === 'projects') {
+      setIsProjectsActive(true);
+      setIsStudioActive(false);
+      setIsRecordsActive(false);
+      setIsContactActive(false);
+    } else if (isClicked === 'studio') {
+      setIsProjectsActive(false);
+      setIsStudioActive(true);
+      setIsRecordsActive(false);
+      setIsContactActive(false);
+    } else if (isClicked === 'records') {
+      setIsProjectsActive(false);
+      setIsStudioActive(false);
+      setIsRecordsActive(true);
+      setIsContactActive(false);
+    } else if (isClicked === 'contact') {
+      setIsProjectsActive(false);
+      setIsStudioActive(false);
+      setIsRecordsActive(false);
+      setIsContactActive(true);
+    }
+  }, [isClicked]);
 
   const router = useRouter();
   const pathname = usePathname();
@@ -93,119 +167,75 @@ export default function MainComponent({
           <Logo height={'40'} />
         </div>
       </div>
+
+      {/* Left navigation */}
+
+      {/********* Studio ***********/}
       <div className={`${styles.nav} ${styles.left}`} ref={containerRef}>
-        {left.map((item, index) => {
-          const itemId = item.navigation_link.text?.toLowerCase();
-          return (
-            <div
-              className={`${styles.column} ${
-                isClicked === itemId && side === 'left' ? styles.fullWidth : ''
-              }`}
-              key={index}
-              id={itemId}
-            >
-              <div
-                className={styles.columnContent}
-                onClick={() => {
-                  handleClick(item.navigation_link.text, 'left');
-                }}
-                onTransitionEnd={() => {
-                  setTransitionEnd(true);
-                }}
-                onTransitionStart={() => {
-                  setTransitionEnd(false);
-                }}
-              >
-                <p>{item.navigation_link.text}</p>
-                <PrismicNextImage field={item.navigation_icon} />
-              </div>
-              <div className={styles.section}>
-                <div
-                  className={styles.content}
-                  data-content={item.navigation_link.text?.toLowerCase()}
-                >
-                  {(() => {
-                    const contentId = item.navigation_link.text?.toLowerCase();
-                    const animationClass = `${styles.sectionHeading} ${
-                      transitionEnd && isClicked ? styles.visible : ''
-                    }`;
+        <Column
+          item={left[0]}
+          side="left"
+          isActive={
+            isClicked === left[0]?.navigation_link.text?.toLowerCase() &&
+            side === 'left'
+          }
+          onClick={() => handleClick(left[0]?.navigation_link.text, 'left')}
+          transitionEnd={transitionEnd}
+          setTransitionEnd={setTransitionEnd}
+        >
+          <StudioComponent isStudioActive={isStudioActive} />
+        </Column>
 
-                    if (contentId === 'studio') {
-                      return <h1 className={animationClass}>STUDIO</h1>;
-                    }
-
-                    if (contentId === 'projects') {
-                      return (
-                        <div className={animationClass}>
-                          <ProjectsComponent />
-                        </div>
-                      );
-                    }
-
-                    return (
-                      <h1 className={animationClass}>
-                        {item.navigation_link.text?.toUpperCase()} CONTENT
-                      </h1>
-                    );
-                  })()}
-                </div>
-              </div>
-            </div>
-          );
-        })}
+        {/************ Projects ************/}
+        <Column
+          item={left[1]}
+          side="left"
+          isActive={
+            isClicked === left[1]?.navigation_link.text?.toLowerCase() &&
+            side === 'left'
+          }
+          onClick={() => handleClick(left[1]?.navigation_link.text, 'left')}
+          transitionEnd={transitionEnd}
+          setTransitionEnd={setTransitionEnd}
+        >
+          <ProjectsComponent isProjectsActive={isProjectsActive} />
+        </Column>
       </div>
+
+      {/* Right navigation */}
+
+      {/************ Records ************/}
+
       <div className={`${styles.nav} ${styles.right}`}>
-        {right.map((item, index) => {
-          const itemId = item.navigation_link.text?.toLowerCase();
+        <Column
+          item={right[0]}
+          side="right"
+          isActive={
+            isClicked === right[0]?.navigation_link.text?.toLowerCase() &&
+            side === 'right'
+          }
+          onClick={() => handleClick(right[0]?.navigation_link.text, 'right')}
+          transitionEnd={transitionEnd}
+          setTransitionEnd={setTransitionEnd}
+        >
+          <RecordComponent isRecordsActive={isRecordsActive} />
+        </Column>
 
-          return (
-            <div
-              className={`${styles.column} ${
-                isClicked === itemId && side === 'right' ? styles.fullWidth : ''
-              }`}
-              key={index}
-              id={itemId}
-            >
-              <div
-                className={styles.columnContent}
-                onClick={() => handleClick(item.navigation_link.text, 'right')}
-                onTransitionEnd={() => {
-                  setTransitionEnd(true);
-                }}
-              >
-                <p>{item.navigation_link.text}</p>
-                <PrismicNextImage field={item.navigation_icon} />
-              </div>
-              <div className={styles.section}>
-                <div
-                  className={styles.content}
-                  data-content={item.navigation_link.text?.toLowerCase()}
-                >
-                  {(() => {
-                    const contentId = item.navigation_link.text?.toLowerCase();
-                    const animationClass = `${styles.sectionHeading} ${
-                      transitionEnd && isClicked ? styles.visible : ''
-                    }`;
+        {/************ Contact ************/}
 
-                    if (contentId === 'studio') {
-                      return <h1 className={animationClass}>STUDIO</h1>;
-                    }
-
-                    if (contentId === 'projects') {
-                      return <h1 className={animationClass}>STUDIO</h1>;
-                    }
-
-                    return (
-                      <h1 className={animationClass}>
-                        {item.navigation_link.text?.toUpperCase()} CONTENT
-                      </h1>
-                    );
-                  })()}
-                </div>
-              </div>
-            </div>
-          );
-        })}
+        <Column
+          item={right[1]}
+          side="right"
+          isActive={
+            isClicked === right[1]?.navigation_link.text?.toLowerCase() &&
+            side === 'right'
+          }
+          onClick={() => handleClick(right[1]?.navigation_link.text, 'right')}
+          transitionEnd={transitionEnd}
+          setTransitionEnd={setTransitionEnd}
+        >
+          <ContactComponent isContactActive={isContactActive} />
+        </Column>
       </div>
     </div>
   );
