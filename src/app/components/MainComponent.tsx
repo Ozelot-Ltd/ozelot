@@ -251,6 +251,18 @@ export default function MainComponent({
           />
         </Column>
       </div>
+
+      {/************ Services ************/}
+
+      <div
+        className={styles.serviceContainer}
+        onClick={() => {
+          setIsClicked('');
+          router.push('/services');
+        }}
+      >
+        <div>Services</div>
+      </div>
     </div>
   );
 }

@@ -133,17 +133,30 @@
     transform: translateY(0);
 }
 
-.logoContainer {
+.logoContainer,
+.serviceContainer {
     position: fixed;
     width: calc(100% - (var(--container-width) * 2));
-    top: 0;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 1rem;
+}
+
+.logoContainer {
+
+    top: 0;
     z-index: 100;
+}
+
+.serviceContainer {
+    background-color: var(--grey-lowopacity);
+    backdrop-filter: var(--filter);
+    bottom: 0;
+    z-index: 99;
+
 }
 
 .logoContainer * {
