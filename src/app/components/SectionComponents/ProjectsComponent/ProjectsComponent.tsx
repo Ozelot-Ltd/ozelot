@@ -5,6 +5,5 @@ export default function ProjectsComponent({
 }: {
   isProjectsActive: boolean;
 }) {
-  console.log(isProjectsActive);
-  return <div>ProjectsComponent</div>;
+  return <div>{isProjectsActive && 'KLELELLKEJKFLJKL'} </div>;
 }

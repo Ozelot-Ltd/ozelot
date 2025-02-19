@@ -171,6 +171,7 @@ export default function MainComponent({
       {/* Left navigation */}
 
       {/********* Studio ***********/}
+
       <div className={`${styles.nav} ${styles.left}`} ref={containerRef}>
         <Column
           item={left[0]}
@@ -183,10 +184,14 @@ export default function MainComponent({
           transitionEnd={transitionEnd}
           setTransitionEnd={setTransitionEnd}
         >
-          <StudioComponent isStudioActive={isStudioActive} />
+          <StudioComponent
+            isStudioActive={isStudioActive}
+            transitionEnd={transitionEnd}
+          />
         </Column>
 
         {/************ Projects ************/}
+
         <Column
           item={left[1]}
           side="left"
@@ -198,7 +203,10 @@ export default function MainComponent({
           transitionEnd={transitionEnd}
           setTransitionEnd={setTransitionEnd}
         >
-          <ProjectsComponent isProjectsActive={isProjectsActive} />
+          <ProjectsComponent
+            isProjectsActive={isProjectsActive}
+            transitionEnd={transitionEnd}
+          />
         </Column>
       </div>
 
@@ -218,7 +226,10 @@ export default function MainComponent({
           transitionEnd={transitionEnd}
           setTransitionEnd={setTransitionEnd}
         >
-          <RecordComponent isRecordsActive={isRecordsActive} />
+          <RecordComponent
+            isRecordsActive={isRecordsActive}
+            transitionEnd={transitionEnd}
+          />
         </Column>
 
         {/************ Contact ************/}
@@ -234,7 +245,10 @@ export default function MainComponent({
           transitionEnd={transitionEnd}
           setTransitionEnd={setTransitionEnd}
         >
-          <ContactComponent isContactActive={isContactActive} />
+          <ContactComponent
+            isContactActive={isContactActive}
+            transitionEnd={transitionEnd}
+          />
         </Column>
       </div>
     </div>

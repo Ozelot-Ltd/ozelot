@@ -5,5 +5,5 @@ export default function RecordComponent({
 }: {
   isRecordsActive: boolean;
 }) {
-  return <div>RecordComponent</div>;
+  return <div>{isRecordsActive}</div>;
 }

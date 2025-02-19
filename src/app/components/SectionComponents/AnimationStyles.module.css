@@ -1,0 +1,4 @@
+.visible {
+    transform: translateY(0);
+    transition: all var(--time) var(--bezier);
+}
