@@ -9,12 +9,13 @@
 .nav {
     display: flex;
     width: fit-content;
-    position: absolute;
+
 }
 
 .right {
     top: 0;
     right: 0;
+    position: absolute;
 }
 
 .column {
@@ -26,10 +27,10 @@
     align-items: flex-start;
     transition: all var(--time) var(--bezier);
     overflow: hidden;
-
 }
 
 .right .column {
+    position: relative;
     flex-direction: row-reverse;
 }
 
@@ -37,7 +38,10 @@
     width: calc(100vw - 15rem);
     transition: all var(--time) var(--bezier);
     z-index: 10;
+}
 
+.left {
+    position: absolute;
 }
 
 .left .column {
@@ -104,7 +108,8 @@
     transition: all var(--time) var(--bezier);
 }
 
-.fullWidth p {
+.fullWidth p,
+.fullHeight p {
     font-variation-settings: "wght" 600;
 }
 
@@ -134,7 +139,7 @@
 }
 
 .logoContainer,
-.serviceContainer {
+.services {
     position: fixed;
     width: calc(100% - (var(--container-width) * 2));
     left: 50%;
@@ -142,21 +147,60 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 1rem;
 }
 
 .logoContainer {
-
+    padding: 1rem;
     top: 0;
     z-index: 100;
 }
 
-.serviceContainer {
-    background-color: var(--grey-lowopacity);
-    backdrop-filter: var(--filter);
+.services {
+    position: fixed;
+    width: calc(100% - (var(--container-width) * 2));
+    left: 50%;
     bottom: 0;
+    transform: translateX(-50%);
     z-index: 99;
+    background-color: var(--grey-lowopacity);
+}
 
+.bar {
+    width: 100%;
+    height: 5rem;
+
+    display: flex;
+    flex-direction: column-reverse;
+    transition: all var(--time) var(--bezier);
+    transform-origin: bottom;
+    position: absolute;
+    bottom: 0;
+
+}
+
+.bar.fullHeight {
+    height: 100vh;
+    backdrop-filter: var(--blur);
+    background-color: var(--grey-lowopacity);
+}
+
+.bar .columnContent {
+    height: 5rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.bar .columnContent p {
+    transform: rotate(90deg)
+}
+
+.bar .section {
+    flex-grow: 1;
+    width: 100%;
+    overflow: auto;
 }
 
 .logoContainer * {
@@ -170,7 +214,6 @@
 .animate {
     animation: scaleUp 4s ease-in-out infinite;
 }
-
 
 
 .fullWidth img {

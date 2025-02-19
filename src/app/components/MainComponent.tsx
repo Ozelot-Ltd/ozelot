@@ -15,6 +15,8 @@ import ProjectsComponent from './SectionComponents/ProjectsComponent/ProjectsCom
 import StudioComponent from './SectionComponents/StudioComponent/StudioComponent';
 import ContactComponent from './SectionComponents/ContactComponent/ContactComponent';
 import RecordComponent from './SectionComponents/RecordsComponent/RecordComponent';
+import ServicesComponent from './SectionComponents/ServicesComponent/ServicesComponent';
+
 interface ColumnProps {
   item:
     | SettingsDocumentDataNavigationItemsLeftItem
@@ -39,7 +41,7 @@ const Column: React.FC<ColumnProps> = ({
 
   return (
     <div
-      className={`${styles.column} ${isActive ? styles.fullWidth : ''}`}
+      className={`${itemId === 'services' ? styles.bar : styles.column} ${itemId !== 'services' && isActive ? styles.fullWidth : ''} ${isActive && itemId === 'services' ? styles.fullHeight : ''}`}
       id={itemId}
     >
       <div
@@ -49,7 +51,9 @@ const Column: React.FC<ColumnProps> = ({
         onTransitionStart={() => setTransitionEnd(false)}
       >
         <p>{item?.navigation_link.text}</p>
-        <PrismicNextImage field={item?.navigation_icon} />
+        {itemId !== 'services' && (
+          <PrismicNextImage field={item?.navigation_icon} />
+        )}
       </div>
       <div className={styles.section}>
         <div className={styles.content} data-content={itemId}>
@@ -69,12 +73,14 @@ export default function MainComponent({
 }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isClicked, setIsClicked] = useState('');
-  const [side, setSide] = useState<'left' | 'right' | ''>('');
+  const [side, setSide] = useState<'left' | 'right' | 'bottom' | ''>('');
   const [transitionEnd, setTransitionEnd] = useState(false);
   const [isProjectsActive, setIsProjectsActive] = useState(false);
   const [isStudioActive, setIsStudioActive] = useState(false);
   const [isRecordsActive, setIsRecordsActive] = useState(false);
   const [isContactActive, setIsContactActive] = useState(false);
+  const [isServicesActive, setIsServicesActive] = useState(false);
+  // const [isServicesOpen, setIsServicesOpen] = useState(false);
 
   useEffect(() => {
     if (isClicked === 'projects') {
@@ -82,21 +88,33 @@ export default function MainComponent({
       setIsStudioActive(false);
       setIsRecordsActive(false);
       setIsContactActive(false);
+      setIsServicesActive(false);
     } else if (isClicked === 'studio') {
       setIsProjectsActive(false);
       setIsStudioActive(true);
       setIsRecordsActive(false);
       setIsContactActive(false);
+      setIsServicesActive(false);
     } else if (isClicked === 'records') {
       setIsProjectsActive(false);
       setIsStudioActive(false);
       setIsRecordsActive(true);
       setIsContactActive(false);
+      setIsServicesActive(false);
     } else if (isClicked === 'contact') {
       setIsProjectsActive(false);
       setIsStudioActive(false);
       setIsRecordsActive(false);
       setIsContactActive(true);
+      setIsServicesActive(false);
+    } else if (isClicked === 'services') {
+      setIsProjectsActive(false);
+      setIsStudioActive(false);
+      setIsRecordsActive(false);
+      setIsContactActive(false);
+      setTimeout(() => {
+        setIsServicesActive(true);
+      }, 1500);
     }
   }, [isClicked]);
 
@@ -130,17 +148,20 @@ export default function MainComponent({
     } else if (pathname.includes('contact')) {
       setIsClicked('contact');
       setSide('right');
+    } else if (pathname.includes('services')) {
+      setIsClicked('services');
+      setSide('bottom');
     }
   }, [pathname]);
 
   const handleClick = (
     text: string | undefined | null,
-    clickedSide: 'left' | 'right'
+    clickedSide: 'left' | 'right' | 'bottom'
   ) => {
     if (!text) return;
     const lowercaseText = text.toLowerCase();
 
-    if (isClicked === lowercaseText && side === clickedSide) {
+    if (isClicked === lowercaseText) {
       setIsClicked('');
       setSide('');
       router.push('/');
@@ -254,14 +275,23 @@ export default function MainComponent({
 
       {/************ Services ************/}
 
-      <div
-        className={styles.serviceContainer}
-        onClick={() => {
-          setIsClicked('');
-          router.push('/services');
-        }}
-      >
-        <div>Services</div>
+      <div className={`${styles.nav} ${styles.services}`}>
+        <Column
+          item={right[2]}
+          side="bottom"
+          isActive={
+            isClicked === right[2]?.navigation_link.text?.toLowerCase() &&
+            side === 'bottom'
+          }
+          onClick={() => handleClick(right[2]?.navigation_link.text, 'bottom')}
+          transitionEnd={transitionEnd}
+          setTransitionEnd={setTransitionEnd}
+        >
+          <ServicesComponent
+            isServicesActive={isServicesActive}
+            transitionEnd={transitionEnd}
+          />
+        </Column>
       </div>
     </div>
   );

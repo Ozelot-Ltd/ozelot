@@ -1,17 +1,14 @@
 {
   "format": "page",
-  "id": "projects",
-  "label": "Projects",
-  "repeatable": false,
-  "status": true,
+  "id": "services",
   "json": {
     "Main": {
       "slices": {
-        "type": "Slices",
-        "fieldset": "Slice Zone",
         "config": {
           "choices": {}
-        }
+        },
+        "fieldset": "Slice Zone",
+        "type": "Slices"
       }
     },
     "SEO & Metadata": {
@@ -41,5 +38,8 @@
         "type": "Image"
       }
     }
-  }
+  },
+  "label": "Services",
+  "repeatable": false,
+  "status": true
 }

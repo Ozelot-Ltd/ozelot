@@ -144,11 +144,11 @@ export type PageDocument<Lang extends string = string> =
 type ProjectDocumentDataSlicesSlice = never;
 
 /**
- * Content for project documents
+ * Content for Project documents
  */
 interface ProjectDocumentData {
   /**
-   * Slice Zone field in *project*
+   * Slice Zone field in *Project*
    *
    * - **Field Type**: Slice Zone
    * - **Placeholder**: *None*
@@ -157,7 +157,7 @@ interface ProjectDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#slices
    */
   slices: prismic.SliceZone<ProjectDocumentDataSlicesSlice> /**
-   * Meta Title field in *project*
+   * Meta Title field in *Project*
    *
    * - **Field Type**: Text
    * - **Placeholder**: A title of the page used for social media and search engines
@@ -168,7 +168,7 @@ interface ProjectDocumentData {
   meta_title: prismic.KeyTextField;
 
   /**
-   * Meta Description field in *project*
+   * Meta Description field in *Project*
    *
    * - **Field Type**: Text
    * - **Placeholder**: A brief summary of the page
@@ -179,7 +179,7 @@ interface ProjectDocumentData {
   meta_description: prismic.KeyTextField;
 
   /**
-   * Meta Image field in *project*
+   * Meta Image field in *Project*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
@@ -191,7 +191,7 @@ interface ProjectDocumentData {
 }
 
 /**
- * project document from Prismic
+ * Project document from Prismic
  *
  * - **API ID**: `project`
  * - **Repeatable**: `true`
@@ -209,11 +209,11 @@ export type ProjectDocument<Lang extends string = string> =
 type ProjectsDocumentDataSlicesSlice = never;
 
 /**
- * Content for projects documents
+ * Content for Projects documents
  */
 interface ProjectsDocumentData {
   /**
-   * Slice Zone field in *projects*
+   * Slice Zone field in *Projects*
    *
    * - **Field Type**: Slice Zone
    * - **Placeholder**: *None*
@@ -222,7 +222,7 @@ interface ProjectsDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#slices
    */
   slices: prismic.SliceZone<ProjectsDocumentDataSlicesSlice> /**
-   * Meta Title field in *projects*
+   * Meta Title field in *Projects*
    *
    * - **Field Type**: Text
    * - **Placeholder**: A title of the page used for social media and search engines
@@ -233,7 +233,7 @@ interface ProjectsDocumentData {
   meta_title: prismic.KeyTextField;
 
   /**
-   * Meta Description field in *projects*
+   * Meta Description field in *Projects*
    *
    * - **Field Type**: Text
    * - **Placeholder**: A brief summary of the page
@@ -244,7 +244,7 @@ interface ProjectsDocumentData {
   meta_description: prismic.KeyTextField;
 
   /**
-   * Meta Image field in *projects*
+   * Meta Image field in *Projects*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
@@ -256,7 +256,7 @@ interface ProjectsDocumentData {
 }
 
 /**
- * projects document from Prismic
+ * Projects document from Prismic
  *
  * - **API ID**: `projects`
  * - **Repeatable**: `false`
@@ -274,11 +274,11 @@ export type ProjectsDocument<Lang extends string = string> =
 type RecordsDocumentDataSlicesSlice = never;
 
 /**
- * Content for records documents
+ * Content for Records documents
  */
 interface RecordsDocumentData {
   /**
-   * Slice Zone field in *records*
+   * Slice Zone field in *Records*
    *
    * - **Field Type**: Slice Zone
    * - **Placeholder**: *None*
@@ -287,7 +287,7 @@ interface RecordsDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#slices
    */
   slices: prismic.SliceZone<RecordsDocumentDataSlicesSlice> /**
-   * Meta Title field in *records*
+   * Meta Title field in *Records*
    *
    * - **Field Type**: Text
    * - **Placeholder**: A title of the page used for social media and search engines
@@ -298,7 +298,7 @@ interface RecordsDocumentData {
   meta_title: prismic.KeyTextField;
 
   /**
-   * Meta Description field in *records*
+   * Meta Description field in *Records*
    *
    * - **Field Type**: Text
    * - **Placeholder**: A brief summary of the page
@@ -309,7 +309,7 @@ interface RecordsDocumentData {
   meta_description: prismic.KeyTextField;
 
   /**
-   * Meta Image field in *records*
+   * Meta Image field in *Records*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
@@ -321,7 +321,7 @@ interface RecordsDocumentData {
 }
 
 /**
- * records document from Prismic
+ * Records document from Prismic
  *
  * - **API ID**: `records`
  * - **Repeatable**: `false`
@@ -333,6 +333,71 @@ export type RecordsDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithoutUID<
     Simplify<RecordsDocumentData>,
     "records",
+    Lang
+  >;
+
+type ServicesDocumentDataSlicesSlice = never;
+
+/**
+ * Content for Services documents
+ */
+interface ServicesDocumentData {
+  /**
+   * Slice Zone field in *Services*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: services.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<ServicesDocumentDataSlicesSlice> /**
+   * Meta Title field in *Services*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: services.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *Services*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: services.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Services*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: services.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * Services document from Prismic
+ *
+ * - **API ID**: `services`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ServicesDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<ServicesDocumentData>,
+    "services",
     Lang
   >;
 
@@ -536,6 +601,7 @@ export type AllDocumentTypes =
   | ProjectDocument
   | ProjectsDocument
   | RecordsDocument
+  | ServicesDocument
   | SettingsDocument
   | StudioDocument;
 
@@ -620,6 +686,9 @@ declare module "@prismicio/client" {
       RecordsDocument,
       RecordsDocumentData,
       RecordsDocumentDataSlicesSlice,
+      ServicesDocument,
+      ServicesDocumentData,
+      ServicesDocumentDataSlicesSlice,
       SettingsDocument,
       SettingsDocumentData,
       SettingsDocumentDataNavigationItemsLeftItem,
