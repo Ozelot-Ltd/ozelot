@@ -1,0 +1,13 @@
+.test {
+    border: 1px solid black;
+    overflow: hidden;
+}
+
+.testComponent {
+    transform: translateY(100%);
+    transition: all var(--time) var(--bezier)
+}
+
+.hello {
+    transform: translateY(0)
+}

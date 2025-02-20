@@ -67,14 +67,6 @@
           "label": "Record Socials Link",
           "repeat": true,
           "fields": {
-            "socials_image": {
-              "type": "Image",
-              "config": {
-                "label": "Socials Image",
-                "constraint": {},
-                "thumbnails": []
-              }
-            },
             "socials_link": {
               "type": "Link",
               "config": {

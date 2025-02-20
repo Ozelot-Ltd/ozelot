@@ -291,16 +291,6 @@ export interface RecordDocumentDataRecordImagesItem {
  */
 export interface RecordDocumentDataRecordSocialsLinkItem {
   /**
-   * Socials Image field in *Record → Record Socials Link*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: record.record_socials_link[].socials_image
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */
-  socials_image: prismic.ImageField<never>;
-
-  /**
    * Socials Link field in *Record → Record Socials Link*
    *
    * - **Field Type**: Link

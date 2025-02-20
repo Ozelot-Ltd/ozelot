@@ -1,7 +1,4 @@
 import React from 'react';
-
-import styles from './StudioComponent.module.css';
-import animationStyles from '../AnimationStyles.module.css';
 import MainContainer from '../MainContainer';
 
 export default function StudioComponent({

@@ -2,6 +2,5 @@
     position: relative;
     height: 100vh;
     width: calc(100vw - (2 * var(--container-width)));
-    background-color: red;
     padding: 4rem 2rem;
 }

@@ -1,4 +1,8 @@
-import React from 'react';
+'use client';
+
+import React, { useEffect, useState } from 'react';
+
+import styles from './RecordComponent.module.css';
 
 export default function RecordComponent({
   isRecordsActive,
@@ -7,5 +11,23 @@ export default function RecordComponent({
   isRecordsActive: boolean;
   transitionEnd: boolean;
 }) {
-  return <div>RecordComponent</div>;
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    if (isRecordsActive && transitionEnd) {
+      setIsVisible(true);
+    } else {
+      setIsVisible(false);
+    }
+  }, [isRecordsActive, transitionEnd]);
+
+  return (
+    <div className={styles.container}>
+      <div className={styles.test}>
+        <div className={`${styles.testComponent} ${isVisible && styles.hello}`}>
+          HELLOOO
+        </div>
+      </div>
+    </div>
+  );
 }
