@@ -271,12 +271,128 @@ export type ProjectsDocument<Lang extends string = string> =
     Lang
   >;
 
+/**
+ * Item in *Record → Record Images*
+ */
+export interface RecordDocumentDataRecordImagesItem {
+  /**
+   * Record Image field in *Record → Record Images*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: record.record_images[].record_image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  record_image: prismic.ImageField<never>;
+}
+
+/**
+ * Item in *Record → Record Socials Link*
+ */
+export interface RecordDocumentDataRecordSocialsLinkItem {
+  /**
+   * Socials Image field in *Record → Record Socials Link*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: record.record_socials_link[].socials_image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  socials_image: prismic.ImageField<never>;
+
+  /**
+   * Socials Link field in *Record → Record Socials Link*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: Bandcamp/Spotify
+   * - **API ID Path**: record.record_socials_link[].socials_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  socials_link: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+}
+
 type RecordDocumentDataSlicesSlice = never;
 
 /**
  * Content for Record documents
  */
 interface RecordDocumentData {
+  /**
+   * Record Title field in *Record*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Exxodus
+   * - **API ID Path**: record.record_title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  record_title: prismic.RichTextField;
+
+  /**
+   * Record Catalog field in *Record*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: OZED010
+   * - **API ID Path**: record.record_catalog
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  record_catalog: prismic.RichTextField;
+
+  /**
+   * Release Number field in *Record*
+   *
+   * - **Field Type**: Number
+   * - **Placeholder**: *None*
+   * - **API ID Path**: record.release_number
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#number
+   */
+  release_number: prismic.NumberField;
+
+  /**
+   * Record Images field in *Record*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: record.record_images[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  record_images: prismic.GroupField<
+    Simplify<RecordDocumentDataRecordImagesItem>
+  >;
+
+  /**
+   * Record Text field in *Record*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: record.record_text
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  record_text: prismic.KeyTextField;
+
+  /**
+   * Record Socials Link field in *Record*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: record.record_socials_link[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  record_socials_link: prismic.GroupField<
+    Simplify<RecordDocumentDataRecordSocialsLinkItem>
+  >;
+
   /**
    * Slice Zone field in *Record*
    *
@@ -747,6 +863,8 @@ declare module "@prismicio/client" {
       ProjectsDocumentDataSlicesSlice,
       RecordDocument,
       RecordDocumentData,
+      RecordDocumentDataRecordImagesItem,
+      RecordDocumentDataRecordSocialsLinkItem,
       RecordDocumentDataSlicesSlice,
       RecordsDocument,
       RecordsDocumentData,

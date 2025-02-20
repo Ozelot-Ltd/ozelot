@@ -25,20 +25,15 @@ export default async function RootLayout({
 
   const settings = await client.getSingle('settings');
 
-  const [studio, projects, records, contact, projectArray, recordArray] =
-    await Promise.all([
-      client.getSingle('studio'),
-      client.getSingle('projects'),
-      client.getSingle('records'),
-      client.getSingle('contact'),
-      client.getByType('project'),
-      client.getByType('record'),
-    ]);
+  const [studio, contact, projectArray, recordArray] = await Promise.all([
+    client.getSingle('studio'),
+    client.getSingle('contact'),
+    client.getByType('project'),
+    client.getByType('record'),
+  ]);
 
   const contentProps = {
     studio,
-    projects,
-    records,
     contact,
     projectArray: projectArray.results,
     recordArray: recordArray.results,

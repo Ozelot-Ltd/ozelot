@@ -4,8 +4,6 @@ import { useContext } from 'react';
 
 import {
   StudioDocument,
-  ProjectsDocument,
-  RecordsDocument,
   ContactDocument,
   ProjectDocument,
   RecordDocument,
@@ -13,8 +11,6 @@ import {
 
 export type ContentProps = {
   studio: StudioDocument;
-  projects: ProjectsDocument;
-  records: RecordsDocument;
   contact: ContactDocument;
   projectArray: ProjectDocument[];
   recordArray: RecordDocument[];

@@ -1,6 +1,9 @@
 {
   "format": "page",
   "id": "record",
+  "label": "Record",
+  "repeatable": true,
+  "status": true,
   "json": {
     "Main": {
       "uid": {
@@ -9,12 +12,89 @@
           "label": "UID"
         }
       },
+      "record_title": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Record Title",
+          "placeholder": "Exxodus",
+          "allowTargetBlank": true,
+          "multi": "heading2"
+        }
+      },
+      "record_catalog": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Record Catalog",
+          "placeholder": "OZED010",
+          "allowTargetBlank": true,
+          "multi": "heading3,heading5"
+        }
+      },
+      "release_number": {
+        "type": "Number",
+        "config": {
+          "label": "Release Number",
+          "placeholder": ""
+        }
+      },
+      "record_images": {
+        "type": "Group",
+        "config": {
+          "label": "Record Images",
+          "repeat": true,
+          "fields": {
+            "record_image": {
+              "type": "Image",
+              "config": {
+                "label": "Record Image",
+                "constraint": {},
+                "thumbnails": []
+              }
+            }
+          }
+        }
+      },
+      "record_text": {
+        "type": "Text",
+        "config": {
+          "label": "Record Text",
+          "placeholder": ""
+        }
+      },
+      "record_socials_link": {
+        "type": "Group",
+        "config": {
+          "label": "Record Socials Link",
+          "repeat": true,
+          "fields": {
+            "socials_image": {
+              "type": "Image",
+              "config": {
+                "label": "Socials Image",
+                "constraint": {},
+                "thumbnails": []
+              }
+            },
+            "socials_link": {
+              "type": "Link",
+              "config": {
+                "label": "Socials Link",
+                "placeholder": "Bandcamp/Spotify",
+                "select": null,
+                "allowTargetBlank": true,
+                "allowText": false,
+                "repeat": false
+              }
+            }
+          }
+        }
+      },
       "slices": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
         "config": {
           "choices": {}
-        },
-        "fieldset": "Slice Zone",
-        "type": "Slices"
+        }
       }
     },
     "SEO & Metadata": {
@@ -44,8 +124,5 @@
         "type": "Image"
       }
     }
-  },
-  "label": "Record",
-  "repeatable": true,
-  "status": true
+  }
 }
