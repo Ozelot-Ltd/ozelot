@@ -25,13 +25,15 @@ export default async function RootLayout({
 
   const settings = await client.getSingle('settings');
 
-  const [studio, projects, records, contact, projectArray] = await Promise.all([
-    client.getSingle('studio'),
-    client.getSingle('projects'),
-    client.getSingle('records'),
-    client.getSingle('contact'),
-    client.getByType('project'),
-  ]);
+  const [studio, projects, records, contact, projectArray, recordArray] =
+    await Promise.all([
+      client.getSingle('studio'),
+      client.getSingle('projects'),
+      client.getSingle('records'),
+      client.getSingle('contact'),
+      client.getByType('project'),
+      client.getByType('record'),
+    ]);
 
   const contentProps = {
     studio,
@@ -39,6 +41,7 @@ export default async function RootLayout({
     records,
     contact,
     projectArray: projectArray.results,
+    recordArray: recordArray.results,
   };
 
   const leftField = settings.data.navigation_items_left;

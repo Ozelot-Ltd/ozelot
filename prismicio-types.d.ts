@@ -271,6 +271,67 @@ export type ProjectsDocument<Lang extends string = string> =
     Lang
   >;
 
+type RecordDocumentDataSlicesSlice = never;
+
+/**
+ * Content for Record documents
+ */
+interface RecordDocumentData {
+  /**
+   * Slice Zone field in *Record*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: record.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<RecordDocumentDataSlicesSlice> /**
+   * Meta Title field in *Record*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: record.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *Record*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: record.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Record*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: record.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * Record document from Prismic
+ *
+ * - **API ID**: `record`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type RecordDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<Simplify<RecordDocumentData>, "record", Lang>;
+
 type RecordsDocumentDataSlicesSlice = never;
 
 /**
@@ -600,6 +661,7 @@ export type AllDocumentTypes =
   | PageDocument
   | ProjectDocument
   | ProjectsDocument
+  | RecordDocument
   | RecordsDocument
   | ServicesDocument
   | SettingsDocument
@@ -683,6 +745,9 @@ declare module "@prismicio/client" {
       ProjectsDocument,
       ProjectsDocumentData,
       ProjectsDocumentDataSlicesSlice,
+      RecordDocument,
+      RecordDocumentData,
+      RecordDocumentDataSlicesSlice,
       RecordsDocument,
       RecordsDocumentData,
       RecordsDocumentDataSlicesSlice,

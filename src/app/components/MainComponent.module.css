@@ -177,7 +177,6 @@
     bottom: 0;
     background-color: transparent;
 
-    /* Fast height transition when class is added */
     transition:
         height var(--time) var(--bezier) 0s,
         background-color var(--time) var(--bezier) 0.3s,
@@ -190,9 +189,8 @@
     background-color: var(--grey-lowopacity);
 }
 
-/* Special transition when the class is removed */
+
 .fullHeight.bar {
-    /* Delay height transition when removing class */
     transition:
         height var(--time) var(--bezier) 0.2s,
         background-color var(--time) var(--bezier) 0.3s,
