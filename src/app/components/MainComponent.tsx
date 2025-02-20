@@ -14,7 +14,7 @@ import { PrismicNextImage } from '@prismicio/next';
 import ProjectsComponent from './SectionComponents/ProjectsComponent/ProjectsComponent';
 import StudioComponent from './SectionComponents/StudioComponent/StudioComponent';
 import ContactComponent from './SectionComponents/ContactComponent/ContactComponent';
-import RecordComponent from './SectionComponents/RecordsComponent/RecordComponent';
+import RecordsComponent from './SectionComponents/RecordsComponent/RecordsComponent';
 import ServicesComponent from './SectionComponents/ServicesComponent/ServicesComponent';
 
 interface ColumnProps {
@@ -213,7 +213,7 @@ export default function MainComponent({
         <div
           className={`${styles.logo} ${isClicked !== '' ? styles.animate : ''}`}
         >
-          <Logo height={'40'} />
+          <Logo height={'28'} />
         </div>
       </div>
 
@@ -275,7 +275,7 @@ export default function MainComponent({
           transitionEnd={transitionEnd}
           setTransitionEnd={setTransitionEnd}
         >
-          <RecordComponent
+          <RecordsComponent
             isRecordsActive={isRecordsActive}
             transitionEnd={transitionEnd}
           />

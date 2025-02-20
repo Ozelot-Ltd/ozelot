@@ -7,9 +7,5 @@ export default function RecordComponent({
   isRecordsActive: boolean;
   transitionEnd: boolean;
 }) {
-  return (
-    <div>
-      {isRecordsActive && transitionEnd && 'jöklfdasjölkafsdjlökafsdljkö'}
-    </div>
-  );
+  return <div>RecordComponent</div>;
 }

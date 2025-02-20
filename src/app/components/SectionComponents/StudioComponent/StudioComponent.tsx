@@ -2,6 +2,7 @@ import React from 'react';
 
 import styles from './StudioComponent.module.css';
 import animationStyles from '../AnimationStyles.module.css';
+import MainContainer from '../MainContainer';
 
 export default function StudioComponent({
   isStudioActive,
@@ -11,10 +12,8 @@ export default function StudioComponent({
   transitionEnd: boolean;
 }) {
   return (
-    <div
-      className={`${styles.section} ${isStudioActive && transitionEnd ? animationStyles.visible : ''}`}
-    >
-      <h1>HUEHUEHUEHUE</h1>
-    </div>
+    <MainContainer>
+      {transitionEnd && isStudioActive && <h1>HEHEHEHEHEHEHEHE</h1>}
+    </MainContainer>
   );
 }

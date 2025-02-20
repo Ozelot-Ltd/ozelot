@@ -1,4 +1,5 @@
 import React from 'react';
+import MainContainer from '../MainContainer';
 
 export default function ContactComponent({
   isContactActive,
@@ -9,8 +10,8 @@ export default function ContactComponent({
 }) {
   console.log(isContactActive);
   return (
-    <div>
+    <MainContainer>
       {transitionEnd && isContactActive && 'jlköfasöljkafdslöjkfdslköjfdsaklöj'}
-    </div>
+    </MainContainer>
   );
 }
