@@ -1,14 +1,18 @@
+/* RecordComponent.module.css */
 .container {
-
     height: 100%;
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(2, 1fr)
+    grid-template-columns: repeat(2, 1fr);
+    position: relative;
 }
 
 .container .leftContainer,
 .container .rightContainer {
     width: 100%;
+    height: 100%;
+    position: relative;
+
 }
 
 .leftContainer {
@@ -20,9 +24,29 @@
 
 .rightContainer {
     padding-left: 2rem;
+    display: grid;
+    grid-template-rows: 1fr;
+}
+
+.releaseListContainer,
+.imageContainer,
+.descriptionContainer {
+    width: 100%;
 }
 
 .releaseListContainer {
     border-bottom: var(--border);
+    overflow-y: hidden !important;
+    max-height: 32.5rem;
+}
+
+.scrollContainer {
+    width: 100%;
+    max-height: 100%;
+    overflow: scroll;
+}
+
+.listComponent {
+    height: 100%;
     width: 100%;
 }

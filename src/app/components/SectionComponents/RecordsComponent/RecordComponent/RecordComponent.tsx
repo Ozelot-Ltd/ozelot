@@ -30,34 +30,32 @@ export default function RecordComponent({
     }
   }, [isRecordsActive, transitionEnd]);
 
-  console.log(recordArray[0].data);
+  const sortedArray = recordArray.sort((a, b) => {
+    if (a.data.release_number && b.data.release_number) {
+      return b.data.release_number - a.data.release_number;
+    }
+    return 0;
+  });
 
   return (
     <section className={styles.container}>
       <section className={styles.leftContainer}>
         <div className={styles.releaseListContainer}>
-          {recordArray.map((record, index: number) => (
-            <div key={`${record.id} ${index}`} className={styles.listComponent}>
-              <Record record={record} index={index} />
-            </div>
-          ))}
+          <div className={styles.scrollContainer}>
+            {sortedArray.map((record, index: number) => (
+              <div
+                key={`${record.id} ${index}`}
+                className={styles.listComponent}
+              >
+                <Record record={record} index={index} />
+              </div>
+            ))}
+          </div>
         </div>
-        <div className={styles.descriptionContainer}>
-          {recordArray.map((record, index: number) => (
-            <div key={`${record.id} ${index}`} className={styles.listComponent}>
-              <Record record={record} index={index} />
-            </div>
-          ))}
-        </div>
+        <div className={styles.descriptionContainer}></div>
       </section>
       <section className={styles.rightContainer}>
-        <div className={styles.imageContainer}>
-          {recordArray.map((record, index: number) => (
-            <div key={`${record.id} ${index}`} className={styles.listComponent}>
-              <Record record={record} index={index} />
-            </div>
-          ))}
-        </div>
+        <div className={styles.imageContainer}></div>
       </section>
     </section>
   );

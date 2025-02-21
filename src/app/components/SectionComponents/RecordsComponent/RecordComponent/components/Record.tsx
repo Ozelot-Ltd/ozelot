@@ -1,5 +1,3 @@
-'use client';
-
 import React from 'react';
 
 import styles from './Record.module.css';
@@ -17,17 +15,19 @@ export default function Record({
 }) {
   return (
     <div className={styles.releaseComponent}>
-      <p>
-        {record.data.release_number && record.data.release_number < 10
-          ? `0${record.data.release_number}`
-          : record.data.release_number}
-      </p>
-      <PrismicRichText field={record.data.record_catalog} />
+      <div className={styles.catalogContainer}>
+        <p>
+          {record.data.release_number && record.data.release_number < 10
+            ? `0${record.data.release_number}`
+            : record.data.release_number}
+        </p>
+        <PrismicRichText field={record.data.record_catalog} />
+      </div>
       <div className={styles.vinylContainer}>
         <Vinyl height="21" width="20" fill="#494C4F" />
       </div>
       <div className={styles.arrowContainer}>
-        <Arrow height="22" width="23" fill="#494C4F" />
+        <Arrow height="20" width="20" fill="#494C4F" />
       </div>
     </div>
   );
