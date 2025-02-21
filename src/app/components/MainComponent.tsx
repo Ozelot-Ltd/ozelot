@@ -9,7 +9,7 @@ import {
   SettingsDocumentDataNavigationItemsLeftItem,
   SettingsDocumentDataNavigationItemsRightItem,
 } from '../../../prismicio-types';
-import Logo from './Logo/Logo';
+import Logo from './SvgComponents/Logo/Logo';
 import { PrismicNextImage } from '@prismicio/next';
 import ProjectsComponent from './SectionComponents/ProjectsComponent/ProjectsComponent';
 import StudioComponent from './SectionComponents/StudioComponent/StudioComponent';

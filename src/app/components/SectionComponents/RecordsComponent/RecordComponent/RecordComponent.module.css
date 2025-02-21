@@ -1,13 +1,28 @@
-.test {
-    border: 1px solid black;
-    overflow: hidden;
+.container {
+
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr)
 }
 
-.testComponent {
-    transform: translateY(100%);
-    transition: all var(--time) var(--bezier)
+.container .leftContainer,
+.container .rightContainer {
+    width: 100%;
 }
 
-.hello {
-    transform: translateY(0)
+.leftContainer {
+    border-right: var(--border);
+    padding-right: 2rem;
+    display: grid;
+    grid-template-rows: 1.5fr 1fr;
+}
+
+.rightContainer {
+    padding-left: 2rem;
+}
+
+.releaseListContainer {
+    border-bottom: var(--border);
+    width: 100%;
 }
