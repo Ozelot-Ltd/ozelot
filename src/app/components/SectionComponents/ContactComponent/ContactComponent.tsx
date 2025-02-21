@@ -8,7 +8,6 @@ export default function ContactComponent({
   isContactActive: boolean;
   transitionEnd: boolean;
 }) {
-  console.log(isContactActive);
   return (
     <MainContainer>
       {transitionEnd && isContactActive && 'jlköfasöljkafdslöjkfdslköjfdsaklöj'}

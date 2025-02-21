@@ -26,6 +26,9 @@
     margin: 0;
     padding: 0;
     width: fit-content;
+    -webkit-font-smoothing: antialiased;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
 }
 
 body {
@@ -56,6 +59,10 @@ h4,
 h5 {
     font-variation-settings: var(--title-weight);
     text-transform: uppercase;
+}
+
+p {
+    hyphens: auto;
 }
 
 p,

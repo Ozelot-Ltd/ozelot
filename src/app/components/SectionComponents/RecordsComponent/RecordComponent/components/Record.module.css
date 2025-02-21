@@ -12,6 +12,8 @@
 
 
 
+
+
 .catalogContainer,
 .vinylContainer,
 .arrowContainer {
@@ -30,10 +32,6 @@
     transition: font-variation-settings var(--time-fast) var(--bezier);
 }
 
-.catalogContainer p {
-    font-size: 0.5rem;
-    align-self: flex-start;
-}
 
 .catalogContainer h3 {
     font-variation-settings: var(--text-weight);
