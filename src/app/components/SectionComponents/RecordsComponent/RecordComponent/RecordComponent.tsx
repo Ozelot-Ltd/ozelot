@@ -60,20 +60,21 @@ export default function RecordComponent({
                   ? `0${currentRecord.release_number}`
                   : currentRecord.release_number}
               </p>
+            </div>
+            <div className={styles.rightContainerLower}>
               <div className={styles.title}>
                 <Vinyl height="24" width="24" fill="#494C4F" />
                 <div className={styles.title}>
                   <PrismicRichText field={currentRecord.record_title} />
                 </div>
               </div>
-            </div>
-            <div>
+
               <div className={styles.subtitle}>
-                <p>MERCHANDISE</p>
+                <p>MERCHANDISE AVAILABLE</p>
               </div>
-            </div>
-            <div className={styles.text}>
-              <p>{currentRecord.record_text}</p>
+              <div className={styles.text}>
+                <p>{currentRecord.record_text}</p>
+              </div>
             </div>
           </div>
         )}
