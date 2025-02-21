@@ -18,11 +18,17 @@
     "@prismicio/client": "^7.16.0",
     "@prismicio/next": "^2.0.0",
     "@prismicio/react": "^3.0.0",
+    "@react-three/drei": "10.0.0",
+    "@react-three/fiber": "9.0.4",
+    "@react-three/postprocessing": "v3.0.4",
+    "@react-three/rapier": "^1.5.0",
+    "@types/three": "^0.173.0",
     "dotenv": "^16.4.7",
     "gsap": "npm:@gsap/shockingly@^3.12.7",
     "next": "^15.1.6",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "three": "^0.173.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.2.0",

@@ -1,18 +1,19 @@
-import { PrismicPreview } from '@prismicio/next';
-import { repositoryName } from '@/prismicio';
+import { PrismicPreview } from "@prismicio/next";
+import { repositoryName } from "@/prismicio";
 
-import { Host_Grotesk } from 'next/font/google';
-import { createClient } from '@/prismicio';
+import { Host_Grotesk } from "next/font/google";
+import { createClient } from "@/prismicio";
 
-import './globals.css';
-import MainComponent from './components/MainComponent';
-import { Providers } from './components/Providers/Providers';
+import "./globals.css";
+import MainComponent from "./components/MainComponent";
+import { Providers } from "./components/Providers/Providers";
+import { BackgroundComponent } from "./components/BackgroundComponent/BackgroundComponent";
 
 const host = Host_Grotesk({
-  weight: 'variable',
-  style: 'normal',
+  weight: "variable",
+  style: "normal",
   preload: true,
-  subsets: ['latin'],
+  subsets: ["latin"],
 });
 
 export default async function RootLayout({
@@ -23,14 +24,14 @@ export default async function RootLayout({
   const client = createClient();
   // const home = await client.getByUID('page', 'home');
 
-  const settings = await client.getSingle('settings');
+  const settings = await client.getSingle("settings");
 
   const [studio, projects, records, contact, projectArray] = await Promise.all([
-    client.getSingle('studio'),
-    client.getSingle('projects'),
-    client.getSingle('records'),
-    client.getSingle('contact'),
-    client.getByType('project'),
+    client.getSingle("studio"),
+    client.getSingle("projects"),
+    client.getSingle("records"),
+    client.getSingle("contact"),
+    client.getByType("project"),
   ]);
 
   const contentProps = {
@@ -52,6 +53,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={host.className}>
+        <BackgroundComponent />
         <Providers contentProps={contentProps}>
           <MainComponent {...settingsProps} />
           {children}
