@@ -35,9 +35,9 @@
 }
 
 .releaseListContainer {
-    border-bottom: var(--border);
-    overflow-y: hidden !important;
-    max-height: 32.5rem;
+
+    overflow-y: hidden;
+    max-height: 28.5rem;
 }
 
 .scrollContainer {

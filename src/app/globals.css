@@ -12,10 +12,11 @@
     --border: 1px solid var(--black);
     --border-active: 1px solid var(--black-active);
     --radius-large: 40px;
-    --grey-lowopacity: rgba(237, 239, 238, 0.3);
+    --grey-lowopacity: rgba(237, 239, 238, 0.1);
     --blur: blur(28px);
     --bezier: cubic-bezier(0.39, 0.575, 0.565, 1);
     --time: 0.5s;
+    --time-fast: 0.2s;
 }
 
 /******** GLOBAL STYLES ********/
