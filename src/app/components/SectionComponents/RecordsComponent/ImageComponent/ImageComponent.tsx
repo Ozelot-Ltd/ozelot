@@ -3,6 +3,7 @@ import {
   RecordDocumentData,
   Simplify,
 } from '../../../../../../prismicio-types';
+
 import { PrismicNextImage } from '@prismicio/next';
 
 import styles from './ImageComponent.module.css';
@@ -37,7 +38,11 @@ export default function ImageComponent({
   };
 
   if (!currentRecord || !totalImages) {
-    return <div className={styles.imageContainerWithout}>{}</div>;
+    return (
+      <div className={styles.imageContainerWithout}>
+        {currentRecord?.meta_title}
+      </div>
+    );
   }
 
   return (
