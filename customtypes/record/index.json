@@ -61,26 +61,6 @@
           "placeholder": ""
         }
       },
-      "record_socials_link": {
-        "type": "Group",
-        "config": {
-          "label": "Record Socials Link",
-          "repeat": true,
-          "fields": {
-            "socials_link": {
-              "type": "Link",
-              "config": {
-                "label": "Socials Link",
-                "placeholder": "Bandcamp/Spotify",
-                "select": null,
-                "allowTargetBlank": true,
-                "allowText": false,
-                "repeat": false
-              }
-            }
-          }
-        }
-      },
       "has_merch": {
         "type": "Boolean",
         "config": {
@@ -88,6 +68,39 @@
           "placeholder_false": "false",
           "placeholder_true": "true",
           "default_value": false
+        }
+      },
+      "bandcamp_link": {
+        "type": "Link",
+        "config": {
+          "label": "Bandcamp Link",
+          "placeholder": "Bandcamp Link",
+          "select": null,
+          "allowTargetBlank": true,
+          "allowText": true,
+          "repeat": false
+        }
+      },
+      "spotify_link": {
+        "type": "Link",
+        "config": {
+          "label": "Spotify Link",
+          "placeholder": "Spotify Link",
+          "select": null,
+          "allowTargetBlank": true,
+          "allowText": true,
+          "repeat": false
+        }
+      },
+      "website_link": {
+        "type": "Link",
+        "config": {
+          "label": "Website Link",
+          "placeholder": "Website Link",
+          "select": null,
+          "allowTargetBlank": true,
+          "allowText": true,
+          "repeat": false
         }
       },
       "slices": {

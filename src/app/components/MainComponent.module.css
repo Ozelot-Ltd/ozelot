@@ -229,7 +229,7 @@
 }
 
 
-.fullWidth img {
+.fullWidth .columnContent img {
     animation: rotate 2.5s ease-in-out infinite;
 }
 

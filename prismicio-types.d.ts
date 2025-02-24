@@ -286,27 +286,6 @@ export interface RecordDocumentDataRecordImagesItem {
   record_image: prismic.ImageField<never>;
 }
 
-/**
- * Item in *Record → Record Socials Link*
- */
-export interface RecordDocumentDataRecordSocialsLinkItem {
-  /**
-   * Socials Link field in *Record → Record Socials Link*
-   *
-   * - **Field Type**: Link
-   * - **Placeholder**: Bandcamp/Spotify
-   * - **API ID Path**: record.record_socials_link[].socials_link
-   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
-   */
-  socials_link: prismic.LinkField<
-    string,
-    string,
-    unknown,
-    prismic.FieldState,
-    never
-  >;
-}
-
 type RecordDocumentDataSlicesSlice = never;
 
 /**
@@ -371,19 +350,6 @@ interface RecordDocumentData {
   record_text: prismic.KeyTextField;
 
   /**
-   * Record Socials Link field in *Record*
-   *
-   * - **Field Type**: Group
-   * - **Placeholder**: *None*
-   * - **API ID Path**: record.record_socials_link[]
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#group
-   */
-  record_socials_link: prismic.GroupField<
-    Simplify<RecordDocumentDataRecordSocialsLinkItem>
-  >;
-
-  /**
    * Has Merch field in *Record*
    *
    * - **Field Type**: Boolean
@@ -394,6 +360,57 @@ interface RecordDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#boolean
    */
   has_merch: prismic.BooleanField;
+
+  /**
+   * Bandcamp Link field in *Record*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: Bandcamp Link
+   * - **API ID Path**: record.bandcamp_link
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  bandcamp_link: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+
+  /**
+   * Spotify Link field in *Record*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: Spotify Link
+   * - **API ID Path**: record.spotify_link
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  spotify_link: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+
+  /**
+   * Website Link field in *Record*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: Website Link
+   * - **API ID Path**: record.website_link
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  website_link: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
 
   /**
    * Slice Zone field in *Record*
@@ -866,7 +883,6 @@ declare module "@prismicio/client" {
       RecordDocument,
       RecordDocumentData,
       RecordDocumentDataRecordImagesItem,
-      RecordDocumentDataRecordSocialsLinkItem,
       RecordDocumentDataSlicesSlice,
       RecordsDocument,
       RecordsDocumentData,

@@ -101,3 +101,14 @@
 .subtitle p {
     font-size: 0.6rem;
 }
+
+.socials {
+    display: flex;
+    gap: 1rem;
+    padding-top: 1rem;
+    align-items: center;
+}
+
+.socials * {
+    animation: none;
+}
