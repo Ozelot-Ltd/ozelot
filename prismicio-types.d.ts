@@ -384,6 +384,18 @@ interface RecordDocumentData {
   >;
 
   /**
+   * Has Merch field in *Record*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: record.has_merch
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  has_merch: prismic.BooleanField;
+
+  /**
    * Slice Zone field in *Record*
    *
    * - **Field Type**: Slice Zone
