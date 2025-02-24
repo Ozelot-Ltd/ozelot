@@ -103,6 +103,15 @@
           "repeat": false
         }
       },
+      "has_own_website": {
+        "type": "Boolean",
+        "config": {
+          "label": "Has own Website",
+          "placeholder_false": "false",
+          "placeholder_true": "true",
+          "default_value": false
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",

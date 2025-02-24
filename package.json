@@ -22,7 +22,8 @@
     "gsap": "npm:@gsap/shockingly@^3.12.7",
     "next": "^15.1.6",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "yet-another-react-lightbox": "^3.21.7"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.2.0",

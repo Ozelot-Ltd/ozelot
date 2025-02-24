@@ -413,6 +413,18 @@ interface RecordDocumentData {
   >;
 
   /**
+   * Has own Website field in *Record*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: record.has_own_website
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  has_own_website: prismic.BooleanField;
+
+  /**
    * Slice Zone field in *Record*
    *
    * - **Field Type**: Slice Zone

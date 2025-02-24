@@ -112,3 +112,8 @@
 .socials * {
     animation: none;
 }
+
+.imageContainer {
+    overflow: scroll;
+    padding: 3rem 0;
+}

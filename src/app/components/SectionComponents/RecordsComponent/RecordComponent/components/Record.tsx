@@ -9,12 +9,15 @@ import { RecordDocument } from '../../../../../../../prismicio-types';
 
 export default function Record({
   record,
+  activeRecord,
 }: {
   record: RecordDocument;
-  index: number;
+  activeRecord: string;
 }) {
   return (
-    <div className={styles.releaseComponent}>
+    <div
+      className={`${styles.releaseComponent} ${activeRecord === record.id ? styles.active : ''}`}
+    >
       <div className={styles.catalogContainer}>
         <p>
           {record.data.release_number && record.data.release_number < 10

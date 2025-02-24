@@ -30,7 +30,7 @@
 
 .catalogContainer h3,
 .catalogContainer p {
-    transition: font-variation-settings var(--time-fast) var(--bezier);
+    transition: font-variation-settings 1s var(--bezier);
 }
 
 
@@ -38,6 +38,12 @@
     font-variation-settings: var(--text-weight);
     font-size: 1.4rem;
     text-transform: uppercase;
+    transition: font-variation-settings 1s var(--bezier);
+}
+
+.active .catalogContainer h3 {
+    font-variation-settings: var(--title-weight);
+    transition: font-variation-settings 1s var(--bezier);
 }
 
 .releaseComponent:hover .catalogContainer h3,
@@ -60,6 +66,15 @@
     transition: transform var(--time-fast) var(--bezier)
 }
 
+.active svg {
+    transform: rotate(0deg);
+}
+
 .releaseComponent:hover .arrowContainer svg {
     transform: rotate(0deg)
+}
+
+.imageContainer {
+    background-color: red;
+    height: 100%;
 }
