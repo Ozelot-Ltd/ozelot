@@ -24,7 +24,7 @@ export default function Record({
             ? `0${record.data.release_number}`
             : record.data.release_number}
         </p>
-        <PrismicRichText field={record.data.record_catalog} />
+        <PrismicRichText field={record.data.catalog} />
       </div>
       <div className={styles.vinylContainer}>
         <Vinyl height="21" width="20" fill="#494C4F" />

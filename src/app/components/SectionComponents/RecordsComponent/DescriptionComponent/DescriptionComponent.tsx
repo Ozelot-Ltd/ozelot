@@ -36,7 +36,7 @@ export default function DescriptionComponent({
             <div className={styles.title}>
               <Vinyl height="24" width="24" fill="#494C4F" />
               <div className={styles.title}>
-                <PrismicRichText field={currentRecord.record_title} />
+                <PrismicRichText field={currentRecord.title} />
               </div>
             </div>
 

@@ -297,22 +297,22 @@ interface RecordDocumentData {
    *
    * - **Field Type**: Rich Text
    * - **Placeholder**: Exxodus
-   * - **API ID Path**: record.record_title
+   * - **API ID Path**: record.title
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
-  record_title: prismic.RichTextField;
+  title: prismic.RichTextField;
 
   /**
    * Record Catalog field in *Record*
    *
    * - **Field Type**: Rich Text
    * - **Placeholder**: OZED010
-   * - **API ID Path**: record.record_catalog
+   * - **API ID Path**: record.catalog
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
-  record_catalog: prismic.RichTextField;
+  catalog: prismic.RichTextField;
 
   /**
    * Release Number field in *Record*

@@ -12,7 +12,7 @@
           "label": "UID"
         }
       },
-      "record_title": {
+      "title": {
         "type": "StructuredText",
         "config": {
           "label": "Record Title",
@@ -21,7 +21,7 @@
           "multi": "heading2"
         }
       },
-      "record_catalog": {
+      "catalog": {
         "type": "StructuredText",
         "config": {
           "label": "Record Catalog",
