@@ -1,0 +1,80 @@
+.projectComponent {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    height: fit-content;
+    width: 100%;
+    padding: 1rem 0;
+    border-bottom: var(--border);
+    flex: 1;
+    cursor: e-resize
+}
+
+.catalogContainer,
+.vinylContainer,
+.arrowContainer {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+}
+
+.catalogContainer {
+    gap: 0.5rem;
+}
+
+.catalogContainer p {
+    font-size: 0.5rem;
+    align-self: flex-start;
+}
+
+.catalogContainer h3,
+.catalogContainer p {
+    transition: font-variation-settings 1s var(--bezier);
+}
+
+
+.catalogContainer h3 {
+    font-variation-settings: var(--text-weight);
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    transition: font-variation-settings 1s var(--bezier);
+}
+
+.active .catalogContainer h3 {
+    font-variation-settings: var(--title-weight);
+    transition: font-variation-settings 1s var(--bezier);
+}
+
+.releaseComponent:hover .catalogContainer h3,
+.releaseComponent:hover .catalogContainer p {
+    font-variation-settings: var(--title-weight);
+}
+
+.vinylContainer {
+    align-items: center;
+    justify-content: center;
+}
+
+.arrowContainer {
+    justify-content: flex-end;
+
+}
+
+.arrowContainer svg {
+    transform: rotate(180deg);
+    transition: transform var(--time-fast) var(--bezier)
+}
+
+.active svg {
+    transform: rotate(0deg);
+}
+
+.releaseComponent:hover .arrowContainer svg {
+    transform: rotate(0deg)
+}
+
+.imageContainer {
+    background-color: red;
+    height: 100%;
+}

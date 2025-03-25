@@ -39,7 +39,7 @@ export default function RecordComponent({
   return (
     <section className={styles.container}>
       <section className={styles.leftContainer}>
-        <div className={styles.releaseListContainer}>
+        <div className={styles.listContainer}>
           <div className={styles.scrollContainer}>
             {sortedArray.map((record, index) => (
               <div

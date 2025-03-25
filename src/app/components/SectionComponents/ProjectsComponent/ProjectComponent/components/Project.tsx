@@ -1,0 +1,32 @@
+import React from 'react';
+import { ProjectDocument } from '../../../../../../../prismicio-types';
+
+import styles from './Project.module.css';
+import { PrismicRichText } from '@prismicio/react';
+import Arrow from '@/app/components/SvgComponents/Arrow/Arrow';
+
+type Props = {
+  project: ProjectDocument;
+  activeProject: string;
+};
+
+export default function Project({ project, activeProject }: Props) {
+  return (
+    <div
+      className={`${styles.projectComponent} ${activeProject === project.id ? styles.active : ''}`}
+    >
+      <div className={styles.catalogContainer}>
+        <p>
+          {project.data.project_number && project.data.project_number < 10
+            ? `0${project.data.project_number}`
+            : project.data.project_number}
+        </p>
+        <PrismicRichText field={project.data.title} />
+      </div>
+      <div className={styles.vinylContainer}></div>
+      <div className={styles.arrowContainer}>
+        <Arrow height="20" width="20" fill="#494C4F" />
+      </div>
+    </div>
+  );
+}

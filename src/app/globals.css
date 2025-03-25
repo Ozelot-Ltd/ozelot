@@ -63,6 +63,7 @@ h5 {
 
 p {
     hyphens: auto;
+    font-size: clamp(1rem, calc(0.8rem + 0.4vw), 1.2rem);
 }
 
 p,

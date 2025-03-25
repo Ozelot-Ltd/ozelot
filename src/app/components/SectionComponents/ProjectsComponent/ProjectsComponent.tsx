@@ -1,6 +1,8 @@
 import React from 'react';
 import MainContainer from '../MainContainer';
 
+import ProjectComponent from './ProjectComponent/ProjectComponent';
+
 export default function ProjectsComponent({
   isProjectsActive,
   transitionEnd,
@@ -10,7 +12,12 @@ export default function ProjectsComponent({
 }) {
   return (
     <MainContainer>
-      {isProjectsActive && transitionEnd && 'KLELELLKEJKFLJKL'}{' '}
+      {isProjectsActive && transitionEnd && (
+        <ProjectComponent
+          isProjectsActive={isProjectsActive}
+          transitionEnd={transitionEnd}
+        />
+      )}
     </MainContainer>
   );
 }

@@ -141,12 +141,148 @@ interface PageDocumentData {
 export type PageDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
 
+/**
+ * Item in *Project → Images*
+ */
+export interface ProjectDocumentDataImagesItem {}
+
 type ProjectDocumentDataSlicesSlice = never;
 
 /**
  * Content for Project documents
  */
 interface ProjectDocumentData {
+  /**
+   * Title field in *Project*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Project Name/Client
+   * - **API ID Path**: project.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Project Number field in *Project*
+   *
+   * - **Field Type**: Number
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project.project_number
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#number
+   */
+  project_number: prismic.NumberField;
+
+  /**
+   * Description field in *Project*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project.description
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * Images field in *Project*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project.images[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  images: prismic.GroupField<Simplify<ProjectDocumentDataImagesItem>>;
+
+  /**
+   * Is Main Discipline field in *Project*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: general
+   * - **API ID Path**: project.is_main_discipline
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  is_main_discipline: prismic.SelectField<
+    "general" | "3d" | "graphic" | "web" | "direction" | "ai" | "sounddesign",
+    "filled"
+  >;
+
+  /**
+   * Is 3D field in *Project*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: project.is_3d
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  is_3d: prismic.BooleanField;
+
+  /**
+   * Is Graphic Design field in *Project*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: project.is_graphic_design
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  is_graphic_design: prismic.BooleanField;
+
+  /**
+   * Is Web field in *Project*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: project.is_web
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  is_web: prismic.BooleanField;
+
+  /**
+   * Is Art Direction field in *Project*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: project.is_art_direction
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  is_art_direction: prismic.BooleanField;
+
+  /**
+   * Is AI field in *Project*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: project.is_ai
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  is_ai: prismic.BooleanField;
+
+  /**
+   * Is Sound Design field in *Project*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: project.is_sound_design
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  is_sound_design: prismic.BooleanField;
+
   /**
    * Slice Zone field in *Project*
    *
@@ -888,6 +1024,7 @@ declare module "@prismicio/client" {
       PageDocumentDataSlicesSlice,
       ProjectDocument,
       ProjectDocumentData,
+      ProjectDocumentDataImagesItem,
       ProjectDocumentDataSlicesSlice,
       ProjectsDocument,
       ProjectsDocumentData,

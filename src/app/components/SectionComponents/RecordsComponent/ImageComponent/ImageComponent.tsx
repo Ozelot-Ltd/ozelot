@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {
+  ProjectDocumentData,
   RecordDocumentData,
   Simplify,
 } from '../../../../../../prismicio-types';
@@ -11,11 +12,18 @@ import Arrow from '@/app/components/SvgComponents/Arrow/Arrow';
 
 export default function ImageComponent({
   currentRecord,
+  currentProject,
 }: {
-  currentRecord: Simplify<RecordDocumentData> | undefined;
+  currentRecord?: Simplify<RecordDocumentData> | undefined;
+  currentProject?: Simplify<ProjectDocumentData> | undefined;
 }) {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const totalImages = currentRecord?.record_images?.length || 0;
+
+  const totalImages = currentRecord
+    ? currentRecord?.record_images?.length
+    : currentProject
+      ? currentProject?.images?.length
+      : 0;
 
   useEffect(() => {
     setCurrentIndex(0);
