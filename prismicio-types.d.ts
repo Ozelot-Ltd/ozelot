@@ -176,7 +176,17 @@ export type PageDocument<Lang extends string = string> =
 /**
  * Item in *Project → Images*
  */
-export interface ProjectDocumentDataImagesItem {}
+export interface ProjectDocumentDataImagesItem {
+  /**
+   * Image field in *Project → Images*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project.images[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+}
 
 type ProjectDocumentDataSlicesSlice = never;
 
@@ -194,6 +204,17 @@ interface ProjectDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   title: prismic.RichTextField;
+
+  /**
+   * List Title field in *Project*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Same as Title but different render
+   * - **API ID Path**: project.list_title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  list_title: prismic.RichTextField;
 
   /**
    * Project Number field in *Project*

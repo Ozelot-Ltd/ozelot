@@ -18,7 +18,16 @@
           "label": "Title",
           "placeholder": "Project Name/Client",
           "allowTargetBlank": true,
-          "multi": "heading2"
+          "multi": "heading3"
+        }
+      },
+      "list_title": {
+        "type": "StructuredText",
+        "config": {
+          "label": "List Title",
+          "placeholder": "Same as Title but different render",
+          "allowTargetBlank": true,
+          "multi": "heading3"
         }
       },
       "project_number": {
@@ -42,7 +51,16 @@
         "config": {
           "label": "Images",
           "repeat": true,
-          "fields": {}
+          "fields": {
+            "image": {
+              "type": "Image",
+              "config": {
+                "label": "Image",
+                "constraint": {},
+                "thumbnails": []
+              }
+            }
+          }
         }
       },
       "is_main_discipline": {

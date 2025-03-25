@@ -25,9 +25,11 @@ export default function ImageComponent({
       ? currentProject?.images?.length
       : 0;
 
+  console.log(totalImages);
+
   useEffect(() => {
     setCurrentIndex(0);
-  }, [currentRecord]);
+  }, [currentRecord, currentProject]);
 
   // Function to go to the next image
   const nextImage = () => {
@@ -45,7 +47,7 @@ export default function ImageComponent({
     }
   };
 
-  if (!currentRecord || !totalImages) {
+  if (!currentRecord || !currentProject || !totalImages) {
     return (
       <div className={styles.imageContainerWithout}>
         {currentRecord?.meta_title}
@@ -65,10 +67,17 @@ export default function ImageComponent({
         </button>
 
         <div className={styles.imageWrapper}>
-          <PrismicNextImage
-            field={currentRecord.record_images[currentIndex].record_image}
-            className={styles.sliderImage}
-          />
+          {currentRecord ? (
+            <PrismicNextImage
+              field={currentRecord.record_images[currentIndex].record_image}
+              className={styles.sliderImage}
+            />
+          ) : currentProject ? (
+            <PrismicNextImage
+              field={currentProject.images[currentIndex].image}
+              className={styles.sliderImage}
+            />
+          ) : null}
         </div>
 
         <button

@@ -12,7 +12,7 @@ import Vinyl from '@/app/components/SvgComponents/Vinyl/Vinyl';
 import { PrismicNextLink } from '@prismicio/next';
 import { PrismicRichText } from '@prismicio/react';
 
-import ArtDirection from '@/app/components/SvgComponents/ArtDirection/ArtDirection';
+import IconSwitchComponent from '@/app/components/SvgComponents/IconSwitchComponent/IconSwitchComponent';
 
 export default function DescriptionComponent({
   currentProject,
@@ -23,16 +23,6 @@ export default function DescriptionComponent({
   currentProject?: Simplify<ProjectDocumentData> | undefined;
   styles: { readonly [key: string]: string };
 }) {
-  const IconComponent = () => {
-    switch (currentProject?.is_main_discipline) {
-      case 'direction':
-        return <ArtDirection />;
-      case '3d':
-      default:
-        return null;
-    }
-  };
-
   return (
     <>
       {currentRecord && (
@@ -89,7 +79,9 @@ export default function DescriptionComponent({
           </div>
           <div className={styles.rightContainerLower}>
             <div className={styles.title}>
-              <div className={styles.iconContainer}>{IconComponent()}</div>
+              <div className={styles.iconContainer}>
+                <IconSwitchComponent currentProject={currentProject} />
+              </div>
               <div className={styles.title}>
                 <PrismicRichText field={currentProject.title} />
               </div>

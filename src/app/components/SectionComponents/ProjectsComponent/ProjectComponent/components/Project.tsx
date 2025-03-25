@@ -4,6 +4,7 @@ import { ProjectDocument } from '../../../../../../../prismicio-types';
 import styles from './Project.module.css';
 import { PrismicRichText } from '@prismicio/react';
 import Arrow from '@/app/components/SvgComponents/Arrow/Arrow';
+import IconSwitchComponent from '@/app/components/SvgComponents/IconSwitchComponent/IconSwitchComponent';
 
 type Props = {
   project: ProjectDocument;
@@ -21,9 +22,11 @@ export default function Project({ project, activeProject }: Props) {
             ? `0${project.data.project_number}`
             : project.data.project_number}
         </p>
-        <PrismicRichText field={project.data.title} />
+        <PrismicRichText field={project.data.list_title} />
       </div>
-      <div className={styles.vinylContainer}></div>
+      <div className={styles.iconContainer}>
+        <IconSwitchComponent currentProject={project.data} />
+      </div>
       <div className={styles.arrowContainer}>
         <Arrow height="20" width="20" fill="#494C4F" />
       </div>
