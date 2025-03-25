@@ -32,6 +32,7 @@ export default async function RootLayout({
     recordArray,
     threeDIcon,
     artDirectionIcon,
+    webIcon,
   ] = await Promise.all([
     client.getSingle('studio'),
     client.getSingle('contact'),
@@ -39,6 +40,7 @@ export default async function RootLayout({
     client.getByType('record'),
     client.getSingle('threed_icon'),
     client.getSingle('art_direction_icon'),
+    client.getSingle('web_icon'),
   ]);
 
   const contentProps = {
@@ -48,6 +50,7 @@ export default async function RootLayout({
     recordArray: recordArray.results,
     threeDIcon,
     artDirectionIcon,
+    webIcon,
   };
 
   const leftField = settings.data.navigation_items_left;
