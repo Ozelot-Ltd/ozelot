@@ -7,6 +7,8 @@ import {
   ContactDocument,
   ProjectDocument,
   RecordDocument,
+  ArtDirectionIconDocument,
+  ThreedIconDocument,
 } from '../prismicio-types';
 
 export type ContentProps = {
@@ -14,6 +16,8 @@ export type ContentProps = {
   contact: ContactDocument;
   projectArray: ProjectDocument[];
   recordArray: RecordDocument[];
+  threeDIcon: ThreedIconDocument;
+  artDirectionIcon: ArtDirectionIconDocument;
 };
 
 // ContentContext.tsx

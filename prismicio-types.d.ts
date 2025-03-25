@@ -4,6 +4,38 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
+/**
+ * Content for Art Direction icon documents
+ */
+interface ArtDirectionIconDocumentData {
+  /**
+   * icon field in *Art Direction icon*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: art_direction_icon.icon
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  icon: prismic.ImageField<never>;
+}
+
+/**
+ * Art Direction icon document from Prismic
+ *
+ * - **API ID**: `art_direction_icon`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ArtDirectionIconDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<ArtDirectionIconDocumentData>,
+    "art_direction_icon",
+    Lang
+  >;
+
 type ContactDocumentDataSlicesSlice = never;
 
 /**
@@ -939,7 +971,40 @@ export type StudioDocument<Lang extends string = string> =
     Lang
   >;
 
+/**
+ * Content for 3D Icon documents
+ */
+interface ThreedIconDocumentData {
+  /**
+   * icon field in *3D Icon*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: threed_icon.icon
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  icon: prismic.ImageField<never>;
+}
+
+/**
+ * 3D Icon document from Prismic
+ *
+ * - **API ID**: `threed_icon`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ThreedIconDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<ThreedIconDocumentData>,
+    "threed_icon",
+    Lang
+  >;
+
 export type AllDocumentTypes =
+  | ArtDirectionIconDocument
   | ContactDocument
   | PageDocument
   | ProjectDocument
@@ -948,7 +1013,8 @@ export type AllDocumentTypes =
   | RecordsDocument
   | ServicesDocument
   | SettingsDocument
-  | StudioDocument;
+  | StudioDocument
+  | ThreedIconDocument;
 
 /**
  * Primary content in *RichText → Default → Primary*
@@ -1016,6 +1082,8 @@ declare module "@prismicio/client" {
 
   namespace Content {
     export type {
+      ArtDirectionIconDocument,
+      ArtDirectionIconDocumentData,
       ContactDocument,
       ContactDocumentData,
       ContactDocumentDataSlicesSlice,
@@ -1046,6 +1114,8 @@ declare module "@prismicio/client" {
       StudioDocument,
       StudioDocumentData,
       StudioDocumentDataSlicesSlice,
+      ThreedIconDocument,
+      ThreedIconDocumentData,
       AllDocumentTypes,
       RichTextSlice,
       RichTextSliceDefaultPrimary,

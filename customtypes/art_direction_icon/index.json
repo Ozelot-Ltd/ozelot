@@ -1,0 +1,19 @@
+{
+  "format": "custom",
+  "id": "art_direction_icon",
+  "label": "Art Direction icon",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "icon": {
+        "type": "Image",
+        "config": {
+          "label": "icon",
+          "constraint": {},
+          "thumbnails": []
+        }
+      }
+    }
+  }
+}

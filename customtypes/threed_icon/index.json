@@ -1,0 +1,19 @@
+{
+  "format": "custom",
+  "id": "threed_icon",
+  "label": "3D Icon",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "icon": {
+        "type": "Image",
+        "config": {
+          "label": "icon",
+          "constraint": {},
+          "thumbnails": []
+        }
+      }
+    }
+  }
+}
