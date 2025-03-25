@@ -1,15 +1,18 @@
-import Earth from '@/app/components/SvgComponents/Earth/Earth';
-import BandcampLogo from '@/app/components/SvgComponents/SocialsLogo/BandcampLogo';
-import SpotifyLogo from '@/app/components/SvgComponents/SocialsLogo/SpotifyLogo';
-import Vinyl from '@/app/components/SvgComponents/Vinyl/Vinyl';
-import { PrismicNextLink } from '@prismicio/next';
-import { PrismicRichText } from '@prismicio/react';
 import React from 'react';
 import {
   ProjectDocumentData,
   RecordDocumentData,
   Simplify,
 } from '../../../../../../prismicio-types';
+
+import Earth from '@/app/components/SvgComponents/Earth/Earth';
+import BandcampLogo from '@/app/components/SvgComponents/SocialsLogo/BandcampLogo';
+import SpotifyLogo from '@/app/components/SvgComponents/SocialsLogo/SpotifyLogo';
+import Vinyl from '@/app/components/SvgComponents/Vinyl/Vinyl';
+import { PrismicNextLink } from '@prismicio/next';
+import { PrismicRichText } from '@prismicio/react';
+
+import ArtDirection from '@/app/components/SvgComponents/ArtDirection/ArtDirection';
 
 export default function DescriptionComponent({
   currentProject,
@@ -20,6 +23,16 @@ export default function DescriptionComponent({
   currentProject?: Simplify<ProjectDocumentData> | undefined;
   styles: { readonly [key: string]: string };
 }) {
+  const IconComponent = () => {
+    switch (currentProject?.is_main_discipline) {
+      case 'direction':
+        return <ArtDirection />;
+      case '3d':
+      default:
+        return null;
+    }
+  };
+
   return (
     <>
       {currentRecord && (
@@ -76,7 +89,7 @@ export default function DescriptionComponent({
           </div>
           <div className={styles.rightContainerLower}>
             <div className={styles.title}>
-              <Vinyl height="24" width="24" fill="#494C4F" />
+              <div className={styles.iconContainer}>{IconComponent()}</div>
               <div className={styles.title}>
                 <PrismicRichText field={currentProject.title} />
               </div>

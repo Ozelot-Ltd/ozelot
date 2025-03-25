@@ -60,6 +60,17 @@
     width: 100%;
 }
 
+.iconContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.iconContainer img {
+    height: 24px;
+    width: 24px;
+}
+
 
 .rightContainerLower {
     display: flex;
