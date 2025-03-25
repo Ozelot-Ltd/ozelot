@@ -10,6 +10,7 @@ import {
   ArtDirectionIconDocument,
   ThreedIconDocument,
   WebIconDocument,
+  GeneralIconDocument,
 } from '../prismicio-types';
 
 export type ContentProps = {
@@ -20,6 +21,7 @@ export type ContentProps = {
   threeDIcon: ThreedIconDocument;
   artDirectionIcon: ArtDirectionIconDocument;
   webIcon: WebIconDocument;
+  generalIcon: GeneralIconDocument;
 };
 
 // ContentContext.tsx

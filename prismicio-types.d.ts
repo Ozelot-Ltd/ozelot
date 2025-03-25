@@ -101,6 +101,38 @@ export type ContactDocument<Lang extends string = string> =
     Lang
   >;
 
+/**
+ * Content for General Icon documents
+ */
+interface GeneralIconDocumentData {
+  /**
+   * Icon field in *General Icon*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: general_icon.icon
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  icon: prismic.ImageField<never>;
+}
+
+/**
+ * General Icon document from Prismic
+ *
+ * - **API ID**: `general_icon`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type GeneralIconDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<GeneralIconDocumentData>,
+    "general_icon",
+    Lang
+  >;
+
 type PageDocumentDataSlicesSlice = never;
 
 /**
@@ -1059,6 +1091,7 @@ export type WebIconDocument<Lang extends string = string> =
 export type AllDocumentTypes =
   | ArtDirectionIconDocument
   | ContactDocument
+  | GeneralIconDocument
   | PageDocument
   | ProjectDocument
   | ProjectsDocument
@@ -1141,6 +1174,8 @@ declare module "@prismicio/client" {
       ContactDocument,
       ContactDocumentData,
       ContactDocumentDataSlicesSlice,
+      GeneralIconDocument,
+      GeneralIconDocumentData,
       PageDocument,
       PageDocumentData,
       PageDocumentDataSlicesSlice,
