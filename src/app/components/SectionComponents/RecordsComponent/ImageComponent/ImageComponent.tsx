@@ -25,7 +25,7 @@ export default function ImageComponent({
       ? currentProject?.images?.length
       : 0;
 
-  console.log(totalImages);
+  console.log(currentProject?.images);
 
   useEffect(() => {
     setCurrentIndex(0);
@@ -77,7 +77,9 @@ export default function ImageComponent({
               field={currentProject.images[currentIndex].image}
               className={styles.sliderImage}
             />
-          ) : null}
+          ) : (
+            'jlafdljködjlköajlfköafsljdk'
+          )}
         </div>
 
         <button
