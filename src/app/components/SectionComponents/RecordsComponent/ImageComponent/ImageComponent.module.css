@@ -38,6 +38,10 @@
     transition: opacity 0.3s ease;
 }
 
+.imageWrapper img {
+    max-height: 60vh;
+}
+
 .navButton {
     position: absolute;
     color: white;

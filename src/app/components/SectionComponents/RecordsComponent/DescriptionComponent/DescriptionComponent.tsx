@@ -86,12 +86,39 @@ export default function DescriptionComponent({
                 <PrismicRichText field={currentProject.title} />
               </div>
             </div>
+            <div className={styles.pills}>
+              {currentProject.is_3d && (
+                <div className={styles.subtitle}>
+                  <p>3D</p>
+                </div>
+              )}
+              {currentProject.is_art_direction && (
+                <div className={styles.subtitle}>
+                  <p>Art Direction</p>
+                </div>
+              )}
+              {currentProject.is_web && (
+                <div className={styles.subtitle}>
+                  <p>Web Development</p>
+                </div>
+              )}
+              {currentProject.is_graphic_design && (
+                <div className={styles.subtitle}>
+                  <p>Graphics</p>
+                </div>
+              )}
+              {currentProject.is_ai && (
+                <div className={styles.subtitle}>
+                  <p>Artificial</p>
+                </div>
+              )}
+              {currentProject.is_sound_design && (
+                <div className={styles.subtitle}>
+                  <p>Sound Design</p>
+                </div>
+              )}
+            </div>
 
-            {/* {currentRecord.has_merch && (
-              <div className={styles.subtitle}>
-                <p>MERCHANDISE AVAILABLE</p>
-              </div>
-            )} */}
             <div className={styles.text}>
               <PrismicRichText field={currentProject.description} />
             </div>

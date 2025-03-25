@@ -44,19 +44,21 @@ export default function ProjectComponent({
   return (
     <div className={styles.container}>
       <section className={styles.leftContainer}>
-        <div className={styles.scrollContainer}>
-          {sortedArray.map((project, index) => (
-            <div
-              key={`${project.id}-${index}`}
-              className={styles.listComponent}
-              onClick={() => {
-                setActiveProject(project.id);
-                router.replace(`/projects/${project.uid}`, undefined);
-              }}
-            >
-              <Project project={project} activeProject={activeProject} />
-            </div>
-          ))}
+        <div className={styles.listContainer}>
+          <div className={styles.scrollContainer}>
+            {sortedArray.map((project, index) => (
+              <div
+                key={`${project.id}-${index}`}
+                className={styles.listComponent}
+                onClick={() => {
+                  setActiveProject(project.id);
+                  router.replace(`/projects/${project.uid}`, undefined);
+                }}
+              >
+                <Project project={project} activeProject={activeProject} />
+              </div>
+            ))}
+          </div>
         </div>
         <DescriptionComponent currentProject={currentProject} styles={styles} />
       </section>

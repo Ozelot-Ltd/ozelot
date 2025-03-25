@@ -66,6 +66,17 @@
     justify-content: center;
 }
 
+.pills {
+    display: flex;
+    gap: 0.5rem;
+
+}
+
+.pills p {
+    text-transform: uppercase;
+    color: #65696d;
+}
+
 .iconContainer img {
     height: 24px;
     width: 24px;

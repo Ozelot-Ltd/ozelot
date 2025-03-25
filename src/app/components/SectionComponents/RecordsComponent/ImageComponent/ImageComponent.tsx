@@ -47,7 +47,7 @@ export default function ImageComponent({
     }
   };
 
-  if (!currentRecord || !currentProject || !totalImages) {
+  if ((!currentRecord && !currentProject) || !totalImages) {
     return (
       <div className={styles.imageContainerWithout}>
         {currentRecord?.meta_title}

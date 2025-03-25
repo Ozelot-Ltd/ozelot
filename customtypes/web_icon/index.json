@@ -1,0 +1,19 @@
+{
+  "format": "custom",
+  "id": "web_icon",
+  "label": "Web Icon",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "icon": {
+        "type": "Image",
+        "config": {
+          "label": "Icon",
+          "constraint": {},
+          "thumbnails": []
+        }
+      }
+    }
+  }
+}

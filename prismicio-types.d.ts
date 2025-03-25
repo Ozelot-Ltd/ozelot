@@ -1024,6 +1024,38 @@ export type ThreedIconDocument<Lang extends string = string> =
     Lang
   >;
 
+/**
+ * Content for Web Icon documents
+ */
+interface WebIconDocumentData {
+  /**
+   * Icon field in *Web Icon*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: web_icon.icon
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  icon: prismic.ImageField<never>;
+}
+
+/**
+ * Web Icon document from Prismic
+ *
+ * - **API ID**: `web_icon`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type WebIconDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<WebIconDocumentData>,
+    "web_icon",
+    Lang
+  >;
+
 export type AllDocumentTypes =
   | ArtDirectionIconDocument
   | ContactDocument
@@ -1035,7 +1067,8 @@ export type AllDocumentTypes =
   | ServicesDocument
   | SettingsDocument
   | StudioDocument
-  | ThreedIconDocument;
+  | ThreedIconDocument
+  | WebIconDocument;
 
 /**
  * Primary content in *RichText → Default → Primary*
@@ -1137,6 +1170,8 @@ declare module "@prismicio/client" {
       StudioDocumentDataSlicesSlice,
       ThreedIconDocument,
       ThreedIconDocumentData,
+      WebIconDocument,
+      WebIconDocumentData,
       AllDocumentTypes,
       RichTextSlice,
       RichTextSliceDefaultPrimary,
