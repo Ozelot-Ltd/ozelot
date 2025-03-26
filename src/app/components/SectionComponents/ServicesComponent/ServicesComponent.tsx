@@ -1,4 +1,7 @@
 import React from 'react';
+import MainContainer from '../MainContainer';
+
+import ServiceComponent from './ServiceComponent/ServiceCompontent';
 
 export default function ServicesComponent({
   isServicesActive,
@@ -7,5 +10,14 @@ export default function ServicesComponent({
   isServicesActive: boolean;
   transitionEnd: boolean;
 }) {
-  return <div>{isServicesActive && transitionEnd}asdfadsfasfdasdfasfd</div>;
+  return (
+    <MainContainer>
+      {isServicesActive && transitionEnd && (
+        <ServiceComponent
+          isServicesActive={isServicesActive}
+          transitionEnd={transitionEnd}
+        />
+      )}
+    </MainContainer>
+  );
 }

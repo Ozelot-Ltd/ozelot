@@ -7,6 +7,7 @@ import {
   ContactDocument,
   ProjectDocument,
   RecordDocument,
+  ServiceDocument,
   ArtDirectionIconDocument,
   ThreedIconDocument,
   WebIconDocument,
@@ -18,6 +19,7 @@ export type ContentProps = {
   contact: ContactDocument;
   projectArray: ProjectDocument[];
   recordArray: RecordDocument[];
+  serviceArray: ServiceDocument[];
   threeDIcon: ThreedIconDocument;
   artDirectionIcon: ArtDirectionIconDocument;
   webIcon: WebIconDocument;

@@ -765,6 +765,143 @@ export type RecordsDocument<Lang extends string = string> =
     Lang
   >;
 
+/**
+ * Item in *Service → Services List*
+ */
+export interface ServiceDocumentDataServicesListItem {
+  /**
+   * Listitem field in *Service → Services List*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: service.services_list[].listitem
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  listitem: prismic.RichTextField;
+}
+
+type ServiceDocumentDataSlicesSlice = never;
+
+/**
+ * Content for Service documents
+ */
+interface ServiceDocumentData {
+  /**
+   * Title field in *Service*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: 3D, Web, Art Direction etc.
+   * - **API ID Path**: service.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Service Index field in *Service*
+   *
+   * - **Field Type**: Number
+   * - **Placeholder**: *None*
+   * - **API ID Path**: service.service_index
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#number
+   */
+  service_index: prismic.NumberField;
+
+  /**
+   * Services List field in *Service*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: service.services_list[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  services_list: prismic.GroupField<
+    Simplify<ServiceDocumentDataServicesListItem>
+  >;
+
+  /**
+   * Text field in *Service*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: service.text
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  text: prismic.RichTextField;
+
+  /**
+   * Image field in *Service*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: service.image
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Slice Zone field in *Service*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: service.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<ServiceDocumentDataSlicesSlice> /**
+   * Meta Title field in *Service*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: service.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *Service*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: service.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Service*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: service.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * Service document from Prismic
+ *
+ * - **API ID**: `service`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ServiceDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<ServiceDocumentData>,
+    "service",
+    Lang
+  >;
+
 type ServicesDocumentDataSlicesSlice = never;
 
 /**
@@ -1097,6 +1234,7 @@ export type AllDocumentTypes =
   | ProjectsDocument
   | RecordDocument
   | RecordsDocument
+  | ServiceDocument
   | ServicesDocument
   | SettingsDocument
   | StudioDocument
@@ -1193,6 +1331,10 @@ declare module "@prismicio/client" {
       RecordsDocument,
       RecordsDocumentData,
       RecordsDocumentDataSlicesSlice,
+      ServiceDocument,
+      ServiceDocumentData,
+      ServiceDocumentDataServicesListItem,
+      ServiceDocumentDataSlicesSlice,
       ServicesDocument,
       ServicesDocumentData,
       ServicesDocumentDataSlicesSlice,
