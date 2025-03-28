@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 
 import styles from './Service.module.css';
 import { ServiceDocument } from '../../../../../../../prismicio-types';
@@ -13,19 +13,72 @@ type Props = {
 
 const Service = ({ service, activeService }: Props) => {
   const index = service.data.service_index ?? 0;
+  const mainContainerRef = useRef<HTMLDivElement>(null);
+  const upperContainerRef = useRef<HTMLDivElement>(null);
+  const lowerContainerRef = useRef<HTMLDivElement>(null);
+  const [isExpanded, setIsExpanded] = useState(false);
 
-  console.log(activeService);
+  useEffect(() => {
+    // Set the container to upper height initially
+    if (upperContainerRef.current && mainContainerRef.current) {
+      const upperHeight = upperContainerRef.current.offsetHeight;
+      mainContainerRef.current.style.setProperty(
+        '--upper-height',
+        `${upperHeight}px`
+      );
+      mainContainerRef.current.style.height = `${upperHeight}px`;
+    }
+  }, []);
+
+  useEffect(() => {
+    // Check if this is the active service from props
+    if (activeService === service.uid) {
+      handleToggle();
+    }
+  }, [activeService]);
+
+  const handleToggle = () => {
+    if (
+      upperContainerRef.current &&
+      lowerContainerRef.current &&
+      mainContainerRef.current
+    ) {
+      const upperHeight = upperContainerRef.current.offsetHeight;
+      const lowerHeight = lowerContainerRef.current.offsetHeight;
+
+      if (isExpanded) {
+        // Collapse: animate back to just upper height
+        mainContainerRef.current.style.height = `${upperHeight}px`;
+      } else {
+        // Expand: animate to combined height
+        mainContainerRef.current.style.height = `${upperHeight + lowerHeight}px`;
+      }
+
+      setIsExpanded(!isExpanded);
+    }
+  };
 
   return (
-    <div className={styles.container}>
-      <div className={styles.upperContainer}>
+    <div
+      className={`${styles.container} ${isExpanded ? styles.expanded : ''}`}
+      ref={mainContainerRef}
+    >
+      <div
+        className={styles.upperContainer}
+        ref={upperContainerRef}
+        onClick={handleToggle}
+      >
         <div className={styles.titleContainer}>
           <div className={styles.index}>
             <p>{index && index < 10 ? `0${index}` : index}</p>
           </div>
           <div className={styles.title}>
             <PrismicRichText field={service.data.title} />
-            <Arrow />
+            <div
+              className={`${styles.arrow} ${isExpanded ? styles.rotated : ''}`}
+            >
+              <Arrow />
+            </div>
           </div>
         </div>
         <div className={styles.services}>
@@ -39,7 +92,9 @@ const Service = ({ service, activeService }: Props) => {
           ))}
         </div>
       </div>
-      <div className={styles.lowerContainer}></div>
+      <div className={styles.lowerContainer} ref={lowerContainerRef}>
+        <PrismicRichText field={service.data.text} />
+      </div>
     </div>
   );
 };
