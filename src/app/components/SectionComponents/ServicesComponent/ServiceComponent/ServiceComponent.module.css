@@ -1,0 +1,14 @@
+.container {
+    width: 100%;
+
+}
+
+.scrollContainer {
+    width: 100%;
+    padding-top: calc(1rem + 1vw)
+}
+
+.listComponent {
+    width: 100%;
+
+}

@@ -3,6 +3,8 @@ import React from 'react';
 import styles from './Service.module.css';
 import { ServiceDocument } from '../../../../../../../prismicio-types';
 import { PrismicRichText } from '@prismicio/react';
+import Earth from '@/app/components/SvgComponents/Earth/Earth';
+import Arrow from '@/app/components/SvgComponents/Arrow/Arrow';
 
 type Props = {
   service: ServiceDocument;
@@ -16,14 +18,28 @@ const Service = ({ service, activeService }: Props) => {
 
   return (
     <div className={styles.container}>
-      <p>{index && index < 10 ? `0${index}` : index}</p>
-      <PrismicRichText field={service.data.title} />
-      {service.data.services_list.map((item, i) => (
-        <div key={i}>
-          <PrismicRichText field={item.listitem} />
+      <div className={styles.upperContainer}>
+        <div className={styles.titleContainer}>
+          <div className={styles.index}>
+            <p>{index && index < 10 ? `0${index}` : index}</p>
+          </div>
+          <div className={styles.title}>
+            <PrismicRichText field={service.data.title} />
+            <Arrow />
+          </div>
         </div>
-      ))}
-      <PrismicRichText field={service.data.text} />
+        <div className={styles.services}>
+          {service.data.services_list.map((item, i) => (
+            <div key={i} className={styles.service}>
+              <div className={styles.icon}>
+                <Earth />
+              </div>
+              <PrismicRichText field={item.listitem} />
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className={styles.lowerContainer}></div>
     </div>
   );
 };

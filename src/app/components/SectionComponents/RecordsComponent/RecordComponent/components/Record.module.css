@@ -1,10 +1,10 @@
 .releaseComponent {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 2fr 0.75fr 2fr;
     align-items: center;
     height: fit-content;
     width: 100%;
-    padding: 1rem 0;
+    padding: calc(0.5rem + 0.5vw) 0;
     border-bottom: var(--border);
     flex: 1;
     cursor: e-resize
@@ -20,11 +20,11 @@
 }
 
 .catalogContainer {
-    gap: 0.5rem;
+    gap: calc(0.2rem + 0.3vw);
 }
 
 .catalogContainer p {
-    font-size: 0.5rem;
+    font-size: calc(0.2rem + 0.3vw);
     align-self: flex-start;
 }
 
@@ -36,7 +36,7 @@
 
 .catalogContainer h3 {
     font-variation-settings: var(--text-weight);
-    font-size: 1.4rem;
+    font-size: calc(0.6rem + 0.7vw);
     text-transform: uppercase;
     transition: font-variation-settings 1s var(--bezier);
 }
@@ -75,6 +75,6 @@
 }
 
 .imageContainer {
-    background-color: red;
+
     height: 100%;
 }
