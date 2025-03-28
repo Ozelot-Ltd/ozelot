@@ -107,3 +107,9 @@
 
 
 /* lower container styles */
+
+
+.description p {
+    font-variation-settings: "wght" 200;
+    font-size: calc(0.4rem + 0.6vw)
+}

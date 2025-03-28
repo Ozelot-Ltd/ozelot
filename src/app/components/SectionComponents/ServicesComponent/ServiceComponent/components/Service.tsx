@@ -93,7 +93,9 @@ const Service = ({ service, activeService }: Props) => {
         </div>
       </div>
       <div className={styles.lowerContainer} ref={lowerContainerRef}>
-        <PrismicRichText field={service.data.text} />
+        <div className={styles.description}>
+          <PrismicRichText field={service.data.text} />
+        </div>
       </div>
     </div>
   );
