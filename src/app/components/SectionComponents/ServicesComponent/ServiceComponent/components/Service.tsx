@@ -131,7 +131,7 @@ const Service = ({ service, activeService }: Props) => {
             )}{' '}
             {service.data.service_type === 'sounddesign' && (
               <DotLottieReact
-                src="https://lottie.host/4f12a3b7-0c45-4961-81d9-61d467b0b90c/ryjP8zriFj.lottie"
+                src="https://lottie.host/7470ee5c-2c8e-4c38-aa94-1f7cec2cdd9b/T8jU7z0Z9N.lottie"
                 loop
                 autoplay
               />
