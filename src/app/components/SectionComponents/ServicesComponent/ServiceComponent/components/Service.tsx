@@ -108,11 +108,34 @@ const Service = ({ service, activeService }: Props) => {
         </div>
         <div className={styles.image}>
           <div className={styles.lottieContainer}>
-            <DotLottieReact
-              src="https://lottie.host/0f86590b-56ae-409e-8728-4bdbaf8a52f2/FVPp99FwF8.lottie"
-              loop
-              autoplay
-            />
+            {service.data.service_type === 'web' && (
+              <DotLottieReact
+                src="https://lottie.host/541eadd1-ec51-441e-bdc8-fb6e620fca72/R7DuUC8GYy.lottie"
+                loop
+                autoplay
+              />
+            )}
+            {service.data.service_type === '3d' && (
+              <DotLottieReact
+                src="https://lottie.host/079a73d7-583d-46f9-af62-416ec4cc342d/CNLftiWST9.lottie"
+                loop
+                autoplay
+              />
+            )}
+            {service.data.service_type === 'graphic' && (
+              <DotLottieReact
+                src="https://lottie.host/41847dca-6480-4741-9b7f-d48e53af9147/f2vZjk0A79.lottie"
+                loop
+                autoplay
+              />
+            )}{' '}
+            {service.data.service_type === 'sounddesign' && (
+              <DotLottieReact
+                src="https://lottie.host/4f12a3b7-0c45-4961-81d9-61d467b0b90c/ryjP8zriFj.lottie"
+                loop
+                autoplay
+              />
+            )}
           </div>
         </div>
       </div>

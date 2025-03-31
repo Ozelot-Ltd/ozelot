@@ -139,6 +139,6 @@
 }
 
 .lottieContainer {
-    height: 8rem;
-    width: auto;
+    height: calc(6rem + 6vw);
+    width: calc(6rem + 6vw);
 }
