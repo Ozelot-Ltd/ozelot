@@ -62,10 +62,15 @@
     gap: calc(1rem + 1vw);
 }
 
+
 .title h2 {
     font-size: calc(2rem + 2vw);
-    font-variation-settings: "wght" 350;
+    font-variation-settings: "wght" 325;
+    transition: font-variation-settings 1s var(--bezier);
 }
+
+
+
 
 .index {
     display: flex;
@@ -98,7 +103,7 @@
 .service p {
     font-size: calc(0.4rem + 0.5vw);
     text-transform: uppercase;
-    font-variation-settings: "whgt" 200
+    font-variation-settings: "wght" 200
 }
 
 

@@ -75,7 +75,9 @@ const Service = ({ service, activeService }: Props) => {
           <div className={styles.index}>
             <p>{index && index < 10 ? `0${index}` : index}</p>
           </div>
-          <div className={styles.title}>
+          <div
+            className={`${styles.title} ${isExpanded ? styles.titleActive : ''}`}
+          >
             <PrismicRichText field={service.data.title} />
             <div
               className={`${styles.arrow} ${isExpanded ? styles.rotated : ''}`}

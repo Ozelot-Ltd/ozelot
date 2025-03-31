@@ -1,11 +1,12 @@
 .container {
     width: 100%;
+    will-change: height;
 
 }
 
 .scrollContainer {
     width: 100%;
-    padding-top: calc(2rem + 2vw)
+    padding-top: calc((0.7rem + 0.6vw) * 2)
 }
 
 .listComponent {
