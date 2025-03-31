@@ -3,7 +3,9 @@ import React, { useRef, useEffect, useState } from 'react';
 import styles from './Service.module.css';
 import { ServiceDocument } from '../../../../../../../prismicio-types';
 import { PrismicRichText } from '@prismicio/react';
-import Earth from '@/app/components/SvgComponents/Earth/Earth';
+import ArtDirection from '@/app/components/SvgComponents/ArtDirection/ArtDirection';
+import WebIcon from '@/app/components/SvgComponents/WebIcon/WebIcon';
+import ThreeD from '@/app/components/SvgComponents/ThreeD/ThreeD';
 import Arrow from '@/app/components/SvgComponents/Arrow/Arrow';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 
@@ -85,7 +87,15 @@ const Service = ({ service, activeService }: Props) => {
           {service.data.services_list.map((item, i) => (
             <div key={i} className={styles.service}>
               <div className={styles.icon}>
-                <Earth />
+                {service.data.service_type === '3d' ? (
+                  <ThreeD />
+                ) : service.data.service_type === 'graphic' ? (
+                  <ArtDirection />
+                ) : service.data.service_type === 'web' ? (
+                  <WebIcon />
+                ) : (
+                  ''
+                )}
               </div>
               <PrismicRichText field={item.listitem} />
             </div>

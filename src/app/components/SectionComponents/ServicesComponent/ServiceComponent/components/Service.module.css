@@ -105,8 +105,8 @@
     transform: translateY(2px);
 }
 
-.icon svg {
-    height: calc(0.4rem + 0.5vw)
+.icon img {
+    height: calc(0.4rem + 0.5vw);
 }
 
 
