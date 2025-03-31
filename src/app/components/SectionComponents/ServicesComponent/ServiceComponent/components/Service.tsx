@@ -66,18 +66,12 @@ const Service = ({ service, activeService }: Props) => {
       className={`${styles.container} ${isExpanded ? styles.expanded : ''}`}
       ref={mainContainerRef}
     >
-      <div
-        className={styles.upperContainer}
-        ref={upperContainerRef}
-        onClick={handleToggle}
-      >
-        <div className={styles.titleContainer}>
+      <div className={styles.upperContainer} ref={upperContainerRef}>
+        <div className={styles.titleContainer} onClick={handleToggle}>
           <div className={styles.index}>
             <p>{index && index < 10 ? `0${index}` : index}</p>
           </div>
-          <div
-            className={`${styles.title} ${isExpanded ? styles.titleActive : ''}`}
-          >
+          <div className={styles.title}>
             <PrismicRichText field={service.data.title} />
             <div
               className={`${styles.arrow} ${isExpanded ? styles.rotated : ''}`}
@@ -92,11 +86,13 @@ const Service = ({ service, activeService }: Props) => {
               <div className={styles.icon}>
                 {service.data.service_type === '3d' ? (
                   <ThreeD />
-                ) : service.data.service_type === 'graphic' ? (
+                ) : service.data.service_type === 'art_direction' ? (
                   <ArtDirection />
                 ) : service.data.service_type === 'web' ? (
                   <WebIcon />
                 ) : service.data.service_type === 'sounddesign' ? (
+                  <SoundDesignIcon />
+                ) : service.data.service_type === 'graphic' ? (
                   <SoundDesignIcon />
                 ) : (
                   ''

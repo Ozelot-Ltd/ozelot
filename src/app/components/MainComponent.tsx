@@ -202,15 +202,13 @@ export default function MainComponent({
   };
   return (
     <div className={styles.container}>
-      <div
-        className={styles.logoContainer}
-        onClick={() => {
-          setIsClicked('');
-          setSide('');
-          router.push('/');
-        }}
-      >
+      <div className={styles.logoContainer}>
         <div
+          onClick={() => {
+            setIsClicked('');
+            setSide('');
+            router.push('/');
+          }}
           className={`${styles.logo} ${isClicked !== '' ? styles.animate : ''}`}
         >
           <Logo height={'28'} />

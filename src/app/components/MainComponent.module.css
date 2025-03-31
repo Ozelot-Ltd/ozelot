@@ -225,7 +225,7 @@
 }
 
 .animate {
-    animation: scaleUp 4s ease-in-out infinite;
+    animation: scaleUp 10s ease-in-out infinite;
 }
 
 
@@ -245,23 +245,12 @@
 
 @keyframes scaleUp {
     0% {
-        transform: scale(1) rotateY(0);
+        transform: scale(1) rotateY(0deg);
     }
 
-    25% {
-        transform: rotateY(30deg);
-    }
-
-    50% {
-        transform: scale(1.1) rotateY(0deg);
-    }
-
-    75% {
-        transform: rotateY(-30deg);
-    }
 
     100% {
-        transform: scale(1) rotateY(0);
+        transform: scale(1) rotateY(360deg);
     }
 }
 
