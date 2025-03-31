@@ -8,7 +8,9 @@
     transition-delay: 0.2s
 }
 
-.expanded {}
+.expanded {
+    background-color: transparent;
+}
 
 /* upper container styles */
 
