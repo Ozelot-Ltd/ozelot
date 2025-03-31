@@ -36,6 +36,7 @@ export default async function RootLayout({
     webIcon,
     generalIcon,
     soundDesignIcon,
+    graphicDesignIcon,
   ] = await Promise.all([
     client.getSingle('studio'),
     client.getSingle('contact'),
@@ -47,6 +48,7 @@ export default async function RootLayout({
     client.getSingle('web_icon'),
     client.getSingle('general_icon'),
     client.getSingle('sound_design_icon'),
+    client.getSingle('graphic_icon'),
   ]);
 
   const contentProps = {
@@ -60,6 +62,7 @@ export default async function RootLayout({
     webIcon,
     generalIcon,
     soundDesignIcon,
+    graphicDesignIcon,
   };
 
   const leftField = settings.data.navigation_items_left;

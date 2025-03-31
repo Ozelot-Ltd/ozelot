@@ -13,6 +13,7 @@ import {
   WebIconDocument,
   GeneralIconDocument,
   SoundDesignIconDocument,
+  GraphicIconDocument,
 } from '../prismicio-types';
 
 export type ContentProps = {
@@ -26,6 +27,7 @@ export type ContentProps = {
   webIcon: WebIconDocument;
   generalIcon: GeneralIconDocument;
   soundDesignIcon: SoundDesignIconDocument;
+  graphicDesignIcon: GraphicIconDocument;
 };
 
 // ContentContext.tsx

@@ -5,6 +5,7 @@ import { ServiceDocument } from '../../../../../../../prismicio-types';
 import { PrismicRichText } from '@prismicio/react';
 import ArtDirection from '@/app/components/SvgComponents/ArtDirection/ArtDirection';
 import WebIcon from '@/app/components/SvgComponents/WebIcon/WebIcon';
+import GraphicDesignIcon from '@/app/components/SvgComponents/GraphicDesign/GraphicDesign';
 import ThreeD from '@/app/components/SvgComponents/ThreeD/ThreeD';
 import SoundDesignIcon from '@/app/components/SvgComponents/SoundDesign/SoundDesign';
 import Arrow from '@/app/components/SvgComponents/Arrow/Arrow';
@@ -93,7 +94,7 @@ const Service = ({ service, activeService }: Props) => {
                 ) : service.data.service_type === 'sounddesign' ? (
                   <SoundDesignIcon />
                 ) : service.data.service_type === 'graphic' ? (
-                  <SoundDesignIcon />
+                  <GraphicDesignIcon />
                 ) : (
                   ''
                 )}
