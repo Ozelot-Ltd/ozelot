@@ -1,4 +1,6 @@
-import React from 'react';
+'use client';
+
+import React, { useEffect, useRef } from 'react';
 
 import styles from './Record.module.css';
 
@@ -14,8 +16,20 @@ export default function Record({
   record: RecordDocument;
   activeRecord: string;
 }) {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (containerRef.current) {
+      const containerHeight = containerRef.current.offsetHeight;
+      document.body.style.setProperty(
+        '--container-height',
+        `${containerHeight}px`
+      );
+    }
+  }, []);
   return (
     <div
+      ref={containerRef}
       className={`${styles.releaseComponent} ${activeRecord === record.id ? styles.active : ''}`}
     >
       <div className={styles.catalogContainer}>

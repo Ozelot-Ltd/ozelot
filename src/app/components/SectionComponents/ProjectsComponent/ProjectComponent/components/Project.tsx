@@ -1,4 +1,6 @@
-import React from 'react';
+'use client';
+
+import React, { useRef, useEffect } from 'react';
 import { ProjectDocument } from '../../../../../../../prismicio-types';
 
 import styles from './Project.module.css';
@@ -12,8 +14,21 @@ type Props = {
 };
 
 export default function Project({ project, activeProject }: Props) {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (containerRef.current) {
+      const containerHeight = containerRef.current.offsetHeight;
+      document.body.style.setProperty(
+        '--container-height',
+        `${containerHeight}px`
+      );
+    }
+  }, []);
+
   return (
     <div
+      ref={containerRef}
       className={`${styles.projectComponent} ${activeProject === project.id ? styles.active : ''}`}
     >
       <div className={styles.catalogContainer}>

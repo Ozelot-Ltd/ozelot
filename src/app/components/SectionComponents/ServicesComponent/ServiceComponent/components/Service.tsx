@@ -35,7 +35,7 @@ const Service = ({ service, activeService }: Props) => {
     if (activeService === service.uid) {
       handleToggle();
     }
-  }, [activeService]);
+  }, [activeService, service.uid]);
 
   const handleToggle = () => {
     if (

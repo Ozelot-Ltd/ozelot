@@ -6,6 +6,7 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     position: relative;
+
 }
 
 .container .leftContainer,
@@ -15,6 +16,7 @@
     max-height: 100%;
     position: relative;
     overflow: hidden;
+
 }
 
 .leftContainer {
@@ -39,8 +41,9 @@
 
 .listContainer {
     overflow-y: hidden;
-    height: 100%;
-    padding-bottom: calc(2rem + 2vw);
+    max-height: 100%;
+    height: calc(var(--container-height) * 7);
+    padding-bottom: calc(var(--container-height) - 5px);
 }
 
 .descriptionContainer {
@@ -54,11 +57,13 @@
     max-height: 100%;
     overflow: scroll;
     overflow-x: hidden;
+
 }
 
 .listComponent {
     height: 100%;
     width: 100%;
+
 }
 
 .iconContainer {

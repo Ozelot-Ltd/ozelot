@@ -65,16 +65,16 @@
 }
 
 .arrowContainer svg {
-    transform: rotate(180deg);
+    transform: rotate(0deg);
     transition: transform var(--time-fast) var(--bezier)
 }
 
 .active svg {
-    transform: rotate(0deg);
+    transform: rotate(180deg);
 }
 
-.releaseComponent:hover .arrowContainer svg {
-    transform: rotate(0deg)
+.projectComponent:hover .arrowContainer svg {
+    transform: rotate(180deg)
 }
 
 .imageContainer {
