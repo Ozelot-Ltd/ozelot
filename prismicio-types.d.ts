@@ -844,6 +844,21 @@ interface ServiceDocumentData {
   image: prismic.ImageField<never>;
 
   /**
+   * Service Type field in *Service*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: 3d
+   * - **Default Value**: 3d
+   * - **API ID Path**: service.service_type
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  service_type: prismic.SelectField<
+    "3d" | "graphic" | "web" | "art_direction" | "ai" | "sounddesign",
+    "filled"
+  >;
+
+  /**
    * Slice Zone field in *Service*
    *
    * - **Field Type**: Slice Zone

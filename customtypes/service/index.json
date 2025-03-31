@@ -63,6 +63,22 @@
           "thumbnails": []
         }
       },
+      "service_type": {
+        "type": "Select",
+        "config": {
+          "label": "Service Type",
+          "placeholder": "3d",
+          "options": [
+            "3d",
+            "graphic",
+            "web",
+            "art_direction",
+            "ai",
+            "sounddesign"
+          ],
+          "default_value": "3d"
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",

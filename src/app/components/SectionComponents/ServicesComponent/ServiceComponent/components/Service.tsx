@@ -5,6 +5,7 @@ import { ServiceDocument } from '../../../../../../../prismicio-types';
 import { PrismicRichText } from '@prismicio/react';
 import Earth from '@/app/components/SvgComponents/Earth/Earth';
 import Arrow from '@/app/components/SvgComponents/Arrow/Arrow';
+import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 
 type Props = {
   service: ServiceDocument;
@@ -31,7 +32,6 @@ const Service = ({ service, activeService }: Props) => {
   }, []);
 
   useEffect(() => {
-    // Check if this is the active service from props
     if (activeService === service.uid) {
       handleToggle();
     }
@@ -95,6 +95,15 @@ const Service = ({ service, activeService }: Props) => {
       <div className={styles.lowerContainer} ref={lowerContainerRef}>
         <div className={styles.description}>
           <PrismicRichText field={service.data.text} />
+        </div>
+        <div className={styles.image}>
+          <div className={styles.lottieContainer}>
+            <DotLottieReact
+              src="https://lottie.host/0f86590b-56ae-409e-8728-4bdbaf8a52f2/FVPp99FwF8.lottie"
+              loop
+              autoplay
+            />
+          </div>
         </div>
       </div>
     </div>
