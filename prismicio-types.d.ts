@@ -1111,6 +1111,38 @@ export type SettingsDocument<Lang extends string = string> =
     Lang
   >;
 
+/**
+ * Content for Sound Design Icon documents
+ */
+interface SoundDesignIconDocumentData {
+  /**
+   * icon field in *Sound Design Icon*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: sound_design_icon.icon
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  icon: prismic.ImageField<never>;
+}
+
+/**
+ * Sound Design Icon document from Prismic
+ *
+ * - **API ID**: `sound_design_icon`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type SoundDesignIconDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<SoundDesignIconDocumentData>,
+    "sound_design_icon",
+    Lang
+  >;
+
 type StudioDocumentDataSlicesSlice = never;
 
 /**
@@ -1252,6 +1284,7 @@ export type AllDocumentTypes =
   | ServiceDocument
   | ServicesDocument
   | SettingsDocument
+  | SoundDesignIconDocument
   | StudioDocument
   | ThreedIconDocument
   | WebIconDocument;
@@ -1357,6 +1390,8 @@ declare module "@prismicio/client" {
       SettingsDocumentData,
       SettingsDocumentDataNavigationItemsLeftItem,
       SettingsDocumentDataNavigationItemsRightItem,
+      SoundDesignIconDocument,
+      SoundDesignIconDocumentData,
       StudioDocument,
       StudioDocumentData,
       StudioDocumentDataSlicesSlice,

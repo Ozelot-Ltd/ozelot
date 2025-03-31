@@ -5,6 +5,7 @@ import ArtDirection from '../ArtDirection/ArtDirection';
 import ThreeD from '../ThreeD/ThreeD';
 import WebIcon from '../WebIcon/WebIcon';
 import GeneralIcon from '../GeneralIcon/GeneralIcon';
+import SoundDesignIcon from '../SoundDesign/SoundDesign';
 
 type Props = {
   currentProject: ProjectDocumentData;
@@ -21,6 +22,8 @@ export default function IconSwitchComponent({ currentProject }: Props) {
         return <WebIcon />;
       case 'general':
         return <GeneralIcon />;
+      case 'sounddesign':
+        return <SoundDesignIcon />;
       default:
         return null;
     }

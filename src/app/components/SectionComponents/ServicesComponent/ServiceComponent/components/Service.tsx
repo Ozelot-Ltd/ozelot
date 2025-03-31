@@ -6,6 +6,7 @@ import { PrismicRichText } from '@prismicio/react';
 import ArtDirection from '@/app/components/SvgComponents/ArtDirection/ArtDirection';
 import WebIcon from '@/app/components/SvgComponents/WebIcon/WebIcon';
 import ThreeD from '@/app/components/SvgComponents/ThreeD/ThreeD';
+import SoundDesignIcon from '@/app/components/SvgComponents/SoundDesign/SoundDesign';
 import Arrow from '@/app/components/SvgComponents/Arrow/Arrow';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 
@@ -93,6 +94,8 @@ const Service = ({ service, activeService }: Props) => {
                   <ArtDirection />
                 ) : service.data.service_type === 'web' ? (
                   <WebIcon />
+                ) : service.data.service_type === 'sounddesign' ? (
+                  <SoundDesignIcon />
                 ) : (
                   ''
                 )}
