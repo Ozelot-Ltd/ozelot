@@ -5,6 +5,38 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
 /**
+ * Content for AI Icon documents
+ */
+interface AiIconDocumentData {
+  /**
+   * icon field in *AI Icon*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: ai_icon.icon
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  icon: prismic.ImageField<never>;
+}
+
+/**
+ * AI Icon document from Prismic
+ *
+ * - **API ID**: `ai_icon`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type AiIconDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<AiIconDocumentData>,
+    "ai_icon",
+    Lang
+  >;
+
+/**
  * Content for Art Direction icon documents
  */
 interface ArtDirectionIconDocumentData {
@@ -1305,6 +1337,7 @@ export type WebIconDocument<Lang extends string = string> =
   >;
 
 export type AllDocumentTypes =
+  | AiIconDocument
   | ArtDirectionIconDocument
   | ContactDocument
   | GeneralIconDocument
@@ -1388,6 +1421,8 @@ declare module "@prismicio/client" {
 
   namespace Content {
     export type {
+      AiIconDocument,
+      AiIconDocumentData,
       ArtDirectionIconDocument,
       ArtDirectionIconDocumentData,
       ContactDocument,

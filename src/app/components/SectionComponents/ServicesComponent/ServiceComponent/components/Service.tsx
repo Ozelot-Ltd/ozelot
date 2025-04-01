@@ -13,6 +13,7 @@ import Arrow from '@/app/components/SvgComponents/Arrow/Arrow';
 import { useRouter } from 'next/navigation';
 
 import ShowAnimation from './ShowAnimation';
+import AIIcon from '@/app/components/SvgComponents/AI/AI';
 
 const lottieSources = {
   web: 'https://lottie.host/541eadd1-ec51-441e-bdc8-fb6e620fca72/R7DuUC8GYy.lottie',
@@ -22,7 +23,8 @@ const lottieSources = {
   sounddesign:
     'https://lottie.host/7470ee5c-2c8e-4c38-aa94-1f7cec2cdd9b/T8jU7z0Z9N.lottie',
   art_direction:
-    'https://lottie.host/e812b136-8f50-4ed0-aa24-81976f529dc9/KsU4vAccMt.lottie',
+    'https://lottie.host/3782e47b-b26e-4367-82d6-273400550316/JCpK822UBe.lottie',
+  ai: 'https://lottie.host/927d0e46-d27b-4af8-9b4f-68df0baf831f/0cWlaP28W9.lottie',
 };
 
 type Props = {
@@ -120,6 +122,8 @@ const Service = ({ service, activeService, setActiveService }: Props) => {
                   <SoundDesignIcon />
                 ) : service.data.service_type === 'graphic' ? (
                   <GraphicDesignIcon />
+                ) : service.data.service_type === 'ai' ? (
+                  <AIIcon />
                 ) : (
                   ''
                 )}
