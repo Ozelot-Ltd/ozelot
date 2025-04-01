@@ -2,17 +2,23 @@
     min-width: 100%;
     border-bottom: 1px solid var(--black);
     overflow: hidden;
-    height: var(--upper-heght);
+    height: var(--upper-height);
     transition: height calc(var(--time))var(--bezier);
     will-change: height;
-    transition-delay: 0.2s
+    transition-delay: 0.2s;
+
 }
+
 
 .expanded {
-    background-color: transparent;
+    height: calc(var(--lower-height) + var(--upper-height))
 }
 
-/* upper container styles */
+.noBorder {
+    border-bottom: none;
+}
+
+
 
 .upperContainer,
 .lowerContainer {
@@ -45,7 +51,7 @@
     will-change: transform;
 }
 
-.titleContainer :hover .arrow {
+.titleContainer .title:hover .arrow {
     transform: rotate(90deg);
     transition: transform var(--time-fast) var(--bezier);
 }

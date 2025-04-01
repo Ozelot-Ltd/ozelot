@@ -38,6 +38,7 @@ body {
     background-repeat: no-repeat;
     min-height: 100svh;
     min-width: 100svw;
+    overflow: hidden;
 }
 
 

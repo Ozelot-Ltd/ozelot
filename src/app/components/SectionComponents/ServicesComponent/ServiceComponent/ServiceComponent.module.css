@@ -1,7 +1,6 @@
 .container {
     width: 100%;
-    will-change: height;
-
+    max-width: 100%;
 }
 
 .scrollContainer {

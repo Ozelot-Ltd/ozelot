@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState, useCallback } from 'react';
 
 import styles from './Service.module.css';
 import { ServiceDocument } from '../../../../../../../prismicio-types';
@@ -9,39 +9,38 @@ import GraphicDesignIcon from '@/app/components/SvgComponents/GraphicDesign/Grap
 import ThreeD from '@/app/components/SvgComponents/ThreeD/ThreeD';
 import SoundDesignIcon from '@/app/components/SvgComponents/SoundDesign/SoundDesign';
 import Arrow from '@/app/components/SvgComponents/Arrow/Arrow';
-import { DotLottieReact } from '@lottiefiles/dotlottie-react';
+
+import { useRouter } from 'next/navigation';
+
+import ShowAnimation from './ShowAnimation';
+
+const lottieSources = {
+  web: 'https://lottie.host/541eadd1-ec51-441e-bdc8-fb6e620fca72/R7DuUC8GYy.lottie',
+  '3d': 'https://lottie.host/079a73d7-583d-46f9-af62-416ec4cc342d/CNLftiWST9.lottie',
+  graphic:
+    'https://lottie.host/41847dca-6480-4741-9b7f-d48e53af9147/f2vZjk0A79.lottie',
+  sounddesign:
+    'https://lottie.host/7470ee5c-2c8e-4c38-aa94-1f7cec2cdd9b/T8jU7z0Z9N.lottie',
+  art_direction:
+    'https://lottie.host/e812b136-8f50-4ed0-aa24-81976f529dc9/KsU4vAccMt.lottie',
+};
 
 type Props = {
   service: ServiceDocument;
   activeService: string;
+  setActiveService: (uid: string) => void;
 };
 
-const Service = ({ service, activeService }: Props) => {
+const Service = ({ service, activeService, setActiveService }: Props) => {
   const index = service.data.service_index ?? 0;
   const mainContainerRef = useRef<HTMLDivElement>(null);
   const upperContainerRef = useRef<HTMLDivElement>(null);
   const lowerContainerRef = useRef<HTMLDivElement>(null);
   const [isExpanded, setIsExpanded] = useState(false);
+  const [showElement, setShowElement] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
-    // Set the container to upper height initially
-    if (upperContainerRef.current && mainContainerRef.current) {
-      const upperHeight = upperContainerRef.current.offsetHeight;
-      mainContainerRef.current.style.setProperty(
-        '--upper-height',
-        `${upperHeight}px`
-      );
-      mainContainerRef.current.style.height = `${upperHeight}px`;
-    }
-  }, []);
-
-  useEffect(() => {
-    if (activeService === service.uid) {
-      handleToggle();
-    }
-  }, [activeService, service.uid]);
-
-  const handleToggle = () => {
     if (
       upperContainerRef.current &&
       lowerContainerRef.current &&
@@ -49,22 +48,48 @@ const Service = ({ service, activeService }: Props) => {
     ) {
       const upperHeight = upperContainerRef.current.offsetHeight;
       const lowerHeight = lowerContainerRef.current.offsetHeight;
-
-      if (isExpanded) {
-        // Collapse: animate back to just upper height
-        mainContainerRef.current.style.height = `${upperHeight}px`;
-      } else {
-        // Expand: animate to combined height
-        mainContainerRef.current.style.height = `${upperHeight + lowerHeight}px`;
-      }
-
-      setIsExpanded(!isExpanded);
+      mainContainerRef.current.style.setProperty(
+        '--upper-height',
+        `${upperHeight}px`
+      );
+      mainContainerRef.current.style.setProperty(
+        '--lower-height',
+        `${lowerHeight}px`
+      );
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    if (isExpanded) {
+      setShowElement(true);
+    } else {
+      setTimeout(() => {
+        setShowElement(false);
+      }, 500);
+    }
+  }, [isExpanded]);
+
+  const handleToggle = useCallback(() => {
+    if (
+      upperContainerRef.current &&
+      lowerContainerRef.current &&
+      mainContainerRef.current
+    ) {
+      setIsExpanded(!isExpanded);
+      setActiveService(service.id);
+      router.replace(`/services/${service.uid}`, undefined);
+    }
+  }, [isExpanded, setActiveService, service.id, service.uid, router]);
+
+  useEffect(() => {
+    if (activeService === service.uid) {
+      handleToggle();
+    }
+  }, [activeService, service.uid, router, service.id, handleToggle]);
 
   return (
     <div
-      className={`${styles.container} ${isExpanded ? styles.expanded : ''}`}
+      className={`${styles.container} ${isExpanded ? styles.expanded : ''} ${service.data.service_type === 'sounddesign' ? styles.noBorder : ''}`}
       ref={mainContainerRef}
     >
       <div className={styles.upperContainer} ref={upperContainerRef}>
@@ -110,34 +135,11 @@ const Service = ({ service, activeService }: Props) => {
         </div>
         <div className={styles.image}>
           <div className={styles.lottieContainer}>
-            {service.data.service_type === 'web' && (
-              <DotLottieReact
-                src="https://lottie.host/541eadd1-ec51-441e-bdc8-fb6e620fca72/R7DuUC8GYy.lottie"
-                loop
-                autoplay
-              />
-            )}
-            {service.data.service_type === '3d' && (
-              <DotLottieReact
-                src="https://lottie.host/079a73d7-583d-46f9-af62-416ec4cc342d/CNLftiWST9.lottie"
-                loop
-                autoplay
-              />
-            )}
-            {service.data.service_type === 'graphic' && (
-              <DotLottieReact
-                src="https://lottie.host/41847dca-6480-4741-9b7f-d48e53af9147/f2vZjk0A79.lottie"
-                loop
-                autoplay
-              />
-            )}{' '}
-            {service.data.service_type === 'sounddesign' && (
-              <DotLottieReact
-                src="https://lottie.host/7470ee5c-2c8e-4c38-aa94-1f7cec2cdd9b/T8jU7z0Z9N.lottie"
-                loop
-                autoplay
-              />
-            )}
+            <ShowAnimation
+              showElement={showElement}
+              serviceType={service.data.service_type}
+              lottieSources={lottieSources}
+            />
           </div>
         </div>
       </div>

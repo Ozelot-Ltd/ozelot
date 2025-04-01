@@ -4,8 +4,6 @@ import styles from './ServiceComponent.module.css';
 
 import { useContents } from '../../../../../../context/ContentContext';
 
-import { useRouter } from 'next/navigation';
-
 import Service from './components/Service';
 
 type Props = {
@@ -14,7 +12,6 @@ type Props = {
 };
 
 const ServiceComponent = ({ isServicesActive, transitionEnd }: Props) => {
-  const router = useRouter();
   const { serviceArray } = useContents();
 
   const [activeService, setActiveService] = useState('');
@@ -36,15 +33,12 @@ const ServiceComponent = ({ isServicesActive, transitionEnd }: Props) => {
     <div className={styles.container}>
       <div className={styles.scrollContainer}>
         {sortedArray.map((service, index) => (
-          <div
-            key={`${service.id}-${index}`}
-            className={styles.listComponent}
-            onClick={() => {
-              setActiveService(service.id);
-              router.replace(`/services/${service.uid}`, undefined);
-            }}
-          >
-            <Service service={service} activeService={activeService} />
+          <div key={`${service.id}-${index}`} className={styles.listComponent}>
+            <Service
+              service={service}
+              activeService={activeService}
+              setActiveService={setActiveService}
+            />
           </div>
         ))}
       </div>
