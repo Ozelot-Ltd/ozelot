@@ -22,9 +22,9 @@ const lottieSources = {
     'https://lottie.host/41847dca-6480-4741-9b7f-d48e53af9147/f2vZjk0A79.lottie',
   sounddesign:
     'https://lottie.host/7470ee5c-2c8e-4c38-aa94-1f7cec2cdd9b/T8jU7z0Z9N.lottie',
+  ai: 'https://lottie.host/a118d970-7878-4236-a4eb-adcc0db89dd9/esvtMRWy0b.lottie',
   art_direction:
-    'https://lottie.host/3782e47b-b26e-4367-82d6-273400550316/JCpK822UBe.lottie',
-  ai: 'https://lottie.host/927d0e46-d27b-4af8-9b4f-68df0baf831f/0cWlaP28W9.lottie',
+    'https://lottie.host/927d0e46-d27b-4af8-9b4f-68df0baf831f/0cWlaP28W9.lottie',
 };
 
 type Props = {

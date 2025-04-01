@@ -50,7 +50,7 @@
     will-change: transform;
 }
 
-.titleContainer .title:hover .arrow {
+.title:hover .arrow {
     transform: rotate(90deg);
     transition: transform var(--time-fast) var(--bezier);
 }
@@ -59,7 +59,7 @@
     transform: rotate(90deg)
 }
 
-.expanded .upperContainer:hover .arrow {
+.expanded .title:hover .arrow {
     transform: rotate(-45deg)
 }
 
@@ -132,12 +132,18 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     justify-content: space-between;
+
 }
 
+.description {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 .description p {
     font-variation-settings: "wght" 200;
-    font-size: calc(0.4rem + 0.6vw);
+    font-size: calc(0.4rem + 0.5vw);
     padding-left: 3.9rem;
 }
 

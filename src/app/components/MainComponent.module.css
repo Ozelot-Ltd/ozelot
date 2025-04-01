@@ -106,6 +106,7 @@
     color: var(--black-active);
     text-transform: uppercase;
     transition: all var(--time) var(--bezier);
+    font-size: calc(0.5vw + 0.5rem);
 }
 
 .fullWidth p,
@@ -182,6 +183,7 @@
         background-color var(--time) var(--bezier) 0.3s,
         backdrop-filter var(--time) var(--bezier) 0.3s;
 }
+
 
 .bar.fullHeight {
     height: 100vh;

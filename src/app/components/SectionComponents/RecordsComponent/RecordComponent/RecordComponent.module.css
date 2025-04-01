@@ -101,25 +101,25 @@
 }
 
 .titleContainer p {
-    font-size: 0.5rem;
+    font-size: calc(0.2rem + 0.3vw);
     align-items: flex-start;
+
 }
 
 .title {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: calc(0.4rem + 0.5vw);
 }
 
 .title h2 {
-    font-size: 1.8rem;
+    font-size: calc(0.8rem + 0.9vw);
 }
 
 .text p {
     font-variation-settings: var(--text-weight);
-    font-size: 0.8rem;
     width: 80%;
-    padding-top: 1rem;
+    padding-top: calc(0.5rem + 0.5vw);
 }
 
 .subtitle {
@@ -129,7 +129,7 @@
 }
 
 .subtitle p {
-    font-size: 0.6rem;
+    font-size: calc(0.2rem + 0.3vw);
 }
 
 .socials {
