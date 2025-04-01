@@ -1207,12 +1207,51 @@ export type SoundDesignIconDocument<Lang extends string = string> =
     Lang
   >;
 
+/**
+ * Item in *Studio → Description Group*
+ */
+export interface StudioDocumentDataDescriptionGroupItem {
+  /**
+   * title field in *Studio → Description Group*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: studio.description_group[].title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+}
+
 type StudioDocumentDataSlicesSlice = never;
 
 /**
  * Content for Studio documents
  */
 interface StudioDocumentData {
+  /**
+   * Description Group field in *Studio*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: studio.description_group[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  description_group: prismic.GroupField<
+    Simplify<StudioDocumentDataDescriptionGroupItem>
+  >;
+
+  /**
+   * Ozelot Description field in *Studio*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: studio.ozelot_description
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  ozelot_description: prismic.RichTextField;
+
   /**
    * Slice Zone field in *Studio*
    *
@@ -1464,6 +1503,7 @@ declare module "@prismicio/client" {
       SoundDesignIconDocumentData,
       StudioDocument,
       StudioDocumentData,
+      StudioDocumentDataDescriptionGroupItem,
       StudioDocumentDataSlicesSlice,
       ThreedIconDocument,
       ThreedIconDocumentData,

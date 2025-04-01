@@ -1,14 +1,44 @@
 {
   "format": "page",
   "id": "studio",
+  "label": "Studio",
+  "repeatable": false,
+  "status": true,
   "json": {
     "Main": {
+      "description_group": {
+        "type": "Group",
+        "config": {
+          "label": "Description Group",
+          "repeat": true,
+          "fields": {
+            "title": {
+              "type": "StructuredText",
+              "config": {
+                "label": "title",
+                "placeholder": "",
+                "allowTargetBlank": true,
+                "multi": "heading2"
+              }
+            }
+          }
+        }
+      },
+      "ozelot_description": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Ozelot Description",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph"
+        }
+      },
       "slices": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
         "config": {
           "choices": {}
-        },
-        "fieldset": "Slice Zone",
-        "type": "Slices"
+        }
       }
     },
     "SEO & Metadata": {
@@ -38,8 +68,5 @@
         "type": "Image"
       }
     }
-  },
-  "label": "Studio",
-  "repeatable": false,
-  "status": true
+  }
 }
