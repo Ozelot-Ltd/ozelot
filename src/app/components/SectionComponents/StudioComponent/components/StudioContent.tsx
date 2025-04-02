@@ -7,9 +7,6 @@ type Props = {
   transitionEnd: boolean;
 };
 
-export default function StudioContent({
-  isStudioActive,
-  transitionEnd,
-}: Props) {
+export default function StudioContent({}: Props) {
   return <div>StudioContent</div>;
 }
