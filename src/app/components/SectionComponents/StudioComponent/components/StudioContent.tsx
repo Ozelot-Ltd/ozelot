@@ -5,14 +5,11 @@ import React from 'react';
 import { useContents } from '../../../../../../context/ContentContext';
 import { PrismicRichText } from '@prismicio/react';
 
-import { StudioDocument } from '../../../../../../prismicio-types';
-
 import styles from './StudioContent.module.css';
 
 type Props = {
   isStudioActive: boolean;
   transitionEnd: boolean;
-  studio: StudioDocument;
 };
 
 export default function StudioContent({
@@ -22,6 +19,8 @@ export default function StudioContent({
   const { studio } = useContents();
 
   const data = studio.data;
+
+  console.log(isStudioActive, transitionEnd);
   return (
     <div>
       <div className={styles.content}>
