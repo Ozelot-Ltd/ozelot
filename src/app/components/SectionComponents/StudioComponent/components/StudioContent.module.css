@@ -1,15 +1,28 @@
 .content {
     display: grid;
-    grid-template-columns: repeat(2, 50%);
-    padding: calc(2vw + 2rem) 0;
+    grid-template-rows: 0.25fr 0.75fr;
+    padding: calc(2vw + 2rem);
+}
+
+.upperContainer {
+    display: flex;
+}
+
+.lowerContainer {
+    border: 1px solid black;
+    height: 100%;
+    width: 100%;
 }
 
 
 .leftContainer {
     display: flex;
     flex-direction: column;
-    gap: calc(1vw + 1rem);
+    gap: calc(0.75vw + 0.75rem);
+}
 
+.rightContainer {
+    border: 0.5px solid var(--black);
 }
 
 
@@ -24,17 +37,22 @@
 .infoContainer {
     display: flex;
     flex-direction: column;
-    gap: calc(0.5vw + 0.5rem);
+    gap: calc(0.75vw + 0.75rem);
+
 }
 
 .descriptionContainer {
     width: 80%;
     display: flex;
     flex-direction: column;
-    gap: calc(0.5vw + 0.5rem);
 }
 
 .descriptionContainer p {}
+
+.addressContainer h5 {
+    text-transform: none;
+    font-variation-settings: var(--text-weight);
+}
 
 
 /* Enable hover only on non-touch devices */

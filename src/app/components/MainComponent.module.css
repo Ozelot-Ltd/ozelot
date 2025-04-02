@@ -115,13 +115,13 @@
 }
 
 .columnContent img {
-    height: 1.3rem;
-    width: 1.3rem;
+    height: calc(0.65rem + 0.65vw);
+    width: calc(0.65rem + 0.65vw);
 }
 
 .columnContent p:nth-of-type(2) {
     writing-mode: horizontal-tb;
-    font-size: 0.8rem;
+    font-size: calc(0.4rem + 0.4vw);
     font-variation-settings: var(--title-weight);
 }
 

@@ -17,6 +17,7 @@
     --bezier: cubic-bezier(0.39, 0.575, 0.565, 1);
     --time: 0.5s;
     --time-fast: 0.2s;
+    --column-width: calc(2.5rem + 2.5vw);
 
 }
 
