@@ -1,0 +1,52 @@
+.content {
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    padding: calc(2vw + 2rem) 0;
+}
+
+
+.leftContainer {
+    display: flex;
+    flex-direction: column;
+    gap: calc(1vw + 1rem);
+
+}
+
+
+
+.titleContainer {}
+
+.titleContainer h2 {
+    font-size: calc(1.5rem + 1.5vw);
+    font-variation-settings: "wght" 500;
+}
+
+.infoContainer {
+    display: flex;
+    flex-direction: column;
+    gap: calc(0.5vw + 0.5rem);
+}
+
+.descriptionContainer {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    gap: calc(0.5vw + 0.5rem);
+}
+
+.descriptionContainer p {}
+
+
+/* Enable hover only on non-touch devices */
+@media (hover: hover) and (pointer: fine) {}
+
+
+
+/* Mobile */
+@media (max-width: 47.99rem) {}
+
+/* Tablet and Smaller Desktop */
+@media (min-width: 48rem) and (max-width: 74rem) {}
+
+
+@media (min-width: 48rem) and (max-width: 74rem) and (orientation: portrait) {}

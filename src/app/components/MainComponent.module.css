@@ -111,7 +111,7 @@
 
 .fullWidth p,
 .fullHeight p {
-    font-variation-settings: "wght" 600;
+    font-variation-settings: var(--text-weight);
 }
 
 .columnContent img {

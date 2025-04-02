@@ -73,7 +73,7 @@
 
 .title h2 {
     font-size: calc(2rem + 2vw);
-    font-variation-settings: "wght" 380;
+    font-variation-settings: "wght" 500;
     transition: font-variation-settings 1s var(--bezier);
 }
 

@@ -1,17 +1,13 @@
-/* Desktop */
-@media (min-width: 1024px) {}
+/* Enable hover only on non-touch devices */
+@media (hover: hover) and (pointer: fine) {}
 
-/* Desktop Large */
-@media (min-width: 1200px) {}
 
-/* Desktop XL */
-@media (min-width: 1440px) {}
-
-/* Mobile XS */
-@media (min-width: 320px) {}
 
 /* Mobile */
-@media (min-width: 480px) {}
+@media (max-width: 47.99rem) {}
 
-/* Tablet */
-@media (min-width: 768px) {}
+/* Tablet and Smaller Desktop */
+@media (min-width: 48rem) and (max-width: 74rem) {}
+
+
+@media (min-width: 48rem) and (max-width: 74rem) and (orientation: portrait) {}
