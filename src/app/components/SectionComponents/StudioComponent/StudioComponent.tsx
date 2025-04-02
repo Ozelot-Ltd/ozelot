@@ -1,5 +1,6 @@
 import React from 'react';
 import MainContainer from '../MainContainer';
+import StudioContent from './components/StudioContent';
 
 export default function StudioComponent({
   isStudioActive,
@@ -10,7 +11,12 @@ export default function StudioComponent({
 }) {
   return (
     <MainContainer>
-      {transitionEnd && isStudioActive && <h1>HEHEHEHEHEHEHEHE</h1>}
+      {isStudioActive && transitionEnd && (
+        <StudioContent
+          isStudioActive={isStudioActive}
+          transitionEnd={transitionEnd}
+        />
+      )}
     </MainContainer>
   );
 }

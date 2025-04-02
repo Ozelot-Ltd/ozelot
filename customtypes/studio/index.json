@@ -24,6 +24,15 @@
           }
         }
       },
+      "subtitle": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Subtitle",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "heading3"
+        }
+      },
       "ozelot_description": {
         "type": "StructuredText",
         "config": {
@@ -31,6 +40,98 @@
           "placeholder": "",
           "allowTargetBlank": true,
           "multi": "paragraph"
+        }
+      },
+      "address_name": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Address Name",
+          "placeholder": "Ozelot Studios GmbH",
+          "allowTargetBlank": true,
+          "multi": "heading4"
+        }
+      },
+      "address_street": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Address Street",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "heading5"
+        }
+      },
+      "address_zip": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Address Zip",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "heading5"
+        }
+      },
+      "contact_link": {
+        "type": "Link",
+        "config": {
+          "label": "Contact Link",
+          "placeholder": "",
+          "select": null,
+          "allowTargetBlank": true,
+          "allowText": true,
+          "repeat": false
+        }
+      },
+      "marquee_upper": {
+        "type": "Group",
+        "config": {
+          "label": "Marquee Upper",
+          "repeat": true,
+          "fields": {
+            "image": {
+              "type": "Image",
+              "config": {
+                "label": "image",
+                "constraint": {},
+                "thumbnails": []
+              }
+            }
+          }
+        }
+      },
+      "marquee_lower": {
+        "type": "Group",
+        "config": {
+          "label": "Marquee Lower",
+          "repeat": true,
+          "fields": {
+            "image": {
+              "type": "Image",
+              "config": {
+                "label": "Image",
+                "constraint": {},
+                "thumbnails": []
+              }
+            }
+          }
+        }
+      },
+      "services_records": {
+        "type": "Group",
+        "config": {
+          "label": "Services Records",
+          "repeat": true,
+          "fields": {
+            "item": {
+              "type": "Link",
+              "config": {
+                "label": "item",
+                "placeholder": "",
+                "select": null,
+                "allowTargetBlank": true,
+                "allowText": true,
+                "repeat": false
+              }
+            }
+          }
         }
       },
       "slices": {

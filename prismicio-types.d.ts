@@ -1222,6 +1222,51 @@ export interface StudioDocumentDataDescriptionGroupItem {
   title: prismic.RichTextField;
 }
 
+/**
+ * Item in *Studio → Marquee Upper*
+ */
+export interface StudioDocumentDataMarqueeUpperItem {
+  /**
+   * image field in *Studio → Marquee Upper*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: studio.marquee_upper[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+}
+
+/**
+ * Item in *Studio → Marquee Lower*
+ */
+export interface StudioDocumentDataMarqueeLowerItem {
+  /**
+   * Image field in *Studio → Marquee Lower*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: studio.marquee_lower[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+}
+
+/**
+ * Item in *Studio → Services Records*
+ */
+export interface StudioDocumentDataServicesRecordsItem {
+  /**
+   * item field in *Studio → Services Records*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: studio.services_records[].item
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  item: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+}
+
 type StudioDocumentDataSlicesSlice = never;
 
 /**
@@ -1242,6 +1287,17 @@ interface StudioDocumentData {
   >;
 
   /**
+   * Subtitle field in *Studio*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: studio.subtitle
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  subtitle: prismic.RichTextField;
+
+  /**
    * Ozelot Description field in *Studio*
    *
    * - **Field Type**: Rich Text
@@ -1251,6 +1307,95 @@ interface StudioDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   ozelot_description: prismic.RichTextField;
+
+  /**
+   * Address Name field in *Studio*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Ozelot Studios GmbH
+   * - **API ID Path**: studio.address_name
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  address_name: prismic.RichTextField;
+
+  /**
+   * Address Street field in *Studio*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: studio.address_street
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  address_street: prismic.RichTextField;
+
+  /**
+   * Address Zip field in *Studio*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: studio.address_zip
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  address_zip: prismic.RichTextField;
+
+  /**
+   * Contact Link field in *Studio*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: studio.contact_link
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  contact_link: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+
+  /**
+   * Marquee Upper field in *Studio*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: studio.marquee_upper[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  marquee_upper: prismic.GroupField<
+    Simplify<StudioDocumentDataMarqueeUpperItem>
+  >;
+
+  /**
+   * Marquee Lower field in *Studio*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: studio.marquee_lower[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  marquee_lower: prismic.GroupField<
+    Simplify<StudioDocumentDataMarqueeLowerItem>
+  >;
+
+  /**
+   * Services Records field in *Studio*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: studio.services_records[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  services_records: prismic.GroupField<
+    Simplify<StudioDocumentDataServicesRecordsItem>
+  >;
 
   /**
    * Slice Zone field in *Studio*
@@ -1504,6 +1649,9 @@ declare module "@prismicio/client" {
       StudioDocument,
       StudioDocumentData,
       StudioDocumentDataDescriptionGroupItem,
+      StudioDocumentDataMarqueeUpperItem,
+      StudioDocumentDataMarqueeLowerItem,
+      StudioDocumentDataServicesRecordsItem,
       StudioDocumentDataSlicesSlice,
       ThreedIconDocument,
       ThreedIconDocumentData,
