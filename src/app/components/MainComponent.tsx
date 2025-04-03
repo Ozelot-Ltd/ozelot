@@ -50,7 +50,7 @@ const Column: React.FC<ColumnProps> = ({
         onTransitionEnd={() => setTransitionEnd(true)}
         onTransitionStart={() => setTransitionEnd(false)}
       >
-        <p>{item?.navigation_link.text}</p>
+        <p className={styles.navText}>{item?.navigation_link.text}</p>
         {itemId !== 'services' && (
           <PrismicNextImage field={item?.navigation_icon} />
         )}
