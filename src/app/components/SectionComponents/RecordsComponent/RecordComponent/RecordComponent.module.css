@@ -1,12 +1,10 @@
 /* RecordComponent.module.css */
 .container {
     height: 100%;
-    max-height: 100%;
     width: 100%;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     position: relative;
-
 }
 
 .container .leftContainer,
