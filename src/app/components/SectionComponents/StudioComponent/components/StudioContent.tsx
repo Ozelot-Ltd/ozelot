@@ -9,6 +9,7 @@ import styles from './StudioContent.module.css';
 import { PrismicNextImage } from '@prismicio/next';
 
 import { asText } from '@prismicio/client';
+import Link from 'next/link';
 
 type Props = {
   isStudioActive: boolean;
@@ -51,15 +52,21 @@ export default function StudioContent({
             {data.marquee_upper.map((item, index) => (
               <PrismicNextImage key={index} field={item.image} />
             ))}
+            {data.marquee_lower.map((item, index) => (
+              <PrismicNextImage key={index} field={item.image} />
+            ))}
           </div>
         </div>{' '}
         <div className={styles.lowerContainer}>
           <div className={styles.marqueeContainer}>
-            {projectArray.map((item, index) => (
-              <div key={index}>
-                <h3>{asText(item.data.title)}</h3>
-              </div>
-            ))}
+            {projectArray &&
+              projectArray.map((item, index) => (
+                <Link href={`/projects/${item.uid}`} key={index}>
+                  <div>
+                    <h3>{asText(item.data.title)}</h3>
+                  </div>
+                </Link>
+              ))}
           </div>
         </div>
       </div>
