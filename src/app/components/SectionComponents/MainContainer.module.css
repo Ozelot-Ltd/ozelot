@@ -1,8 +1,8 @@
 .main {
     position: relative;
-    height: fit-content;
-    min-height: 100vh;
+    max-height: 100%;
     width: calc(100vw - (2 * var(--container-width)));
     padding: 4rem 2rem;
     max-width: 100%;
+    background-color: red;
 }

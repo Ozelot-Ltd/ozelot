@@ -1,7 +1,6 @@
 .container {
     display: flex;
     justify-content: space-between;
-    width: 100%;
     height: 100vh;
     width: 100vw;
 }
@@ -20,7 +19,7 @@
 
 .column {
     height: 100vh;
-    width: 5rem;
+    width: calc(2.5rem + 2.5vw);
     backdrop-filter: var(--blur);
     background-color: var(--grey-lowopacity);
     display: flex;
@@ -97,9 +96,9 @@
     flex-direction: row-reverse;
     align-items: center;
     justify-content: space-between;
-    width: 5rem;
+    width: calc(2.5vw + 2.5rem);
     cursor: pointer;
-    min-width: 5rem;
+    min-width: calc(2.5vw + 2.5rem);
 }
 
 .columnContent p {
@@ -170,7 +169,7 @@
 
 .bar {
     width: 100%;
-    height: 5rem;
+    height: calc(2.5rem + 2.5vw);
     display: flex;
     flex-direction: column-reverse;
     transform-origin: bottom;
@@ -200,7 +199,7 @@
 }
 
 .bar .columnContent {
-    height: 5rem;
+    height: calc(2.5vw + 2.5rem);
     width: 100%;
     display: flex;
     align-items: center;

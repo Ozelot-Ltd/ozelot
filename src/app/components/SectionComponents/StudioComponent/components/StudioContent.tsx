@@ -6,6 +6,7 @@ import { useContents } from '../../../../../../context/ContentContext';
 import { PrismicRichText } from '@prismicio/react';
 
 import styles from './StudioContent.module.css';
+import { PrismicNextImage } from '@prismicio/next';
 
 type Props = {
   isStudioActive: boolean;
@@ -22,7 +23,7 @@ export default function StudioContent({
 
   console.log(isStudioActive, transitionEnd);
   return (
-    <div>
+    <div className={styles.container}>
       <div className={styles.content}>
         <div className={styles.upperContainer}>
           <div className={styles.leftContainer}>
@@ -47,7 +48,13 @@ export default function StudioContent({
           <div className={styles.rightContainer}></div>
         </div>{' '}
         <div className={styles.lowerContainer}>
-          <div className={styles.marqueeContainer}></div>
+          <div className={styles.marqueeContainer}>
+            {data.marquee_lower.map((item, index) => (
+              <div key={index} className={styles.imageContainer}>
+                {item.image.url && <PrismicNextImage field={item.image} />}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
