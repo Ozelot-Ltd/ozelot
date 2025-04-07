@@ -6,14 +6,14 @@
     --font-size: 16px;
     --text-weight: "wght" 300;
     --black: #545454;
-    --black-active: #595353;
+    --black-active: #393636;
     --title-weight: "wght" 600;
     --radius-large: 20px;
     --border: 1px solid var(--black);
     --border-active: 1px solid var(--black-active);
     --radius-large: 40px;
-    --grey-lowopacity: rgba(237, 239, 238, 0.6);
-    --blur: blur(18px);
+    --grey-lowopacity: rgba(247, 247, 247, 0.6);
+    --blur: blur(20px);
     --bezier: cubic-bezier(0.39, 0.575, 0.565, 1);
     --time: 0.5s;
     --time-fast: 0.2s;
@@ -30,6 +30,12 @@
     -webkit-font-smoothing: antialiased;
     font-synthesis: none;
     text-rendering: optimizeLegibility;
+}
+
+*::selection {
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(20px);
+    color: var(--black-active);
 }
 
 body {
@@ -64,7 +70,8 @@ h5 {
     text-transform: uppercase;
 }
 
-p {
+p,
+input {
     hyphens: auto;
     font-size: calc(0.7rem + 0.3vw);
 }
@@ -86,6 +93,24 @@ h1 {
     border: var(--border);
     border-radius: var(--radius-large);
     padding: 0.25rem 0.75rem;
+}
+
+input,
+textarea {
+    background-color: transparent;
+    outline: none;
+    border: none;
+    border-bottom: var(--border);
+    padding: calc(0.25rem + 0.25vw) calc(0.5rem + 0.25vw);
+    width: 100%;
+    font-family: inherit;
+
+}
+
+
+label {
+    text-transform: uppercase;
+    font-variation-settings: "wght" 200;
 }
 
 /******** !!!!!!!! MOBILE STYLES !!!!!!!!! ********/

@@ -7,6 +7,7 @@ import { PrismicRichText } from '@prismicio/react';
 
 import styles from './StudioContent.module.css';
 import { PrismicNextImage } from '@prismicio/next';
+import SocialBar from '../../ContactComponent/components/SocialBar';
 
 type Props = {
   isStudioActive: boolean;
@@ -47,6 +48,7 @@ export default function StudioContent({
                 <PrismicRichText field={data.address_zip} />
               </div>
             </div>
+            <SocialBar />
           </div>
           <div className={styles.rightContainer}>
             {data.marquee_upper.map((item, index) => (
@@ -57,18 +59,6 @@ export default function StudioContent({
             ))}
           </div>
         </div>
-        {/* <div className={styles.lowerContainer}>
-          <div className={styles.marqueeContainer}>
-            {projectArray &&
-              projectArray.map((item, index) => (
-                <Link href={`/projects/${item.uid}`} key={index}>
-                  <div>
-                    <h3>{asText(item.data.title)}</h3>
-                  </div>
-                </Link>
-              ))}
-          </div>
-        </div> */}
       </div>
     </div>
   );

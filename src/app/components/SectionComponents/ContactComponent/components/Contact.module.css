@@ -50,7 +50,16 @@
 }
 
 .rightContainer {
-    padding-left: 2rem;
-    display: grid;
-    grid-template-rows: 1fr;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.contactus {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    align-items: center;
 }

@@ -26,16 +26,11 @@
 }
 
 .upperContainer {
-
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: fit-content;
     min-height: calc(8rem + 7vw);
-
-
-
-
 }
 
 .titleContainer {
