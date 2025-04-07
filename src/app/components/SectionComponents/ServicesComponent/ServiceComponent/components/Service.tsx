@@ -15,7 +15,7 @@ import { useRouter } from 'next/navigation';
 import ShowAnimation from './ShowAnimation';
 import AIIcon from '@/app/components/SvgComponents/AI/AI';
 
-const lottieSources = {
+export const lottieSources = {
   web: 'https://lottie.host/541eadd1-ec51-441e-bdc8-fb6e620fca72/R7DuUC8GYy.lottie',
   '3d': 'https://lottie.host/079a73d7-583d-46f9-af62-416ec4cc342d/CNLftiWST9.lottie',
   graphic:

@@ -28,11 +28,14 @@ export default function StudioContent({
         <div className={styles.upperContainer}>
           <div className={styles.leftContainer}>
             <div className={styles.titleContainer}>
-              {data.description_group.map((item, index) => (
+              {/* {data.description_group.map((item, index) => (
                 <div key={index}>
                   <PrismicRichText field={item.title} />
                 </div>
-              ))}
+              ))} */}
+              {/* <PrismicRichText field={data.description_group[0]} /> */}{' '}
+              <h2>ABOUT</h2>
+              <h2>OZELOT STUDIOS</h2>
             </div>
             <div className={styles.infoContainer}>
               <div className={styles.descriptionContainer}>
@@ -53,7 +56,7 @@ export default function StudioContent({
               <PrismicNextImage key={index} field={item.image} />
             ))}
           </div>
-        </div>{' '}
+        </div>
         {/* <div className={styles.lowerContainer}>
           <div className={styles.marqueeContainer}>
             {projectArray &&

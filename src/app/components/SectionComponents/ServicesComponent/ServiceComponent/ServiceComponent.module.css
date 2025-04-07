@@ -1,14 +1,17 @@
 .container {
     width: 100%;
     max-width: 100%;
+    width: fit-content;
 }
 
 .scrollContainer {
     width: 100%;
-    padding-top: calc((0.7rem + 0.6vw) * 2)
+    padding-top: calc((0.7rem + 0.6vw) * 2);
+    width: fit-content;
+
 }
 
 .listComponent {
     width: 100%;
-
+    width: fit-content;
 }

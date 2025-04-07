@@ -1300,6 +1300,63 @@ export type SettingsDocument<Lang extends string = string> =
   >;
 
 /**
+ * Item in *Social Bar → socials*
+ */
+export interface SocialBarDocumentDataSocialsItem {
+  /**
+   * icon field in *Social Bar → socials*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: social_bar.socials[].icon
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  icon: prismic.ImageField<never>;
+
+  /**
+   * link field in *Social Bar → socials*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: social_bar.socials[].link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+}
+
+/**
+ * Content for Social Bar documents
+ */
+interface SocialBarDocumentData {
+  /**
+   * socials field in *Social Bar*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: social_bar.socials[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  socials: prismic.GroupField<Simplify<SocialBarDocumentDataSocialsItem>>;
+}
+
+/**
+ * Social Bar document from Prismic
+ *
+ * - **API ID**: `social_bar`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type SocialBarDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<SocialBarDocumentData>,
+    "social_bar",
+    Lang
+  >;
+
+/**
  * Content for Sound Design Icon documents
  */
 interface SoundDesignIconDocumentData {
@@ -1658,6 +1715,7 @@ export type AllDocumentTypes =
   | ServiceDocument
   | ServicesDocument
   | SettingsDocument
+  | SocialBarDocument
   | SoundDesignIconDocument
   | StudioDocument
   | ThreedIconDocument
@@ -1769,6 +1827,9 @@ declare module "@prismicio/client" {
       SettingsDocumentData,
       SettingsDocumentDataNavigationItemsLeftItem,
       SettingsDocumentDataNavigationItemsRightItem,
+      SocialBarDocument,
+      SocialBarDocumentData,
+      SocialBarDocumentDataSocialsItem,
       SoundDesignIconDocument,
       SoundDesignIconDocumentData,
       StudioDocument,

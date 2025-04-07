@@ -23,7 +23,7 @@
     padding-right: 2rem;
     padding-top: 2rem;
     display: grid;
-    grid-template-rows: 1.5fr 1fr;
+    grid-template-rows: 1.3fr 1fr;
 }
 
 .rightContainer {
@@ -41,7 +41,7 @@
 .listContainer {
     overflow-y: hidden;
     max-height: 100%;
-    height: calc(var(--container-height) * 7);
+    height: calc(var(--container-height) * 6);
     padding-bottom: calc(var(--container-height) - 5px);
 }
 

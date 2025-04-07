@@ -1,11 +1,11 @@
 .container {
-    min-width: 100%;
     border-bottom: 1px solid var(--black);
     overflow: hidden;
     height: var(--upper-height);
     transition: height calc(var(--time))var(--bezier);
     will-change: height;
     transition-delay: 0.2s;
+    max-width: 100%;
 }
 
 
@@ -21,19 +21,20 @@
 
 .upperContainer,
 .lowerContainer {
-    padding: calc(0.7rem + 0.6vw) 0;
-    padding-top: calc((0.7rem + 0.6vw) * 2);
-    padding-bottom: calc((0.7rem + 0.6vw) * 2);
-
+    padding: calc(0.1rem + 0.6vw) 0;
+    width: 100%;
 }
 
 .upperContainer {
-    width: 100%;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: fit-content;
-    min-height: calc(8rem + 8vw);
+    min-height: calc(8rem + 7vw);
+
+
+
 
 }
 
@@ -42,6 +43,8 @@
     align-items: center;
     gap: calc(1rem + 1vw);
     cursor: pointer;
+    width: 100%;
+
 }
 
 .titleContainer .arrow {
@@ -49,6 +52,8 @@
     transform: rotate(0deg);
     will-change: transform;
 }
+
+
 
 .title:hover .arrow {
     transform: rotate(90deg);
@@ -92,6 +97,7 @@
     align-self: flex-start;
     font-variation-settings: "wght" 100;
 
+
 }
 
 .services {
@@ -105,13 +111,16 @@
     display: flex;
     align-items: center;
     gap: 1rem;
-    min-width: calc(10rem + 10vw);
+    width: calc(10rem + 10vw);
+
 }
 
 .service p {
     font-size: calc(0.4rem + 0.5vw);
     text-transform: uppercase;
-    font-variation-settings: "wght" 200
+    font-variation-settings: "wght" 200;
+
+
 }
 
 
@@ -132,6 +141,8 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     justify-content: space-between;
+    width: fit-content;
+
 
 }
 
@@ -145,6 +156,7 @@
     font-variation-settings: "wght" 200;
     font-size: calc(0.4rem + 0.5vw);
     padding-left: 3.9rem;
+    max-width: 40rem;
 }
 
 

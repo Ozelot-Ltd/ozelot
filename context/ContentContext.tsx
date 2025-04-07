@@ -15,6 +15,7 @@ import {
   SoundDesignIconDocument,
   GraphicIconDocument,
   AiIconDocument,
+  SocialBarDocument,
 } from '../prismicio-types';
 
 export type ContentProps = {
@@ -30,6 +31,7 @@ export type ContentProps = {
   soundDesignIcon: SoundDesignIconDocument;
   graphicDesignIcon: GraphicIconDocument;
   aIIcon: AiIconDocument;
+  socialBar: SocialBarDocument;
 };
 
 // ContentContext.tsx

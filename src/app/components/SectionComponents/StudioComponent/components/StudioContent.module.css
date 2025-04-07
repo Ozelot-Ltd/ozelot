@@ -1,6 +1,7 @@
 .container {
     height: calc(100vh - 5rem);
     padding: calc(2vw + 2rem);
+    width: 100%;
 }
 
 .content {
@@ -8,11 +9,12 @@
     flex-direction: column;
     height: 100%;
     justify-content: space-between;
+    width: 100%;
 }
 
 .upperContainer {
     display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
+    grid-template-columns: 1fr 0.75fr;
     height: 100%;
 }
 
@@ -31,16 +33,15 @@
 }
 
 .rightContainer {
-    width: 100%;
     display: flex;
-    flex-direction: row;
     flex-wrap: wrap;
-    gap: 2rem;
+    gap: calc(1vw + 1rem)
 }
 
 .rightContainer img {
     height: calc(0.7rem + 0.7vw);
     padding: 0 calc(0.4vw + 0.4rem);
+    width: fit-content;
 }
 
 .titleContainer {}
@@ -76,7 +77,8 @@
     display: flex;
     width: 100%;
     justify-content: space-between;
-    padding: calc(0.3rem + 0.3vw)
+    padding: calc(0.3rem + 0.3vw);
+    background-color: blue;
 }
 
 .marqueeContainer h3 {
