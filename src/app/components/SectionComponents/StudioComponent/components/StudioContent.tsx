@@ -8,9 +8,6 @@ import { PrismicRichText } from '@prismicio/react';
 import styles from './StudioContent.module.css';
 import { PrismicNextImage } from '@prismicio/next';
 
-import { asText } from '@prismicio/client';
-import Link from 'next/link';
-
 type Props = {
   isStudioActive: boolean;
   transitionEnd: boolean;
@@ -20,13 +17,13 @@ export default function StudioContent({
   isStudioActive,
   transitionEnd,
 }: Props) {
-  const { studio, projectArray } = useContents();
+  const { studio } = useContents();
 
   const data = studio.data;
 
   console.log(isStudioActive, transitionEnd);
   return (
-    <div className={styles.fuckyomama}>
+    <div className={styles.container}>
       <div className={styles.content}>
         <div className={styles.upperContainer}>
           <div className={styles.leftContainer}>
@@ -57,7 +54,7 @@ export default function StudioContent({
             ))}
           </div>
         </div>{' '}
-        <div className={styles.lowerContainer}>
+        {/* <div className={styles.lowerContainer}>
           <div className={styles.marqueeContainer}>
             {projectArray &&
               projectArray.map((item, index) => (
@@ -68,7 +65,7 @@ export default function StudioContent({
                 </Link>
               ))}
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

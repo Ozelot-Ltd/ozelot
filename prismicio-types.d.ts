@@ -68,12 +68,136 @@ export type ArtDirectionIconDocument<Lang extends string = string> =
     Lang
   >;
 
+/**
+ * Item in *Contact → Socials*
+ */
+export interface ContactDocumentDataSocialsItem {
+  /**
+   * icon field in *Contact → Socials*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact.socials[].icon
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  icon: prismic.ImageField<never>;
+
+  /**
+   * link field in *Contact → Socials*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact.socials[].link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+}
+
 type ContactDocumentDataSlicesSlice = never;
 
 /**
  * Content for Contact documents
  */
 interface ContactDocumentData {
+  /**
+   * Contact Title field in *Contact*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact.contact_title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  contact_title: prismic.RichTextField;
+
+  /**
+   * Contact Text field in *Contact*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact.contact_text
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  contact_text: prismic.RichTextField;
+
+  /**
+   * Socials field in *Contact*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact.socials[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  socials: prismic.GroupField<Simplify<ContactDocumentDataSocialsItem>>;
+
+  /**
+   * Contact Input Name field in *Contact*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact.contact_input_name
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  contact_input_name: prismic.KeyTextField;
+
+  /**
+   * Contact Input Email field in *Contact*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact.contact_input_email
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  contact_input_email: prismic.KeyTextField;
+
+  /**
+   * Contact Input Textfield field in *Contact*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact.contact_input_textfield
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  contact_input_textfield: prismic.KeyTextField;
+
+  /**
+   * Contact Input Agree field in *Contact*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact.contact_input_agree
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  contact_input_agree: prismic.KeyTextField;
+
+  /**
+   * Contact Input Newslettertext field in *Contact*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact.contact_input_newslettertext
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  contact_input_newslettertext: prismic.KeyTextField;
+
+  /**
+   * Contact Button Text field in *Contact*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact.contact_button_text
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  contact_button_text: prismic.KeyTextField;
+
   /**
    * Slice Zone field in *Contact*
    *
@@ -1611,6 +1735,7 @@ declare module "@prismicio/client" {
       ArtDirectionIconDocumentData,
       ContactDocument,
       ContactDocumentData,
+      ContactDocumentDataSocialsItem,
       ContactDocumentDataSlicesSlice,
       GeneralIconDocument,
       GeneralIconDocumentData,

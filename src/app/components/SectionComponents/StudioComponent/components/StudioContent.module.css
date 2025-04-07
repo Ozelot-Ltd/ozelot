@@ -1,4 +1,4 @@
-.fuckyomama {
+.container {
     height: calc(100vh - 5rem);
     padding: calc(2vw + 2rem);
 }
@@ -27,7 +27,7 @@
 .leftContainer {
     display: flex;
     flex-direction: column;
-    gap: calc(0.75vw + 0.75rem);
+    gap: calc(1vw + 1rem);
 }
 
 .rightContainer {
