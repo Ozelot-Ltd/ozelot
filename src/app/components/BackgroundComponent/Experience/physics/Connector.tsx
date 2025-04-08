@@ -13,14 +13,13 @@ interface ConnectorProps {
   r?: (range: number) => number;
   accent?: boolean;
   color?: string;
-  [key: string]: any; // For additional props
+  [key: string]: unknown; // Changed any to unknown
 }
 
 export function Connector({
   position,
   children,
   vec = new THREE.Vector3(),
-  scale,
   r = THREE.MathUtils.randFloatSpread,
   accent,
   ...props
@@ -28,10 +27,9 @@ export function Connector({
   const api = useRef<RapierRigidBody>(null);
   const pos = useMemo(() => position || [r(5), r(5), r(5) + 5], [position, r]);
 
-  useFrame((state, delta) => {
+  useFrame((state) => {
     if (!api.current) return;
 
-    delta = Math.min(0.1, delta);
     const floatForce = Math.sin(state.clock.elapsedTime) * 0.05;
 
     // Get current position

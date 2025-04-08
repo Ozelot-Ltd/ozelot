@@ -8,7 +8,7 @@
 
 .nav {
   display: flex;
-  width: fit-content;
+  /* width: fit-content; */
   position: absolute;
 }
 
@@ -213,13 +213,13 @@
 
   .nav {
     display: flex;
-    width: fit-content;
+    /* width: fit-content; */
     cursor: pointer;
   }
 
   .column {
     height: 100vh;
-    width: fit-content;
+    /* width: fit-content; */
     backdrop-filter: var(--blur);
     background-color: var(--grey-lowopacity);
     display: flex;
