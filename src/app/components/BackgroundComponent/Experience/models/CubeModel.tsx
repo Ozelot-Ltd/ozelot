@@ -12,7 +12,7 @@ interface CubeModelProps {
   [key: string]: any;
 }
 
-// henlo fren
+// henlo
 
 export function CubeModel({
   children,
