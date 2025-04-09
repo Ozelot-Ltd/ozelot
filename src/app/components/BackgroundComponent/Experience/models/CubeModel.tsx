@@ -12,6 +12,8 @@ interface CubeModelProps {
   [key: string]: any;
 }
 
+// henlo fren
+
 export function CubeModel({
   children,
   color = "white",
