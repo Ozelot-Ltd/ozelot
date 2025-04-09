@@ -12,6 +12,8 @@ interface CubeModelProps {
   [key: string]: any;
 }
 
+// test
+
 export function CubeModel({
   children,
   color = "white",
