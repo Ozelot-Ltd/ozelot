@@ -15,7 +15,6 @@
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
-
 }
 
 .inputGroup {
@@ -109,14 +108,10 @@
     justify-content: space-between;
     width: 85%;
     transition: all var(--time-fast) var(--bezier);
-
-    overflow: hidden;
 }
 
-
-
 .buttonContainer svg {
-    transition: transform var(--time) var(--bezier)
+    transition: all var(--time) var(--bezier)
 }
 
 .buttonContainer:hover .arrowContainer {
@@ -129,4 +124,5 @@
 
 .sent svg {
     transform: translate(300%);
+    opacity: 0;
 }
