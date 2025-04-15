@@ -33,10 +33,10 @@ export default function Contact({
     <section className={styles.container}>
       <section className={styles.leftContainer}>
         <div className={styles.titleContainer}>
-          <PrismicRichText field={contact.data.contact_title} />{' '}
+          <PrismicRichText field={contact.data.contact_title} />
           <div className={styles.lottieContainer}>
             <DotLottieReact autoplay loop src={cube} />
-          </div>{' '}
+          </div>
         </div>
 
         <div className={styles.textContainer}>
@@ -47,7 +47,7 @@ export default function Contact({
       <section className={styles.rightContainer}>
         <h1>GET IN TOUCH WITH US</h1>
         <ContactForm contact={contact} />
-      </section>{' '}
+      </section>
     </section>
   );
 }

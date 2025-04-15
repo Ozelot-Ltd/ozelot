@@ -50,6 +50,17 @@
     font-variation-settings: "wght" 380;
     width: 100%;
     max-width: 10rem;
+    animation: spinning 15s linear infinite;
+}
+
+@keyframes spinning {
+    0% {
+        transform: rotateY(0deg)
+    }
+
+    100% {
+        transform: rotateY(360deg)
+    }
 }
 
 .lottieContainer {
