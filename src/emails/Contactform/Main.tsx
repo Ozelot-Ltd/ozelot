@@ -18,19 +18,18 @@ export default function Email() {
       </Head>
       <Container style={body}>
         <Container>
-          <h1
-            style={{
-              fontFamily: 'Host Grotesk, Arial, Helvetica, sans-serif',
-              fontWeight: 400,
-            }}
-          >
-            Hey there, thanks for reaching out!
-          </h1>
+          <h1 style={mainHeading}>Hey there, thanks for reaching out!</h1>
         </Container>
       </Container>
     </Html>
   );
 }
+
+const mainHeading = {
+  fontFamily: 'Host Grotesk, Arial, Helvetica, sans-serif',
+  fontWeight: 400,
+  width: '80%',
+};
 
 const body = {
   backgroundColor: 'rgba(247, 247, 247, 0.2)',
