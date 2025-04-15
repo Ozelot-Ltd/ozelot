@@ -7,6 +7,7 @@
   "scripts": {
     "dev": "concurrently \"npm:next:dev\" \"npm:slicemachine\" --names \"next,slicemachine\" --prefix-colors blue,magenta",
     "next:dev": "next dev --turbopack",
+    "email": "email dev --dir src/emails",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -19,11 +20,12 @@
     "@prismicio/client": "^7.16.0",
     "@prismicio/next": "^2.0.0",
     "@prismicio/react": "^3.0.0",
+    "@react-email/components": "0.0.36",
     "dotenv": "^16.4.7",
     "gsap": "npm:@gsap/shockingly@^3.12.7",
     "next": "^15.1.6",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
     "react-fast-marquee": "^1.6.5",
     "yet-another-react-lightbox": "^3.21.7"
   },
@@ -36,6 +38,7 @@
     "concurrently": "^9.1.2",
     "eslint": "^9.19.0",
     "eslint-config-next": "^15.1.6",
+    "react-email": "4.0.7",
     "slice-machine-ui": "^2.12.3",
     "typescript": "^5.7.3"
   }

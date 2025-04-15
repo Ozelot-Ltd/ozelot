@@ -1,12 +1,11 @@
 .form {
     height: 100%;
     width: 100%;
-    padding: 2rem 0 0 0;
-    border-top: var(--border);
-    border-bottom: var(--border);
+    padding: 4rem 0 0 0;
     display: flex;
     flex-direction: column;
     gap: 2rem;
+
 
 }
 
@@ -14,8 +13,9 @@
     width: 85%;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
     height: 100%;
+
 }
 
 .inputGroup {
@@ -25,6 +25,10 @@
     gap: 0.5rem;
 }
 
+.inputGroup input {
+    font-size: calc(0.5rem + 0.75vw);
+}
+
 .inputGroup textarea {
     min-height: calc(4rem + 4vh);
     border: var(--border)
@@ -32,12 +36,84 @@
 
 .buttonContainer {
     width: 100%;
-    padding: 2rem 0;
+    padding: 0rem 0;
 }
 
 .buttonContainer button {
-    width: 100%;
-    padding: calc(0.5rem + 0.5vw);
+    position: relative;
+    width: fit-content;
+    padding: calc(0.4rem + 0.4vw) 0;
     background-color: transparent;
-    border: var(--border)
+    border: none;
+    border-bottom: var(--border);
+    color: var(--black);
+    font-size: calc(0.6rem + 0.6vw);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 85%;
+    transition: all var(--time-fast) var(--bezier)
+}
+
+.buttonContainer svg {
+    transition: transform var(--time-fast) var(--bezier)
+}
+
+.buttonContainer:hover svg {
+    transform: rotate(-45deg);
+}
+
+
+.inputWrapper {
+    position: relative;
+    width: 100%;
+}
+
+.inputArrow {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    pointer-events: none;
+    opacity: 0.7;
+    height: 14px;
+    width: 14px;
+    display: flex;
+    align-items: center;
+}
+
+.inputWrapper input {
+    padding-left: 24px;
+}
+
+.radioContainer {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    gap: 1rem;
+    align-items: center;
+}
+
+.checkboxContainer {
+    display: flex;
+    height: 1rem;
+    width: 1rem;
+}
+
+.checkbox {
+    transition: transform var(--time-fast) var(--bezier)
+}
+
+.checked {
+    background-color: var(--black);
+    transform: rotate(45deg)
+}
+
+.radioContainer label {
+    width: 100%;
+    font-size: calc(0.4rem + 0.25vw);
+    display: block;
+    padding: 2px 4px;
 }

@@ -4,13 +4,11 @@ import React, { useEffect, useState } from 'react';
 import styles from './Contact.module.css';
 import { useContents } from '../../../../../../context/ContentContext';
 import { PrismicRichText } from '@prismicio/react';
-import Star from '../../../../../../public/images/star.png';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 
 import { lottieSources } from '../../ServicesComponent/ServiceComponent/components/Service';
 import SocialBar from './SocialBar';
 import ContactForm from './ContactForm';
-import Image from 'next/image';
 
 export default function Contact({
   isContactActive,
@@ -34,32 +32,21 @@ export default function Contact({
   return (
     <section className={styles.container}>
       <section className={styles.leftContainer}>
-        <div className={styles.lottieContainer}>
-          <DotLottieReact autoplay loop src={cube} />
-        </div>
-        <div className={styles.textContainer}>
-          <PrismicRichText field={contact.data.contact_title} />
-          <PrismicRichText field={contact.data.contact_text} />
+        <div className={styles.titleContainer}>
+          <PrismicRichText field={contact.data.contact_title} />{' '}
+          <div className={styles.lottieContainer}>
+            <DotLottieReact autoplay loop src={cube} />
+          </div>{' '}
         </div>
 
+        <div className={styles.textContainer}>
+          <PrismicRichText field={contact.data.contact_text} />
+        </div>
         <SocialBar />
       </section>
       <section className={styles.rightContainer}>
-        <div className={styles.contactus}>
-          <h2>CONTACT US</h2>
-          <Image src={Star} height={20} width={20} alt="star.png" />
-          <h2>CONTACT US</h2>
-          <Image src={Star} height={20} width={20} alt="star.png" />
-          <h2>CONTACT US</h2>
-        </div>
+        <h1>GET IN TOUCH WITH US</h1>
         <ContactForm contact={contact} />
-        <div className={styles.contactus}>
-          <h2>CONTACT US</h2>
-          <Image src={Star} height={20} width={20} alt="star.png" />
-          <h2>CONTACT US</h2>
-          <Image src={Star} height={20} width={20} alt="star.png" />
-          <h2>CONTACT US</h2>
-        </div>
       </section>{' '}
     </section>
   );

@@ -101,7 +101,9 @@ h1 {
     padding: 0.25rem 0.75rem;
 }
 
-input,
+input[type="text"],
+input[type="email"],
+
 textarea {
     background-color: transparent;
     outline: none;
@@ -113,6 +115,15 @@ textarea {
 
 }
 
+
+input[type="checkbox"] {
+    appearance: none;
+    margin: 0;
+    font: inherit;
+    border: var(--border);
+    height: calc(0.35rem + 0.35vw);
+    width: calc(0.35rem + 0.35vw);
+}
 
 label {
     text-transform: uppercase;
