@@ -30,6 +30,12 @@
     -webkit-font-smoothing: antialiased;
     font-synthesis: none;
     text-rendering: optimizeLegibility;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+*::-webkit-scrollbar {
+    display: none;
 }
 
 *::selection {
