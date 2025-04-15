@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { ContactDocument } from '../../../../../../prismicio-types';
 import styles from './ContactForm.module.css';
 import Arrow from '@/app/components/SvgComponents/Arrow/Arrow';
@@ -10,6 +10,12 @@ type Props = { contact: ContactDocument };
 export default function ContactForm({ contact }: Props) {
   const [agreement, setAgreement] = useState(false);
   const [newsletter, setNewsletter] = useState(false);
+  const [isSent, setIsSent] = useState(false);
+
+  const handleClick = function (e: React.MouseEvent) {
+    e.preventDefault();
+    setIsSent(true);
+  };
 
   return (
     <form className={styles.form}>
@@ -47,6 +53,21 @@ export default function ContactForm({ contact }: Props) {
           <div className={styles.radioContainer}>
             <div
               className={styles.checkboxContainer}
+              onClick={() => setNewsletter(!newsletter)}
+            >
+              <input
+                type="checkbox"
+                id="newsletter"
+                name="newsletter"
+                value="newsletter"
+                className={`${styles.checkbox} ${newsletter ? styles.checked : ''}`}
+              />
+            </div>
+            <label htmlFor="newsletter">sign me up for your newsletter!</label>
+          </div>{' '}
+          <div className={styles.radioContainer}>
+            <div
+              className={styles.checkboxContainer}
               onClick={() => setAgreement(!agreement)}
             >
               <input
@@ -59,26 +80,18 @@ export default function ContactForm({ contact }: Props) {
             </div>
             <label htmlFor="privacy-agreement">We agree to this and that</label>
           </div>
-          <div className={styles.radioContainer}>
-            <div
-              className={styles.checkboxContainer}
-              onClick={() => setNewsletter(!newsletter)}
-            >
-              <input
-                type="checkbox"
-                id="newsletter"
-                name="newsletter"
-                value="newsletter"
-                className={`${styles.checkbox} ${newsletter ? styles.checked : ''}`}
-              />
-            </div>
-            <label htmlFor="newsletter">sign me up for your newsletter!</label>
-          </div>
         </div>
       </div>
       <div className={styles.buttonContainer}>
-        <button type="submit">
-          {contact.data.contact_button_text} <Arrow height="16" />
+        <button type="submit" onClick={handleClick}>
+          {!isSent
+            ? contact.data.contact_button_text
+            : 'THANKS FOR YOUR MESSAGE!'}
+          <span
+            className={`${styles.arrowContainer} ${isSent ? styles.sent : ''}`}
+          >
+            <Arrow height="16" />
+          </span>
         </button>
       </div>
     </form>
