@@ -58,7 +58,7 @@
 
 .radioContainer {
     display: flex;
-    width: 100%;
+    width: fit-content;
     justify-content: center;
     gap: 1rem;
     align-items: center;
@@ -68,6 +68,7 @@
     display: flex;
     height: 1rem;
     width: 1rem;
+    transform: translateY(2.5px);
 }
 
 .checkbox {
@@ -83,7 +84,7 @@
     width: 100%;
     font-size: calc(0.4rem + 0.25vw);
     display: block;
-    padding: 2px 4px;
+    cursor: pointer
 }
 
 .buttonContainer {

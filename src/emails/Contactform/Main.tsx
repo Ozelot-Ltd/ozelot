@@ -1,4 +1,4 @@
-import { Html, Head, Container, Font } from '@react-email/components';
+import { Html, Head, Container, Font, Heading } from '@react-email/components';
 import * as React from 'react';
 
 export default function Email() {
@@ -18,7 +18,7 @@ export default function Email() {
       </Head>
       <Container style={body}>
         <Container>
-          <h1 style={mainHeading}>Hey there, thanks for reaching out!</h1>
+          <Heading style={mainHeading}>THANKS FOR YOUR INTEREST</Heading>
         </Container>
       </Container>
     </Html>
@@ -28,7 +28,6 @@ export default function Email() {
 const mainHeading = {
   fontFamily: 'Host Grotesk, Arial, Helvetica, sans-serif',
   fontWeight: 400,
-  width: '80%',
 };
 
 const body = {
@@ -36,4 +35,5 @@ const body = {
   padding: '0px',
   margin: '0px',
   fontFamily: 'Host Grotesk, Arial, Helvetica, sans-serif',
+  color: '#545454',
 };
