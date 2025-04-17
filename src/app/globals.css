@@ -3,49 +3,34 @@
 /******** VARIABLES ********/
 
 :root {
-    --font-size: 16px;
-    --text-weight: "wght" 300;
-    --black: #545454;
-    --black-active: #393636;
-    --title-weight: "wght" 600;
-    --radius-large: 20px;
-    --border: 1px solid var(--black);
-    --border-active: 1px solid var(--black-active);
-    --radius-large: 40px;
-    --grey-lowopacity: rgba(247, 247, 247, 0.2);
-    --blur: blur(20px);
-    --bezier: cubic-bezier(0.39, 0.575, 0.565, 1);
-    --time: 0.5s;
-    --time-fast: 0.2s;
+  --font-size: 16px;
+  --text-weight: "wght" 300;
+  --black: #545454;
+  --black-active: #393636;
+  --title-weight: "wght" 600;
+  --radius-large: 20px;
+  --border: 1px solid var(--black);
+  --border-active: 1px solid var(--black-active);
+  --radius-large: 40px;
+  --grey-lowopacity: rgba(247, 247, 247, 0.2);
+  --blur: blur(20px);
+  --bezier: cubic-bezier(0.39, 0.575, 0.565, 1);
+  --time: 0.5s;
+  --time-fast: 0.2s;
 
 }
 
 /******** GLOBAL STYLES ********/
 
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    width: fit-content;
-    -webkit-font-smoothing: antialiased;
-    font-synthesis: none;
-    text-rendering: optimizeLegibility;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-}
-
-*::-webkit-scrollbar {
-    display: none;
-}
-
-*::selection {
-    background: rgba(255, 255, 255, 0.5);
-    backdrop-filter: blur(20px);
-    color: var(--black-active);
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  width: fit-content;
 }
 
 body {
-    background-image: url("../../public/images/3d.jpg");
+  /* background-image: url("../../public/images/3d.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     min-height: 100svh;
@@ -64,7 +49,7 @@ p,
 a,
 nav,
 li {
-    color: var(--black);
+  color: var(--black);
 }
 
 h1,
@@ -72,8 +57,8 @@ h2,
 h3,
 h4,
 h5 {
-    font-variation-settings: var(--title-weight);
-    text-transform: uppercase;
+  font-variation-settings: var(--title-weight);
+  text-transform: uppercase;
 }
 
 p,
@@ -84,15 +69,15 @@ input {
 
 p,
 a {
-    font-variation-settings: var(--text-weight);
+  font-variation-settings: var(--text-weight);
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 li {
-    list-style-type: none;
+  list-style-type: none;
 }
 
 h1 {
@@ -133,10 +118,9 @@ label {
 /******** !!!!!!!! MOBILE STYLES !!!!!!!!! ********/
 
 
-/* Mobile */
-@media (max-width: 768px) {
+  /* Mobile */
+  @media (max-width: 768px) {
     :root {
-        font-size: 14px;
+      font-size: 14px;
     }
-
-}
+  }

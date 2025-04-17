@@ -7,6 +7,7 @@ import { createClient } from '@/prismicio';
 import './globals.css';
 import MainComponent from './components/MainComponent';
 import { Providers } from './components/Providers/Providers';
+import { BackgroundComponent } from './components/BackgroundComponent/BackgroundComponent';
 
 const host = Host_Grotesk({
   weight: 'variable',
