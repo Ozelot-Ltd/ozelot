@@ -1,13 +1,14 @@
-import { useReducer, useMemo } from "react";
-import { Environment } from "@react-three/drei";
-import { Physics } from "@react-three/rapier";
-import { EffectComposer, N8AO, Noise } from "@react-three/postprocessing";
-import { Connector } from "./physics/Connector";
-import { Pointer } from "./physics/Pointer";
-import { SceneLighting, EnvironmentLighting } from "./scene/Lighting";
-import { useShuffleConfig } from "../../../hooks/useShuffleConfig";
-import { OzelogoSingle } from "./models/OzelogoSingle";
-import * as THREE from "three";
+import { useReducer, useMemo } from 'react';
+import { Environment } from '@react-three/drei';
+import { Physics } from '@react-three/rapier';
+import { EffectComposer, N8AO, Noise } from '@react-three/postprocessing';
+import { Connector } from './physics/Connector';
+import { Pointer } from './physics/Pointer';
+import { SceneLighting, EnvironmentLighting } from './scene/Lighting';
+import { useShuffleConfig } from '../../../hooks/useShuffleConfig';
+import { OzelogoSingle } from './models/OzelogoSingle';
+import { Ozelogo } from './models/Ozelogo';
+import * as THREE from 'three';
 
 // Define a type that extends ShuffleItem with the properties that Connector component uses
 interface ConnectorItem {
@@ -41,7 +42,7 @@ export const Experience = () => {
 
   return (
     <>
-      <color attach="background" args={["#ebebeb"]} />
+      <color attach="background" args={['#ebebeb']} />
       <SceneLighting />
 
       <Physics gravity={[0, 0, 0]} debug={false}>
@@ -58,11 +59,11 @@ export const Experience = () => {
       {/* Reduce effect quality for performance */}
       <EffectComposer enableNormalPass={false} multisampling={4}>
         <N8AO distanceFalloff={1} aoRadius={1} intensity={4} />
-        <Noise opacity={0.3} />
+        {/* <Noise opacity={0.8} /> */}
       </EffectComposer>
 
       {/* Lower resolution for performance */}
-      <Environment resolution={128}>
+      <Environment resolution={64}>
         <EnvironmentLighting />
       </Environment>
     </>

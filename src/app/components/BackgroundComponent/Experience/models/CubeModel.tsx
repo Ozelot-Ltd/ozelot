@@ -9,7 +9,7 @@ interface CubeModelProps {
   color?: string;
   roughness?: number;
   position?: [number, number, number];
-  [key: string]: any;
+  [key: string]: unknown;
 }
 
 // test

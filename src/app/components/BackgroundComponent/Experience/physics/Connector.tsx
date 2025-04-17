@@ -30,7 +30,7 @@ export function Connector({
   useFrame((state) => {
     if (!api.current) return;
 
-    const floatForce = Math.sin(state.clock.elapsedTime) * 0.05;
+    const floatForce = Math.sin(state.clock.elapsedTime) * 0.005;
 
     // Get current position
     const currentPos = api.current.translation();
@@ -57,7 +57,7 @@ export function Connector({
         .multiplyScalar(0.1)
         .add(new THREE.Vector3(0, floatForce, 0))
         .add(centeringForce)
-        .clampLength(0, 1), // Limit maximum force
+        .clampLength(0, 1),
       true
     );
   });
