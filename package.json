@@ -21,14 +21,20 @@
     "@prismicio/next": "^2.0.0",
     "@prismicio/react": "^3.0.0",
     "@react-email/components": "0.0.36",
+    "@react-three/drei": "10.0.0",
+    "@react-three/fiber": "9.0.4",
+    "@react-three/postprocessing": "v3.0.4",
+    "@react-three/rapier": "^1.5.0",
+    "@types/three": "^0.173.0",
     "dotenv": "^16.4.7",
     "gsap": "npm:@gsap/shockingly@^3.12.7",
     "next": "^15.1.6",
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "react-fast-marquee": "^1.6.5",
     "resend": "^4.3.0",
-    "yet-another-react-lightbox": "^3.21.7"
+    "yet-another-react-lightbox": "^3.21.7",
+    "three": "^0.173.0",
+    "leva": "^0.10.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.2.0",

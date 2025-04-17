@@ -149,7 +149,6 @@
 
 .description p {
     font-variation-settings: "wght" 200;
-    font-size: calc(0.4rem + 0.5vw);
     padding-left: 3.9rem;
     max-width: 40rem;
 }
