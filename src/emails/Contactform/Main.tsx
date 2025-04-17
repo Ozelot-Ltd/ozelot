@@ -1,7 +1,10 @@
 import { Html, Head, Container, Font, Heading } from '@react-email/components';
 import * as React from 'react';
 
-export default function Email() {
+import { FormData } from '@/app/components/SectionComponents/ContactComponent/components/ContactForm';
+
+export default function ContactFormMain(formData: FormData) {
+  const { name, newsletter } = formData;
   return (
     <Html>
       <Head>
@@ -18,8 +21,14 @@ export default function Email() {
       </Head>
       <Container style={body}>
         <Container>
-          <Heading style={mainHeading}>THANKS FOR YOUR INTEREST</Heading>
+          <Heading style={mainHeading}>THANKS {name} FOR YOUR INTEREST</Heading>
         </Container>
+        {newsletter === 'yes' ? (
+          <Container>
+            And thanks for subscribing to our newsletter! We will keep you
+            updated with the latest news and offers.
+          </Container>
+        ) : null}
       </Container>
     </Html>
   );

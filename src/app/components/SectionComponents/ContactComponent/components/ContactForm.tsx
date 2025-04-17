@@ -5,6 +5,13 @@ import { ContactDocument } from '../../../../../../prismicio-types';
 import styles from './ContactForm.module.css';
 import Arrow from '@/app/components/SvgComponents/Arrow/Arrow';
 
+export interface FormData {
+  name: string;
+  email: string;
+  message: string;
+  newsletter: string;
+}
+
 type Props = { contact: ContactDocument };
 
 export default function ContactForm({ contact }: Props) {
@@ -12,20 +19,97 @@ export default function ContactForm({ contact }: Props) {
   const [newsletter, setNewsletter] = useState(false);
   const [isSent, setIsSent] = useState(false);
 
-  const handleClick = function (e: React.MouseEvent) {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: '',
+    newsletter: 'no',
+  });
+
+  const [formStatus, setFormStatus] = useState('idle');
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setIsSent(true);
+
+    setFormStatus('submitting');
+
+    try {
+      const response = await fetch('/api/emails/main', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Error: ${response.status}`);
+      }
+
+      const result = await response.json();
+
+      console.log('Form submitted successfully:', result);
+
+      // Set status to success
+      setFormStatus('success');
+      console.log(formStatus);
+      setIsSent(true);
+
+      // Reset form after submission
+      setFormData({
+        name: '',
+        email: '',
+        message: '',
+        newsletter: '',
+      });
+
+      setAgreement(false);
+      setNewsletter(false);
+
+      // Reset heading after 5 seconds
+      setTimeout(() => {
+        setFormStatus('idle');
+      }, 5000);
+    } catch (error) {
+      console.error('Error submitting form:', error);
+
+      // Set status to error
+      setFormStatus('error');
+
+      // Reset heading after 5 seconds
+      setTimeout(() => {
+        setFormStatus('idle');
+      }, 5000);
+    }
   };
 
   return (
-    <form className={styles.form}>
+    <form className={styles.form} onSubmit={handleSubmit}>
       <div className={styles.inputContainer}>
         <div className={styles.inputGroup}>
           <div className={styles.inputWrapper}>
             <span className={styles.inputArrow}>
               <Arrow />
             </span>
-            <input id="name" type="text" name="name" placeholder="YOUR NAME" />
+            <input
+              id="name"
+              type="text"
+              name="name"
+              placeholder="YOUR NAME"
+              required
+              value={formData.name}
+              onChange={handleChange}
+            />
           </div>
         </div>
 
@@ -38,33 +122,28 @@ export default function ContactForm({ contact }: Props) {
               id="email"
               type="email"
               name="email"
+              value={formData.email}
+              required
               placeholder="YOUR EMAIL"
+              onChange={handleChange}
             />
           </div>
         </div>
 
         <div className={styles.inputGroup}>
           <div className={styles.inputWrapper}>
-            <textarea id="text" name="text" placeholder="YOUR REQUEST" />
+            <textarea
+              id="message"
+              name="message"
+              placeholder="YOUR REQUEST"
+              required
+              value={formData.message}
+              onChange={handleChange}
+            />
           </div>
         </div>
 
         <div className={styles.inputGroup}>
-          <div className={styles.radioContainer}>
-            <div
-              className={styles.checkboxContainer}
-              onClick={() => setNewsletter(!newsletter)}
-            >
-              <input
-                type="checkbox"
-                id="newsletter"
-                name="newsletter"
-                value="newsletter"
-                className={`${styles.checkbox} ${newsletter ? styles.checked : ''}`}
-              />
-            </div>
-            <label htmlFor="newsletter">sign me up for your newsletter!</label>
-          </div>{' '}
           <div className={styles.radioContainer}>
             <div
               className={styles.checkboxContainer}
@@ -76,14 +155,42 @@ export default function ContactForm({ contact }: Props) {
                 name="privacy"
                 value="privacy"
                 className={`${styles.checkbox} ${agreement ? styles.checked : ''}`}
+                onChange={handleChange}
+                required
+                aria-required="true"
               />
             </div>
             <label htmlFor="privacy-agreement">We agree to this and that</label>
           </div>
+          <div className={styles.radioContainer}>
+            <div
+              className={styles.checkboxContainer}
+              onClick={() => {
+                const newValue = !newsletter;
+                setNewsletter(newValue);
+                setFormData((prev) => ({
+                  ...prev,
+                  newsletter: newValue ? 'yes' : 'no',
+                }));
+              }}
+            >
+              <input
+                type="checkbox"
+                id="newsletter"
+                name="newsletter"
+                checked={newsletter}
+                className={`${styles.checkbox} ${newsletter ? styles.checked : ''}`}
+                readOnly
+              />
+            </div>
+            <label htmlFor="newsletter">sign me up for your newsletter!</label>
+          </div>
         </div>
       </div>
-      <div className={styles.buttonContainer}>
-        <button type="submit" onClick={handleClick}>
+      <div
+        className={`${styles.buttonContainer} ${!agreement ? styles.disabled : ''}`}
+      >
+        <button type="submit" className={styles.button} disabled={!agreement}>
           {!isSent
             ? contact.data.contact_button_text
             : 'THANKS FOR YOUR MESSAGE!'}
