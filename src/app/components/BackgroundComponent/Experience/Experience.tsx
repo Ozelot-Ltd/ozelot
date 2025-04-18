@@ -7,7 +7,6 @@ import { Pointer } from './physics/Pointer';
 import { SceneLighting, EnvironmentLighting } from './scene/Lighting';
 import { useShuffleConfig } from '../../../hooks/useShuffleConfig';
 import { OzelogoSingle } from './models/OzelogoSingle';
-import { Ozelogo } from './models/Ozelogo';
 import * as THREE from 'three';
 
 // Define a type that extends ShuffleItem with the properties that Connector component uses
@@ -58,8 +57,8 @@ export const Experience = () => {
 
       {/* Reduce effect quality for performance */}
       <EffectComposer enableNormalPass={false} multisampling={4}>
-        <N8AO distanceFalloff={1} aoRadius={1} intensity={4} />
-        {/* <Noise opacity={0.8} /> */}
+        <N8AO distanceFalloff={1} aoRadius={1} intensity={2} />
+        <Noise opacity={0.05} />
       </EffectComposer>
 
       {/* Lower resolution for performance */}

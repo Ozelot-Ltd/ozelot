@@ -1,8 +1,7 @@
 import * as THREE from 'three';
 import React, { useMemo } from 'react';
-import { useGLTF, MeshTransmissionMaterial } from '@react-three/drei';
+import { useGLTF } from '@react-three/drei';
 import { GLTF } from 'three-stdlib';
-import { useControls } from 'leva';
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -60,16 +59,16 @@ export function OzelogoSingle(props: { scale?: number }) {
         receiveShadow
       >
         <meshPhysicalMaterial
-          color="#ffffff"
-          metalness={1}
-          roughness={0.8}
+          color="white"
+          metalness={0.1}
+          roughness={1}
           envMapIntensity={1}
           clearcoat={1}
           clearcoatRoughness={0.1}
         />
 
         {/* Logo mesh - nested inside the glass as in the original model */}
-        <mesh
+        {/* <mesh
           geometry={memoizedGeometries.logoGeometry}
           castShadow
           receiveShadow
@@ -82,7 +81,7 @@ export function OzelogoSingle(props: { scale?: number }) {
             clearcoat={1}
             clearcoatRoughness={0.1}
           />
-        </mesh>
+        </mesh> */}
       </mesh>
     </group>
   );

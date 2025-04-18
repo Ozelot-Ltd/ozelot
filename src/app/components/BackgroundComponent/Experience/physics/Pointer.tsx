@@ -1,8 +1,8 @@
-import * as THREE from "three";
-import { useRef } from "react";
-import { useFrame } from "@react-three/fiber";
-import { BallCollider, RigidBody } from "@react-three/rapier";
-import { RapierRigidBody } from "@react-three/rapier";
+import * as THREE from 'three';
+import { useRef } from 'react';
+import { useFrame } from '@react-three/fiber';
+import { BallCollider, RigidBody } from '@react-three/rapier';
+import { RapierRigidBody } from '@react-three/rapier';
 
 interface PointerProps {
   vec?: THREE.Vector3;
@@ -28,7 +28,7 @@ export function Pointer({ vec = new THREE.Vector3() }: PointerProps) {
       colliders={false}
       ref={ref}
     >
-      <BallCollider args={[0.6]} />
+      <BallCollider args={[0.2]} />
     </RigidBody>
   );
 }

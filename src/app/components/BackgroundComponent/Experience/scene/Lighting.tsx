@@ -1,11 +1,11 @@
-import { Lightformer } from "@react-three/drei";
+import { Lightformer } from '@react-three/drei';
 
 export function SceneLighting() {
   return (
     <>
       <ambientLight intensity={0.4} />
       <spotLight
-        position={[10, 10, 10]}
+        position={[10, 0, 10]}
         angle={0.15}
         penumbra={1}
         intensity={1}
