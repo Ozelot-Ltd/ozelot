@@ -15,12 +15,11 @@ export default function RecordComponent({
   isRecordsActive: boolean;
   transitionEnd: boolean;
 }) {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [isVisible, setIsVisible] = useState(false);
   const [activeRecord, setActiveRecord] = useState('');
   const { recordArray } = useContents();
   const router = useRouter();
-
-  console.log(isVisible);
 
   useEffect(() => {
     setIsVisible(isRecordsActive && transitionEnd);
@@ -55,7 +54,10 @@ export default function RecordComponent({
             ))}
           </div>
         </div>
-        <DescriptionComponent currentRecord={currentRecord} styles={styles} />{' '}
+        <DescriptionComponent
+          currentRecord={currentRecord}
+          styles={styles}
+        />{' '}
       </section>
       <section className={styles.rightContainer}>
         <div className={styles.imageContainer}>

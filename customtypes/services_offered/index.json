@@ -1,0 +1,27 @@
+{
+  "format": "custom",
+  "id": "services_offered",
+  "label": "Services offered",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "services_offered": {
+        "type": "Group",
+        "config": {
+          "label": "Services oFfered",
+          "repeat": true,
+          "fields": {
+            "service": {
+              "type": "Text",
+              "config": {
+                "label": "service",
+                "placeholder": ""
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

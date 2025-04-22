@@ -1171,6 +1171,55 @@ export type ServicesDocument<Lang extends string = string> =
   >;
 
 /**
+ * Item in *Services offered → Services oFfered*
+ */
+export interface ServicesOfferedDocumentDataServicesOfferedItem {
+  /**
+   * service field in *Services offered → Services oFfered*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: services_offered.services_offered[].service
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  service: prismic.KeyTextField;
+}
+
+/**
+ * Content for Services offered documents
+ */
+interface ServicesOfferedDocumentData {
+  /**
+   * Services oFfered field in *Services offered*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: services_offered.services_offered[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  services_offered: prismic.GroupField<
+    Simplify<ServicesOfferedDocumentDataServicesOfferedItem>
+  >;
+}
+
+/**
+ * Services offered document from Prismic
+ *
+ * - **API ID**: `services_offered`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ServicesOfferedDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<ServicesOfferedDocumentData>,
+    "services_offered",
+    Lang
+  >;
+
+/**
  * Item in *Settings → Navigation Items Left*
  */
 export interface SettingsDocumentDataNavigationItemsLeftItem {
@@ -1714,6 +1763,7 @@ export type AllDocumentTypes =
   | RecordsDocument
   | ServiceDocument
   | ServicesDocument
+  | ServicesOfferedDocument
   | SettingsDocument
   | SocialBarDocument
   | SoundDesignIconDocument
@@ -1823,6 +1873,9 @@ declare module "@prismicio/client" {
       ServicesDocument,
       ServicesDocumentData,
       ServicesDocumentDataSlicesSlice,
+      ServicesOfferedDocument,
+      ServicesOfferedDocumentData,
+      ServicesOfferedDocumentDataServicesOfferedItem,
       SettingsDocument,
       SettingsDocumentData,
       SettingsDocumentDataNavigationItemsLeftItem,

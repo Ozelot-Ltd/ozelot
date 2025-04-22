@@ -117,7 +117,7 @@
 
 .text p {
     font-variation-settings: var(--text-weight);
-    width: 80%;
+    width: 90%;
     padding-top: calc(0.5rem + 0.5vw);
 }
 
@@ -169,4 +169,35 @@
 .imageContainer {
     overflow: scroll;
     padding: 3rem 0;
+}
+
+.disciplinesContainer {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding-bottom: calc(0.5rem + 0.5vw);
+}
+
+.discipline {
+    border: 0.5px solid var(--black);
+    padding: calc(0.15rem + 0.15vw) calc(0.25rem + 0.25vw);
+    border-radius: 15px;
+    cursor: pointer;
+    filter: brightness(180%);
+    transition: filter var(--time-fast) var(--bezier)
+}
+
+.disciplinesContainer div:hover {
+    filter: brightness(100%);
+}
+
+
+.filterActive {
+    filter: brightness(100%);
+}
+
+
+.disciplinesContainer div p {
+    font-size: calc(0.25rem + 0.25vw);
+    text-transform: uppercase;
 }

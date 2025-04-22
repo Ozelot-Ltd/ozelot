@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useState } from 'react';
 
 import styles from '../../RecordsComponent/RecordComponent/RecordComponent.module.css';
 
@@ -20,10 +20,12 @@ export default function ProjectComponent({
   isProjectsActive,
   transitionEnd,
 }: ProjectComponentProps) {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [isVisible, setIsVisible] = useState(false);
-  const { projectArray } = useContents();
+  const { projectArray, servicesOffered } = useContents();
   const router = useRouter();
   const [activeProject, setActiveProject] = useState('');
+  const [filter, setFilter] = useState('all');
 
   const sortedArray = projectArray.sort((a, b) => {
     const numA = a.data.project_number ?? 0;
@@ -31,7 +33,10 @@ export default function ProjectComponent({
     return numB - numA;
   });
 
-  console.log(isVisible);
+  useLayoutEffect(() => {
+    if (filter === 'all') {
+    }
+  }, [filter]);
 
   useEffect(() => {
     setIsVisible(isProjectsActive && transitionEnd);
@@ -45,6 +50,21 @@ export default function ProjectComponent({
     <div className={styles.container}>
       <section className={styles.leftContainer}>
         <div className={styles.listContainer}>
+          <div className={styles.disciplinesContainer}>
+            {servicesOffered.data.services_offered.map((service) => (
+              <div
+                key={service.service}
+                onClick={() => {
+                  setFilter(
+                    filter === service.service ? 'all' : (service.service ?? '')
+                  );
+                }}
+                className={`${styles.discipline} ${filter === service.service ? styles.filterActive : ''}`}
+              >
+                <p>{service.service}</p>
+              </div>
+            ))}
+          </div>
           <div className={styles.scrollContainer}>
             {sortedArray.map((project, index) => (
               <div

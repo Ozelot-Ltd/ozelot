@@ -39,6 +39,7 @@ export default async function RootLayout({
       graphicDesignIcon,
       aIIcon,
       socialBar,
+      servicesOffered,
     ] = await Promise.all([
       client.getSingle('studio'),
       client.getSingle('contact'),
@@ -53,6 +54,7 @@ export default async function RootLayout({
       client.getSingle('graphic_icon'),
       client.getSingle('ai_icon'),
       client.getSingle('social_bar'),
+      client.getSingle('services_offered'),
     ]);
 
     // Check if all data has been successfully fetched
@@ -70,7 +72,8 @@ export default async function RootLayout({
       !soundDesignIcon ||
       !graphicDesignIcon ||
       !aIIcon ||
-      !socialBar
+      !socialBar ||
+      !servicesOffered
     ) {
       throw new Error('Failed to load required data');
     }
@@ -89,6 +92,7 @@ export default async function RootLayout({
       graphicDesignIcon,
       aIIcon,
       socialBar,
+      servicesOffered,
     };
 
     const leftField = settings.data.navigation_items_left;
