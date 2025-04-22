@@ -3,7 +3,7 @@ import { Lightformer } from '@react-three/drei';
 export function SceneLighting() {
   return (
     <>
-      <ambientLight intensity={0.4} />
+      <ambientLight intensity={0.6} />
       <spotLight
         position={[10, 0, 10]}
         angle={0.15}

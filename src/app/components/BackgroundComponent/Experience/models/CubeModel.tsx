@@ -12,13 +12,7 @@ interface CubeModelProps {
   [key: string]: unknown;
 }
 
-// test
-
-export function CubeModel({
-  children,
-  color = 'white',
-  ...props
-}: CubeModelProps) {
+export function CubeModel({ color = 'white', ...props }: CubeModelProps) {
   const ref = useRef<Mesh & { material: MeshStandardMaterial }>(null);
   const initialY = props.position?.[1] || 0;
 
@@ -36,11 +30,5 @@ export function CubeModel({
     ref.current.rotation.z = Math.cos(state.clock.elapsedTime * 0.5) * 0.05;
   });
 
-  return (
-    <mesh ref={ref} castShadow receiveShadow scale={1} {...props}>
-      <boxGeometry args={[0.8, 0.8, 0.8]} />
-
-      {children}
-    </mesh>
-  );
+  return <mesh ref={ref} castShadow receiveShadow scale={1} {...props}></mesh>;
 }

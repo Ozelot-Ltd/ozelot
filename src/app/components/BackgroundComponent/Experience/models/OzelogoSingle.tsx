@@ -1,7 +1,9 @@
 import * as THREE from 'three';
-import React, { useMemo } from 'react';
+import React, { useMemo, useRef } from 'react';
+import { useFrame } from '@react-three/fiber';
 import { useGLTF } from '@react-three/drei';
 import { GLTF } from 'three-stdlib';
+import { useThree } from '@react-three/fiber';
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -15,31 +17,37 @@ type GLTFResult = GLTF & {
 };
 
 /**
- * Optimized Ozelogo component that maintains the parent-child relationship
- * between the Glass and Logo meshes while sharing geometry across instances
+ * Optimized Ozelogo component with enhanced white metallic appearance
  */
-export function OzelogoSingle(props: { scale?: number }) {
-  const { scale = 0.8 } = props;
+export function OzelogoSingle(props: {
+  scale?: number;
+  rotation?: [number, number, number];
+}) {
+  const { scale = 0.8, rotation = [0, 0, 0] } = props;
   const { nodes } = useGLTF('/models/Ozelogo.glb') as GLTFResult;
+  const { scene } = useThree();
+  const groupRef = useRef<THREE.Group>(null);
 
-  // const transmissionConfig = useControls(
-  //   'Glass',
-  //   {
-  //     transmission: { value: 1, min: 0, max: 1 },
-  //     thickness: { value: 0.66, min: 0, max: 2 },
-  //     roughness: { value: 0.1, min: 0, max: 1 },
-  //     ior: { value: 1.5, min: 1, max: 2.3 },
-  //     samples: { value: 3, min: 1, max: 32, step: 1 },
-  //     resolution: { value: 1024, min: 64, max: 2048, step: 64 },
-  //     chromaticAberration: { value: 0.03, min: 0, max: 1 },
-  //     anisotropicBlur: { value: 1, min: 0, max: 1 },
-  //     distortion: { value: 0, min: 0, max: 1 },
-  //     distortionScale: { value: 0, min: 0, max: 1 },
-  //     temporalDistortion: { value: 0.0, min: 0, max: 1 },
-  //     clearcoat: { value: 0.369, min: 0, max: 1 },
-  //   },
-  //   { collapsed: false }
-  // );
+  // Create an environment map if not already in the scene
+  useMemo(() => {
+    if (!scene.environment) {
+      const pmremGenerator = new THREE.PMREMGenerator(
+        new THREE.WebGLRenderer({ antialias: true })
+      );
+      pmremGenerator.compileEquirectangularShader();
+
+      // Create a simple environment with bright areas
+      const envMap = pmremGenerator.fromScene(new THREE.Scene()).texture;
+      scene.environment = envMap;
+    }
+  }, [scene]);
+
+  // Optional: Subtle rotation for better light reflection
+  useFrame((state) => {
+    if (groupRef.current) {
+      groupRef.current.rotation.y = state.clock.elapsedTime * 0.05;
+    }
+  });
 
   // Memoize geometries to avoid unnecessary re-creation
   const memoizedGeometries = useMemo(
@@ -51,41 +59,44 @@ export function OzelogoSingle(props: { scale?: number }) {
   );
 
   return (
-    <group scale={scale}>
-      {/* Glass mesh */}
+    <group
+      ref={groupRef}
+      scale={scale}
+      rotation={rotation as [x: number, y: number, z: number]}
+    >
+      {/* Main glass/metal part */}
       <mesh
         geometry={memoizedGeometries.glassGeometry}
         castShadow
         receiveShadow
       >
         <meshPhysicalMaterial
-          color="white"
-          metalness={0.1}
-          roughness={1}
-          envMapIntensity={1}
-          clearcoat={1}
+          color="#ffffff"
+          metalness={0.9}
+          roughness={0.15}
+          envMapIntensity={1.5}
+          clearcoat={0.8}
           clearcoatRoughness={0.1}
+          reflectivity={1}
+          emissive="#303030"
+          emissiveIntensity={0.1}
         />
+      </mesh>
 
-        {/* Logo mesh - nested inside the glass as in the original model */}
-        {/* <mesh
-          geometry={memoizedGeometries.logoGeometry}
-          castShadow
-          receiveShadow
-        >
-          <meshPhysicalMaterial
-            color="#ffffff"
-            metalness={1}
-            roughness={0.8}
-            envMapIntensity={1}
-            clearcoat={1}
-            clearcoatRoughness={0.1}
-          />
-        </mesh> */}
+      {/* Logo part - uncomment and adjust if needed */}
+      <mesh geometry={memoizedGeometries.logoGeometry} castShadow receiveShadow>
+        <meshPhysicalMaterial
+          color="#ffffff"
+          metalness={1}
+          roughness={0.2}
+          envMapIntensity={1.2}
+          clearcoat={0.5}
+          clearcoatRoughness={0.1}
+          emissive="#404040"
+          emissiveIntensity={0.15}
+        />
       </mesh>
     </group>
   );
 }
-
-// Preload the model
 useGLTF.preload('/models/Ozelogo.glb');
