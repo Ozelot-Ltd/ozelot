@@ -42,7 +42,8 @@
     overflow-y: hidden;
     max-height: 100%;
     height: calc(var(--container-height) * 6);
-    padding-bottom: calc(var(--container-height) - 5px);
+    padding-bottom: calc(var(--container-height)- 20px);
+
 }
 
 .descriptionContainer {
@@ -56,7 +57,7 @@
     max-height: 100%;
     overflow: scroll;
     overflow-x: hidden;
-
+    padding-top: calc(0.5rem + 0.5vw);
 }
 
 .listComponent {
@@ -175,7 +176,7 @@
     display: flex;
     width: 100%;
     justify-content: space-between;
-    padding-bottom: calc(0.5rem + 0.5vw);
+
 }
 
 .discipline {
@@ -193,7 +194,7 @@
 
 
 .filterActive {
-    filter: brightness(100%);
+    filter: brightness(50%);
 }
 
 
