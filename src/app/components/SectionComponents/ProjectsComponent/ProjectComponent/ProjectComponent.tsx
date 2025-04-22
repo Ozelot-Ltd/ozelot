@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useLayoutEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import styles from '../../RecordsComponent/RecordComponent/RecordComponent.module.css';
 
@@ -32,11 +32,6 @@ export default function ProjectComponent({
     const numB = b.data.project_number ?? 0;
     return numB - numA;
   });
-
-  useLayoutEffect(() => {
-    if (filter === 'all') {
-    }
-  }, [filter]);
 
   useEffect(() => {
     setIsVisible(isProjectsActive && transitionEnd);
