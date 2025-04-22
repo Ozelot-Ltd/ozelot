@@ -57,7 +57,6 @@ export default async function RootLayout({
       client.getSingle('services_offered'),
     ]);
 
-    // Check if all data has been successfully fetched
     if (
       !settings ||
       !studio ||
