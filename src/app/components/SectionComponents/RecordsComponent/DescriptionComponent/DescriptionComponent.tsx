@@ -13,6 +13,8 @@ import { PrismicNextLink } from '@prismicio/next';
 import { PrismicRichText } from '@prismicio/react';
 
 import IconSwitchComponent from '@/app/components/SvgComponents/IconSwitchComponent/IconSwitchComponent';
+import Link from 'next/link';
+import Arrow from '@/app/components/SvgComponents/Arrow/Arrow';
 
 export default function DescriptionComponent({
   currentProject,
@@ -23,6 +25,25 @@ export default function DescriptionComponent({
   currentProject?: Simplify<ProjectDocumentData> | undefined;
   styles: { readonly [key: string]: string };
 }) {
+  function isMainDiscipline() {
+    switch (currentProject?.is_main_discipline) {
+      case '3d':
+        return '3D & 3D Motion Design';
+      case 'direction':
+        return 'Art Direction';
+      case 'web':
+        return 'Web Development';
+      case 'graphic':
+        return 'Graphics';
+      case 'ai':
+        return 'AI & AI Prototyping';
+      case 'sounddesign':
+        return 'Sound Design';
+      default:
+        return 'working with us';
+    }
+  }
+
   return (
     <>
       {currentRecord && (
@@ -89,7 +110,7 @@ export default function DescriptionComponent({
             <div className={styles.pills}>
               {currentProject.is_3d && (
                 <div className={styles.subtitle}>
-                  <p>3D</p>
+                  <p>3D & 3D Motion Design</p>
                 </div>
               )}
               {currentProject.is_art_direction && (
@@ -122,8 +143,11 @@ export default function DescriptionComponent({
             <div className={styles.text}>
               <PrismicRichText field={currentProject.description} />
             </div>
-            <div className={styles.socials}>
-              If you interested about contact us
+            <div className={styles.contactPhrase}>
+              <p>If you interested about {isMainDiscipline()} </p>{' '}
+              <Link href="/contact">
+                contact us <Arrow height="12" />
+              </Link>
             </div>
           </div>
         </div>

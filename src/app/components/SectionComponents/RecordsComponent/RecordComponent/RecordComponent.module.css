@@ -125,18 +125,42 @@
     border: var(--border);
     padding: 0.25rem 0.5rem;
     border-radius: 50px;
+
 }
 
 .subtitle p {
-    font-size: calc(0.2rem + 0.3vw);
+    font-size: calc(0.2rem + 0.25vw);
+    color: var(--black)
 }
 
 .socials {
     display: flex;
     gap: 1rem;
-    padding-top: 1rem;
     align-items: center;
 }
+
+.contactPhrase {
+    padding-top: 1rem;
+    display: inline-block;
+}
+
+.contactPhrase {
+    display: flex;
+    gap: calc(0.2rem + 0.25vw);
+}
+
+.contactPhrase a {
+    font-variation-settings: var(--title-weight);
+    display: flex;
+    gap: calc(0.2vw + 0.2rem);
+}
+
+.contactPhrase a svg {
+
+    transform: rotate(-45deg)
+}
+
+
 
 .socials * {
     animation: none;

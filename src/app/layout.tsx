@@ -107,7 +107,7 @@ export default async function RootLayout({
     return (
       <html lang="en">
         <body className={host.className}>
-          <BackgroundComponent />
+          {/* <BackgroundComponent /> */}
           <Providers contentProps={contentProps}>
             <MainComponent {...settingsProps} />
             {children}
