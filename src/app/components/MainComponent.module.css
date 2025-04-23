@@ -10,6 +10,8 @@
     display: flex;
     width: fit-content;
 
+
+
 }
 
 .right {
@@ -21,12 +23,17 @@
 .column {
     height: 100vh;
     width: 5rem;
-    backdrop-filter: var(--blur);
-    background-color: var(--grey-lowopacity);
+    background-size: cover;
     display: flex;
     align-items: flex-start;
     transition: all var(--time) var(--bezier);
     overflow: hidden;
+    background-image: url("../../../public/images/backgroundimage.png");
+    background-position: center;
+    background-size: 100% 1000%;
+    background-repeat: no-repeat;
+
+
 }
 
 .right .column {
@@ -187,8 +194,8 @@
 
 .bar.fullHeight {
     height: 100vh;
-    backdrop-filter: var(--blur);
-    background-color: var(--grey-lowopacity);
+    background-image: url("../../../public/images/backgroundimage.png");
+
 }
 
 
@@ -286,8 +293,7 @@
     .column {
         height: 100vh;
         width: fit-content;
-        backdrop-filter: var(--blur);
-        background-color: var(--grey-lowopacity);
+        background-image: url("../../../public/images/backgroundimage.png");
         display: flex;
         align-items: flex-start;
         VISIBILITY: HIDDEN;

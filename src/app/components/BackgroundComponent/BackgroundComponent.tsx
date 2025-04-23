@@ -4,7 +4,7 @@ import dynamic from 'next/dynamic';
 import { Suspense } from 'react';
 import { Experience } from './Experience/Experience';
 
-import { Perf } from 'r3f-perf'; // Dynamically import the Canvas component with no SSR
+import { Perf } from 'r3f-perf';
 const Canvas = dynamic(
   () => import('@react-three/fiber').then((mod) => mod.Canvas),
   {

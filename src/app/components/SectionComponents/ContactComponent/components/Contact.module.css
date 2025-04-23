@@ -50,7 +50,7 @@
     font-variation-settings: "wght" 380;
     width: 100%;
     max-width: 10rem;
-    animation: spinning 15s linear infinite reverse;
+    /* animation: spinning 15s linear infinite reverse; */
 }
 
 @keyframes spinning {

@@ -13,7 +13,7 @@
     --border-active: 1px solid var(--black-active);
     --radius-large: 40px;
     --grey-lowopacity: rgba(247, 247, 247, 0.2);
-    --blur: blur(20px);
+    --blur: blur(6px);
     --bezier: cubic-bezier(0.39, 0.575, 0.565, 1);
     --time: 0.5s;
     --time-fast: 0.2s;
