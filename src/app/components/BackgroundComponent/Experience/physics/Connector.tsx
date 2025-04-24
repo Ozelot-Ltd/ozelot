@@ -71,7 +71,7 @@ export function Connector({
       ref={api}
       colliders={false}
     >
-      <CuboidCollider args={[0.38, 1.27, 0.38]} />
+      <CuboidCollider args={[0.0, 0.27, 0.38]} />
       <CuboidCollider args={[1.27, 0.38, 0.38]} />
       <CuboidCollider args={[0.38, 0.38, 1.27]} />
       {children ? children : <CubeModel {...props} />}

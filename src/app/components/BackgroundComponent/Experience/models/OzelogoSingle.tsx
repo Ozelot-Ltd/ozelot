@@ -65,14 +65,14 @@ export function OzelogoSingle(props: {
       rotation={rotation as [x: number, y: number, z: number]}
     >
       {/* Main glass/metal part */}
-      <mesh
+      {/* <mesh
         geometry={memoizedGeometries.glassGeometry}
         castShadow
         receiveShadow
       >
         <meshPhysicalMaterial
           color="#ffffff"
-          metalness={0.9}
+          metalness={0.1}
           roughness={0.15}
           envMapIntensity={1.5}
           clearcoat={0.8}
@@ -80,8 +80,9 @@ export function OzelogoSingle(props: {
           reflectivity={1}
           emissive="#303030"
           emissiveIntensity={0.1}
+          transmission={1}
         />
-      </mesh>
+      </mesh> */}
 
       {/* Logo part - uncomment and adjust if needed */}
       <mesh geometry={memoizedGeometries.logoGeometry} castShadow receiveShadow>

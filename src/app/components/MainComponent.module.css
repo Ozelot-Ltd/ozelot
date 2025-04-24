@@ -9,9 +9,6 @@
 .nav {
     display: flex;
     width: fit-content;
-
-
-
 }
 
 .right {
@@ -22,17 +19,13 @@
 
 .column {
     height: 100vh;
+    position: relative;
     width: 5rem;
     background-size: cover;
     display: flex;
     align-items: flex-start;
     transition: all var(--time) var(--bezier);
     overflow: hidden;
-    background-image: url("../../../public/images/backgroundimage.png");
-    background-position: center;
-    background-size: 100% 1000%;
-    background-repeat: no-repeat;
-
 
 }
 

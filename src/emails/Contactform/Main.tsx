@@ -1,12 +1,26 @@
-import { Html, Head, Container, Font, Heading } from '@react-email/components';
+import {
+  Html,
+  Head,
+  Container,
+  Font,
+  Heading,
+  Text,
+  Img,
+  Link,
+} from '@react-email/components';
 import * as React from 'react';
 
 import { FormData } from '@/app/components/SectionComponents/ContactComponent/components/ContactForm';
 
+const Spacer = () => <Container style={{ height: '24px' }}></Container>;
+
 export default function ContactFormMain(formData: FormData) {
   const { name, newsletter } = formData;
+
+  console.log(newsletter);
+
   return (
-    <Html>
+    <Html style={html}>
       <Head>
         <Font
           fontFamily="Host Grotesk"
@@ -21,28 +35,88 @@ export default function ContactFormMain(formData: FormData) {
       </Head>
       <Container style={body}>
         <Container>
-          <Heading style={mainHeading}>THANKS {name} FOR YOUR INTEREST</Heading>
+          <Heading style={mainHeading}>THANKS</Heading>
+          <Heading style={mainHeading}>FOR</Heading>
+          <Heading style={mainHeading}>REACHING</Heading>
+          <Heading style={mainHeading}>OUT!</Heading>
         </Container>
-        {newsletter === 'yes' ? (
-          <Container>
-            And thanks for subscribing to our newsletter! We will keep you
-            updated with the latest news and offers.
-          </Container>
-        ) : null}
+        <Spacer />
+        <Container>
+          <Text style={text}>
+            Hi {name ? name : 'there'},<br />
+            <br />
+            We’ve received your request and will get back to you shortly. In the
+            meantime, feel free to check out our socials and give us a follow to
+            stay up to date and see what we’re up to:
+          </Text>
+        </Container>{' '}
+        <Spacer />
+        <Container>
+          <Link href="https://www.instagram.com/ozelotltd/?hl=de">
+            <Img
+              src="https://ozelot.cdn.prismic.io/ozelot/Z_OTnXdAxsiBwYeU_insta.svg"
+              alt="Instagram"
+              width="24"
+              height="24"
+            />
+          </Link>{' '}
+          <Link href="https://www.instagram.com/ozelotltd/?hl=de">
+            <Img
+              src="https://ozelot.cdn.prismic.io/ozelot/Z_OTnXdAxsiBwYeU_insta.svg"
+              alt="Instagram"
+              width="24"
+              height="24"
+            />
+          </Link>
+          <Link href="https://www.instagram.com/ozelotltd/?hl=de">
+            <Img
+              src="https://ozelot.cdn.prismic.io/ozelot/Z_OTnXdAxsiBwYeU_insta.svg"
+              alt="Instagram"
+              width="24"
+              height="24"
+            />
+          </Link>
+        </Container>
+        <Spacer />
       </Container>
     </Html>
   );
 }
 
-const mainHeading = {
+const html = {
+  height: '100%',
+  width: '100%',
+  padding: '0px',
+  margin: '0px',
+  background: `url(
+    'https://images.prismic.io/ozelot/aAoCQ_IqRLdaBkLI_mailbg.png?auto=format,compress'
+  )`,
+  backgroundSize: 'cover',
+  backgroundRepeat: 'no-repeat',
+  backgroundPosition: 'center',
   fontFamily: 'Host Grotesk, Arial, Helvetica, sans-serif',
-  fontWeight: 400,
 };
 
 const body = {
-  backgroundColor: 'rgba(247, 247, 247, 0.2)',
-  padding: '0px',
-  margin: '0px',
-  fontFamily: 'Host Grotesk, Arial, Helvetica, sans-serif',
+  padding: '12px',
+  margin: 'auto',
   color: '#545454',
+  maxWidth: '600px',
+};
+
+const mainHeading = {
+  fontWeight: 600,
+  margin: '0px',
+  padding: '0px',
+  fontSize: '60px',
+  lineHeight: '60px',
+};
+
+const text = {
+  fontWeight: 400,
+  margin: '0px',
+  padding: '0px',
+  paddingTop: '12px',
+  fontSize: '16px',
+  lineHeight: '20px',
 };

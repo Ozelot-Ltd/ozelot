@@ -58,7 +58,7 @@ export const Experience = () => {
       {/* Reduce effect quality for performance */}
       <EffectComposer enableNormalPass={false} multisampling={4}>
         <N8AO distanceFalloff={1} aoRadius={1} intensity={2} />
-        <Noise opacity={0.05} />
+        <Noise opacity={0.1} />
       </EffectComposer>
 
       {/* Lower resolution for performance */}
