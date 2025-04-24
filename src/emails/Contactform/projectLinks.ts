@@ -5,28 +5,23 @@ export const projectLinks = [
     number: '01',
   },
   {
-    name: 'X - ADRIATIQUE',
+    name: 'ERLEBNIS.XYZ',
     href: 'https://ozelot.ltd/projects/adriatique-x',
-    number: '01',
+    number: '02',
   },
   {
-    name: 'X - ADRIATIQUE',
+    name: 'MELT! FESTIVAL',
     href: 'https://ozelot.ltd/projects/adriatique-x',
-    number: '01',
+    number: '03',
   },
   {
-    name: 'X - ADRIATIQUE',
+    name: 'SKYLINE FESTIVAL',
     href: 'https://ozelot.ltd/projects/adriatique-x',
-    number: '01',
+    number: '04',
   },
   {
-    name: 'X - ADRIATIQUE',
+    name: 'TERRAZZZA',
     href: 'https://ozelot.ltd/projects/adriatique-x',
-    number: '01',
-  },
-  {
-    name: 'X - ADRIATIQUE',
-    href: 'https://ozelot.ltd/projects/adriatique-x',
-    number: '01',
+    number: '05',
   },
 ];

@@ -133,30 +133,33 @@ export default function ContactFormMain(formData: FormData) {
           <Spacer />
           <Spacer />
           <Container>
-            <Container
-              style={{
-                width: 'fit-content',
-              }}
-            >
-              <Link href="https://ozelot.ltd/" style={projectLink}>
-                <Row>
-                  <Column>
-                    <Text style={index}>01</Text>
-                  </Column>
-                  <Column>
-                    <Text style={projectName}>X - ADRIATIQUE</Text>
-                  </Column>
-                  <Column>
-                    <Img
-                      src="https://images.prismic.io/ozelot/aApD__IqRLdaBlF8_arrow.png?auto=format,compress"
-                      alt="Bandcamp"
-                      width="24"
-                      height="24"
-                    />
-                  </Column>
-                </Row>
-              </Link>
-            </Container>
+            {projectLinks.map((project, index) => (
+              <Container
+                style={{
+                  width: 'fit-content',
+                }}
+                key={index}
+              >
+                <Link href={project.href} style={projectLink}>
+                  <Row>
+                    <Column>
+                      <Text style={indexStyle}>{project.number}</Text>
+                    </Column>
+                    <Column>
+                      <Text style={projectName}>{project.name}</Text>
+                    </Column>
+                    <Column>
+                      <Img
+                        src="https://images.prismic.io/ozelot/aApD__IqRLdaBlF8_arrow.png?auto=format,compress"
+                        alt="Arrow"
+                        width="24"
+                        height="24"
+                      />
+                    </Column>
+                  </Row>
+                </Link>
+              </Container>
+            ))}
           </Container>
         </Container>
       </Container>
@@ -214,12 +217,7 @@ const text = {
   paddingTop: '12px',
   fontSize: '16px',
   lineHeight: '20px',
-};
-
-const index = {
-  fontSize: '8px',
-  color: '#545454',
-  border: '1px solid #545454',
+  width: '90%',
 };
 
 const projectName = {
@@ -230,11 +228,15 @@ const projectName = {
 };
 
 const projectLink = {
-  borderBottom: '1px solid black',
   padding: '0',
   lineHeight: '0px',
   backgroundColor: '#fff',
   textDecoration: 'none',
   display: 'block',
-  textAlign: 'center',
+  borderBottom: '1px solid #545454',
+};
+
+const indexStyle = {
+  fontSize: '8px',
+  color: '#545454',
 };
