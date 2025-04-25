@@ -2,16 +2,16 @@ export const mailSocials = [
   {
     alt: 'Instagram',
     href: 'https://www.instagram.com/andrewharvey/',
-    url: 'https://ozelot.cdn.prismic.io/ozelot/Z_OTnXdAxsiBwYeU_insta.svg',
+    url: 'https://images.prismic.io/ozelot/aAuGAPIqRLdaBncv_insta.png?auto=format,compress',
   },
   {
     alt: 'Bandcamp',
     href: 'https://ozelot-ltd.bandcamp.com/',
-    url: 'https://ozelot.cdn.prismic.io/ozelot/Z7xc057c43Q3gH1N_bandcamp.svg',
+    url: 'https://images.prismic.io/ozelot/aAuGuPIqRLdaBnda_bandcamp.png?auto=format,compress',
   },
   {
     alt: 'Website Icon',
     href: 'https://ozelot.ltd/',
-    url: 'https://ozelot.cdn.prismic.io/ozelot/Z7Mq0Z7c43Q3f20f_earth.svg',
+    url: 'https://images.prismic.io/ozelot/aAuEqvIqRLdaBnbf_earth.png?auto=format,compress',
   },
 ];
