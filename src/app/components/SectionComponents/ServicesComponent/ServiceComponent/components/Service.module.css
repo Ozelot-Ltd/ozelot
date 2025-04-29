@@ -6,6 +6,7 @@
     will-change: height;
     transition-delay: 0.2s;
     max-width: 100%;
+    width: 100%;
 }
 
 

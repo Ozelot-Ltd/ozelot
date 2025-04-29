@@ -38,6 +38,12 @@
     transition: opacity 0.3s ease;
 }
 
+.sliderImageRecord {
+    width: 80%;
+    height: 80%;
+    object-fit: contain;
+}
+
 .imageWrapper img {
     max-height: 60vh;
 }

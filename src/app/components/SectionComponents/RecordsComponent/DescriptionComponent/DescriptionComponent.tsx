@@ -68,8 +68,19 @@ export default function DescriptionComponent({
                 <p>MERCHANDISE AVAILABLE</p>
               </div>
             )}
-            <div className={styles.text}>
-              <p>{currentRecord.record_text}</p>
+            <div className={styles.releasetext}>
+              <div className={styles.artist}>
+                <h4>Artist:</h4>
+                <p>{currentRecord.record_text}</p>
+              </div>
+              <div className={styles.releasename}>
+                <h4>Title:</h4>
+                <p>{currentRecord.record_title}</p>
+              </div>
+              <div className={styles.releaseyear}>
+                <h4>Year:</h4>
+                <p>{currentRecord.record_year}</p>
+              </div>
             </div>
             <div className={styles.socials}>
               <PrismicNextLink field={currentRecord.bandcamp_link}>

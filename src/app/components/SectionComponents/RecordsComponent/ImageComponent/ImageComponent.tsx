@@ -58,19 +58,21 @@ export default function ImageComponent({
   return (
     <div className={styles.imageContainer}>
       <div className={styles.sliderContainer}>
-        <button
-          onClick={prevImage}
-          className={`${styles.navButton} ${styles.prevButton}`}
-          aria-label="Previous image"
-        >
-          <Arrow />
-        </button>
+        {currentRecord && currentRecord?.record_images?.length > 1 && (
+          <button
+            onClick={prevImage}
+            className={`${styles.navButton} ${styles.prevButton}`}
+            aria-label="Previous image"
+          >
+            <Arrow />
+          </button>
+        )}
 
         <div className={styles.imageWrapper}>
           {currentRecord ? (
             <PrismicNextImage
               field={currentRecord.record_images[currentIndex].record_image}
-              className={styles.sliderImage}
+              className={styles.sliderImageRecord}
             />
           ) : currentProject ? (
             <PrismicNextImage
@@ -78,17 +80,19 @@ export default function ImageComponent({
               className={styles.sliderImage}
             />
           ) : (
-            'jlafdljködjlköajlfköafsljdk'
+            <h3>No Image Available</h3>
           )}
         </div>
 
-        <button
-          onClick={nextImage}
-          className={`${styles.navButton} ${styles.nextButton}`}
-          aria-label="Next image"
-        >
-          <Arrow />
-        </button>
+        {currentRecord && currentRecord?.record_images?.length > 1 && (
+          <button
+            onClick={nextImage}
+            className={`${styles.navButton} ${styles.nextButton}`}
+            aria-label="Next image"
+          >
+            <Arrow />
+          </button>
+        )}
       </div>
     </div>
   );

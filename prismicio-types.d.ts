@@ -748,7 +748,7 @@ interface RecordDocumentData {
   >;
 
   /**
-   * Record Text field in *Record*
+   * Record Artist field in *Record*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
@@ -757,6 +757,28 @@ interface RecordDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   record_text: prismic.KeyTextField;
+
+  /**
+   * Record Title field in *Record*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: record.record_title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  record_title: prismic.KeyTextField;
+
+  /**
+   * Record Year field in *Record*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: record.record_year
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  record_year: prismic.KeyTextField;
 
   /**
    * Has Merch field in *Record*

@@ -38,6 +38,7 @@
     width: calc(100vw - 15rem);
     transition: all var(--time) var(--bezier);
     z-index: 10;
+    background-color: var(--grey-lowopacity);
 }
 
 .left {
@@ -187,7 +188,8 @@
 
 .bar.fullHeight {
     height: 100vh;
-    background-image: url("../../../public/images/backgroundimage.png");
+    background-color: var(--grey-lowopacity);
+
 
 }
 

@@ -57,7 +57,21 @@
       "record_text": {
         "type": "Text",
         "config": {
-          "label": "Record Text",
+          "label": "Record Artist",
+          "placeholder": ""
+        }
+      },
+      "record_title": {
+        "type": "Text",
+        "config": {
+          "label": "Record Title",
+          "placeholder": ""
+        }
+      },
+      "record_year": {
+        "type": "Text",
+        "config": {
+          "label": "Record Year",
           "placeholder": ""
         }
       },
