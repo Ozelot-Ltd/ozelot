@@ -17,6 +17,7 @@
     --bezier: cubic-bezier(0.39, 0.575, 0.565, 1);
     --time: 0.5s;
     --time-fast: 0.2s;
+    --mobile-breakpoint: 30rem;
 
 }
 
@@ -133,10 +134,15 @@ label {
 /******** !!!!!!!! MOBILE STYLES !!!!!!!!! ********/
 
 
-/* Mobile */
-@media (max-width: 768px) {
-    :root {
-        font-size: 14px;
-    }
 
-}
+
+/* Mobile */
+@media (max-width: 30rem) {}
+
+
+/* Tablet */
+@media (min-width: 48rem) {}
+
+
+/* Desktop XL */
+@media (min-width: 90rem) {}

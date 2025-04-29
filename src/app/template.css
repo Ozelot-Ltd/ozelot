@@ -1,17 +1,29 @@
 /* Desktop */
-@media (min-width: 1024px) {}
+@media (min-width: 64rem) {}
+
+/* 1024px ÷ 16 = 64rem */
 
 /* Desktop Large */
-@media (min-width: 1200px) {}
+@media (min-width: 75rem) {}
+
+/* 1200px ÷ 16 = 75rem */
 
 /* Desktop XL */
-@media (min-width: 1440px) {}
+@media (min-width: 90rem) {}
+
+/* 1440px ÷ 16 = 90rem */
 
 /* Mobile XS */
-@media (min-width: 320px) {}
+@media (min-width: 20rem) {}
+
+/* 320px ÷ 16 = 20rem */
 
 /* Mobile */
-@media (min-width: 480px) {}
+@media (min-width: 30rem) {}
+
+/* 480px ÷ 16 = 30rem */
 
 /* Tablet */
-@media (min-width: 768px) {}
+@media (min-width: 48rem) {}
+
+/* 768px ÷ 16 = 48rem */
