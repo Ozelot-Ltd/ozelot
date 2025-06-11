@@ -5,16 +5,21 @@ import React, { useEffect, useRef } from 'react';
 import styles from './Record.module.css';
 
 import { PrismicRichText } from '@prismicio/react';
+
+import { RecordDocument } from '../../../../../../../prismicio-types';
+
+import FadeIn from '@/app/components/FadeIn/FadeIn';
 import Vinyl from '@/app/components/SvgComponents/Vinyl/Vinyl';
 import Arrow from '@/app/components/SvgComponents/Arrow/Arrow';
-import { RecordDocument } from '../../../../../../../prismicio-types';
 
 export default function Record({
   record,
   activeRecord,
+  index,
 }: {
   record: RecordDocument;
   activeRecord: string;
+  index?: number;
 }) {
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -28,24 +33,26 @@ export default function Record({
     }
   }, []);
   return (
-    <div
-      ref={containerRef}
-      className={`${styles.releaseComponent} ${activeRecord === record.id ? styles.active : ''}`}
-    >
-      <div className={styles.catalogContainer}>
-        <p>
-          {record.data.release_number && record.data.release_number < 10
-            ? `0${record.data.release_number}`
-            : record.data.release_number}
-        </p>
-        <PrismicRichText field={record.data.catalog} />
+    <FadeIn stylesProps={styles} delay={index}>
+      <div
+        ref={containerRef}
+        className={`${styles.releaseComponent} ${activeRecord === record.id ? styles.active : ''}`}
+      >
+        <div className={styles.catalogContainer}>
+          <p>
+            {record.data.release_number && record.data.release_number < 10
+              ? `0${record.data.release_number}`
+              : record.data.release_number}
+          </p>
+          <PrismicRichText field={record.data.catalog} />
+        </div>
+        <div className={styles.vinylContainer}>
+          <Vinyl height="21" width="21" fill="#494C4F" />
+        </div>
+        <div className={styles.arrowContainer}>
+          <Arrow height="20" width="20" fill="#494C4F" />
+        </div>{' '}
       </div>
-      <div className={styles.vinylContainer}>
-        <Vinyl height="21" width="21" fill="#494C4F" />
-      </div>
-      <div className={styles.arrowContainer}>
-        <Arrow height="20" width="20" fill="#494C4F" />
-      </div>
-    </div>
+    </FadeIn>
   );
 }

@@ -49,7 +49,11 @@ export default function RecordComponent({
                   router.replace(`/records/${record.uid}`, undefined);
                 }}
               >
-                <Record record={record} activeRecord={activeRecord} />
+                <Record
+                  record={record}
+                  activeRecord={activeRecord}
+                  index={index}
+                />
               </div>
             ))}
           </div>

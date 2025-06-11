@@ -70,7 +70,11 @@ export default function ProjectComponent({
                   router.replace(`/projects/${project.uid}`, undefined);
                 }}
               >
-                <Project project={project} activeProject={activeProject} />
+                <Project
+                  project={project}
+                  activeProject={activeProject}
+                  index={index}
+                />
               </div>
             ))}
           </div>

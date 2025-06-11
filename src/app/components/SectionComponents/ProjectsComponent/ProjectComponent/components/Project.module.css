@@ -1,3 +1,7 @@
+.fadeIn {
+    width: 100%;
+}
+
 .projectComponent {
     display: grid;
     grid-template-columns: 2fr 0.75fr 2fr;

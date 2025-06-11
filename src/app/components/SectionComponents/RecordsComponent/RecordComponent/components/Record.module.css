@@ -1,3 +1,9 @@
+.fadeIn {
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+}
+
 .releaseComponent {
     display: grid;
     grid-template-columns: 2fr 0.75fr 2fr;
@@ -7,8 +13,10 @@
     padding: calc(0.5rem + 0.5vw) 0;
     border-bottom: var(--border);
     flex: 1;
-    cursor: e-resize
+    cursor: e-resize;
 }
+
+
 
 .catalogContainer,
 .vinylContainer,

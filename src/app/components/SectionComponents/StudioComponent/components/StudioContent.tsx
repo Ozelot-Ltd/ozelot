@@ -8,6 +8,7 @@ import { PrismicRichText } from '@prismicio/react';
 import styles from './StudioContent.module.css';
 import { PrismicNextImage } from '@prismicio/next';
 import SocialBar from '../../ContactComponent/components/SocialBar';
+import FadeIn from '@/app/components/FadeIn/FadeIn';
 
 type Props = {
   isStudioActive: boolean;
@@ -29,12 +30,6 @@ export default function StudioContent({
         <div className={styles.upperContainer}>
           <div className={styles.leftContainer}>
             <div className={styles.titleContainer}>
-              {/* {data.description_group.map((item, index) => (
-                <div key={index}>
-                  <PrismicRichText field={item.title} />
-                </div>
-              ))} */}
-              {/* <PrismicRichText field={data.description_group[0]} /> */}{' '}
               <h2>ABOUT</h2>
               <h2>OZELOT STUDIOS</h2>
             </div>
@@ -52,10 +47,14 @@ export default function StudioContent({
           </div>
           <div className={styles.rightContainer}>
             {data.marquee_upper.map((item, index) => (
-              <PrismicNextImage key={index} field={item.image} />
+              <FadeIn key={index} multiplier={0.1} delay={index}>
+                <PrismicNextImage key={index} field={item.image} />
+              </FadeIn>
             ))}
             {data.marquee_lower.map((item, index) => (
-              <PrismicNextImage key={index} field={item.image} />
+              <FadeIn key={index} multiplier={0.15} delay={index}>
+                <PrismicNextImage key={index} field={item.image} />
+              </FadeIn>
             ))}
           </div>
         </div>
