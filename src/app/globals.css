@@ -9,7 +9,7 @@
     --black-active: #393636;
     --title-weight: "wght" 600;
     --radius-large: 20px;
-    --border: 1px solid var(--black);
+    --border: 0.5px solid var(--black);
     --border-active: 1px solid var(--black-active);
     --radius-large: 40px;
     --grey-lowopacity: rgba(247, 247, 247, 0.9);
