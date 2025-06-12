@@ -47,12 +47,12 @@ export default function StudioContent({
           </div>
           <div className={styles.rightContainer}>
             {data.marquee_upper.map((item, index) => (
-              <FadeIn key={index} multiplier={0.1} delay={index}>
+              <FadeIn key={index} multiplier={0.1} delay={index} yDown={200}>
                 <PrismicNextImage key={index} field={item.image} />
               </FadeIn>
             ))}
             {data.marquee_lower.map((item, index) => (
-              <FadeIn key={index} multiplier={0.15} delay={index}>
+              <FadeIn key={index} multiplier={0.15} delay={index} yDown={200}>
                 <PrismicNextImage key={index} field={item.image} />
               </FadeIn>
             ))}

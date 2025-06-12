@@ -5,6 +5,7 @@ import styles from './ServiceComponent.module.css';
 import { useContents } from '../../../../../../context/ContentContext';
 
 import Service from './components/Service';
+import FadeIn from '@/app/components/FadeIn/FadeIn';
 
 type Props = {
   isServicesActive: boolean;
@@ -33,13 +34,19 @@ const ServiceComponent = ({ isServicesActive, transitionEnd }: Props) => {
     <div className={styles.container}>
       <div className={styles.scrollContainer}>
         {sortedArray.map((service, index) => (
-          <div key={`${service.id}-${index}`} className={styles.listComponent}>
+          <FadeIn
+            key={`${service.id}-${index}`}
+            stylesProps={styles}
+            multiplier={0.1}
+            delay={index}
+            yDown={250}
+          >
             <Service
               service={service}
               activeService={activeService}
               setActiveService={setActiveService}
             />
-          </div>
+          </FadeIn>
         ))}
       </div>
     </div>

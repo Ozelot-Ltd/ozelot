@@ -10,6 +10,7 @@ type FadeInProps = {
   stylesProps?: { readonly [key: string]: string };
   delay?: number;
   multiplier?: number;
+  yDown?: number;
 };
 
 export default function FadeIn({
@@ -18,23 +19,27 @@ export default function FadeIn({
   stylesProps,
   delay = 0,
   multiplier = 0.1,
+  yDown = 100,
 }: FadeInProps) {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  useGSAP(() => {
-    // Target all direct children
-    gsap.fromTo(
-      containerRef.current!.children,
-      { y: 100 },
-      {
-        y: 0,
-        duration: 1.5,
-        delay: delay * multiplier,
-        ease: 'power2.out',
-        ...vars,
-      }
-    );
-  }, []);
+  useGSAP(
+    () => {
+      // Target all direct children
+      gsap.fromTo(
+        containerRef.current!.children,
+        { y: yDown },
+        {
+          y: 0,
+          duration: 0.5,
+          delay: delay * multiplier,
+          ease: 'ease.out',
+          ...vars,
+        }
+      );
+    },
+    { scope: containerRef }
+  );
   return (
     <div
       className={`${styles.fadeIn} ${stylesProps && stylesProps.fadeIn}`}

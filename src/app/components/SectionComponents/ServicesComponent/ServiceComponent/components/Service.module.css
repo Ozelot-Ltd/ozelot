@@ -1,5 +1,9 @@
+.fadeIn {
+    width: 100%;
+}
+
 .container {
-    border-bottom: 1px solid var(--black);
+    border-bottom: var(--border);
     overflow: hidden;
     height: var(--upper-height);
     transition: height calc(var(--time))var(--bezier);
