@@ -17,6 +17,8 @@ import ContactComponent from './SectionComponents/ContactComponent/ContactCompon
 import RecordsComponent from './SectionComponents/RecordsComponent/RecordsComponent';
 import ServicesComponent from './SectionComponents/ServicesComponent/ServicesComponent';
 
+import { isClickedStore } from '../stores/IsClickedStore';
+
 interface ColumnProps {
   item:
     | SettingsDocumentDataNavigationItemsLeftItem
@@ -72,7 +74,7 @@ export default function MainComponent({
   right: GroupField<Simplify<SettingsDocumentDataNavigationItemsRightItem>>;
 }) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [isClicked, setIsClicked] = useState('');
+  const { isClicked, setIsClicked } = isClickedStore();
   const [side, setSide] = useState<'left' | 'right' | 'bottom' | ''>('');
   const [transitionEnd, setTransitionEnd] = useState(false);
   const [isProjectsActive, setIsProjectsActive] = useState(false);
@@ -80,7 +82,6 @@ export default function MainComponent({
   const [isRecordsActive, setIsRecordsActive] = useState(false);
   const [isContactActive, setIsContactActive] = useState(false);
   const [isServicesActive, setIsServicesActive] = useState(false);
-  // const [isServicesOpen, setIsServicesOpen] = useState(false);
 
   useEffect(() => {
     if (isClicked === 'projects') {

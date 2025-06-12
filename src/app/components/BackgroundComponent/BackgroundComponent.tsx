@@ -4,7 +4,7 @@ import dynamic from 'next/dynamic';
 import { Suspense } from 'react';
 import { Experience } from './Experience/Experience';
 
-import { Perf } from 'r3f-perf';
+// import { Perf } from 'r3f-perf';
 const Canvas = dynamic(
   () => import('@react-three/fiber').then((mod) => mod.Canvas),
   {
@@ -35,7 +35,7 @@ export const BackgroundComponent = () => {
           gl={{ antialias: true }}
           camera={{ position: [0, 0, 15], fov: 17.5, near: 1, far: 20 }}
         >
-          <Perf style={{ right: '50%' }} />
+          {/* <Perf style={{ right: '50%' }} /> */}
           <Experience />
         </Canvas>
       </Suspense>

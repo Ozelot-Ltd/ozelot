@@ -7,7 +7,7 @@ import { createClient } from '@/prismicio';
 import './globals.css';
 import MainComponent from './components/MainComponent';
 import { Providers } from './components/Providers/Providers';
-// import { BackgroundComponent } from './components/BackgroundComponent/BackgroundComponent';
+import { BackgroundComponent } from './components/BackgroundComponent/BackgroundComponent';
 
 const host = Host_Grotesk({
   weight: 'variable',
@@ -110,7 +110,7 @@ export default async function RootLayout({
     return (
       <html lang="en">
         <body className={host.className}>
-          {/* <BackgroundComponent /> */}
+          <BackgroundComponent />
           <Providers contentProps={contentProps}>
             <MainComponent {...settingsProps} />
             {children}

@@ -1,9 +1,13 @@
+'use client ';
+
 import * as THREE from 'three';
 import { useRef, useMemo, ReactNode } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { CuboidCollider, RigidBody } from '@react-three/rapier';
 import { RapierRigidBody } from '@react-three/rapier';
 import { CubeModel } from '../models/CubeModel';
+
+import { isClickedStore } from '@/app/stores/IsClickedStore';
 
 interface ConnectorProps {
   position?: [number, number, number];
@@ -24,6 +28,8 @@ export function Connector({
   accent,
   ...props
 }: ConnectorProps) {
+  const { isClicked } = isClickedStore();
+
   const api = useRef<RapierRigidBody>(null);
   const pos = useMemo(() => position || [r(5), r(5), r(5) + 5], [position, r]);
 
@@ -71,9 +77,27 @@ export function Connector({
       ref={api}
       colliders={false}
     >
-      <CuboidCollider args={[0.0, 0.27, 0.38]} />
-      <CuboidCollider args={[1.27, 0.38, 0.38]} />
-      <CuboidCollider args={[0.38, 0.38, 1.27]} />
+      <CuboidCollider
+        args={[
+          isClicked !== '' ? 15.0 : 0.0,
+          isClicked !== '' ? 15.0 : 0.27,
+          isClicked !== '' ? 15.0 : 0.35,
+        ]}
+      />
+      <CuboidCollider
+        args={[
+          isClicked !== '' ? 15.0 : 1.27,
+          isClicked !== '' ? 15.0 : 0.38,
+          isClicked !== '' ? 15.0 : 0.38,
+        ]}
+      />
+      <CuboidCollider
+        args={[
+          isClicked !== '' ? 15.0 : 0.38,
+          isClicked !== '' ? 15.0 : 0.38,
+          isClicked !== '' ? 15.0 : 1.27,
+        ]}
+      />
       {children ? children : <CubeModel {...props} />}
       {accent && (
         <pointLight intensity={4} distance={2.5} color={props.color} />
