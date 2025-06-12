@@ -41,7 +41,6 @@ export const Experience = () => {
 
   return (
     <>
-      <color attach="background" args={['#ebebeb']} />
       <SceneLighting />
 
       <Physics gravity={[0, 0, 0]} debug={false}>

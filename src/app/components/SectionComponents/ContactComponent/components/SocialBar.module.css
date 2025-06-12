@@ -1,4 +1,5 @@
 .fadeIn {
     display: flex;
     gap: calc(1rem + 0.5vw);
+    padding-top: calc(1rem + 0.5vw);
 }

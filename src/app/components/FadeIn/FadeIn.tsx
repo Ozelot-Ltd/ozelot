@@ -14,6 +14,7 @@ type FadeInProps = {
   inlineStyle?: React.CSSProperties;
   duration?: number;
   ease?: string;
+  onClick?: () => void;
 };
 
 export default function FadeIn({
@@ -26,6 +27,7 @@ export default function FadeIn({
   inlineStyle = {},
   duration = 0.5,
   ease = 'ease.out',
+  onClick,
 }: FadeInProps) {
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -54,6 +56,7 @@ export default function FadeIn({
       className={`${styles.fadeIn} ${stylesProps && stylesProps.fadeIn}`}
       ref={containerRef}
       style={inlineStyle}
+      onClick={onClick}
     >
       {children}
     </div>

@@ -10,6 +10,7 @@ import { PrismicNextImage } from '@prismicio/next';
 import SocialBar from '../../ContactComponent/components/SocialBar';
 import FadeIn from '@/app/components/FadeIn/FadeIn';
 import LegalButton from '@/app/components/LegalButton/LegalButton';
+import LegalComponent from '@/app/components/LegalComponent/LegalComponent';
 
 type Props = {
   isStudioActive: boolean;
@@ -28,6 +29,8 @@ export default function StudioContent({
   return (
     <div className={styles.container}>
       <div className={styles.content}>
+        {' '}
+        <LegalComponent />
         <div className={styles.upperContainer}>
           <div className={styles.leftContainer}>
             <div className={styles.titleContainer}>
@@ -43,9 +46,10 @@ export default function StudioContent({
                 <PrismicRichText field={data.address_street} />
                 <PrismicRichText field={data.address_zip} />
               </div>
-            </div>{' '}
-            <LegalButton />
-            <SocialBar />
+            </div>
+            <div>
+              <SocialBar /> <LegalButton />
+            </div>
           </div>
           <div className={styles.rightContainer}>
             {data.marquee_upper.map((item, index) => (

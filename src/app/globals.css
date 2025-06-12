@@ -7,6 +7,7 @@
     --text-weight: "wght" 300;
     --black: #545454;
     --black-active: #393636;
+    --lightgrey: #ebebeb;
     --title-weight: "wght" 600;
     --radius-large: 20px;
     --border: 0.5px solid var(--black);
@@ -18,7 +19,6 @@
     --time: 0.5s;
     --time-fast: 0.2s;
     --mobile-breakpoint: 30rem;
-
 }
 
 /******** GLOBAL STYLES ********/
@@ -46,12 +46,13 @@
 }
 
 body {
-    /* background-image: url("../../public/images/3d.jpg"); */
     background-size: cover;
     background-repeat: no-repeat;
     min-height: 100svh;
     min-width: 100svw;
     overflow: hidden;
+    background-color: var(--lightgrey);
+
 }
 
 
