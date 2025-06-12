@@ -31,26 +31,30 @@
 }
 
 .textContainer *,
-.titleContainer * {
+.fadeIn * {
     text-align: center;
+}
+
+
+.fadeIn {
+    width: 100%;
 }
 
 .titleContainer {
     display: flex;
     justify-content: center;
     position: relative;
-
     width: 100%;
     align-items: center;
     min-height: 20rem;
 }
 
-.titleContainer h2 {
+.title h2 {
     font-size: calc(1.2rem + 1.5vw);
     font-variation-settings: "wght" 380;
     width: 100%;
     max-width: 10rem;
-    /* animation: spinning 15s linear infinite reverse; */
+    text-align: center;
 }
 
 @keyframes spinning {
@@ -72,11 +76,7 @@
     width: 100%;
 }
 
-.socials {
-    display: flex;
-    gap: calc(1rem + 0.5vw);
-    padding-top: calc(1rem + 0.5vw);
-}
+
 
 .rightContainer {
     padding: 2rem;

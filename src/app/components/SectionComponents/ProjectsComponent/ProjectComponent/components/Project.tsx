@@ -29,7 +29,7 @@ export default function Project({ project, activeProject, index }: Props) {
   }, []);
 
   return (
-    <FadeIn stylesProps={styles} delay={index}>
+    <FadeIn stylesProps={styles} delay={index} multiplier={0.1}>
       <div
         ref={containerRef}
         className={`${styles.projectComponent} ${activeProject === project.id ? styles.active : ''}`}

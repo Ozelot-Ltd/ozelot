@@ -40,6 +40,7 @@ export default async function RootLayout({
       aIIcon,
       socialBar,
       servicesOffered,
+      legal,
     ] = await Promise.all([
       client.getSingle('studio'),
       client.getSingle('contact'),
@@ -55,6 +56,7 @@ export default async function RootLayout({
       client.getSingle('ai_icon'),
       client.getSingle('social_bar'),
       client.getSingle('services_offered'),
+      client.getSingle('legal'),
     ]);
 
     if (
@@ -72,7 +74,8 @@ export default async function RootLayout({
       !graphicDesignIcon ||
       !aIIcon ||
       !socialBar ||
-      !servicesOffered
+      !servicesOffered ||
+      !legal
     ) {
       throw new Error('Failed to load required data');
     }
@@ -92,6 +95,7 @@ export default async function RootLayout({
       aIIcon,
       socialBar,
       servicesOffered,
+      legal,
     };
 
     const leftField = settings.data.navigation_items_left;

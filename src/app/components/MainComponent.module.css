@@ -38,7 +38,6 @@
     width: calc(100vw - 15rem);
     transition: all var(--time) var(--bezier);
     z-index: 10;
-    background-color: var(--grey-lowopacity);
 }
 
 .left {
@@ -168,7 +167,6 @@
     bottom: 0;
     transform: translateX(-50%);
     z-index: 99;
-    background-color: var(--grey-lowopacity);
 }
 
 .bar {
@@ -190,7 +188,7 @@
 
 .bar.fullHeight {
     height: 100vh;
-    background-color: var(--grey-lowopacity);
+
 
 
 }

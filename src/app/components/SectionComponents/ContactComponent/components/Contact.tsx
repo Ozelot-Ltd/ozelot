@@ -9,6 +9,7 @@ import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import { lottieSources } from '../../ServicesComponent/ServiceComponent/components/Service';
 import SocialBar from './SocialBar';
 import ContactForm from './ContactForm';
+import FadeIn from '@/app/components/FadeIn/FadeIn';
 
 export default function Contact({
   isContactActive,
@@ -33,19 +34,25 @@ export default function Contact({
     <section className={styles.container}>
       <section className={styles.leftContainer}>
         <div className={styles.titleContainer}>
-          <PrismicRichText field={contact.data.contact_title} />
+          <FadeIn delay={0.8} yDown={500} duration={2}>
+            <div className={styles.title}>
+              <PrismicRichText field={contact.data.contact_title} />
+            </div>
+          </FadeIn>
           <div className={styles.lottieContainer}>
             <DotLottieReact autoplay loop src={cube} />
           </div>
         </div>
-
         <div className={styles.textContainer}>
           <PrismicRichText field={contact.data.contact_text} />
         </div>
         <SocialBar />
       </section>
+
       <section className={styles.rightContainer}>
-        <h1>GET IN TOUCH WITH US</h1>
+        <FadeIn delay={0} inlineStyle={{ padding: '0.5rem 0' }}>
+          <h1>GET IN TOUCH WITH US</h1>
+        </FadeIn>
         <ContactForm contact={contact} />
       </section>
     </section>

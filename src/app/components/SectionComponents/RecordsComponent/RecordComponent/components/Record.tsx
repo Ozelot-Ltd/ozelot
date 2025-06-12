@@ -33,7 +33,7 @@ export default function Record({
     }
   }, []);
   return (
-    <FadeIn stylesProps={styles} delay={index}>
+    <FadeIn stylesProps={styles} delay={index} multiplier={0.1}>
       <div
         ref={containerRef}
         className={`${styles.releaseComponent} ${activeRecord === record.id ? styles.active : ''}`}

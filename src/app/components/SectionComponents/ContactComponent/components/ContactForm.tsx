@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { ContactDocument } from '../../../../../../prismicio-types';
 import styles from './ContactForm.module.css';
 import Arrow from '@/app/components/SvgComponents/Arrow/Arrow';
+import FadeIn from '@/app/components/FadeIn/FadeIn';
 
 export interface FormData {
   name: string;
@@ -98,9 +99,11 @@ export default function ContactForm({ contact }: Props) {
       <div className={styles.inputContainer}>
         <div className={styles.inputGroup}>
           <div className={styles.inputWrapper}>
-            <span className={styles.inputArrow}>
-              <Arrow />
-            </span>
+            <FadeIn yDown={40} duration={0.5} delay={0.2}>
+              <span className={styles.inputArrow}>
+                <Arrow />
+              </span>
+            </FadeIn>
             <input
               id="name"
               type="text"
@@ -115,9 +118,11 @@ export default function ContactForm({ contact }: Props) {
 
         <div className={styles.inputGroup}>
           <div className={styles.inputWrapper}>
-            <span className={styles.inputArrow}>
-              <Arrow />
-            </span>
+            <FadeIn yDown={40} duration={0.5} delay={0.4}>
+              <span className={styles.inputArrow}>
+                <Arrow />
+              </span>
+            </FadeIn>
             <input
               id="email"
               type="email"

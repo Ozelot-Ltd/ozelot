@@ -321,6 +321,119 @@ export type GraphicIconDocument<Lang extends string = string> =
     Lang
   >;
 
+/**
+ * Item in *Legal → Categories*
+ */
+export interface LegalDocumentDataCategoriesItem {
+  /**
+   * Subtitle field in *Legal → Categories*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: legal.categories[].subtitle
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  subtitle: prismic.RichTextField;
+
+  /**
+   * Text field in *Legal → Categories*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: legal.categories[].text
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  text: prismic.RichTextField;
+}
+
+/**
+ * Item in *Legal → Privacy Group*
+ */
+export interface LegalDocumentDataPrivacyGroupItem {
+  /**
+   * Privacy Subtitle field in *Legal → Privacy Group*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: legal.privacy_group[].privacy_subtitle
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  privacy_subtitle: prismic.RichTextField;
+
+  /**
+   * Privacy Text field in *Legal → Privacy Group*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: legal.privacy_group[].privacy_text
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  privacy_text: prismic.RichTextField;
+}
+
+/**
+ * Content for Legal documents
+ */
+interface LegalDocumentData {
+  /**
+   * Title field in *Legal*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: legal.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Categories field in *Legal*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: legal.categories[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  categories: prismic.GroupField<Simplify<LegalDocumentDataCategoriesItem>>;
+
+  /**
+   * Privacy Title field in *Legal*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Privacy Policy
+   * - **API ID Path**: legal.privacy_title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  privacy_title: prismic.RichTextField;
+
+  /**
+   * Privacy Group field in *Legal*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: legal.privacy_group[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  privacy_group: prismic.GroupField<
+    Simplify<LegalDocumentDataPrivacyGroupItem>
+  >;
+}
+
+/**
+ * Legal document from Prismic
+ *
+ * - **API ID**: `legal`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type LegalDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<Simplify<LegalDocumentData>, "legal", Lang>;
+
 type PageDocumentDataSlicesSlice = never;
 
 /**
@@ -1778,6 +1891,7 @@ export type AllDocumentTypes =
   | ContactDocument
   | GeneralIconDocument
   | GraphicIconDocument
+  | LegalDocument
   | PageDocument
   | ProjectDocument
   | ProjectsDocument
@@ -1871,6 +1985,10 @@ declare module "@prismicio/client" {
       GeneralIconDocumentData,
       GraphicIconDocument,
       GraphicIconDocumentData,
+      LegalDocument,
+      LegalDocumentData,
+      LegalDocumentDataCategoriesItem,
+      LegalDocumentDataPrivacyGroupItem,
       PageDocument,
       PageDocumentData,
       PageDocumentDataSlicesSlice,

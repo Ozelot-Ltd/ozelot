@@ -2,6 +2,15 @@
     height: calc(100vh - 5rem);
     padding: calc(2vw + 2rem);
     width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 5vw;
+    height: fit-content;
 }
 
 .content {
@@ -78,7 +87,6 @@
     width: 100%;
     justify-content: space-between;
     padding: calc(0.3rem + 0.3vw);
-    background-color: blue;
 }
 
 .marqueeContainer h3 {

@@ -9,8 +9,11 @@ type FadeInProps = {
   vars?: gsap.TweenVars;
   stylesProps?: { readonly [key: string]: string };
   delay?: number;
-  multiplier?: number;
+  multiplier?: number | undefined;
   yDown?: number;
+  inlineStyle?: React.CSSProperties;
+  duration?: number;
+  ease?: string;
 };
 
 export default function FadeIn({
@@ -18,25 +21,31 @@ export default function FadeIn({
   vars = {},
   stylesProps,
   delay = 0,
-  multiplier = 0.1,
+  multiplier,
   yDown = 100,
+  inlineStyle = {},
+  duration = 0.5,
+  ease = 'ease.out',
 }: FadeInProps) {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useGSAP(
     () => {
-      // Target all direct children
-      gsap.fromTo(
+      const tween = gsap.fromTo(
         containerRef.current!.children,
         { y: yDown },
         {
           y: 0,
-          duration: 0.5,
-          delay: delay * multiplier,
-          ease: 'ease.out',
+          duration: duration,
+          delay: multiplier ? delay * multiplier : delay,
+          ease: ease,
           ...vars,
         }
       );
+
+      return () => {
+        tween.kill();
+      };
     },
     { scope: containerRef }
   );
@@ -44,6 +53,7 @@ export default function FadeIn({
     <div
       className={`${styles.fadeIn} ${stylesProps && stylesProps.fadeIn}`}
       ref={containerRef}
+      style={inlineStyle}
     >
       {children}
     </div>

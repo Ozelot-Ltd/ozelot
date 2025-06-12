@@ -9,6 +9,7 @@ import styles from './StudioContent.module.css';
 import { PrismicNextImage } from '@prismicio/next';
 import SocialBar from '../../ContactComponent/components/SocialBar';
 import FadeIn from '@/app/components/FadeIn/FadeIn';
+import LegalButton from '@/app/components/LegalButton/LegalButton';
 
 type Props = {
   isStudioActive: boolean;
@@ -42,7 +43,8 @@ export default function StudioContent({
                 <PrismicRichText field={data.address_street} />
                 <PrismicRichText field={data.address_zip} />
               </div>
-            </div>
+            </div>{' '}
+            <LegalButton />
             <SocialBar />
           </div>
           <div className={styles.rightContainer}>
@@ -58,7 +60,7 @@ export default function StudioContent({
             ))}
           </div>
         </div>
-      </div>
+      </div>{' '}
     </div>
   );
 }

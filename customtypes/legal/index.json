@@ -1,0 +1,83 @@
+{
+  "format": "custom",
+  "id": "legal",
+  "label": "Legal",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "title": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Title",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "heading2"
+        }
+      },
+      "categories": {
+        "type": "Group",
+        "config": {
+          "label": "Categories",
+          "repeat": true,
+          "fields": {
+            "subtitle": {
+              "type": "StructuredText",
+              "config": {
+                "label": "Subtitle",
+                "placeholder": "",
+                "allowTargetBlank": true,
+                "multi": "heading3"
+              }
+            },
+            "text": {
+              "type": "StructuredText",
+              "config": {
+                "label": "Text",
+                "placeholder": "",
+                "allowTargetBlank": true,
+                "multi": "paragraph,heading5,heading6,strong,em,hyperlink,list-item,o-list-item"
+              }
+            }
+          }
+        }
+      },
+      "privacy_title": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Privacy Title",
+          "placeholder": "Privacy Policy",
+          "allowTargetBlank": true,
+          "multi": "heading2"
+        }
+      },
+      "privacy_group": {
+        "type": "Group",
+        "config": {
+          "label": "Privacy Group",
+          "repeat": true,
+          "fields": {
+            "privacy_subtitle": {
+              "type": "StructuredText",
+              "config": {
+                "label": "Privacy Subtitle",
+                "placeholder": "",
+                "allowTargetBlank": true,
+                "multi": "heading3"
+              }
+            },
+            "privacy_text": {
+              "type": "StructuredText",
+              "config": {
+                "label": "Privacy Text",
+                "placeholder": "",
+                "allowTargetBlank": true,
+                "multi": "paragraph,heading5,heading6,strong,em,hyperlink,list-item,o-list-item,heading4"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
