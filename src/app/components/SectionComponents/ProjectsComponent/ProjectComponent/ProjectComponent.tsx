@@ -10,6 +10,7 @@ import { useRouter } from 'next/navigation';
 import ImageComponent from '../../RecordsComponent/ImageComponent/ImageComponent';
 import Project from './components/Project';
 import DescriptionComponent from '../../RecordsComponent/DescriptionComponent/DescriptionComponent';
+import FadeIn from '@/app/components/FadeIn/FadeIn';
 
 interface ProjectComponentProps {
   isProjectsActive: boolean;
@@ -46,18 +47,21 @@ export default function ProjectComponent({
       <section className={styles.leftContainer}>
         <div className={styles.listContainer}>
           <div className={styles.disciplinesContainer}>
-            {servicesOffered.data.services_offered.map((service) => (
-              <div
-                key={service.service}
-                onClick={() => {
-                  setFilter(
-                    filter === service.service ? 'all' : (service.service ?? '')
-                  );
-                }}
-                className={`${styles.discipline} ${filter === service.service ? styles.filterActive : ''}`}
-              >
-                <p>{service.service}</p>
-              </div>
+            {servicesOffered.data.services_offered.map((service, index) => (
+              <FadeIn key={service.service} delay={index} multiplier={0.1}>
+                <div
+                  onClick={() => {
+                    setFilter(
+                      filter === service.service
+                        ? 'all'
+                        : (service.service ?? '')
+                    );
+                  }}
+                  className={`${styles.discipline} ${filter === service.service ? styles.filterActive : ''}`}
+                >
+                  <p>{service.service}</p>
+                </div>
+              </FadeIn>
             ))}
           </div>
           <div className={styles.scrollContainer}>
