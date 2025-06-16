@@ -376,6 +376,23 @@ export interface LegalDocumentDataPrivacyGroupItem {
  */
 interface LegalDocumentData {
   /**
+   * AGB_download field in *Legal*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: legal.agb_download
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  agb_download: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+
+  /**
    * Title field in *Legal*
    *
    * - **Field Type**: Rich Text

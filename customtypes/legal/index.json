@@ -6,6 +6,17 @@
   "status": true,
   "json": {
     "Main": {
+      "agb_download": {
+        "type": "Link",
+        "config": {
+          "label": "AGB_download",
+          "placeholder": "",
+          "select": null,
+          "allowTargetBlank": true,
+          "allowText": true,
+          "repeat": false
+        }
+      },
       "title": {
         "type": "StructuredText",
         "config": {
