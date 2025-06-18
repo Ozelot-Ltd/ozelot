@@ -1,0 +1,22 @@
+.main {
+    height: 100svh;
+    width: 100svw;
+    display: flex;
+    justify-content: center;
+}
+
+.logocontainer {
+    padding-top: calc(1vw + 1rem);
+}
+
+
+
+@keyframes rotate {
+    from {
+        transform: rotateY(0deg);
+    }
+
+    to {
+        transform: rotateY(360deg);
+    }
+}

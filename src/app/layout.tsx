@@ -16,6 +16,8 @@ const host = Host_Grotesk({
   subsets: ['latin'],
 });
 
+const isBackgroundShown = false;
+
 export default async function RootLayout({
   children,
 }: {
@@ -114,7 +116,7 @@ export default async function RootLayout({
     return (
       <html lang="en">
         <body className={host.className}>
-          {/* <BackgroundComponent /> */}
+          {isBackgroundShown && <BackgroundComponent />}
           <Providers contentProps={contentProps}>
             <MainComponent {...settingsProps} />
             {children}

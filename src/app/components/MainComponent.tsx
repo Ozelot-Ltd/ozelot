@@ -19,6 +19,9 @@ import ServicesComponent from './SectionComponents/ServicesComponent/ServicesCom
 
 import { isClickedStore } from '../stores/IsClickedStore';
 
+import { useMobile } from '../../../context/MobileContext';
+import MobileComponent from './MobileComponent';
+
 interface ColumnProps {
   item:
     | SettingsDocumentDataNavigationItemsLeftItem
@@ -82,6 +85,7 @@ export default function MainComponent({
   const [isRecordsActive, setIsRecordsActive] = useState(false);
   const [isContactActive, setIsContactActive] = useState(false);
   const [isServicesActive, setIsServicesActive] = useState(false);
+  const { isMobile } = useMobile();
 
   useEffect(() => {
     if (isClicked === 'projects') {
@@ -202,126 +206,143 @@ export default function MainComponent({
     }
   };
   return (
-    <div className={styles.container}>
-      <div className={styles.logoContainer}>
-        <div
-          onClick={() => {
-            setIsClicked('');
-            setSide('');
-            router.push('/');
-          }}
-          className={`${styles.logo} ${isClicked !== '' ? styles.animate : ''}`}
-        >
-          <Logo height={'28'} />
+    <>
+      {!isMobile ? (
+        <div className={styles.container}>
+          <div className={styles.logoContainer}>
+            <div
+              onClick={() => {
+                setIsClicked('');
+                setSide('');
+                router.push('/');
+              }}
+              className={`${styles.logo} ${isClicked !== '' ? styles.animate : ''}`}
+            >
+              <Logo height={'28'} />
+            </div>
+          </div>
+
+          {/* Left navigation */}
+
+          {/********* Studio ***********/}
+
+          <div className={`${styles.nav} ${styles.left}`} ref={containerRef}>
+            <Column
+              item={left[0]}
+              side="left"
+              isActive={
+                isClicked === left[0]?.navigation_link.text?.toLowerCase() &&
+                side === 'left'
+              }
+              onClick={() => handleClick(left[0]?.navigation_link.text, 'left')}
+              transitionEnd={transitionEnd}
+              setTransitionEnd={setTransitionEnd}
+            >
+              <StudioComponent
+                isStudioActive={isStudioActive}
+                transitionEnd={transitionEnd}
+              />
+            </Column>
+
+            {/************ Projects ************/}
+
+            <Column
+              item={left[1]}
+              side="left"
+              isActive={
+                isClicked === left[1]?.navigation_link.text?.toLowerCase() &&
+                side === 'left'
+              }
+              onClick={() => handleClick(left[1]?.navigation_link.text, 'left')}
+              transitionEnd={transitionEnd}
+              setTransitionEnd={setTransitionEnd}
+            >
+              <ProjectsComponent
+                isProjectsActive={isProjectsActive}
+                transitionEnd={transitionEnd}
+              />
+            </Column>
+          </div>
+
+          {/* Right navigation */}
+
+          {/************ Records ************/}
+
+          <div className={`${styles.nav} ${styles.right}`}>
+            <Column
+              item={right[0]}
+              side="right"
+              isActive={
+                isClicked === right[0]?.navigation_link.text?.toLowerCase() &&
+                side === 'right'
+              }
+              onClick={() =>
+                handleClick(right[0]?.navigation_link.text, 'right')
+              }
+              transitionEnd={transitionEnd}
+              setTransitionEnd={setTransitionEnd}
+            >
+              <RecordsComponent
+                isRecordsActive={isRecordsActive}
+                transitionEnd={transitionEnd}
+              />
+            </Column>
+
+            {/************ Contact ************/}
+
+            <Column
+              item={right[1]}
+              side="right"
+              isActive={
+                isClicked === right[1]?.navigation_link.text?.toLowerCase() &&
+                side === 'right'
+              }
+              onClick={() =>
+                handleClick(right[1]?.navigation_link.text, 'right')
+              }
+              transitionEnd={transitionEnd}
+              setTransitionEnd={setTransitionEnd}
+            >
+              <ContactComponent
+                isContactActive={isContactActive}
+                transitionEnd={transitionEnd}
+              />
+            </Column>
+          </div>
+
+          {/************ Services ************/}
+
+          <div
+            className={`${styles.nav} ${styles.services} ${isClicked === 'services' ? styles.background : ''}`}
+          >
+            <Column
+              item={right[2]}
+              side="bottom"
+              isActive={
+                isClicked === right[2]?.navigation_link.text?.toLowerCase() &&
+                side === 'bottom'
+              }
+              onClick={() =>
+                handleClick(right[2]?.navigation_link.text, 'bottom')
+              }
+              transitionEnd={transitionEnd}
+              setTransitionEnd={setTransitionEnd}
+            >
+              <ServicesComponent
+                isServicesActive={isServicesActive}
+                transitionEnd={transitionEnd}
+              />
+            </Column>
+          </div>
         </div>
-      </div>
-
-      {/* Left navigation */}
-
-      {/********* Studio ***********/}
-
-      <div className={`${styles.nav} ${styles.left}`} ref={containerRef}>
-        <Column
-          item={left[0]}
-          side="left"
-          isActive={
-            isClicked === left[0]?.navigation_link.text?.toLowerCase() &&
-            side === 'left'
-          }
-          onClick={() => handleClick(left[0]?.navigation_link.text, 'left')}
-          transitionEnd={transitionEnd}
-          setTransitionEnd={setTransitionEnd}
-        >
-          <StudioComponent
-            isStudioActive={isStudioActive}
-            transitionEnd={transitionEnd}
-          />
-        </Column>
-
-        {/************ Projects ************/}
-
-        <Column
-          item={left[1]}
-          side="left"
-          isActive={
-            isClicked === left[1]?.navigation_link.text?.toLowerCase() &&
-            side === 'left'
-          }
-          onClick={() => handleClick(left[1]?.navigation_link.text, 'left')}
-          transitionEnd={transitionEnd}
-          setTransitionEnd={setTransitionEnd}
-        >
-          <ProjectsComponent
-            isProjectsActive={isProjectsActive}
-            transitionEnd={transitionEnd}
-          />
-        </Column>
-      </div>
-
-      {/* Right navigation */}
-
-      {/************ Records ************/}
-
-      <div className={`${styles.nav} ${styles.right}`}>
-        <Column
-          item={right[0]}
-          side="right"
-          isActive={
-            isClicked === right[0]?.navigation_link.text?.toLowerCase() &&
-            side === 'right'
-          }
-          onClick={() => handleClick(right[0]?.navigation_link.text, 'right')}
-          transitionEnd={transitionEnd}
-          setTransitionEnd={setTransitionEnd}
-        >
-          <RecordsComponent
-            isRecordsActive={isRecordsActive}
-            transitionEnd={transitionEnd}
-          />
-        </Column>
-
-        {/************ Contact ************/}
-
-        <Column
-          item={right[1]}
-          side="right"
-          isActive={
-            isClicked === right[1]?.navigation_link.text?.toLowerCase() &&
-            side === 'right'
-          }
-          onClick={() => handleClick(right[1]?.navigation_link.text, 'right')}
-          transitionEnd={transitionEnd}
-          setTransitionEnd={setTransitionEnd}
-        >
-          <ContactComponent
-            isContactActive={isContactActive}
-            transitionEnd={transitionEnd}
-          />
-        </Column>
-      </div>
-
-      {/************ Services ************/}
-
-      <div
-        className={`${styles.nav} ${styles.services} ${isClicked === 'services' ? styles.background : ''}`}
-      >
-        <Column
-          item={right[2]}
-          side="bottom"
-          isActive={
-            isClicked === right[2]?.navigation_link.text?.toLowerCase() &&
-            side === 'bottom'
-          }
-          onClick={() => handleClick(right[2]?.navigation_link.text, 'bottom')}
-          transitionEnd={transitionEnd}
-          setTransitionEnd={setTransitionEnd}
-        >
-          <ServicesComponent
-            isServicesActive={isServicesActive}
-            transitionEnd={transitionEnd}
-          />
-        </Column>
-      </div>
-    </div>
+      ) : (
+        <MobileComponent
+          isClicked={isClicked}
+          setIsClicked={setIsClicked}
+          setSide={setSide}
+          router={router}
+        />
+      )}
+    </>
   );
 }
