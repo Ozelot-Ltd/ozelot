@@ -341,6 +341,11 @@ export default function MainComponent({
           setIsClicked={setIsClicked}
           setSide={setSide}
           router={router}
+          setIsProjectsActive={setIsProjectsActive}
+          setIsStudioActive={setIsStudioActive}
+          setIsRecordsActive={setIsRecordsActive}
+          setIsContactActive={setIsContactActive}
+          setIsServicesActive={setIsServicesActive}
         />
       )}
     </>
