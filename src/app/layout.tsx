@@ -126,7 +126,6 @@ export default async function RootLayout({
       </html>
     );
   } catch (error) {
-    // You could return a loading or error state here
     console.error('Failed to load application data:', error);
 
     return (
