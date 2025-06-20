@@ -339,7 +339,6 @@ export default function MainComponent({
         <MobileComponent
           isClicked={isClicked}
           setIsClicked={setIsClicked}
-          setSide={setSide}
           router={router}
           setIsProjectsActive={setIsProjectsActive}
           setIsStudioActive={setIsStudioActive}

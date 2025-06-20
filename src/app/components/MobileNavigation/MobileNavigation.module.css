@@ -1,0 +1,56 @@
+.mobileNavigation {}
+
+.container {
+    width: calc(1.5rem + 1.5vw);
+    height: calc(1.5rem + 1.5vw);
+    position: relative;
+    overflow: hidden;
+}
+
+.overflowcontainer {
+    width: 200%;
+    height: calc(1.2rem + 1.2vw);
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    transition: transform 1.2s var(--bezier);
+}
+
+.crossactive {
+    transform: translateX(-50%);
+}
+
+.hamburger {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: calc(1px + 1vw);
+}
+
+.cross {
+    width: 100%;
+    position: relative;
+}
+
+.hamburger div,
+.cross div {
+    height: 2px;
+    width: 100%;
+    background-color: var(--black);
+}
+
+.cross div {
+    position: absolute;
+}
+
+.cross div:nth-of-type(1) {
+    transform: rotate(45deg);
+    transform-origin: center;
+}
+
+.cross div:nth-of-type(2) {
+    transform: rotate(-45deg);
+    transform-origin: center;
+}

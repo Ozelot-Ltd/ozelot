@@ -1,4 +1,6 @@
-import React, { Dispatch, SetStateAction, useEffect } from 'react';
+'use client';
+
+import React, { Dispatch, SetStateAction, useState } from 'react';
 
 // import ProjectsComponent from './SectionComponents/ProjectsComponent/ProjectsComponent';
 // import StudioComponent from './SectionComponents/StudioComponent/StudioComponent';
@@ -10,11 +12,11 @@ import Logo from './SvgComponents/Logo/Logo';
 
 import mobileStyles from './MobileComponent.module.css';
 import styles from './MainComponent.module.css';
+import MobileNavigation from './MobileNavigation/MobileNavigation';
 
 type Props = {
   isClicked?: string;
   setIsClicked: (value: string) => void;
-  setSide: Dispatch<SetStateAction<'' | 'left' | 'right' | 'bottom'>>;
   router: {
     push: (path: string) => void;
   };
@@ -28,49 +30,9 @@ type Props = {
 export default function MobileComponent({
   isClicked = '',
   setIsClicked,
-  setSide,
   router,
-  setIsProjectsActive,
-  setIsStudioActive,
-  setIsRecordsActive,
-  setIsContactActive,
-  setIsServicesActive,
 }: Props) {
-  useEffect(() => {
-    if (isClicked === 'projects') {
-      setIsProjectsActive(true);
-      setIsStudioActive(false);
-      setIsRecordsActive(false);
-      setIsContactActive(false);
-      setIsServicesActive(false);
-    } else if (isClicked === 'studio') {
-      setIsProjectsActive(false);
-      setIsStudioActive(true);
-      setIsRecordsActive(false);
-      setIsContactActive(false);
-      setIsServicesActive(false);
-    } else if (isClicked === 'records') {
-      setIsProjectsActive(false);
-      setIsStudioActive(false);
-      setIsRecordsActive(true);
-      setIsContactActive(false);
-      setIsServicesActive(false);
-    } else if (isClicked === 'contact') {
-      setIsProjectsActive(false);
-      setIsStudioActive(false);
-      setIsRecordsActive(false);
-      setIsContactActive(true);
-      setIsServicesActive(false);
-    } else if (isClicked === 'services') {
-      setIsProjectsActive(false);
-      setIsStudioActive(false);
-      setIsRecordsActive(false);
-      setIsContactActive(false);
-      setTimeout(() => {
-        setIsServicesActive(true);
-      }, 1500);
-    }
-  }, [isClicked]);
+  const [isNavigationClicked, setIsNavigationClicked] = useState(false);
 
   return (
     <div className={mobileStyles.main}>
@@ -78,13 +40,21 @@ export default function MobileComponent({
         <div
           onClick={() => {
             setIsClicked('');
-            setSide('');
             router.push('/');
           }}
           className={`${styles.logo} ${isClicked !== '' ? styles.animate : ''}`}
         >
           <Logo height={'32'} />
-        </div>
+        </div>{' '}
+      </div>{' '}
+      <div className={mobileStyles.navigation}>
+        <MobileNavigation
+          isClicked={isClicked}
+          setIsClicked={setIsClicked}
+          router={router}
+          isNavigationClicked={isNavigationClicked}
+          setIsNavigationClicked={setIsNavigationClicked}
+        />
       </div>
     </div>
   );

@@ -2,13 +2,21 @@
     height: 100svh;
     width: 100svw;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
 }
 
 .logocontainer {
-    padding-top: calc(1vw + 1rem);
+    padding-top: calc(2vw + 1rem);
+    height: fit-content;
 }
 
+
+.navigation {
+    padding-bottom: calc(2vw + 1rem)
+}
 
 
 @keyframes rotate {
