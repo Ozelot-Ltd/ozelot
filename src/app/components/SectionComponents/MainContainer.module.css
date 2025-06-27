@@ -4,5 +4,4 @@
     width: calc(100vw - (2 * var(--container-width)));
     padding: 4rem 2rem 0rem 2rem;
     max-width: 100%;
-    overflow: hidden;
 }
