@@ -8,11 +8,13 @@ import React, { Dispatch, SetStateAction, useState } from 'react';
 // import RecordsComponent from './SectionComponents/RecordsComponent/RecordsComponent';
 // import ServicesComponent from './SectionComponents/ServicesComponent/ServicesComponent';
 
-import Logo from './SvgComponents/Logo/Logo';
+import Logo from '../SvgComponents/Logo/Logo';
 
 import mobileStyles from './MobileComponent.module.css';
-import styles from './MainComponent.module.css';
+import styles from '../MainComponent.module.css';
 import MobileNavigation from './MobileNavigation/MobileNavigation';
+
+import MobileContent from './MobileContent/MobileContent';
 
 type Props = {
   isClicked?: string;
@@ -45,8 +47,8 @@ export default function MobileComponent({
           className={`${styles.logo} ${isClicked !== '' ? styles.animate : ''}`}
         >
           <Logo height={'32'} />
-        </div>{' '}
-      </div>{' '}
+        </div>
+      </div>
       <div className={mobileStyles.navigation}>
         <MobileNavigation
           isClicked={isClicked}
@@ -55,6 +57,9 @@ export default function MobileComponent({
           isNavigationClicked={isNavigationClicked}
           setIsNavigationClicked={setIsNavigationClicked}
         />
+      </div>
+      <div className={mobileStyles.content}>
+        <MobileContent />
       </div>
     </div>
   );

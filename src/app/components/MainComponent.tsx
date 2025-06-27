@@ -20,7 +20,7 @@ import ServicesComponent from './SectionComponents/ServicesComponent/ServicesCom
 import { isClickedStore } from '../stores/IsClickedStore';
 
 import { useMobile } from '../../../context/MobileContext';
-import MobileComponent from './MobileComponent';
+import MobileComponent from './Mobile/MobileComponent';
 
 interface ColumnProps {
   item:
