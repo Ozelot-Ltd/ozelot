@@ -198,7 +198,7 @@
 }
 
 .discipline {
-    border: 0.5px solid var(--black);
+    border: var(--border);
     padding: calc(0.15rem + 0.15vw) calc(0.25rem + 0.25vw);
     border-radius: 15px;
     cursor: pointer;

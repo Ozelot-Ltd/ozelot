@@ -53,7 +53,7 @@
     position: absolute;
     left: 0;
     top: 0;
-    width: 0.5px;
+    width: var(--border-width);
     height: 100%;
     background-color: var(--black);
     transition: opacity var(--time) var(--bezier) 0.2s;
@@ -64,7 +64,7 @@
     position: absolute;
     right: 0;
     top: 0;
-    width: 0.5px;
+    width: var(--border-width);
     height: 100%;
     background-color: var(--black);
     transition: opacity var(--time) var(--bezier) 0.2s;
@@ -75,7 +75,7 @@
     position: absolute;
     right: 0;
     top: 0;
-    width: 0.5px;
+    width: var(--border-width);
     height: 100%;
     background-color: var(--black);
     transition: opacity var(--time) var(--bezier) 0.2s;
