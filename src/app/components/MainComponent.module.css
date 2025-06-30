@@ -105,15 +105,15 @@
 }
 
 .columnContent p {
-    color: var(--black-active);
     text-transform: uppercase;
     transition: all var(--time) var(--bezier);
     font-size: calc(0.5vw + 0.5rem);
 }
 
+
 .fullWidth .columnContent p,
 .fullHeight p {
-    font-variation-settings: "wght" 600;
+    font-variation-settings: "wght" 800;
 }
 
 .columnContent img {
