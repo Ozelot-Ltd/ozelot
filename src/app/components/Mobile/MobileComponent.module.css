@@ -19,6 +19,23 @@
 }
 
 
+.menu {
+    background-color: red;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.content {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: red;
+    height: 100svh;
+    width: 100svw;
+    transform: translateY(100%);
+}
+
 @keyframes rotate {
     from {
         transform: rotateY(0deg);

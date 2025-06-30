@@ -16,6 +16,8 @@ import MobileNavigation from './MobileNavigation/MobileNavigation';
 
 import MobileContent from './MobileContent/MobileContent';
 
+import MobileMenu from './MobileMenu/MobileMenu';
+
 type Props = {
   isClicked?: string;
   setIsClicked: (value: string) => void;
@@ -57,6 +59,9 @@ export default function MobileComponent({
           isNavigationClicked={isNavigationClicked}
           setIsNavigationClicked={setIsNavigationClicked}
         />
+      </div>
+      <div className={mobileStyles.menu}>
+        <MobileMenu />
       </div>
       <div className={mobileStyles.content}>
         <MobileContent />
