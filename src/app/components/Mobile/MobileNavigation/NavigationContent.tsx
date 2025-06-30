@@ -16,7 +16,10 @@ import Cross from './Cross';
 export default function NavigationContent({
   isNavigationClicked,
   setIsNavigationClicked,
+  isClicked = '',
+  setIsClicked,
 }: Props) {
+  const handleClick = () => {};
   return (
     <div
       className={styles.container}

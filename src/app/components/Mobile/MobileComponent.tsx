@@ -53,17 +53,20 @@ export default function MobileComponent({
       </div>
       <div className={mobileStyles.navigation}>
         <MobileNavigation
-          isClicked={isClicked}
-          setIsClicked={setIsClicked}
           router={router}
           isNavigationClicked={isNavigationClicked}
           setIsNavigationClicked={setIsNavigationClicked}
         />
       </div>
-      <div className={mobileStyles.menu}>
-        <MobileMenu />
+      <div
+        className={`${mobileStyles.menu} ${isNavigationClicked && isClicked === '' ? mobileStyles.menuOpen : ''}`}
+      >
+        <MobileMenu isClicked={isClicked} setIsClicked={setIsClicked} />
       </div>
-      <div className={mobileStyles.content}>
+      <div
+        className={`${mobileStyles.content} ${isClicked !== '' ? mobileStyles.contentOpen : ''}`}
+      >
+        {' '}
         <MobileContent />
       </div>
     </div>

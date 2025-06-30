@@ -1,5 +1,21 @@
 import React from 'react';
 
-export default function MobileMenu({}) {
-  return <div>MobileMenu</div>;
+type MobileMenuProps = {
+  isClicked?: string;
+  setIsClicked?: (value: string) => void;
+};
+
+export default function MobileMenu({
+  setIsClicked,
+}: MobileMenuProps & {
+  isClicked?: string;
+  setIsClicked?: (value: string) => void;
+}) {
+  return (
+    <div>
+      <nav>
+        <h1 onClick={() => setIsClicked && setIsClicked('test')}>Test</h1>
+      </nav>
+    </div>
+  );
 }
