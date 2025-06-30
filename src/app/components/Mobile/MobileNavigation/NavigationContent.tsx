@@ -2,41 +2,38 @@
 
 import React from 'react';
 
-type Props = {
-  isNavigationClicked?: boolean;
-  setIsNavigationClicked?: React.Dispatch<React.SetStateAction<boolean>>;
-  isClicked?: string;
-  setIsClicked?: (value: string) => void;
-};
+import { MobileNavigationProps } from './MobileNavigation';
 
 import styles from './MobileNavigation.module.css';
 import Hamburger from './Hamburger';
 import Cross from './Cross';
 
 export default function NavigationContent({
-  isNavigationClicked,
-  setIsNavigationClicked,
+  isNavigationActive,
+  setIsNavigationActive,
   isClicked = '',
   setIsClicked,
-}: Props) {
-  const handleClick = () => {};
+}: MobileNavigationProps) {
+  const handleClick = () => {
+    if (setIsNavigationActive) {
+      setIsNavigationActive(!isNavigationActive);
+    }
+    if (isClicked !== '' && setIsClicked) {
+      setIsClicked('');
+    }
+  };
   return (
-    <div
-      className={styles.container}
-      onClick={() =>
-        setIsNavigationClicked && setIsNavigationClicked(!isNavigationClicked)
-      }
-    >
+    <div className={styles.container} onClick={() => handleClick()}>
       <div
-        className={`${styles.overflowcontainer} ${isNavigationClicked ? styles.crossactive : ''}`}
+        className={`${styles.overflowcontainer} ${isNavigationActive ? styles.crossactive : ''}`}
       >
         <Hamburger
-          isNavigationClicked={isNavigationClicked}
-          setIsNavigationClicked={setIsNavigationClicked}
+          isNavigationActive={isNavigationActive}
+          setIsNavigationActive={setIsNavigationActive}
         />
         <Cross
-          isNavigationClicked={isNavigationClicked}
-          setIsNavigationClicked={setIsNavigationClicked}
+          isNavigationActive={isNavigationActive}
+          setIsNavigationActive={setIsNavigationActive}
         />
       </div>
     </div>

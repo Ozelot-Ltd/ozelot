@@ -1,27 +1,30 @@
 'use client';
 
-import React, { Dispatch, SetStateAction } from 'react';
-
-type MobileNavigationProps = {
-  router: {
-    push: (path: string) => void;
-  };
-  isNavigationClicked?: boolean;
-  setIsNavigationClicked?: Dispatch<SetStateAction<boolean>>;
-};
+import React from 'react';
 
 import styles from './MobileNavigation.module.css';
 import NavigationContent from './NavigationContent';
 
+export type MobileNavigationProps = {
+  isNavigationActive?: boolean;
+  setIsNavigationActive?: React.Dispatch<React.SetStateAction<boolean>>;
+  isClicked?: string;
+  setIsClicked?: (value: string) => void;
+};
+
 export default function MobileNavigation({
-  isNavigationClicked = false,
-  setIsNavigationClicked,
+  isNavigationActive,
+  setIsNavigationActive,
+  isClicked = '',
+  setIsClicked,
 }: MobileNavigationProps) {
   return (
     <div className={styles.mobileNavigation}>
       <NavigationContent
-        isNavigationClicked={isNavigationClicked}
-        setIsNavigationClicked={setIsNavigationClicked}
+        isNavigationActive={isNavigationActive}
+        setIsNavigationActive={setIsNavigationActive}
+        isClicked={isClicked}
+        setIsClicked={setIsClicked}
       />
     </div>
   );

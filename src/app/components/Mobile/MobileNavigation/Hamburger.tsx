@@ -3,21 +3,21 @@
 import React from 'react';
 
 type Props = {
-  isNavigationClicked?: boolean;
-  setIsNavigationClicked?: React.Dispatch<React.SetStateAction<boolean>>;
+  isNavigationActive?: boolean;
+  setIsNavigationActive?: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 import styles from './MobileNavigation.module.css';
 
 export default function Hamburger({
-  isNavigationClicked,
-  setIsNavigationClicked,
+  isNavigationActive,
+  setIsNavigationActive,
 }: Props) {
   return (
     <div
       className={styles.hamburger}
       onClick={() =>
-        setIsNavigationClicked && setIsNavigationClicked(!isNavigationClicked)
+        setIsNavigationActive && setIsNavigationActive(!isNavigationActive)
       }
     >
       <div></div>

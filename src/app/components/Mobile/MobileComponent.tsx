@@ -36,7 +36,7 @@ export default function MobileComponent({
   setIsClicked,
   router,
 }: Props) {
-  const [isNavigationClicked, setIsNavigationClicked] = useState(false);
+  const [isNavigationActive, setIsNavigationActive] = useState(false);
 
   return (
     <div className={mobileStyles.main}>
@@ -44,6 +44,9 @@ export default function MobileComponent({
         <div
           onClick={() => {
             setIsClicked('');
+            if (isNavigationActive) {
+              setIsNavigationActive(false);
+            }
             router.push('/');
           }}
           className={`${styles.logo} ${isClicked !== '' ? styles.animate : ''}`}
@@ -51,22 +54,33 @@ export default function MobileComponent({
           <Logo height={'32'} />
         </div>
       </div>
-      <div className={mobileStyles.navigation}>
+      <div
+        className={mobileStyles.navigation}
+        onClick={() => {
+          setIsNavigationActive(!isNavigationActive);
+          setIsClicked('');
+        }}
+      >
         <MobileNavigation
-          router={router}
-          isNavigationClicked={isNavigationClicked}
-          setIsNavigationClicked={setIsNavigationClicked}
+          isNavigationActive={isNavigationActive}
+          setIsNavigationActive={setIsNavigationActive}
+          isClicked={isClicked}
+          setIsClicked={setIsClicked}
         />
       </div>
       <div
-        className={`${mobileStyles.menu} ${isNavigationClicked && isClicked === '' ? mobileStyles.menuOpen : ''}`}
+        className={`${mobileStyles.menu} ${isNavigationActive && isClicked === '' ? mobileStyles.menuOpen : ''}`}
       >
-        <MobileMenu isClicked={isClicked} setIsClicked={setIsClicked} />
+        <MobileMenu
+          isClicked={isClicked}
+          setIsClicked={setIsClicked}
+          isNavigationActive={isNavigationActive}
+          setIsNavigationActive={setIsNavigationActive}
+        />
       </div>
       <div
         className={`${mobileStyles.content} ${isClicked !== '' ? mobileStyles.contentOpen : ''}`}
       >
-        {' '}
         <MobileContent />
       </div>
     </div>
