@@ -336,16 +336,7 @@ export default function MainComponent({
           </div>
         </div>
       ) : (
-        <MobileComponent
-          isClicked={isClicked}
-          setIsClicked={setIsClicked}
-          router={router}
-          setIsProjectsActive={setIsProjectsActive}
-          setIsStudioActive={setIsStudioActive}
-          setIsRecordsActive={setIsRecordsActive}
-          setIsContactActive={setIsContactActive}
-          setIsServicesActive={setIsServicesActive}
-        />
+        <MobileComponent left={left} right={right} />
       )}
     </>
   );

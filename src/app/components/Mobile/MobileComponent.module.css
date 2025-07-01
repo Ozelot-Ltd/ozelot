@@ -39,12 +39,11 @@
 
 .content {
     transform: translateY(100%);
-    background-color: blue;
 }
 
 .menu {
     transform: translateY(-100%);
-    background-color: red;
+
 }
 
 .menuOpen,

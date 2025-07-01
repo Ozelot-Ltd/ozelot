@@ -8,7 +8,7 @@ export default function ProjectsComponent({
   transitionEnd,
 }: {
   isProjectsActive: boolean;
-  transitionEnd: boolean;
+  transitionEnd: boolean | undefined;
 }) {
   return (
     <MainContainer>

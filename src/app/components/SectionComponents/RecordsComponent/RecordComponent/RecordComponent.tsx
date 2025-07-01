@@ -13,7 +13,7 @@ export default function RecordComponent({
   transitionEnd,
 }: {
   isRecordsActive: boolean;
-  transitionEnd: boolean;
+  transitionEnd?: boolean;
 }) {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [isVisible, setIsVisible] = useState(false);
@@ -22,7 +22,7 @@ export default function RecordComponent({
   const router = useRouter();
 
   useEffect(() => {
-    setIsVisible(isRecordsActive && transitionEnd);
+    setIsVisible(isRecordsActive && (transitionEnd ?? false));
   }, [isRecordsActive, transitionEnd]);
 
   const sortedArray = recordArray.sort((a, b) => {

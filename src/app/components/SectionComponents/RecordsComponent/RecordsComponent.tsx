@@ -9,8 +9,9 @@ export default function RecordsComponent({
   transitionEnd,
 }: {
   isRecordsActive: boolean;
-  transitionEnd: boolean;
+  transitionEnd?: boolean;
 }) {
+  console.log('RecordsComponent rendered', isRecordsActive, transitionEnd);
   return (
     <MainContainer>
       {isRecordsActive && transitionEnd && (

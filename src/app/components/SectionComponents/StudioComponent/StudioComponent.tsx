@@ -7,7 +7,7 @@ export default function StudioComponent({
   transitionEnd,
 }: {
   isStudioActive: boolean;
-  transitionEnd: boolean;
+  transitionEnd: boolean | undefined;
 }) {
   return (
     <MainContainer>

@@ -7,8 +7,8 @@ export default function ContactComponent({
   isContactActive,
   transitionEnd,
 }: {
-  isContactActive: boolean;
-  transitionEnd: boolean;
+  isContactActive: boolean | undefined;
+  transitionEnd: boolean | undefined;
 }) {
   return (
     <MainContainer>

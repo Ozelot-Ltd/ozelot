@@ -63,11 +63,6 @@ export default function DescriptionComponent({
               </div>
             </div>
 
-            {currentRecord.has_merch && (
-              <div className={styles.subtitle}>
-                <p>MERCHANDISE AVAILABLE</p>
-              </div>
-            )}
             <div className={styles.releasetext}>
               <div className={styles.artist}>
                 <h4>Artist:</h4>

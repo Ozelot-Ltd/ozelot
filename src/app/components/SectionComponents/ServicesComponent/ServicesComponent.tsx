@@ -7,8 +7,8 @@ export default function ServicesComponent({
   isServicesActive,
   transitionEnd,
 }: {
-  isServicesActive: boolean;
-  transitionEnd: boolean;
+  isServicesActive: boolean | undefined;
+  transitionEnd: boolean | undefined;
 }) {
   return (
     <MainContainer>

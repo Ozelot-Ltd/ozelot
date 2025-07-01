@@ -8,7 +8,7 @@
     --black: #545454;
     --black-active: #393636;
     --lightgrey: #ebebeb;
-    --title-weight: "wght" 600;
+    --title-weight: "wght" 900;
     --radius-large: 20px;
     --border: 0.5px solid var(--black);
     --border-active: 0.5px solid var(--black-active);
@@ -136,15 +136,67 @@ label {
 /******** !!!!!!!! MOBILE STYLES !!!!!!!!! ********/
 
 
+.main {
+    position: relative;
+    height: calc(100vh - 5rem);
+    width: calc(100vw - (2 * var(--container-width)));
+    padding: 4rem 2rem 0rem 2rem;
+    max-width: 100%;
+}
 
 
 /* Mobile */
-@media (max-width: 30rem) {}
-
+/* Up to 768px */
+@media (max-width: 48rem) {
+    :root {
+        --black: #545454;
+        --black-active: #393636;
+        --lightgrey: #ebebeb;
+        --title-weight: "wght" 600;
+        --radius-large: 20px;
+        --border: 0.5px solid var(--black);
+        --border-active: 0.5px solid var(--black-active);
+        --radius-large: 40px;
+        --grey-lowopacity: rgba(247, 247, 247, 0.9);
+        --blur: blur(6px);
+        --bezier: cubic-bezier(0.39, 0.575, 0.565, 1);
+        --time: 0.5s;
+        --time-fast: 0.2s;
+        --mobile-breakpoint: 48rem;
+        --border-width: 0.5px;
+    }
+}
 
 /* Tablet */
-@media (min-width: 48rem) {}
+/* 768px to 1184px */
+@media (min-width: 48rem) and (max-width: 74rem) {}
 
+/* Tablet - Portrait Orientation */
+/* 768px to 1184px in portrait mode */
+@media (min-width: 48rem) and (max-width: 74rem) and (orientation: portrait) {}
 
-/* Desktop XL */
+/* Desktop */
+/* 1184px and up */
+@media (min-width: 74rem) {}
+
+/* Large Desktop */
+/* 1440px and up */
 @media (min-width: 90rem) {}
+
+@media (min-width: 120rem) {}
+
+/* Touch Devices */
+/* Any touch device regardless of size */
+@media (hover: none) {}
+
+/* Non-Touch Devices */
+/* Devices with precise pointer (mouse) */
+@media (hover: hover) and (pointer: fine) {}
+
+/* Prefers Dark Mode */
+/* User has set dark mode preference */
+@media (prefers-color-scheme: dark) {}
+
+/* Prefers Reduced Motion */
+/* User has requested minimal animations */
+@media (prefers-reduced-motion: reduce) {}

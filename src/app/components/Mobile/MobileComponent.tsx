@@ -1,12 +1,6 @@
 'use client';
 
-import React, { Dispatch, SetStateAction, useState } from 'react';
-
-// import ProjectsComponent from './SectionComponents/ProjectsComponent/ProjectsComponent';
-// import StudioComponent from './SectionComponents/StudioComponent/StudioComponent';
-// import ContactComponent from './SectionComponents/ContactComponent/ContactComponent';
-// import RecordsComponent from './SectionComponents/RecordsComponent/RecordsComponent';
-// import ServicesComponent from './SectionComponents/ServicesComponent/ServicesComponent';
+import React, { useState, useEffect } from 'react';
 
 import Logo from '../SvgComponents/Logo/Logo';
 
@@ -16,27 +10,66 @@ import MobileNavigation from './MobileNavigation/MobileNavigation';
 
 import MobileContent from './MobileContent/MobileContent';
 
-import MobileMenu from './MobileMenu/MobileMenu';
+import { useRouter } from 'next/navigation';
 
-type Props = {
-  isClicked?: string;
-  setIsClicked: (value: string) => void;
-  router: {
-    push: (path: string) => void;
-  };
-  setIsProjectsActive: Dispatch<SetStateAction<boolean>>;
-  setIsStudioActive: Dispatch<SetStateAction<boolean>>;
-  setIsRecordsActive: Dispatch<SetStateAction<boolean>>;
-  setIsContactActive: Dispatch<SetStateAction<boolean>>;
-  setIsServicesActive: Dispatch<SetStateAction<boolean>>;
-};
+import MobileMenu from './MobileMenu/MobileMenu';
+import { GroupField } from '@prismicio/client';
+import {
+  SettingsDocumentDataNavigationItemsLeftItem,
+  SettingsDocumentDataNavigationItemsRightItem,
+  Simplify,
+} from '../../../../prismicio-types';
 
 export default function MobileComponent({
-  isClicked = '',
-  setIsClicked,
-  router,
-}: Props) {
+  left,
+  right,
+}: {
+  left: GroupField<Simplify<SettingsDocumentDataNavigationItemsLeftItem>>;
+  right: GroupField<Simplify<SettingsDocumentDataNavigationItemsRightItem>>;
+}) {
   const [isNavigationActive, setIsNavigationActive] = useState(false);
+  const [isClicked, setIsClicked] = useState<string>('');
+  const [isRecordsActive, setIsRecordsActive] = useState(false);
+  const [isProjectsActive, setIsProjectsActive] = useState(false);
+  const [isStudioActive, setIsStudioActive] = useState(false);
+  const [isContactActive, setIsContactActive] = useState(false);
+  const [isServicesActive, setIsServicesActive] = useState(false);
+  const [transitionEnd, setTransitionEnd] = useState(false);
+  const router = useRouter();
+
+  useEffect(() => {
+    if (isClicked === 'projects') {
+      setIsProjectsActive(true);
+      setIsStudioActive(false);
+      setIsRecordsActive(false);
+      setIsContactActive(false);
+      setIsServicesActive(false);
+    } else if (isClicked === 'studio') {
+      setIsProjectsActive(false);
+      setIsStudioActive(true);
+      setIsRecordsActive(false);
+      setIsContactActive(false);
+      setIsServicesActive(false);
+    } else if (isClicked === 'records') {
+      setIsProjectsActive(false);
+      setIsStudioActive(false);
+      setIsRecordsActive(true);
+      setIsContactActive(false);
+      setIsServicesActive(false);
+    } else if (isClicked === 'contact') {
+      setIsProjectsActive(false);
+      setIsStudioActive(false);
+      setIsRecordsActive(false);
+      setIsContactActive(true);
+      setIsServicesActive(false);
+    } else if (isClicked === 'services') {
+      setIsProjectsActive(false);
+      setIsStudioActive(false);
+      setIsRecordsActive(false);
+      setIsContactActive(false);
+      setIsServicesActive(true);
+    }
+  }, [isClicked]);
 
   return (
     <div className={mobileStyles.main}>
@@ -69,6 +102,7 @@ export default function MobileComponent({
         />
       </div>
       <div
+        onTransitionEnd={() => setTransitionEnd(true)}
         className={`${mobileStyles.menu} ${isNavigationActive && isClicked === '' ? mobileStyles.menuOpen : ''}`}
       >
         <MobileMenu
@@ -76,12 +110,27 @@ export default function MobileComponent({
           setIsClicked={setIsClicked}
           isNavigationActive={isNavigationActive}
           setIsNavigationActive={setIsNavigationActive}
+          setIsProjectsActive={setIsProjectsActive}
+          setIsStudioActive={setIsStudioActive}
+          setIsRecordsActive={setIsRecordsActive}
+          setIsContactActive={setIsContactActive}
+          setIsServicesActive={setIsServicesActive}
+          left={left}
+          right={right}
         />
       </div>
       <div
+        onTransitionEnd={() => setTransitionEnd(true)}
         className={`${mobileStyles.content} ${isClicked !== '' ? mobileStyles.contentOpen : ''}`}
       >
-        <MobileContent />
+        <MobileContent
+          isRecordsActive={isRecordsActive}
+          isProjectsActive={isProjectsActive}
+          isStudioActive={isStudioActive}
+          isContactActive={isContactActive}
+          isServicesActive={isServicesActive}
+          transitionEnd={transitionEnd}
+        />
       </div>
     </div>
   );
