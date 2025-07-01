@@ -8,7 +8,7 @@
     --black: #545454;
     --black-active: #393636;
     --lightgrey: #ebebeb;
-    --title-weight: "wght" 900;
+    --title-weight: "wght" 500;
     --radius-large: 20px;
     --border: 0.5px solid var(--black);
     --border-active: 0.5px solid var(--black-active);
