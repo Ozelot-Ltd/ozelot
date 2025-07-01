@@ -11,6 +11,8 @@ import {
 import SocialBar from '../../SectionComponents/ContactComponent/components/SocialBar';
 import Address from '../../Address/Address';
 
+import { useRouter } from 'next/navigation';
+
 type MobileMenuProps = {
   isClicked?: string;
   setIsClicked?: (value: string) => void;
@@ -33,9 +35,12 @@ export default function MobileMenu({
   left,
   right,
 }: MobileMenuProps) {
+  const router = useRouter();
+
   const handleClick = (target: string) => {
     if (setIsClicked) {
       setIsClicked(target);
+      router.push(`/${target}`);
     }
     if (setIsNavigationActive) {
       setIsNavigationActive(!isNavigationActive);

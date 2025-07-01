@@ -10,6 +10,8 @@ import ThreeD from '@/app/components/SvgComponents/ThreeD/ThreeD';
 import SoundDesignIcon from '@/app/components/SvgComponents/SoundDesign/SoundDesign';
 import Arrow from '@/app/components/SvgComponents/Arrow/Arrow';
 
+import { useMobile } from '../../../../../../../context/MobileContext';
+
 import { useRouter } from 'next/navigation';
 
 import ShowAnimation from './ShowAnimation';
@@ -41,6 +43,8 @@ const Service = ({ service, activeService, setActiveService }: Props) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [showElement, setShowElement] = useState(false);
   const router = useRouter();
+
+  const { isMobile } = useMobile();
 
   useEffect(() => {
     if (
@@ -104,7 +108,7 @@ const Service = ({ service, activeService, setActiveService }: Props) => {
             <div
               className={`${styles.arrow} ${isExpanded ? styles.rotated : ''}`}
             >
-              <Arrow />
+              <Arrow height={isMobile ? '12' : '23'} />
             </div>
           </div>
         </div>
