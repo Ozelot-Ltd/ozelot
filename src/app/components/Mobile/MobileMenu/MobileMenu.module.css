@@ -5,6 +5,7 @@
     align-items: center;
     justify-content: center;
     padding: calc(4rem + 4vw) calc(2rem + 2vw);
+    flex-direction: column;
 }
 
 .navlist {
@@ -25,6 +26,18 @@
 .navitem h3 {
     font-variation-settings: var(--text-weight);
     font-size: calc(1.5rem + 1.5vw);
+}
+
+.socialbar {
+    width: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.socialbar img {
+    height: 1rem;
 }
 
 .isActive {

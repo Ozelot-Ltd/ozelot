@@ -5,6 +5,71 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
 /**
+ * Content for Address documents
+ */
+interface AddressDocumentData {
+  /**
+   * Title field in *Address*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Ozelot Studios GmbH
+   * - **API ID Path**: address.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Street field in *Address*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: address.street
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  street: prismic.RichTextField;
+
+  /**
+   * Zipcode field in *Address*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: address.zipcode
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  zipcode: prismic.RichTextField;
+
+  /**
+   * Email field in *Address*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: address.email
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  email: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+}
+
+/**
+ * Address document from Prismic
+ *
+ * - **API ID**: `address`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type AddressDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<AddressDocumentData>,
+    "address",
+    Lang
+  >;
+
+/**
  * Content for AI Icon documents
  */
 interface AiIconDocumentData {
@@ -1903,6 +1968,7 @@ export type WebIconDocument<Lang extends string = string> =
   >;
 
 export type AllDocumentTypes =
+  | AddressDocument
   | AiIconDocument
   | ArtDirectionIconDocument
   | ContactDocument
@@ -1990,6 +2056,8 @@ declare module "@prismicio/client" {
 
   namespace Content {
     export type {
+      AddressDocument,
+      AddressDocumentData,
       AiIconDocument,
       AiIconDocumentData,
       ArtDirectionIconDocument,

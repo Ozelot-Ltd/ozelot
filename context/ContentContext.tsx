@@ -18,6 +18,7 @@ import {
   SocialBarDocument,
   ServicesOfferedDocument,
   LegalDocument,
+  AddressDocument,
 } from '../prismicio-types';
 
 export type ContentProps = {
@@ -36,6 +37,7 @@ export type ContentProps = {
   socialBar: SocialBarDocument;
   servicesOffered: ServicesOfferedDocument;
   legal: LegalDocument;
+  address: AddressDocument;
 };
 
 // ContentContext.tsx

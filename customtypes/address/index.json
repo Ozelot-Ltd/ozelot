@@ -1,0 +1,49 @@
+{
+  "format": "custom",
+  "id": "address",
+  "label": "Address",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "title": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Title",
+          "placeholder": "Ozelot Studios GmbH",
+          "allowTargetBlank": true,
+          "multi": "heading4"
+        }
+      },
+      "street": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Street",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,strong,em,hyperlink"
+        }
+      },
+      "zipcode": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Zipcode",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,strong,hyperlink,em"
+        }
+      },
+      "email": {
+        "type": "Link",
+        "config": {
+          "label": "Email",
+          "placeholder": "",
+          "select": null,
+          "allowTargetBlank": true,
+          "allowText": true,
+          "repeat": false
+        }
+      }
+    }
+  }
+}

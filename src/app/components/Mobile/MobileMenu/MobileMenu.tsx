@@ -8,6 +8,9 @@ import {
   Simplify,
 } from '../../../../../prismicio-types';
 
+import SocialBar from '../../SectionComponents/ContactComponent/components/SocialBar';
+import Address from '../../Address/Address';
+
 type MobileMenuProps = {
   isClicked?: string;
   setIsClicked?: (value: string) => void;
@@ -43,8 +46,6 @@ export default function MobileMenu({
 
   const navigationArray = [...left, ...right];
 
-  console.log(navigationArray);
-
   return (
     <nav className={styles.navbar}>
       <ul className={styles.navlist}>
@@ -61,6 +62,10 @@ export default function MobileMenu({
           </li>
         ))}
       </ul>
+      <div className={styles.socialbar}>
+        <SocialBar />
+        <Address />
+      </div>
     </nav>
   );
 }
