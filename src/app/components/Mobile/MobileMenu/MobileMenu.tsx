@@ -42,7 +42,7 @@ export default function MobileMenu({
     }
   };
 
-  console.log(left, right);
+  const seeSocialBar = false;
 
   const navigationArray = [...left, ...right];
 
@@ -62,10 +62,12 @@ export default function MobileMenu({
           </li>
         ))}
       </ul>
-      <div className={styles.socialbar}>
-        <SocialBar />
-        <Address />
-      </div>
+      {seeSocialBar && (
+        <div className={styles.socialbar}>
+          <SocialBar />
+          <Address />
+        </div>
+      )}
     </nav>
   );
 }
