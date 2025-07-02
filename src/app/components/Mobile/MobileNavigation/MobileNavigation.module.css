@@ -13,7 +13,7 @@
     left: 0;
     display: flex;
     align-items: center;
-    transition: transform 1.2s var(--bezier);
+    transition: transform var(--time) var(--bezier);
 }
 
 .crossactive {

@@ -46,7 +46,9 @@ export default function Contact({
         <div className={styles.textContainer}>
           <PrismicRichText field={contact.data.contact_text} />
         </div>
-        <SocialBar />
+        <div className={styles.socialBarContainer}>
+          <SocialBar />
+        </div>
       </section>
 
       <section className={styles.rightContainer}>

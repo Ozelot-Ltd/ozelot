@@ -8,7 +8,7 @@
     top: 0;
     left: 0;
     padding: calc(var(--container-width) / 2) var(--container-width);
-    transition: transform 0.6s ease-in;
+    transition: transform 0.6s var(--bezier);
     will-change: transform;
     transform: translateY(-100%)
 }
@@ -128,17 +128,10 @@
 /* Up to 768px */
 @media (max-width: 48rem) {
     .main {
-        overflow: hidden;
-        max-height: 100svh;
-        width: 100svw;
-        position: fixed;
-        background-color: #ebebeb;
         z-index: 10;
         top: 0;
         left: 0;
         padding: 0;
-        transition: transform 0.6s ease-in;
-        will-change: transform;
         transform: translateY(100%);
         padding: 6rem 2rem;
     }
