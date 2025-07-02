@@ -9,6 +9,7 @@ import { PrismicRichText } from '@prismicio/react';
 import { isLegalVisibleStore } from '@/app/stores/IsLegalVisible';
 import { PrismicNextLink } from '@prismicio/next';
 import Arrow from '../SvgComponents/Arrow/Arrow';
+import { useMobile } from '../../../../context/MobileContext';
 
 type Props = {
   legal: LegalDocument;
@@ -16,6 +17,7 @@ type Props = {
 
 export default function LegalContent({ legal }: Props) {
   const { isLegalVisible, setIsLegalVisible } = isLegalVisibleStore();
+  const { isMobile } = useMobile();
 
   return (
     <div className={`${styles.main} ${isLegalVisible ? styles.visible : ''}`}>
@@ -35,7 +37,11 @@ export default function LegalContent({ legal }: Props) {
                 <PrismicRichText field={legal.data.title} />
               </div>
               <div
-                style={{ display: 'flex', alignItems: 'center', gap: '0.5vw' }}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: `${!isMobile ? '0.5vw' : '2vw'}`,
+                }}
               >
                 <PrismicNextLink field={legal.data.agb_download} />
                 <div>

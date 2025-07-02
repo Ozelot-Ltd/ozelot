@@ -133,7 +133,7 @@
         left: 0;
         padding: 0;
         transform: translateY(100%);
-        padding: 6rem 2rem;
+        padding: 6rem 2rem 10rem 2rem;
     }
 
     .visible {
@@ -154,18 +154,14 @@
         height: 100%;
         width: 100%;
         width: fit-content;
+        padding-bottom: 15rem;
     }
 
     .main h2 {
-        font-size: calc(2rem + 2vw);
+        font-size: calc(1.5rem + 2vw);
     }
 
-    .titlecontainer {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        width: 100%;
-    }
+
 
     .crosscontainer {
         position: absolute;
@@ -174,37 +170,10 @@
         background-color: var(--lightgrey);
     }
 
-    .cross {
-        position: relative;
-        height: calc(1rem + 1vw);
-        width: calc(1rem + 1vw);
 
-    }
-
-    .cross div {
-        position: absolute;
-        height: 100%;
-        width: var(--border-width);
-        background-color: black;
-        top: 50%;
-        left: 50%;
-        transform-origin: center;
-    }
-
-    .cross div:nth-of-type(1) {
-        transform: translateY(-50%) translateX(-50%) rotate(0deg);
-    }
-
-    .cross div:nth-of-type(2) {
-        transform: translateY(-50%) translateX(-50%) rotate(-90deg);
-    }
 
     .container {
-        display: flex;
-        width: 100%;
-        height: 100%;
-        flex-direction: column;
-        height: fit-content;
+
         gap: calc(1.5rem + 1.5vw);
         overflow: scroll;
     }
@@ -215,34 +184,19 @@
         flex-direction: column;
         width: 100%;
         height: fit-content;
-        gap: calc(0.75rem + 0.75vw)
+        gap: calc(1rem + 0.75vw)
     }
 
-    .category {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        height: fit-content;
-    }
 
     .category div {
-        padding-top: calc(0.25rem + 0.25vw);
-        width: 80%;
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
+        padding-top: calc(0.75rem + 0.25vw);
+        width: 100%;
     }
 
-    .category div p strong {
-        font-variation-settings: var(--title-weight);
-    }
-
+    .category div li,
+    .category div p,
     .category div p a {
-        text-decoration: underline;
-    }
-
-    .category div li {
-        font-variation-settings: var(--text-weight)
+        font-size: calc(0.8rem + 0.4vw)
     }
 }
 
