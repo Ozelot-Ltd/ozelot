@@ -1,19 +1,19 @@
-import { PrismicPreview } from '@prismicio/next';
-import { repositoryName } from '@/prismicio';
+import { PrismicPreview } from "@prismicio/next";
+import { repositoryName } from "@/prismicio";
 
-import { Host_Grotesk } from 'next/font/google';
-import { createClient } from '@/prismicio';
+import { Host_Grotesk } from "next/font/google";
+import { createClient } from "@/prismicio";
 
-import './globals.css';
-import MainComponent from './components/MainComponent';
-import { Providers } from './components/Providers/Providers';
-import { BackgroundComponent } from './components/BackgroundComponent/BackgroundComponent';
+import "./globals.css";
+import MainComponent from "./components/MainComponent";
+import { Providers } from "./components/Providers/Providers";
+import { BackgroundComponent } from "./components/BackgroundComponent/BackgroundComponent";
 
 const host = Host_Grotesk({
-  weight: 'variable',
-  style: 'normal',
+  weight: "variable",
+  style: "normal",
   preload: true,
-  subsets: ['latin'],
+  subsets: ["latin"],
 });
 
 const isBackgroundShown = false;
@@ -25,7 +25,7 @@ export default async function RootLayout({
 }) {
   try {
     const client = createClient();
-    const settings = await client.getSingle('settings');
+    const settings = await client.getSingle("settings");
 
     const [
       studio,
@@ -45,22 +45,22 @@ export default async function RootLayout({
       legal,
       address,
     ] = await Promise.all([
-      client.getSingle('studio'),
-      client.getSingle('contact'),
-      client.getByType('project'),
-      client.getByType('record'),
-      client.getByType('service'),
-      client.getSingle('threed_icon'),
-      client.getSingle('art_direction_icon'),
-      client.getSingle('web_icon'),
-      client.getSingle('general_icon'),
-      client.getSingle('sound_design_icon'),
-      client.getSingle('graphic_icon'),
-      client.getSingle('ai_icon'),
-      client.getSingle('social_bar'),
-      client.getSingle('services_offered'),
-      client.getSingle('legal'),
-      client.getSingle('address'),
+      client.getSingle("studio"),
+      client.getSingle("contact"),
+      client.getByType("project"),
+      client.getByType("record"),
+      client.getByType("service"),
+      client.getSingle("threed_icon"),
+      client.getSingle("art_direction_icon"),
+      client.getSingle("web_icon"),
+      client.getSingle("general_icon"),
+      client.getSingle("sound_design_icon"),
+      client.getSingle("graphic_icon"),
+      client.getSingle("ai_icon"),
+      client.getSingle("social_bar"),
+      client.getSingle("services_offered"),
+      client.getSingle("legal"),
+      client.getSingle("address"),
     ]);
 
     if (
@@ -82,7 +82,7 @@ export default async function RootLayout({
       !legal ||
       !address
     ) {
-      throw new Error('Failed to load required data');
+      throw new Error("Failed to load required data");
     }
 
     const contentProps = {
@@ -109,7 +109,7 @@ export default async function RootLayout({
 
     // Check that navigation items are available
     if (!leftField || !rightField) {
-      throw new Error('Navigation settings not available');
+      throw new Error("Navigation settings not available");
     }
 
     const settingsProps = {
@@ -120,7 +120,7 @@ export default async function RootLayout({
     return (
       <html lang="en">
         <body className={host.className}>
-          {isBackgroundShown && <BackgroundComponent />}
+          {!isBackgroundShown && <BackgroundComponent />}
           <Providers contentProps={contentProps}>
             <MainComponent {...settingsProps} />
             {children}
@@ -130,12 +130,12 @@ export default async function RootLayout({
       </html>
     );
   } catch (error) {
-    console.error('Failed to load application data:', error);
+    console.error("Failed to load application data:", error);
 
     return (
       <html lang="en">
         <body className={host.className}>
-          <div style={{ padding: '2rem', textAlign: 'center' }}>
+          <div style={{ padding: "2rem", textAlign: "center" }}>
             <h1>Loading...</h1>
             <p>Please wait while we prepare the content.</p>
           </div>
