@@ -11,7 +11,6 @@
 .logocontainer,
 .navigation {
     z-index: 2;
-
     width: 100%;
     display: flex;
     align-items: center;
@@ -22,16 +21,14 @@
     padding-top: calc(2vw + 1rem);
     height: fit-content;
     padding-bottom: calc(1vw + 0.5rem);
-    background: #EBEBEB;
-    background: linear-gradient(180deg, rgba(235, 235, 235, 1) 0%, rgba(235, 235, 235, 0.95) 70%, rgba(235, 235, 235, 0.8) 85%, rgba(235, 235, 235, 0.6) 100%);
+
 }
 
 
 .navigation {
     padding-bottom: calc(2vw + 1rem);
     padding-top: calc(1vw + 0.5rem);
-    background: #EBEBEB;
-    background: linear-gradient(0deg, rgba(235, 235, 235, 1) 0%, rgba(235, 235, 235, 0.95) 70%, rgba(235, 235, 235, 0.8) 85%, rgba(235, 235, 235, 0.6) 100%);
+
 }
 
 

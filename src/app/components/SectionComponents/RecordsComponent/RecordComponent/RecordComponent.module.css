@@ -5,7 +5,7 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     position: relative;
-
+    padding: 0.5vw 0;
 }
 
 .container .leftContainer,
@@ -76,7 +76,7 @@
 .pills {
     display: flex;
     gap: 0.5rem;
-    background-color: red;
+
 }
 
 .pills p {
@@ -406,7 +406,7 @@
         display: flex;
         position: relative;
         flex-direction: column;
-        background-color: red;
+        padding: 3rem 0;
     }
 
     .container .leftContainer,
