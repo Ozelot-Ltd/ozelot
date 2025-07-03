@@ -10,7 +10,7 @@
     padding: calc(var(--container-width) / 2) var(--container-width);
     transition: transform 0.6s var(--bezier);
     will-change: transform;
-    transform: translateY(-100%)
+    transform: translateY(100%)
 }
 
 .visible {
@@ -202,7 +202,16 @@
 
 /* Tablet */
 /* 768px to 1184px */
-@media (min-width: 48rem) and (max-width: 74rem) {}
+@media (min-width: 48rem) and (max-width: 74rem) {
+    .main {
+        z-index: 10;
+        top: 0;
+        left: 0;
+        padding: 0;
+        transform: translateY(100%);
+        padding: 6rem 2rem 10rem 2rem;
+    }
+}
 
 /* Tablet - Portrait Orientation */
 /* 768px to 1184px in portrait mode */

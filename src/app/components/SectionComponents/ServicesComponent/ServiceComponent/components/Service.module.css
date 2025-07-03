@@ -119,8 +119,6 @@
     font-size: calc(0.4rem + 0.5vw);
     text-transform: uppercase;
     font-variation-settings: "wght" 200;
-
-
 }
 
 
@@ -354,14 +352,14 @@
 
     .container {
         border-bottom: var(--border);
-        overflow: hidden;
+        overflow: scroll;
         height: var(--upper-height);
         transition: height calc(var(--time))var(--bezier);
         will-change: height;
         transition-delay: 0.2s;
         max-width: 100%;
         width: 100%;
-        background-color: red;
+
     }
 
 
@@ -508,6 +506,7 @@
         font-variation-settings: "wght" 200;
         padding-left: 0;
         max-width: 40rem;
+        font-size: calc(0.5rem + 0.5vw);
     }
 
 
@@ -535,16 +534,22 @@
         transition-delay: 0.2s;
         max-width: 100%;
         width: 100%;
+
+
+    }
+
+    .upperContainer,
+    .lowerContainer {
+        padding: calc(.75rem + 0.6vw) 0;
+        width: 100%;
     }
 
     .upperContainer {
-        display: flex;
-        justify-content: space-between;
-        flex-direction: column;
-        align-items: flex-start;
-        height: fit-content;
-        min-height: calc(8rem + 7vw);
+        display: grid;
+        grid-template-columns: 1.5fr 0.75fr;
+        min-height: calc(5rem + 7vw);
     }
+
 
     .expanded {
         height: calc(var(--lower-height) + var(--upper-height))
@@ -552,6 +557,14 @@
 
     .noBorder {
         border-bottom: none;
+    }
+
+
+    .description p {
+        font-variation-settings: "wght" 200;
+        padding-left: 0;
+        max-width: 40rem;
+        font-size: calc(0.6rem + 0.6vh);
     }
 
 

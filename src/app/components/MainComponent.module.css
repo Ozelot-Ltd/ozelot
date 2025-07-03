@@ -46,6 +46,8 @@
 
 .left .column {
     position: relative;
+
+
 }
 
 .right .column::after {
@@ -152,6 +154,8 @@
     justify-content: center;
 }
 
+
+
 .logoContainer {
     padding: 1rem;
     top: 0;
@@ -167,6 +171,13 @@
     bottom: 0;
     transform: translateX(-50%);
     z-index: 99;
+
+}
+
+.services p {
+
+    width: fit-content;
+
 }
 
 .bar {
@@ -178,7 +189,6 @@
     position: absolute;
     bottom: 0;
     background-color: transparent;
-
     transition:
         height var(--time) var(--bezier) 0s,
         background-color var(--time) var(--bezier) 0.3s,
@@ -273,6 +283,7 @@
         width: 100%;
         height: 100vh;
         width: 100vw;
+
     }
 
     .nav {
@@ -362,6 +373,7 @@
         padding: 1rem;
         top: 0;
         z-index: 100;
+
     }
 
 
