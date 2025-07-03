@@ -85,7 +85,7 @@ export default function MainComponent({
   const [isRecordsActive, setIsRecordsActive] = useState(false);
   const [isContactActive, setIsContactActive] = useState(false);
   const [isServicesActive, setIsServicesActive] = useState(false);
-  const { isMobile } = useMobile();
+  const { isDesktop } = useMobile();
 
   useEffect(() => {
     if (isClicked === 'projects') {
@@ -207,7 +207,7 @@ export default function MainComponent({
   };
   return (
     <>
-      {!isMobile ? (
+      {isDesktop ? (
         <div className={styles.container}>
           <div className={styles.logoContainer}>
             <div

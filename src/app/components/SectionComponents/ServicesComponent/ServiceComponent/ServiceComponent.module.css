@@ -17,9 +17,15 @@
 /* Up to 768px */
 @media (max-width: 48rem) {
 
+
     .scrollContainer {
         padding-top: calc((0.3rem + 0.6vw));
     }
+
+    .container {
+        background-color: blue;
+    }
+
 }
 
 /* Tablet */

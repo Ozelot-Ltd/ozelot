@@ -260,32 +260,233 @@
 
 
 
-/* Desktop */
-@media (min-width: 64rem) {}
-
-/* 1024px ÷ 16 = 64rem */
-
-/* Desktop Large */
-@media (min-width: 75rem) {}
-
-/* 1200px ÷ 16 = 75rem */
-
-/* Desktop XL */
-@media (min-width: 90rem) {}
-
-/* 1440px ÷ 16 = 90rem */
-
-/* Mobile XS */
-@media (min-width: 20rem) {}
-
-/* 320px ÷ 16 = 20rem */
-
 /* Mobile */
-@media (min-width: 30rem) {}
-
-/* 480px ÷ 16 = 30rem */
+/* Up to 768px */
+@media (max-width: 48rem) {}
 
 /* Tablet */
-@media (min-width: 48rem) {}
+/* 768px to 1184px */
+@media (min-width: 48rem) and (max-width: 74rem) {
+    .container {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        height: 100vh;
+        width: 100vw;
+    }
 
-/* 768px ÷ 16 = 48rem */
+    .nav {
+        display: flex;
+        width: fit-content;
+    }
+
+    .right {
+        top: 0;
+        right: 0;
+        position: absolute;
+    }
+
+    .column {
+        height: 100vh;
+        position: relative;
+        width: 3rem;
+        background-size: cover;
+        display: flex;
+        align-items: flex-start;
+        transition: all var(--time) var(--bezier);
+    }
+
+
+    .fullWidth {
+        width: calc(100vw - 9rem);
+        transition: all var(--time) var(--bezier);
+        z-index: 10;
+    }
+
+
+
+
+    .columnContent {
+        width: 3rem;
+        min-width: 3rem;
+    }
+
+    .columnContent p {
+        font-size: calc(0.3vw + 0.5rem);
+    }
+
+
+    .fullWidth .columnContent p,
+    .fullHeight p {
+        font-variation-settings: "wght" 800;
+    }
+
+    .columnContent img {
+        height: 1rem;
+        width: 1rem;
+    }
+
+    .columnContent p:nth-of-type(2) {
+        writing-mode: horizontal-tb;
+        font-size: calc(0.3vw + 0.5rem);
+        font-variation-settings: var(--title-weight);
+
+    }
+
+    .section {
+        overflow: hidden;
+    }
+
+
+    .sectionHeading {
+        transform: translateY(100%);
+        transition: all var(--time) var(--bezier);
+    }
+
+    .visible {
+        transform: translateY(0);
+    }
+
+    .logoContainer,
+    .services {
+        position: fixed;
+        width: calc(100% - (var(--container-width) * 2));
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .logoContainer {
+        padding: 1rem;
+        top: 0;
+        z-index: 100;
+    }
+
+
+
+    .services {
+        position: fixed;
+        width: calc(100% - (var(--container-width) * 2));
+        left: 50%;
+        bottom: 0;
+        transform: translateX(-50%);
+        z-index: 99;
+    }
+
+    .bar {
+        width: 100%;
+        height: 5rem;
+        display: flex;
+        flex-direction: column-reverse;
+        transform-origin: bottom;
+        position: absolute;
+        bottom: 0;
+        background-color: transparent;
+
+        transition:
+            height var(--time) var(--bezier) 0s,
+            background-color var(--time) var(--bezier) 0.3s,
+            backdrop-filter var(--time) var(--bezier) 0.3s;
+    }
+
+
+    .bar.fullHeight {
+        height: 100vh;
+
+
+
+    }
+
+
+    .fullHeight.bar {
+        transition:
+            height var(--time) var(--bezier) 0.2s,
+            background-color var(--time) var(--bezier) 0.3s,
+            backdrop-filter var(--time) var(--bezier) 0s;
+    }
+
+    .bar .columnContent {
+        height: 3rem;
+    }
+
+    .bar .columnContent p {
+        transform: rotate(90deg)
+    }
+
+    .bar .section {
+        flex-grow: 1;
+        width: 100%;
+        overflow: auto;
+    }
+
+    .logoContainer * {
+        cursor: pointer;
+    }
+
+    .logo {
+        position: relative;
+    }
+
+    .animate {
+        animation: scaleUp 10s ease-in-out infinite;
+    }
+
+
+    .fullWidth .columnContent img {
+        animation: rotate 2.5s ease-in-out infinite;
+    }
+
+    @keyframes rotate {
+        from {
+            transform: rotateY(0deg);
+        }
+
+        to {
+            transform: rotateY(360deg);
+        }
+    }
+
+    @keyframes scaleUp {
+        0% {
+            transform: scale(1) rotateY(0deg);
+        }
+
+
+        100% {
+            transform: scale(1) rotateY(360deg);
+        }
+    }
+
+}
+
+/* Tablet - Portrait Orientation */
+/* 768px to 1184px in portrait mode */
+@media (min-width: 48rem) and (max-width: 74rem) and (orientation: portrait) {}
+
+/* Desktop */
+/* 1184px and up */
+@media (min-width: 74rem) {}
+
+/* Large Desktop */
+/* 1440px and up */
+@media (min-width: 90rem) {}
+
+@media (min-width: 120rem) {}
+
+/* Touch Devices */
+/* Any touch device regardless of size */
+@media (hover: none) {}
+
+/* Non-Touch Devices */
+/* Devices with precise pointer (mouse) */
+@media (hover: hover) and (pointer: fine) {}
+
+/* Prefers Dark Mode */
+/* User has set dark mode preference */
+@media (prefers-color-scheme: dark) {}
+
+/* Prefers Reduced Motion */
+/* User has requested minimal animations */
+@media (prefers-reduced-motion: reduce) {}
