@@ -352,14 +352,13 @@
 
     .container {
         border-bottom: var(--border);
-        overflow: scroll;
+        overflow: hidden;
         height: var(--upper-height);
         transition: height calc(var(--time))var(--bezier);
         will-change: height;
         transition-delay: 0.2s;
         max-width: 100%;
         width: 100%;
-
     }
 
 

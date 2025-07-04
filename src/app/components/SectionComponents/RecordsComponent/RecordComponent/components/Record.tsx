@@ -47,10 +47,10 @@ export default function Record({
           <PrismicRichText field={record.data.catalog} />
         </div>
         <div className={styles.vinylContainer}>
-          <Vinyl height="21" width="21" fill="#494C4F" />
+          <Vinyl height="21" width="21" fill="var(--black)" />
         </div>
         <div className={styles.arrowContainer}>
-          <Arrow height="20" width="20" fill="#494C4F" />
+          <Arrow height="20" width="20" fill="var(--black)" />
         </div>{' '}
       </div>
     </FadeIn>
