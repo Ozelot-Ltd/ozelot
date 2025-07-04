@@ -3,7 +3,7 @@
 /******** VARIABLES ********/
 
 :root {
-    --font-size: 16px;
+    --font-size: calc(0.65rem + 0.3vw);
     --text-weight: "wght" 300;
     --black: #545454;
     --black-active: #393636;

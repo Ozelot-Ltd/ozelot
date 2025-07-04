@@ -120,9 +120,13 @@
         font-variation-settings: var(--title-weight);
     }
 
-    .arrowContainer svg,
-    .vinylContainer svg {
+    .arrowContainer svg {
         scale: 0.75;
+    }
+
+
+    .vinylContainer svg {
+        scale: 0.9;
     }
 
 }

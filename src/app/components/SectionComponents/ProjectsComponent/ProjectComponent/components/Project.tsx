@@ -46,7 +46,7 @@ export default function Project({ project, activeProject, index }: Props) {
           <IconSwitchComponent currentProject={project.data} />
         </div>
         <div className={styles.arrowContainer}>
-          <Arrow height="20" width="20" fill="#494C4F" />
+          <Arrow height="20" width="20" fill="var(--black)" />{' '}
         </div>
       </div>
     </FadeIn>
