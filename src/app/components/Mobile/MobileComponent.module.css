@@ -18,7 +18,7 @@
 }
 
 .logocontainer {
-    padding-top: calc(2vw + 1rem);
+    padding-top: calc(1vw + 1rem);
     height: fit-content;
     padding-bottom: calc(1vw + 0.5rem);
 
@@ -26,7 +26,7 @@
 
 
 .navigation {
-    padding-bottom: calc(2vw + 1rem);
+    padding-bottom: calc(1vw + 1rem);
     padding-top: calc(1vw + 0.5rem);
 
 }
