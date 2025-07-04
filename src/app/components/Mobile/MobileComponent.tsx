@@ -10,7 +10,7 @@ import MobileNavigation from './MobileNavigation/MobileNavigation';
 
 import MobileContent from './MobileContent/MobileContent';
 
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 
 import MobileMenu from './MobileMenu/MobileMenu';
 import { GroupField } from '@prismicio/client';
@@ -36,6 +36,7 @@ export default function MobileComponent({
   const [isServicesActive, setIsServicesActive] = useState(false);
   const [transitionEnd, setTransitionEnd] = useState(false);
   const router = useRouter();
+  const pathname = usePathname();
 
   useEffect(() => {
     if (isClicked === 'projects') {
@@ -70,6 +71,27 @@ export default function MobileComponent({
       setIsServicesActive(true);
     }
   }, [isClicked]);
+
+  useEffect(() => {
+    if (pathname === '/') {
+      setIsClicked('');
+      setIsProjectsActive(false);
+      setIsStudioActive(false);
+      setIsRecordsActive(false);
+      setIsContactActive(false);
+      setIsServicesActive(false);
+    } else if (pathname.includes('/projects')) {
+      setIsClicked('projects');
+    } else if (pathname.includes('/studio')) {
+      setIsClicked('studio');
+    } else if (pathname.includes('/records')) {
+      setIsClicked('records');
+    } else if (pathname.includes('/contact')) {
+      setIsClicked('contact');
+    } else if (pathname.includes('/services')) {
+      setIsClicked('services');
+    }
+  }, [pathname]);
 
   return (
     <div className={mobileStyles.main}>

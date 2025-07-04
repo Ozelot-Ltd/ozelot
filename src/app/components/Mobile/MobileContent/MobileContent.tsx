@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import RecordsComponent from '../../SectionComponents/RecordsComponent/RecordsComponent';
 import ServicesComponent from '../../SectionComponents/ServicesComponent/ServicesComponent';
@@ -25,10 +25,6 @@ export default function MobileContent({
   isServicesActive,
   transitionEnd,
 }: MobileContentProps) {
-  useEffect(() => {
-    console.log('hilaölahsöihasf', isRecordsActive);
-  }, [isRecordsActive]);
-
   return (
     <>
       {isRecordsActive && (
