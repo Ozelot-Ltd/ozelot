@@ -73,6 +73,15 @@
           "placeholder": ""
         }
       },
+      "contact_agree_terms": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Contact agree Terms",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,strong,em,hyperlink"
+        }
+      },
       "contact_input_agree": {
         "type": "Text",
         "config": {

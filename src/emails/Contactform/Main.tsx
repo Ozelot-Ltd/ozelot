@@ -13,8 +13,8 @@ import {
 import * as React from 'react';
 
 import { mailSocials } from './mailSocials';
-import { projectLinks } from './projectLinks';
-import { mailReleases } from './mailReleases';
+// import { projectLinks } from './projectLinks';
+// import { mailReleases } from './mailReleases';
 
 import { FormData } from '@/app/components/SectionComponents/ContactComponent/components/ContactForm';
 
@@ -83,6 +83,15 @@ export default function ContactFormMain(formData: FormData) {
         <Spacer />
         <Spacer />
         <Container>
+          <Img
+            src="https://images.prismic.io/ozelot/aAo5kfIqRLdaBk6B_merch.gif?auto=format,compress"
+            alt="Exxodus Merch"
+            style={{ margin: 'auto' }}
+          />
+        </Container>
+        <Spacer />
+        <Spacer />
+        {/* <Container>
           <Container>
             <Heading style={subHeading}>WHAT IS</Heading>
             <Heading style={subHeading}>OZELOT LTD.?</Heading>
@@ -101,13 +110,7 @@ export default function ContactFormMain(formData: FormData) {
           <Spacer />
           <Spacer />
           <Spacer />
-          <Container>
-            <Img
-              src="https://images.prismic.io/ozelot/aAo5kfIqRLdaBk6B_merch.gif?auto=format,compress"
-              alt="Exxodus Merch"
-              style={{ margin: 'auto' }}
-            />
-          </Container>
+     
         </Container>
         <Spacer />
         <Spacer />
@@ -276,7 +279,7 @@ export default function ContactFormMain(formData: FormData) {
           </Container>
         </Container>{' '}
         <Spacer />
-        <Spacer />
+        <Spacer /> */}
         <Container>
           <Container>
             <Text style={text}>
@@ -374,14 +377,14 @@ const mainHeading = {
   color: '#545454',
 };
 
-const subHeading = {
-  fontWeight: 600,
-  margin: '0px',
-  padding: '0px',
-  fontSize: '36px',
-  lineHeight: '42px',
-  color: '#545454',
-};
+// const subHeading = {
+//   fontWeight: 600,
+//   margin: '0px',
+//   padding: '0px',
+//   fontSize: '36px',
+//   lineHeight: '42px',
+//   color: '#545454',
+// };
 
 const greeting = {
   fontWeight: 600,
@@ -402,35 +405,35 @@ const text = {
   color: '#545454',
 };
 
-const projectName = {
-  fontSize: '20px',
-  fontWeight: 600,
-  color: '#545454',
-  padding: '0px 12px',
-};
+// const projectName = {
+//   fontSize: '20px',
+//   fontWeight: 600,
+//   color: '#545454',
+//   padding: '0px 12px',
+// };
 
-const projectLink = {
-  padding: '0',
-  lineHeight: '0px',
-  textDecoration: 'none',
-  display: 'block',
-  borderBottom: '1px solid #545454',
-  backgroundColor: 'rgba(247, 247, 247,1)',
-  color: '#545454',
-};
+// const projectLink = {
+//   padding: '0',
+//   lineHeight: '0px',
+//   textDecoration: 'none',
+//   display: 'block',
+//   borderBottom: '1px solid #545454',
+//   backgroundColor: 'rgba(247, 247, 247,1)',
+//   color: '#545454',
+// };
 
-const indexStyle = {
-  fontSize: '8px',
-  color: '#545454',
-};
+// const indexStyle = {
+//   fontSize: '8px',
+//   color: '#545454',
+// };
 
-const seeMoreText = {
-  fontWeight: 300,
-  margin: '0px',
-  padding: '0px',
-  fontSize: '14px',
-  color: '#545454',
-};
+// const seeMoreText = {
+//   fontWeight: 300,
+//   margin: '0px',
+//   padding: '0px',
+//   fontSize: '14px',
+//   color: '#545454',
+// };
 
 // const catalogStyle = {
 //   fontSize: '12px',

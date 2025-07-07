@@ -231,6 +231,17 @@ interface ContactDocumentData {
   contact_input_textfield: prismic.KeyTextField;
 
   /**
+   * Contact agree Terms field in *Contact*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact.contact_agree_terms
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  contact_agree_terms: prismic.RichTextField;
+
+  /**
    * Contact Input Agree field in *Contact*
    *
    * - **Field Type**: Text
