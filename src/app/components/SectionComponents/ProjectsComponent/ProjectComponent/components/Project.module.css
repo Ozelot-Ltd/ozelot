@@ -12,6 +12,7 @@
     border-bottom: var(--border);
     flex: 1;
     cursor: e-resize;
+
 }
 
 .catalogContainer,
@@ -128,3 +129,125 @@
     }
 
 }
+
+
+/* Tablet */
+/* 768px to 1184px */
+@media (min-width: 48rem) and (max-width: 96rem) {
+    .fadeIn {
+        width: 100%;
+    }
+
+    .projectComponent {
+        display: grid;
+        grid-template-columns: 2fr 0.75fr 2fr;
+        align-items: center;
+        height: fit-content;
+        width: 100%;
+        padding: calc(0.5rem + 0.5vw) 0;
+        border-bottom: var(--border);
+        flex: 1;
+        cursor: e-resize;
+    }
+
+    .catalogContainer,
+    .iconContainer,
+    .arrowContainer {
+        display: flex;
+        height: 100%;
+        width: 100%;
+        align-items: center;
+    }
+
+    .catalogContainer {
+        gap: calc(0.2rem + 0.3vw);
+    }
+
+    .catalogContainer p {
+        font-size: calc(0.2rem + 0.3vw);
+        align-self: flex-start;
+    }
+
+    .catalogContainer h3,
+    .catalogContainer p {
+        transition: font-variation-settings 1s var(--bezier);
+    }
+
+
+    .catalogContainer h3 {
+        font-variation-settings: var(--text-weight);
+        font-size: calc(0.6rem + 0.7vw);
+        text-transform: uppercase;
+        transition: font-variation-settings 1s var(--bezier);
+    }
+
+    .active .catalogContainer h3 {
+        font-variation-settings: var(--title-weight);
+        transition: font-variation-settings 1s var(--bezier);
+    }
+
+    .releaseComponent:hover .catalogContainer h3,
+    .releaseComponent:hover .catalogContainer p {
+        font-variation-settings: var(--title-weight);
+    }
+
+    .iconContainer {
+        justify-content: center;
+    }
+
+    .iconContainer img {
+        height: calc(0.4rem + 0.8vw);
+        width: calc(0.4rem + 0.8vw);
+    }
+
+    .arrowContainer {
+        justify-content: flex-end;
+    }
+
+    .arrowContainer svg {
+        transform: rotate(0deg);
+        transition: transform var(--time-fast) var(--bezier)
+    }
+
+    .active svg {
+        transform: rotate(180deg);
+    }
+
+    .projectComponent:hover .arrowContainer svg {
+        transform: rotate(180deg)
+    }
+
+    .imageContainer {
+        height: 100%;
+    }
+}
+
+/* Tablet - Portrait Orientation */
+/* 768px to 1184px in portrait mode */
+@media (min-width: 48rem) and (max-width: 74rem) and (orientation: portrait) {}
+
+/* Desktop */
+/* 1184px and up */
+@media (min-width: 74rem) {}
+
+/* Large Desktop */
+/* 1440px and up */
+@media (min-width: 90rem) {}
+
+@media (min-width: 120rem) {}
+
+/* Touch Devices */
+/* Any touch device regardless of size */
+@media (hover: none) {}
+
+/* Non-Touch Devices */
+/* Devices with precise pointer (mouse) */
+@media (hover: hover) and (pointer: fine) {}
+
+/* Prefers Dark Mode */
+/* User has set dark mode preference */
+@media (prefers-color-scheme: dark) {}
+
+/* Prefers Reduced Motion */
+/* User has requested minimal animations */
+@media (prefers-reduced-motion: reduce) {}

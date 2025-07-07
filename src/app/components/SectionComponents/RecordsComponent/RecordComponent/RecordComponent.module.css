@@ -416,6 +416,7 @@
         position: relative;
         flex-direction: column;
         padding: 3rem 0;
+        gap: calc(4rem + 2vw);
     }
 
     .container .leftContainer,
@@ -594,6 +595,7 @@
     .imageContainer {
         overflow: scroll;
         padding: 0rem 0;
+
     }
 
 }
