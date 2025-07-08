@@ -38,8 +38,9 @@ const ServiceComponent = ({ isServicesActive, transitionEnd }: Props) => {
             key={`${service.id}-${index}`}
             stylesProps={styles}
             multiplier={0.1}
-            delay={index}
-            yDown={250}
+            delay={index + 1}
+            yDown={500}
+            duration={1}
           >
             <Service
               service={service}

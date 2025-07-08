@@ -25,8 +25,8 @@ export default function FadeIn({
   multiplier,
   yDown = 100,
   inlineStyle = {},
-  duration = 0.5,
-  ease = 'ease.out',
+  duration = 0.75,
+  ease = 'power2.out',
   onClick,
 }: FadeInProps) {
   const containerRef = useRef<HTMLDivElement>(null);

@@ -117,9 +117,8 @@ export default function MainComponent({
       setIsStudioActive(false);
       setIsRecordsActive(false);
       setIsContactActive(false);
-      setTimeout(() => {
-        setIsServicesActive(true);
-      }, 1500);
+
+      setIsServicesActive(true);
     }
   }, [isClicked]);
 
