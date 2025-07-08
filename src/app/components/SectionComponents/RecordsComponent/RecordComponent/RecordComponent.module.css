@@ -156,7 +156,7 @@
 }
 
 .subtitle p {
-    font-size: calc(0.2rem + 0.25vw);
+    font-size: calc(0.3rem + 0.3vw);
     color: var(--black)
 }
 

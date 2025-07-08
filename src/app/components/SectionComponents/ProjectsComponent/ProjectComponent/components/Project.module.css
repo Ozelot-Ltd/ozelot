@@ -29,7 +29,7 @@
 }
 
 .catalogContainer p {
-    font-size: calc(0.2rem + 0.3vw);
+    font-size: calc(0.3rem + 0.3vw);
     align-self: flex-start;
 }
 
