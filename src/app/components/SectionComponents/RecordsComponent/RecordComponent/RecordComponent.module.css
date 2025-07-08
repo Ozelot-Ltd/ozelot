@@ -127,6 +127,13 @@
 .releasetext p {
     font-variation-settings: var(--text-weight);
     width: fit-content;
+
+}
+
+.text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5vw;
 }
 
 .artist,

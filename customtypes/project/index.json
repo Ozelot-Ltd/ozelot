@@ -43,7 +43,7 @@
           "label": "Description",
           "placeholder": "",
           "allowTargetBlank": true,
-          "multi": "paragraph"
+          "multi": "paragraph,heading5,heading6,strong,em,list-item"
         }
       },
       "images": {

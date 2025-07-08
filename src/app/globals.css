@@ -79,6 +79,10 @@ h5 {
     text-transform: uppercase;
 }
 
+h5 {
+    font-size: calc(0.5rem + 0.5vw);
+}
+
 p,
 input {
     hyphens: auto;
@@ -118,6 +122,10 @@ textarea {
 
 }
 
+
+strong {
+    font-variation-settings: var(--title-weight);
+}
 
 input[type="checkbox"] {
     appearance: none;
