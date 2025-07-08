@@ -131,6 +131,7 @@ input[type="checkbox"] {
 label {
     text-transform: uppercase;
     font-variation-settings: "wght" 200;
+    color: var(--black)
 }
 
 /******** !!!!!!!! MOBILE STYLES !!!!!!!!! ********/

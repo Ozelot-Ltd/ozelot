@@ -24,7 +24,8 @@
     gap: 0.5rem;
 }
 
-.inputGroup input {
+.inputGroup input,
+.inputGroup input p {
     font-size: calc(0.5rem + 0.75vw);
 }
 
@@ -83,9 +84,15 @@
 
 .radioContainer label {
     width: 100%;
-    font-size: calc(0.4rem + 0.25vw);
     display: block;
     cursor: pointer
+}
+
+.radioContainer label p,
+.radioContainer label {
+
+    font-size: calc(0.4rem + 0.25vw);
+
 }
 
 .buttonContainer {
@@ -336,9 +343,15 @@
 
     .radioContainer label {
         width: 100%;
-        font-size: calc(0.4rem + 1vw);
         display: block;
         cursor: pointer
+    }
+
+    .radioContainer label p,
+    .radioContainer label {
+
+        font-size: calc(0.4rem + 0.25vw);
+
     }
 
     .buttonContainer {

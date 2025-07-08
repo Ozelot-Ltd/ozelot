@@ -5,6 +5,7 @@ import { ContactDocument } from '../../../../../../prismicio-types';
 import styles from './ContactForm.module.css';
 import Arrow from '@/app/components/SvgComponents/Arrow/Arrow';
 import FadeIn from '@/app/components/FadeIn/FadeIn';
+import { PrismicRichText } from '@prismicio/react';
 
 export interface FormData {
   name: string;
@@ -28,6 +29,8 @@ export default function ContactForm({ contact }: Props) {
   });
 
   const [formStatus, setFormStatus] = useState('idle');
+
+  console.log('afdiofadij', contact);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -108,7 +111,7 @@ export default function ContactForm({ contact }: Props) {
               id="name"
               type="text"
               name="name"
-              placeholder="YOUR NAME"
+              placeholder={contact.data.contact_input_name ?? 'YOUR NAME'}
               required
               value={formData.name}
               onChange={handleChange}
@@ -129,7 +132,7 @@ export default function ContactForm({ contact }: Props) {
               name="email"
               value={formData.email}
               required
-              placeholder="YOUR EMAIL"
+              placeholder={contact.data.contact_input_email ?? 'YOUR EMAIL'}
               onChange={handleChange}
             />
           </div>
@@ -165,7 +168,9 @@ export default function ContactForm({ contact }: Props) {
                 aria-required="true"
               />
             </div>
-            <label htmlFor="privacy-agreement">We agree to this and that</label>
+            <label htmlFor="privacy-agreement">
+              <PrismicRichText field={contact.data.contact_agree_terms} />
+            </label>
           </div>
           <div className={styles.radioContainer}>
             <div
@@ -188,7 +193,9 @@ export default function ContactForm({ contact }: Props) {
                 readOnly
               />
             </div>
-            <label htmlFor="newsletter">sign me up for your newsletter!</label>
+            <label htmlFor="newsletter">
+              {contact.data.contact_input_newslettertext}
+            </label>
           </div>
         </div>
       </div>
