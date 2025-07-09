@@ -11,7 +11,7 @@ export interface FormData {
   name: string;
   email: string;
   message: string;
-  newsletter: string;
+  newsletter: boolean;
 }
 
 type Props = { contact: ContactDocument };
@@ -26,12 +26,10 @@ export default function ContactForm({ contact }: Props) {
     surname: '',
     email: '',
     message: '',
-    newsletter: 'no',
+    newsletter: false,
   });
 
   const [formStatus, setFormStatus] = useState('idle');
-
-  console.log('afdiofadij', contact);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -65,6 +63,29 @@ export default function ContactForm({ contact }: Props) {
 
       console.log('Form submitted successfully:', result);
 
+      if (newsletter) {
+        const subscribeResponse = await fetch('/api/emails/subscribe', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            email: formData.email,
+            firstname: formData.name,
+            surname: formData.surname,
+          }),
+        });
+
+        if (!subscribeResponse.ok) {
+          throw new Error(
+            `Error subscribing to newsletter: ${subscribeResponse.status}`
+          );
+        }
+
+        const subscribeResult = await subscribeResponse.json();
+        console.log('Subscribed to newsletter:', subscribeResult);
+      }
+
       // Set status to success
       setFormStatus('success');
       console.log(formStatus);
@@ -76,7 +97,7 @@ export default function ContactForm({ contact }: Props) {
         surname: '',
         email: '',
         message: '',
-        newsletter: '',
+        newsletter: false,
       });
 
       setAgreement(false);
@@ -200,7 +221,7 @@ export default function ContactForm({ contact }: Props) {
                 setNewsletter(newValue);
                 setFormData((prev) => ({
                   ...prev,
-                  newsletter: newValue ? 'yes' : 'no',
+                  newsletter: newValue ? true : false,
                 }));
               }}
             >
@@ -222,7 +243,11 @@ export default function ContactForm({ contact }: Props) {
       <div
         className={`${styles.buttonContainer} ${!agreement ? styles.disabled : ''}`}
       >
-        <button type="submit" className={styles.button} disabled={!agreement}>
+        <button
+          type="submit"
+          className={`${styles.button} ${!agreement ? styles.disabled : ''}`}
+          disabled={!agreement}
+        >
           {!isSent
             ? contact.data.contact_button_text
             : 'THANKS FOR YOUR MESSAGE!'}

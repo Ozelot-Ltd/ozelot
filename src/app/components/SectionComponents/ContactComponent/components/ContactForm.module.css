@@ -26,7 +26,7 @@
 
 .inputGroup input,
 .inputGroup input p {
-    font-size: calc(0.5rem + 0.75vw);
+    font-size: calc(0.5rem + 0.5vw);
 }
 
 .inputGroup textarea {
@@ -67,6 +67,11 @@
     align-items: center;
 }
 
+.disabled {
+    filter: brightness(1.4);
+    cursor: no-drop !important;
+}
+
 .checkboxContainer {
     display: flex;
     height: 1rem;
@@ -91,9 +96,12 @@
 
 .radioContainer label p,
 .radioContainer label {
-
     font-size: calc(0.4rem + 0.25vw);
+}
 
+.radioContainer label p a {
+
+    text-decoration: underline;
 }
 
 .buttonContainer {
