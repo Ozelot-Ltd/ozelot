@@ -23,6 +23,7 @@ export default function ContactForm({ contact }: Props) {
 
   const [formData, setFormData] = useState({
     name: '',
+    surname: '',
     email: '',
     message: '',
     newsletter: 'no',
@@ -72,6 +73,7 @@ export default function ContactForm({ contact }: Props) {
       // Reset form after submission
       setFormData({
         name: '',
+        surname: '',
         email: '',
         message: '',
         newsletter: '',
@@ -102,7 +104,7 @@ export default function ContactForm({ contact }: Props) {
       <div className={styles.inputContainer}>
         <div className={styles.inputGroup}>
           <div className={styles.inputWrapper}>
-            <FadeIn yDown={40} duration={0.5} delay={0.2}>
+            <FadeIn yDown={40} duration={0.5} delay={0.1}>
               <span className={styles.inputArrow}>
                 <Arrow />
               </span>
@@ -111,9 +113,27 @@ export default function ContactForm({ contact }: Props) {
               id="name"
               type="text"
               name="name"
-              placeholder={contact.data.contact_input_name ?? 'YOUR NAME'}
+              placeholder={contact.data.contact_input_name ?? 'NAME'}
               required
               value={formData.name}
+              onChange={handleChange}
+            />
+          </div>
+        </div>
+        <div className={styles.inputGroup}>
+          <div className={styles.inputWrapper}>
+            <FadeIn yDown={40} duration={0.5} delay={0.2}>
+              <span className={styles.inputArrow}>
+                <Arrow />
+              </span>
+            </FadeIn>
+            <input
+              id="surname"
+              type="text"
+              name="surname"
+              placeholder={contact.data.contact_input_surname ?? 'SURNAME'}
+              required
+              value={formData.surname}
               onChange={handleChange}
             />
           </div>
@@ -121,7 +141,7 @@ export default function ContactForm({ contact }: Props) {
 
         <div className={styles.inputGroup}>
           <div className={styles.inputWrapper}>
-            <FadeIn yDown={40} duration={0.5} delay={0.4}>
+            <FadeIn yDown={40} duration={0.5} delay={0.3}>
               <span className={styles.inputArrow}>
                 <Arrow />
               </span>

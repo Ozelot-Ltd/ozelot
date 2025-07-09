@@ -209,6 +209,17 @@ interface ContactDocumentData {
   contact_input_name: prismic.KeyTextField;
 
   /**
+   * Contact input Surname field in *Contact*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact.contact_input_surname
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  contact_input_surname: prismic.KeyTextField;
+
+  /**
    * Contact Input Email field in *Contact*
    *
    * - **Field Type**: Text

@@ -59,6 +59,13 @@
           "placeholder": ""
         }
       },
+      "contact_input_surname": {
+        "type": "Text",
+        "config": {
+          "label": "Contact input Surname",
+          "placeholder": ""
+        }
+      },
       "contact_input_email": {
         "type": "Text",
         "config": {
