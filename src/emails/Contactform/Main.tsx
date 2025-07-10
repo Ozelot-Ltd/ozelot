@@ -24,9 +24,7 @@ const Spacer = () => (
 const SmallSpacer = () => <Container style={{ height: '0px' }}></Container>;
 
 export default function ContactFormMain(formData: FormData) {
-  const { name, newsletter } = formData;
-
-  console.log(newsletter);
+  const { name } = formData;
 
   return (
     <Html style={html}>
@@ -286,7 +284,7 @@ export default function ContactFormMain(formData: FormData) {
               As of 2025, Ozelot keeps on expanding and evoling. We are working
               on new projects and collaborations, and we are excited to share
               them with you. If you have any questions or further inquiries,
-              please don’t hesitate to reach out via info@ozelot.ltd. We are
+              please don’t hesitate to reach out via studio@ozelot.ltd. We are
               always happy to help and support you in any way we can. We wish
               you a pleasant day!
             </Text>{' '}
@@ -344,7 +342,7 @@ export default function ContactFormMain(formData: FormData) {
             <Text
               style={{ ...addressStyle, fontWeight: '300', fontSize: '12px' }}
             >
-              info@ozelot.ltd
+              studio@ozelot.ltd
             </Text>
           </Container>
         </Container>

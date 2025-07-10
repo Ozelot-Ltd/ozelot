@@ -9,6 +9,7 @@ import { PrismicRichText } from '@prismicio/react';
 
 export interface FormData {
   name: string;
+  surname: string;
   email: string;
   message: string;
   newsletter: boolean;
