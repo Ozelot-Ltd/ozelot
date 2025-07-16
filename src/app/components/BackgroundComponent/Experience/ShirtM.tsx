@@ -8,7 +8,6 @@ import { SkeletonUtils } from "three-stdlib";
 import React from "react";
 import type { GLTF } from "three-stdlib";
 import { useSpring } from "@react-spring/core";
-import { isClickedStore } from "@/app/stores/IsClickedStore";
 
 type GLTFResult = GLTF & {
   nodes: Record<string, THREE.Object3D>;
@@ -21,17 +20,6 @@ export const ShirtM = () => {
   const { nodes } = useGraph(clone) as unknown as GLTFResult;
   const groupRef = useRef<THREE.Group>(null);
   const wiggleRigRef = useRef<WiggleRig | null>(null);
-  const { isClicked } = isClickedStore();
-  const [isFlying, setIsFlying] = useState(false);
-  const isOffScreen = useRef(false);
-  const targetFlyXPosition = useRef(0);
-  const targetFlyYPosition = useRef(0);
-  const currentFlyXPosition = useRef(0);
-  const currentFlyYPosition = useRef(0);
-  const flyDirection = useRef<"left" | "right" | "up" | "none">("none");
-  const previousDirection = useRef<"left" | "right" | "up" | "none">("none");
-  const flyRotationStart = useRef(0);
-  const currentFlyRotation = useRef(0);
 
   // Interaction state
   const [isDragging, setIsDragging] = useState(false);
@@ -44,7 +32,6 @@ export const ShirtM = () => {
   const baseRotationY = useRef(0); // Separate base Y rotation for dragging effects
   const totalSpinRotation = useRef(0); // Accumulated spin rotation (no spring physics)
   const randomRotationOffset = useRef({ x: 0, y: 0, z: 0 });
-  const timeOffset = useRef(Math.random() * 1000); // Random seed for consistent randomness
 
   // Click/tap detection
   const pointerDownPos = useRef({ x: 0, y: 0 });
@@ -56,264 +43,16 @@ export const ShirtM = () => {
   const { viewport } = useThree();
 
   // React Spring for return-to-center animation only (no spinning)
-  const [{ targetX, targetY, targetZ, targetRotX, targetRotZ }, api] =
-    useSpring(() => ({
-      targetX: 0,
-      targetY: 0,
-      targetZ: 0,
-      targetRotX: 0,
-      targetRotZ: 0,
-      config: {
-        mass: 1,
-        tension: 170,
-        friction: 26,
-      },
-    }));
-
-  // Handle isClicked changes with directional fly animation and page transition tracking
-  useEffect(() => {
-    if (isClicked && isClicked !== "") {
-      // Determine fly direction based on page
-      let direction: "left" | "right" | "up" = "up";
-      if (isClicked === "projects" || isClicked === "studio") {
-        direction = "right";
-      } else if (isClicked === "records" || isClicked === "contact") {
-        direction = "left";
-      } else if (isClicked === "services") {
-        direction = "up";
-      }
-
-      // If already off-screen and switching to a different direction, fly directly across screen
-      if (
-        isOffScreen.current &&
-        previousDirection.current !== "none" &&
-        previousDirection.current !== direction
-      ) {
-        console.log(
-          `🔄 Direct cross-screen flight: ${previousDirection.current} → ${direction}`
-        );
-
-        const startX = currentFlyXPosition.current;
-        const startY = currentFlyYPosition.current;
-        let endX = 0;
-        let endY = 0;
-
-        // Set target positions based on NEW direction
-        if (direction === "left") {
-          endX = -6; // Fly to left off-screen
-          endY = 0;
-        } else if (direction === "right") {
-          endX = 6; // Fly to right off-screen
-          endY = 0;
-        } else if (direction === "up") {
-          endX = 0;
-          endY = 4; // Fly to up off-screen
-        }
-
-        flyDirection.current = direction;
-        previousDirection.current = direction; // Update tracking
-
-        // Set up rotation for Y-axis movements
-        const includesSpin =
-          direction === "up" || previousDirection.current === "up";
-        const rotationStart = totalSpinRotation.current;
-        const rotationEnd = includesSpin
-          ? rotationStart + Math.PI * 2
-          : rotationStart; // 360 degrees for Y movements
-        flyRotationStart.current = rotationStart;
-
-        const startTime = Date.now();
-        const duration = includesSpin ? 1600 : 1200; // Longer duration for spinning transitions
-
-        const animateCrossFlight = () => {
-          if (!isOffScreen.current) return; // Animation was cancelled
-
-          const elapsed = Date.now() - startTime;
-          const progress = Math.min(elapsed / duration, 1);
-
-          // Use easeInOutCubic for smooth cross-screen motion
-          const easeInOutCubic =
-            progress < 0.5
-              ? 4 * progress * progress * progress
-              : 1 - Math.pow(-2 * progress + 2, 3) / 2;
-
-          currentFlyXPosition.current =
-            startX + (endX - startX) * easeInOutCubic;
-          currentFlyYPosition.current =
-            startY + (endY - startY) * easeInOutCubic;
-          targetFlyXPosition.current = currentFlyXPosition.current;
-          targetFlyYPosition.current = currentFlyYPosition.current;
-
-          // Add rotation for Y-axis movements
-          if (includesSpin) {
-            const rotationProgress = easeInOutCubic; // Use same easing for rotation
-            currentFlyRotation.current =
-              rotationStart + (rotationEnd - rotationStart) * rotationProgress;
-            totalSpinRotation.current = currentFlyRotation.current;
-          }
-
-          if (progress < 1) {
-            requestAnimationFrame(animateCrossFlight);
-          } else {
-            console.log(
-              `Cross-screen flight completed: now at ${direction}${includesSpin ? " (with 360° spin)" : ""}`
-            );
-          }
-        };
-
-        requestAnimationFrame(animateCrossFlight);
-        return;
-      }
-
-      // If not off-screen or same direction, fly out normally
-      if (!isOffScreen.current) {
-        flyOutInDirection(direction);
-      }
-
-      function flyOutInDirection(dir: "left" | "right" | "up") {
-        flyDirection.current = dir;
-        previousDirection.current = dir; // Track where we're going
-        console.log(
-          `✅ Triggering ${dir} fly-off animation for ${isClicked}${dir === "up" ? " (with 360° spin)" : ""}`
-        );
-        setIsFlying(true);
-        isOffScreen.current = true;
-
-        const startX = currentFlyXPosition.current;
-        const startY = currentFlyYPosition.current;
-        let endX = 0;
-        let endY = 0;
-
-        // Set target positions based on direction
-        if (dir === "left") {
-          endX = -6; // Fly left off-screen
-          endY = 0;
-        } else if (dir === "right") {
-          endX = 6; // Fly right off-screen
-          endY = 0;
-        } else if (dir === "up") {
-          endX = 0;
-          endY = 4; // Fly up off-screen
-        }
-
-        // Set up rotation for Y-axis movement (up)
-        const includesSpin = dir === "up";
-        const rotationStart = totalSpinRotation.current;
-        const rotationEnd = includesSpin
-          ? rotationStart + Math.PI * 2
-          : rotationStart; // 360 degrees for up movement
-        flyRotationStart.current = rotationStart;
-
-        const startTime = Date.now();
-        const duration = includesSpin ? 1800 : 1600; // Longer duration for spinning fly-off
-
-        const animateFlyOff = () => {
-          if (!isOffScreen.current) return; // Animation was cancelled
-
-          const elapsed = Date.now() - startTime;
-          const progress = Math.min(elapsed / duration, 1);
-
-          // Use easeOutQuart for dramatic launch
-          const easeOutQuart = 1 - Math.pow(1 - progress, 4);
-
-          currentFlyXPosition.current = startX + (endX - startX) * easeOutQuart;
-          currentFlyYPosition.current = startY + (endY - startY) * easeOutQuart;
-          targetFlyXPosition.current = currentFlyXPosition.current;
-          targetFlyYPosition.current = currentFlyYPosition.current;
-
-          // Add rotation for Y-axis movement
-          if (includesSpin) {
-            const rotationProgress = easeOutQuart; // Use same easing for rotation
-            currentFlyRotation.current =
-              rotationStart + (rotationEnd - rotationStart) * rotationProgress;
-            totalSpinRotation.current = currentFlyRotation.current;
-          }
-
-          if (progress < 1) {
-            requestAnimationFrame(animateFlyOff);
-          } else {
-            // Stay off-screen - don't reset any flags
-            console.log(
-              `${dir} fly-off completed - staying off-screen${includesSpin ? " (with 360° spin)" : ""}`
-            );
-          }
-        };
-
-        requestAnimationFrame(animateFlyOff);
-      }
-    } else {
-      // Return to home - come back from the direction we last flew to
-      if (!isOffScreen.current) return; // Already on-screen
-
-      const returnDirection = previousDirection.current;
-      const includesReturnSpin = returnDirection === "up";
-      console.log(
-        `✅ Returning to home from ${returnDirection} direction${includesReturnSpin ? " (with 360° spin)" : ""}`
-      );
-
-      const startX = currentFlyXPosition.current;
-      const startY = currentFlyYPosition.current;
-      const endX = 0;
-      const endY = 0;
-
-      // Set up rotation for return from Y-axis (up)
-      const rotationStart = totalSpinRotation.current;
-      const rotationEnd = includesReturnSpin
-        ? rotationStart + Math.PI * 2
-        : rotationStart; // 360 degrees for return from up
-      flyRotationStart.current = rotationStart;
-
-      const startTime = Date.now();
-      const duration = includesReturnSpin ? 1800 : 1500; // Longer duration for spinning return
-
-      const animateReturn = () => {
-        if (
-          isOffScreen.current === false &&
-          Math.abs(currentFlyXPosition.current) <= 0.1 &&
-          Math.abs(currentFlyYPosition.current) <= 0.1
-        )
-          return; // Animation complete
-
-        const elapsed = Date.now() - startTime;
-        const progress = Math.min(elapsed / duration, 1);
-
-        // Use easeOutCubic for gentle landing
-        const easeOutCubic = 1 - Math.pow(1 - progress, 3);
-
-        currentFlyXPosition.current = startX + (endX - startX) * easeOutCubic;
-        currentFlyYPosition.current = startY + (endY - startY) * easeOutCubic;
-        targetFlyXPosition.current = currentFlyXPosition.current;
-        targetFlyYPosition.current = currentFlyYPosition.current;
-
-        // Add rotation for return from Y-axis movement
-        if (includesReturnSpin) {
-          const rotationProgress = easeOutCubic; // Use same easing for rotation
-          currentFlyRotation.current =
-            rotationStart + (rotationEnd - rotationStart) * rotationProgress;
-          totalSpinRotation.current = currentFlyRotation.current;
-        }
-
-        if (progress < 1) {
-          requestAnimationFrame(animateReturn);
-        } else {
-          // Animation complete - reset all flags
-          currentFlyXPosition.current = 0;
-          currentFlyYPosition.current = 0;
-          targetFlyXPosition.current = 0;
-          targetFlyYPosition.current = 0;
-          isOffScreen.current = false;
-          setIsFlying(false);
-          flyDirection.current = "none";
-          previousDirection.current = "none"; // Reset previous direction
-          console.log(
-            `Return completed - ready for next interaction${includesReturnSpin ? " (with 360° spin)" : ""}`
-          );
-        }
-      };
-
-      requestAnimationFrame(animateReturn);
-    }
-  }, [isClicked]);
+  const [{ targetX, targetY, targetZ }, api] = useSpring(() => ({
+    targetX: 0,
+    targetY: 0,
+    targetZ: 0,
+    config: {
+      mass: 1,
+      tension: 170,
+      friction: 26,
+    },
+  }));
 
   useEffect(() => {
     if (!groupRef.current) return;
@@ -540,41 +279,11 @@ export const ShirtM = () => {
       currentPosition.current.y = newY;
       currentPosition.current.z = 0;
 
-      // Calculate natural rotation with random components
-      const tiltStrength = 0.3;
-      const baseRotationZ = -currentPosition.current.x * tiltStrength;
-      const baseRotationX = currentPosition.current.y * tiltStrength * 0.5;
-
-      // Calculate distance from center for random rotation scaling
-      const distanceFromCenter = Math.sqrt(
-        currentPosition.current.x * currentPosition.current.x +
-          currentPosition.current.y * currentPosition.current.y
-      );
-      const normalizedDistance = Math.min(
-        distanceFromCenter / (viewport.width / 2),
-        1
-      ); // Normalize based on viewport width
-
-      // Generate smooth random rotation that changes over time
-      const time = Date.now() * 0.001 + timeOffset.current;
-      const randomStrength = normalizedDistance * 0.4; // Scale random rotation with distance
-
-      randomRotationOffset.current.x =
-        Math.sin(time * 1.3 + currentPosition.current.x) * randomStrength;
-      randomRotationOffset.current.y =
-        Math.cos(time * 0.8 + currentPosition.current.y) * randomStrength * 0.5;
-      randomRotationOffset.current.z =
-        Math.sin(time * 1.7 + distanceFromCenter) * randomStrength * 0.8;
-
-      // Combine base rotation with random offset
-      currentRotation.current.z =
-        baseRotationZ + randomRotationOffset.current.z;
-      currentRotation.current.x =
-        baseRotationX + randomRotationOffset.current.x;
-
-      // Store base Y rotation separately (don't interfere with spinning)
+      // Remove all rotation effects during drag
+      currentRotation.current.x = 0;
+      currentRotation.current.z = 0;
       if (!isSpinning) {
-        baseRotationY.current = randomRotationOffset.current.y;
+        baseRotationY.current = 0;
       }
     },
     [screenToWorld, isSpinning, viewport]
@@ -609,8 +318,6 @@ export const ShirtM = () => {
         targetX: 0,
         targetY: 0,
         targetZ: 0,
-        targetRotX: 0,
-        targetRotZ: 0,
       });
     }
   }, [api, triggerSpin]);
@@ -644,44 +351,34 @@ export const ShirtM = () => {
 
   useFrame((_, delta) => {
     if (wiggleRigRef.current) {
-      // Smooth wiggle update with enhanced intensity during drag, spin, or flying
-      // Extra intensity for dramatic fly animations
+      // Smooth wiggle update with enhanced intensity during drag or spin
       let wiggleIntensity = 1.0;
       if (isDragging) {
         wiggleIntensity = 1.3; // Dragging intensity
       } else if (isSpinning) {
         wiggleIntensity = 1.4; // Spinning intensity
-      } else if (isFlying) {
-        wiggleIntensity = 1.8; // Maximum intensity for fly animations
       }
-
       wiggleRigRef.current.update(delta * wiggleIntensity);
     }
 
-    // Direct fly position update (no interpolation needed - already smooth from animation)
-    const currentFlyX = currentFlyXPosition.current;
-    const currentFlyY = currentFlyYPosition.current;
-
     if (groupRef.current) {
       if (isDragging && !isSpinning) {
-        // Direct position/rotation update during drag for 60fps performance
+        // Direct position update during drag for 60fps performance, no rotation
         groupRef.current.position.set(
-          currentPosition.current.x + currentFlyX,
-          currentPosition.current.y + currentFlyY,
+          currentPosition.current.x,
+          currentPosition.current.y,
           currentPosition.current.z
         );
         groupRef.current.rotation.set(
-          currentRotation.current.x,
+          0,
           baseRotationY.current + totalSpinRotation.current,
-          currentRotation.current.z
+          0
         );
       } else {
         // Smooth spring interpolation when returning to center or spinning
         const springX = targetX.get();
         const springY = targetY.get();
         const springZ = targetZ.get();
-        const springRotX = targetRotX.get();
-        const springRotZ = targetRotZ.get();
 
         // Lerp current position to spring target for smooth transition
         const lerpSpeed = isSpinning ? 4 : 8; // Slower lerp during spin
@@ -704,27 +401,19 @@ export const ShirtM = () => {
             delta * lerpSpeed
           );
 
-          currentRotation.current.x = THREE.MathUtils.lerp(
-            currentRotation.current.x,
-            springRotX,
-            delta * lerpSpeed
-          );
-          currentRotation.current.z = THREE.MathUtils.lerp(
-            currentRotation.current.z,
-            springRotZ,
-            delta * lerpSpeed
-          );
+          currentRotation.current.x = 0;
+          currentRotation.current.z = 0;
         }
 
         groupRef.current.position.set(
-          currentPosition.current.x + currentFlyX,
-          currentPosition.current.y + currentFlyY,
+          currentPosition.current.x,
+          currentPosition.current.y,
           currentPosition.current.z
         );
         groupRef.current.rotation.set(
-          currentRotation.current.x,
+          0,
           baseRotationY.current + totalSpinRotation.current,
-          currentRotation.current.z
+          0
         );
       }
     }
