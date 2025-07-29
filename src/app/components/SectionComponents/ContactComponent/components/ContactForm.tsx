@@ -236,7 +236,7 @@ export default function ContactForm({ contact }: Props) {
               />
             </div>
             <label htmlFor="newsletter">
-              {contact.data.contact_input_newslettertext}
+              <p>{contact.data.contact_input_newslettertext}</p>
             </label>
           </div>
         </div>
