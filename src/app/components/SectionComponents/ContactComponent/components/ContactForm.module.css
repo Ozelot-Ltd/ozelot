@@ -24,6 +24,10 @@
     gap: 0.5rem;
 }
 
+.borderBottom {
+    border-bottom: var(--border)
+}
+
 .inputGroup input,
 .inputGroup input p {
     font-size: calc(0.5rem + 0.5vw);
@@ -37,17 +41,11 @@
 .inputWrapper {
     position: relative;
     width: 100%;
-    overflow: hidden;
+    display: flex;
+    align-items: center;
 }
 
 .inputArrow {
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 10;
-    pointer-events: none;
-    opacity: 1;
     height: 14px;
     width: 14px;
     display: flex;
@@ -55,7 +53,6 @@
 }
 
 .inputWrapper input {
-    padding-left: 24px;
     text-transform: uppercase;
 }
 

@@ -115,7 +115,6 @@ textarea {
     background-color: transparent;
     outline: none;
     border: none;
-    border-bottom: var(--border);
     padding: calc(0.25rem + 0.25vw) calc(0.5rem + 0.25vw);
     width: 100%;
     font-family: inherit;

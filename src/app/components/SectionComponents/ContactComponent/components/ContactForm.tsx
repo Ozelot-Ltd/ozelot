@@ -21,7 +21,7 @@ export default function ContactForm({ contact }: Props) {
   const [agreement, setAgreement] = useState(false);
   const [newsletter, setNewsletter] = useState(false);
   const [isSent, setIsSent] = useState(false);
-  /*jlöadsföljkafsdjlök*/
+
   const [formData, setFormData] = useState({
     name: '',
     surname: '',
@@ -125,7 +125,7 @@ export default function ContactForm({ contact }: Props) {
     <form className={styles.form} onSubmit={handleSubmit}>
       <div className={styles.inputContainer}>
         <div className={styles.inputGroup}>
-          <div className={styles.inputWrapper}>
+          <div className={`${styles.inputWrapper} ${styles.borderBottom}`}>
             <FadeIn yDown={40} duration={0.5} delay={0.1}>
               <span className={styles.inputArrow}>
                 <Arrow />
@@ -143,7 +143,7 @@ export default function ContactForm({ contact }: Props) {
           </div>
         </div>
         <div className={styles.inputGroup}>
-          <div className={styles.inputWrapper}>
+          <div className={`${styles.inputWrapper} ${styles.borderBottom}`}>
             <FadeIn yDown={40} duration={0.5} delay={0.2}>
               <span className={styles.inputArrow}>
                 <Arrow />
@@ -162,7 +162,7 @@ export default function ContactForm({ contact }: Props) {
         </div>
 
         <div className={styles.inputGroup}>
-          <div className={styles.inputWrapper}>
+          <div className={`${styles.inputWrapper} ${styles.borderBottom}`}>
             <FadeIn yDown={40} duration={0.5} delay={0.3}>
               <span className={styles.inputArrow}>
                 <Arrow />
