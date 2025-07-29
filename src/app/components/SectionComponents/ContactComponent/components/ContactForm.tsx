@@ -21,7 +21,7 @@ export default function ContactForm({ contact }: Props) {
   const [agreement, setAgreement] = useState(false);
   const [newsletter, setNewsletter] = useState(false);
   const [isSent, setIsSent] = useState(false);
-
+  /*jlöadsföljkafsdjlök*/
   const [formData, setFormData] = useState({
     name: '',
     surname: '',
