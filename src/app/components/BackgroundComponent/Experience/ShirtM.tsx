@@ -33,6 +33,18 @@ export const ShirtM = () => {
   const totalSpinRotation = useRef(0); // Accumulated spin rotation (no spring physics)
   const randomRotationOffset = useRef({ x: 0, y: 0, z: 0 });
 
+  // Initialize refs to ensure consistent behavior
+  useEffect(() => {
+    // Reset all interaction state on component mount
+    isDraggingRef.current = false;
+    isSpinningRef.current = false;
+    currentPosition.current = { x: 0, y: 0, z: 0 };
+    currentRotation.current = { x: 0, y: 0, z: 0 };
+    baseRotationY.current = 0;
+    totalSpinRotation.current = 0;
+    randomRotationOffset.current = { x: 0, y: 0, z: 0 };
+  }, []);
+
   // Click/tap detection
   const pointerDownPos = useRef({ x: 0, y: 0 });
   const pointerDownTime = useRef(0);
@@ -162,6 +174,12 @@ export const ShirtM = () => {
         return; // Prevent multiple spins
       }
 
+      // Immediately cancel any dragging that might be in progress
+      if (isDraggingRef.current) {
+        isDraggingRef.current = false;
+        setIsDragging(false);
+      }
+
       console.log(`✅ Triggering 360-degree spin ${direction}`);
       isSpinningRef.current = true; // Set immediately to prevent double-clicks
       setIsSpinning(true);
@@ -210,7 +228,13 @@ export const ShirtM = () => {
       event.stopPropagation();
 
       // Don't start new interactions while spinning
-      if (isSpinningRef.current) return;
+      if (isSpinningRef.current) {
+        console.log("Interaction blocked - currently spinning");
+        return;
+      }
+
+      // Reset movement detection for new interaction
+      hasMoved.current = false;
 
       // Record pointer down position and time for click detection
       pointerDownPos.current = {
@@ -218,7 +242,6 @@ export const ShirtM = () => {
         y: event.nativeEvent.clientY,
       };
       pointerDownTime.current = Date.now();
-      hasMoved.current = false;
 
       // Detect which side of the object was touched for spin direction
       const touchWorldPos = screenToWorld(
@@ -252,7 +275,8 @@ export const ShirtM = () => {
 
   const handlePointerMove = useCallback(
     (event: MouseEvent | TouchEvent) => {
-      if (!isDraggingRef.current) return;
+      // Early return if not dragging or if spinning
+      if (!isDraggingRef.current || isSpinningRef.current) return;
 
       const clientX =
         "clientX" in event ? event.clientX : event.touches[0].clientX;
@@ -286,7 +310,7 @@ export const ShirtM = () => {
         baseRotationY.current = 0;
       }
     },
-    [screenToWorld, isSpinning, viewport]
+    [screenToWorld, isSpinning]
   );
 
   const handlePointerUp = useCallback(() => {
@@ -305,6 +329,7 @@ export const ShirtM = () => {
       console.log("Drag ended - returning to center");
     }
 
+    // Always reset dragging state
     setIsDragging(false);
     isDraggingRef.current = false;
     document.body.style.cursor = "auto";
@@ -324,23 +349,28 @@ export const ShirtM = () => {
 
   // Global event listeners for drag events
   useEffect(() => {
-    if (isDragging) {
-      const handleMove = (e: Event) =>
-        handlePointerMove(e as MouseEvent | TouchEvent);
-      const handleUp = () => handlePointerUp();
+    const handleMove = (e: Event) =>
+      handlePointerMove(e as MouseEvent | TouchEvent);
+    const handleUp = () => handlePointerUp();
 
+    if (isDragging) {
+      // Use only pointer events for modern browsers
       window.addEventListener("pointermove", handleMove);
       window.addEventListener("pointerup", handleUp);
       window.addEventListener("pointercancel", handleUp);
-      window.addEventListener("mousemove", handleMove);
-      window.addEventListener("mouseup", handleUp);
-      window.addEventListener("touchmove", handleMove);
-      window.addEventListener("touchend", handleUp);
+
+      // Fallback for older browsers (not needed for most modern browsers)
+      // window.addEventListener("mousemove", handleMove);
+      // window.addEventListener("mouseup", handleUp);
+      // window.addEventListener("touchmove", handleMove);
+      // window.addEventListener("touchend", handleUp);
 
       return () => {
         window.removeEventListener("pointermove", handleMove);
         window.removeEventListener("pointerup", handleUp);
         window.removeEventListener("pointercancel", handleUp);
+
+        // Also remove fallbacks just in case they were added before
         window.removeEventListener("mousemove", handleMove);
         window.removeEventListener("mouseup", handleUp);
         window.removeEventListener("touchmove", handleMove);
@@ -362,17 +392,13 @@ export const ShirtM = () => {
     }
 
     if (groupRef.current) {
+      // Apply position and rotation based on current state
       if (isDragging && !isSpinning) {
-        // Direct position update during drag for 60fps performance, no rotation
+        // Direct position update during drag for 60fps performance
         groupRef.current.position.set(
           currentPosition.current.x,
           currentPosition.current.y,
           currentPosition.current.z
-        );
-        groupRef.current.rotation.set(
-          0,
-          baseRotationY.current + totalSpinRotation.current,
-          0
         );
       } else {
         // Smooth spring interpolation when returning to center or spinning
@@ -400,22 +426,22 @@ export const ShirtM = () => {
             springZ,
             delta * lerpSpeed
           );
-
-          currentRotation.current.x = 0;
-          currentRotation.current.z = 0;
         }
 
+        // Apply the current position
         groupRef.current.position.set(
           currentPosition.current.x,
           currentPosition.current.y,
           currentPosition.current.z
         );
-        groupRef.current.rotation.set(
-          0,
-          baseRotationY.current + totalSpinRotation.current,
-          0
-        );
       }
+
+      // Always apply rotation (separate from position)
+      groupRef.current.rotation.set(
+        0,
+        baseRotationY.current + totalSpinRotation.current,
+        0
+      );
     }
   });
 
