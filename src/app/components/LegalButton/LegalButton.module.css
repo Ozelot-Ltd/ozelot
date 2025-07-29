@@ -1,0 +1,10 @@
+.legalButton {
+    display: flex;
+    align-items: center;
+    padding-top: calc(0.25rem + 0.25vw);
+    gap: calc(0.25rem + 0.25vw);
+}
+
+.legalButton svg {
+    transform: rotate(-45deg)
+}

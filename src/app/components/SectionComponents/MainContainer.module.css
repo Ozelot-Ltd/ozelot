@@ -1,7 +1,7 @@
 .main {
     position: relative;
     height: calc(100vh - 5rem);
-    width: calc(100vw - (2 * var(--container-width)));
+    width: calc(100vw - (2 * var(--container-width, 5rem)));
     padding: 4rem 2rem 0rem 2rem;
     max-width: 100%;
 }

@@ -82,8 +82,8 @@ export default function ContactFormMain(formData: FormData) {
         <Spacer />
         <Container>
           <Img
-            src="https://images.prismic.io/ozelot/aAo5kfIqRLdaBk6B_merch.gif?auto=format,compress"
-            alt="Exxodus Merch"
+            src="https://images.prismic.io/ozelot/aG-jtEMqNJQqHwFb_gifprojects.gif?auto=format,compress"
+            alt="Ozelot Projects Gif"
             style={{ margin: 'auto' }}
           />
         </Container>
@@ -332,12 +332,12 @@ export default function ContactFormMain(formData: FormData) {
                 width: '100%',
               }}
             >
-              Martastrasse 114
+              Flüelastrasse 6
             </Text>
             <Text
               style={{ ...addressStyle, fontWeight: '300', fontSize: '12px' }}
             >
-              CH - 8003 Zurich
+              CH - 8048 Zurich
             </Text>
             <Text
               style={{ ...addressStyle, fontWeight: '300', fontSize: '12px' }}
@@ -364,6 +364,8 @@ const body = {
   margin: 'auto',
   maxWidth: '700px',
   backgroundColor: 'rgba(247, 247, 247,1)',
+  backgroundImage:
+    'url(https://images.prismic.io/ozelot/aAoCQ_IqRLdaBkLI_mailbg.png?auto=format,compress)',
 };
 
 const mainHeading = {

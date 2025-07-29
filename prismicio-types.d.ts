@@ -198,6 +198,17 @@ interface ContactDocumentData {
   socials: prismic.GroupField<Simplify<ContactDocumentDataSocialsItem>>;
 
   /**
+   * Newsletter Form Title field in *Contact*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact.newsletter_form_title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  newsletter_form_title: prismic.KeyTextField;
+
+  /**
    * Contact Input Name field in *Contact*
    *
    * - **Field Type**: Text
@@ -264,6 +275,17 @@ interface ContactDocumentData {
   contact_input_agree: prismic.KeyTextField;
 
   /**
+   * Newsletter Title field in *Contact*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact.newsletter_title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  newsletter_title: prismic.RichTextField;
+
+  /**
    * Contact Input Newslettertext field in *Contact*
    *
    * - **Field Type**: Text
@@ -278,7 +300,7 @@ interface ContactDocumentData {
    * Contact Button Text field in *Contact*
    *
    * - **Field Type**: Text
-   * - **Placeholder**: *None*
+   * - **Placeholder**: Send
    * - **API ID Path**: contact.contact_button_text
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/field#key-text

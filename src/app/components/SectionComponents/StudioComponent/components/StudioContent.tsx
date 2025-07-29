@@ -11,21 +11,21 @@ import SocialBar from '../../ContactComponent/components/SocialBar';
 import FadeIn from '@/app/components/FadeIn/FadeIn';
 import LegalButton from '@/app/components/LegalButton/LegalButton';
 import LegalComponent from '@/app/components/LegalComponent/LegalComponent';
+import Arrow from '@/app/components/SvgComponents/Arrow/Arrow';
+import { useRouter } from 'next/navigation';
 
 type Props = {
-  isStudioActive: boolean;
-  transitionEnd: boolean;
+  isStudioActive?: boolean;
+  transitionEnd?: boolean;
 };
 
-export default function StudioContent({
-  isStudioActive,
-  transitionEnd,
-}: Props) {
+export default function StudioContent({}: Props) {
   const { studio } = useContents();
 
   const data = studio.data;
 
-  console.log(isStudioActive, transitionEnd);
+  const router = useRouter();
+
   return (
     <div className={styles.container}>
       <div className={styles.content}>
@@ -42,9 +42,14 @@ export default function StudioContent({
                 <PrismicRichText field={data.ozelot_description} />
               </div>
               <div className={styles.addressContainer}>
-                <PrismicRichText field={data.address_name} />
-                <PrismicRichText field={data.address_street} />
-                <PrismicRichText field={data.address_zip} />
+                <p
+                  onClick={() => {
+                    router.push('/contact');
+                  }}
+                >
+                  {data.contact_link.text}
+                  <Arrow height="12" />
+                </p>
               </div>
             </div>
             <div>

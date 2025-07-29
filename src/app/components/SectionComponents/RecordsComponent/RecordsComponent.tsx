@@ -11,7 +11,6 @@ export default function RecordsComponent({
   isRecordsActive: boolean;
   transitionEnd?: boolean;
 }) {
-  console.log('RecordsComponent rendered', isRecordsActive, transitionEnd);
   return (
     <MainContainer>
       {isRecordsActive && transitionEnd && (

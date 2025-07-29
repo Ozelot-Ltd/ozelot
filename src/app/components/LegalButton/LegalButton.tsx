@@ -4,6 +4,8 @@ import FadeIn from '../FadeIn/FadeIn';
 
 import { isLegalVisibleStore } from '@/app/stores/IsLegalVisible';
 
+import styles from './LegalButton.module.css';
+
 export default function LegalButton() {
   const { isLegalVisible, setIsLegalVisible } = isLegalVisibleStore();
   return (
@@ -20,10 +22,10 @@ export default function LegalButton() {
         setIsLegalVisible(!isLegalVisible);
       }}
     >
-      <p>Legal Notice & Privacy Policy</p>
-      <span style={{ transform: 'translateY(3.5px) rotate(-45deg)' }}>
-        <Arrow height="11" />
-      </span>
+      <div className={styles.legalButton}>
+        <p>Legal Notice & Privacy Policy</p>
+        <Arrow height="12" />
+      </div>
     </FadeIn>
   );
 }

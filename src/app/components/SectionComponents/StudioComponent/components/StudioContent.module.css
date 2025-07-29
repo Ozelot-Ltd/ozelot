@@ -74,9 +74,16 @@
     width: 75%;
 }
 
-.addressContainer h5 {
-    text-transform: none;
+.addressContainer p {
+    text-transform: uppercase;
     font-variation-settings: var(--text-weight);
+    display: flex;
+    gap: calc(0.2rem + 0.2vw);
+    cursor: pointer;
+}
+
+.addressContainer svg {
+    transform: rotate(-45deg);
 }
 
 

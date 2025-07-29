@@ -85,8 +85,8 @@
 }
 
 .iconContainer img {
-    height: 24px;
-    width: 24px;
+    height: calc(0.6vw + 0.6rem);
+    width: calc(0.6vw + 0.6rem);
 }
 
 
@@ -114,7 +114,7 @@
 }
 
 .title h2 {
-    font-size: calc(0.8rem + 0.9vw);
+    font-size: calc(0.4rem + 1vw);
 }
 
 .releasetext {
@@ -183,7 +183,6 @@
 }
 
 .contactPhrase a svg {
-
     transform: rotate(-45deg)
 }
 

@@ -53,7 +53,7 @@ export default function Contact({
 
       <section className={styles.rightContainer}>
         <FadeIn delay={0} inlineStyle={{ padding: '0.5rem 0' }}>
-          <h1>GET IN TOUCH WITH US</h1>
+          <PrismicRichText field={contact.data.newsletter_title} />
         </FadeIn>
         <ContactForm contact={contact} />
       </section>

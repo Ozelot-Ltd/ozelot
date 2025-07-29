@@ -52,6 +52,13 @@
           }
         }
       },
+      "newsletter_form_title": {
+        "type": "Text",
+        "config": {
+          "label": "Newsletter Form Title",
+          "placeholder": ""
+        }
+      },
       "contact_input_name": {
         "type": "Text",
         "config": {
@@ -96,6 +103,15 @@
           "placeholder": ""
         }
       },
+      "newsletter_title": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Newsletter Title",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "heading1,heading2,heading3,heading4"
+        }
+      },
       "contact_input_newslettertext": {
         "type": "Text",
         "config": {
@@ -107,7 +123,7 @@
         "type": "Text",
         "config": {
           "label": "Contact Button Text",
-          "placeholder": ""
+          "placeholder": "Send"
         }
       },
       "slices": {
