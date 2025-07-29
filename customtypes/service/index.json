@@ -74,7 +74,8 @@
             "web",
             "art_direction",
             "ai",
-            "sounddesign"
+            "sounddesign",
+            "branding"
           ],
           "default_value": "3d"
         }

@@ -1303,7 +1303,13 @@ interface ServiceDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#select
    */
   service_type: prismic.SelectField<
-    "3d" | "graphic" | "web" | "art_direction" | "ai" | "sounddesign",
+    | "3d"
+    | "graphic"
+    | "web"
+    | "art_direction"
+    | "ai"
+    | "sounddesign"
+    | "branding",
     "filled"
   >;
 

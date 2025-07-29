@@ -27,6 +27,8 @@ export const lottieSources = {
   ai: 'https://lottie.host/a118d970-7878-4236-a4eb-adcc0db89dd9/esvtMRWy0b.lottie',
   art_direction:
     'https://lottie.host/927d0e46-d27b-4af8-9b4f-68df0baf831f/0cWlaP28W9.lottie',
+  branding:
+    'https://lottie.host/b41d878b-2995-4520-858b-b3a179c86ae9/2FRjQpvd8Y.lottie',
 };
 
 type Props = {
@@ -95,7 +97,7 @@ const Service = ({ service, activeService, setActiveService }: Props) => {
 
   return (
     <div
-      className={`${styles.container} ${isExpanded ? styles.expanded : ''} ${service.data.service_type === 'sounddesign' ? styles.noBorder : ''}`}
+      className={`${styles.container} ${isExpanded ? styles.expanded : ''} ${service.data.service_type === 'ai' ? styles.noBorder : ''}`}
       ref={mainContainerRef}
     >
       <div className={styles.upperContainer} ref={upperContainerRef}>
