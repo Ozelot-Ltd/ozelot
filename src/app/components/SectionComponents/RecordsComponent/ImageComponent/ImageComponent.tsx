@@ -25,20 +25,18 @@ export default function ImageComponent({
       ? currentProject?.images?.length
       : 0;
 
-  console.log(currentProject?.images);
+  console.log(currentProject);
 
   useEffect(() => {
     setCurrentIndex(0);
   }, [currentRecord, currentProject]);
 
-  // Function to go to the next image
   const nextImage = () => {
     if (totalImages > 0) {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % totalImages);
     }
   };
 
-  // Function to go to the previous image
   const prevImage = () => {
     if (totalImages > 0) {
       setCurrentIndex(

@@ -7,6 +7,7 @@ import Record from './components/Record';
 import { useRouter } from 'next/navigation';
 import DescriptionComponent from '../DescriptionComponent/DescriptionComponent';
 import ImageComponent from '../ImageComponent/ImageComponent';
+import RecordsPlaceholder from '../RecordsPlaceholder/RecordsPlaceholder';
 
 export default function RecordComponent({
   isRecordsActive,
@@ -64,9 +65,17 @@ export default function RecordComponent({
         />{' '}
       </section>
       <section className={styles.rightContainer}>
-        <div className={styles.imageContainer}>
-          <ImageComponent currentRecord={currentRecord} />
-        </div>
+        {!currentRecord ? (
+          <div className={styles.previewContainer}>
+            <RecordsPlaceholder />
+          </div>
+        ) : currentRecord?.record_images?.length > 0 ? (
+          <div className={styles.imageContainer}>
+            <ImageComponent currentRecord={currentRecord} />{' '}
+          </div>
+        ) : (
+          <h3>No Image Available</h3>
+        )}
       </section>
     </section>
   );

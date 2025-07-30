@@ -592,6 +592,60 @@ interface LegalDocumentData {
 export type LegalDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithoutUID<Simplify<LegalDocumentData>, "legal", Lang>;
 
+/**
+ * Content for Ozelot Lab Popup documents
+ */
+interface OzelotLabPopupDocumentData {
+  /**
+   * Title field in *Ozelot Lab Popup*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: ozelot_lab_popup.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Description field in *Ozelot Lab Popup*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: ozelot_lab_popup.description
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * CTA field in *Ozelot Lab Popup*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: ozelot_lab_popup.cta
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  cta: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+}
+
+/**
+ * Ozelot Lab Popup document from Prismic
+ *
+ * - **API ID**: `ozelot_lab_popup`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type OzelotLabPopupDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<OzelotLabPopupDocumentData>,
+    "ozelot_lab_popup",
+    Lang
+  >;
+
 type PageDocumentDataSlicesSlice = never;
 
 /**
@@ -948,6 +1002,38 @@ export type ProjectsDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithoutUID<
     Simplify<ProjectsDocumentData>,
     "projects",
+    Lang
+  >;
+
+/**
+ * Content for Projects Gif documents
+ */
+interface ProjectsGifDocumentData {
+  /**
+   * Projects Gif field in *Projects Gif*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: projects_gif.projects_gif
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  projects_gif: prismic.ImageField<never>;
+}
+
+/**
+ * Projects Gif document from Prismic
+ *
+ * - **API ID**: `projects_gif`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ProjectsGifDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<ProjectsGifDocumentData>,
+    "projects_gif",
     Lang
   >;
 
@@ -2058,9 +2144,11 @@ export type AllDocumentTypes =
   | GeneralIconDocument
   | GraphicIconDocument
   | LegalDocument
+  | OzelotLabPopupDocument
   | PageDocument
   | ProjectDocument
   | ProjectsDocument
+  | ProjectsGifDocument
   | RecordDocument
   | RecordsDocument
   | ServiceDocument
@@ -2159,6 +2247,8 @@ declare module "@prismicio/client" {
       LegalDocumentData,
       LegalDocumentDataCategoriesItem,
       LegalDocumentDataPrivacyGroupItem,
+      OzelotLabPopupDocument,
+      OzelotLabPopupDocumentData,
       PageDocument,
       PageDocumentData,
       PageDocumentDataSlicesSlice,
@@ -2169,6 +2259,8 @@ declare module "@prismicio/client" {
       ProjectsDocument,
       ProjectsDocumentData,
       ProjectsDocumentDataSlicesSlice,
+      ProjectsGifDocument,
+      ProjectsGifDocumentData,
       RecordDocument,
       RecordDocumentData,
       RecordDocumentDataRecordImagesItem,

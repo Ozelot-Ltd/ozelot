@@ -28,8 +28,10 @@
 
 .rightContainer {
     padding-left: 2rem;
-    display: grid;
-    grid-template-rows: 1fr;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
 }
 
 .listContainer,
@@ -192,9 +194,32 @@
     animation: none;
 }
 
-.imageContainer {
+.imageContainer,
+.previewContainer {
     overflow: scroll;
     padding: 3rem 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+.imageContainer img {
+    height: 100%;
+    width: auto;
+    margin: auto;
+    align-self: center;
+}
+
+.projectFallElement h2 {
+    border: var(--border);
+    padding: 0.5rem 1rem;
+    border-radius: 30px;
+    font-variation-settings: var(--text-weight);
+    font-size: 2rem;
 }
 
 .disciplinesContainer {

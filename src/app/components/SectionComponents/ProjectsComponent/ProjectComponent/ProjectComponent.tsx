@@ -11,6 +11,7 @@ import ImageComponent from '../../RecordsComponent/ImageComponent/ImageComponent
 import Project from './components/Project';
 import DescriptionComponent from '../../RecordsComponent/DescriptionComponent/DescriptionComponent';
 import FadeIn from '@/app/components/FadeIn/FadeIn';
+import { PrismicNextImage } from '@prismicio/next';
 
 interface ProjectComponentProps {
   isProjectsActive: boolean;
@@ -23,7 +24,7 @@ export default function ProjectComponent({
 }: ProjectComponentProps) {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [isVisible, setIsVisible] = useState(false);
-  const { projectArray, servicesOffered } = useContents();
+  const { projectArray, servicesOffered, projectsGif } = useContents();
   const router = useRouter();
   const [activeProject, setActiveProject] = useState('');
   const [filter, setFilter] = useState('all');
@@ -87,7 +88,15 @@ export default function ProjectComponent({
       </section>
       <section className={styles.rightContainer}>
         <div className={styles.imageContainer}>
-          <ImageComponent currentProject={currentProject} />
+          {!currentProject && (
+            <div className={styles.previewContainer}>
+              <PrismicNextImage
+                field={projectsGif.data.projects_gif}
+                className={styles.gifImage}
+              />
+            </div>
+          )}
+          {currentProject && <ImageComponent currentProject={currentProject} />}
         </div>
       </section>
     </div>

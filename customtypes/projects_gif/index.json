@@ -1,0 +1,19 @@
+{
+  "format": "custom",
+  "id": "projects_gif",
+  "label": "Projects Gif",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "projects_gif": {
+        "type": "Image",
+        "config": {
+          "label": "Projects Gif",
+          "constraint": {},
+          "thumbnails": []
+        }
+      }
+    }
+  }
+}
