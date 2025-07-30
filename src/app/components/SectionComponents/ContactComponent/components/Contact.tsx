@@ -10,6 +10,7 @@ import { lottieSources } from '../../ServicesComponent/ServiceComponent/componen
 import SocialBar from './SocialBar';
 import ContactForm from './ContactForm';
 import FadeIn from '@/app/components/FadeIn/FadeIn';
+import LegalComponent from '@/app/components/LegalComponent/LegalComponent';
 
 export default function Contact({
   isContactActive,
@@ -52,6 +53,7 @@ export default function Contact({
       </section>
 
       <section className={styles.rightContainer}>
+        <LegalComponent />
         <FadeIn delay={0} inlineStyle={{ padding: '0.5rem 0' }}>
           <PrismicRichText field={contact.data.newsletter_title} />
         </FadeIn>

@@ -57,6 +57,8 @@
     text-transform: uppercase;
 }
 
+
+
 .radioContainer {
     display: flex;
     width: fit-content;
@@ -66,7 +68,7 @@
 }
 
 .disabled {
-    filter: brightness(1.4);
+    filter: brightness(1.5);
     cursor: no-drop !important;
 }
 
@@ -89,11 +91,11 @@
 .radioContainer label {
     width: 100%;
     display: block;
-    cursor: pointer
 }
 
 .radioContainer label p,
-.radioContainer label {
+.radioContainer label,
+.radioContainer label span {
     font-size: calc(0.4rem + 0.25vw);
 }
 
@@ -232,7 +234,9 @@
         cursor: pointer
     }
 
-    .radioContainer label p {
+    .radioContainer label p,
+    .radioContainer label span,
+    .radioContainer label {
 
         font-size: calc(0.4rem + 1vw);
 

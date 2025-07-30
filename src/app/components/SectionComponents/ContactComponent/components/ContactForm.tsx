@@ -5,7 +5,7 @@ import { ContactDocument } from '../../../../../../prismicio-types';
 import styles from './ContactForm.module.css';
 import Arrow from '@/app/components/SvgComponents/Arrow/Arrow';
 import FadeIn from '@/app/components/FadeIn/FadeIn';
-import { PrismicRichText } from '@prismicio/react';
+import { isLegalVisibleStore } from '@/app/stores/IsLegalVisible';
 
 export interface FormData {
   name: string;
@@ -21,6 +21,8 @@ export default function ContactForm({ contact }: Props) {
   const [agreement, setAgreement] = useState(false);
   const [newsletter, setNewsletter] = useState(false);
   const [isSent, setIsSent] = useState(false);
+
+  const { setIsLegalVisible } = isLegalVisibleStore();
 
   const [formData, setFormData] = useState({
     name: '',
@@ -121,6 +123,34 @@ export default function ContactForm({ contact }: Props) {
     }
   };
 
+  function renderLegalText(
+    text: string | null,
+    textToSplit: string = 'terms & conditions'
+  ) {
+    if (!text) return null;
+
+    const parts = text.split(textToSplit);
+
+    if (parts.length === 1) {
+      return text;
+    }
+
+    return parts.map((part, index) => (
+      <React.Fragment key={index}>
+        {part}
+        {index < parts.length - 1 && (
+          <span
+            className={styles.legalLink}
+            onClick={() => setIsLegalVisible(true)}
+            style={{ cursor: 'pointer', textDecoration: 'underline' }}
+          >
+            terms & conditions
+          </span>
+        )}
+      </React.Fragment>
+    ));
+  }
+
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
       <div className={styles.inputContainer}>
@@ -195,47 +225,51 @@ export default function ContactForm({ contact }: Props) {
 
         <div className={styles.inputGroup}>
           <div className={styles.radioContainer}>
-            <div
-              className={styles.checkboxContainer}
-              onClick={() => setAgreement(!agreement)}
-            >
+            <div className={styles.checkboxContainer}>
               <input
                 type="checkbox"
                 id="privacy-agreement"
                 name="privacy"
                 value="privacy"
                 className={`${styles.checkbox} ${agreement ? styles.checked : ''}`}
-                onChange={handleChange}
+                checked={agreement}
                 required
                 aria-required="true"
+                onChange={() => setAgreement(!agreement)}
               />
             </div>
-            <label htmlFor="privacy-agreement">
-              <PrismicRichText field={contact.data.contact_agree_terms} />
+            <label
+              htmlFor="privacy-agreement"
+              onClick={(e) => {
+                if ((e.target as HTMLElement).tagName !== 'EM') {
+                  e.preventDefault();
+                } else {
+                  setIsLegalVisible(true);
+                }
+              }}
+            >
+              {renderLegalText(contact.data.contact_input_agree)}
             </label>
           </div>
           <div className={styles.radioContainer}>
-            <div
-              className={styles.checkboxContainer}
-              onClick={() => {
-                const newValue = !newsletter;
-                setNewsletter(newValue);
-                setFormData((prev) => ({
-                  ...prev,
-                  newsletter: newValue ? true : false,
-                }));
-              }}
-            >
+            <div className={styles.checkboxContainer}>
               <input
                 type="checkbox"
                 id="newsletter"
                 name="newsletter"
                 checked={newsletter}
                 className={`${styles.checkbox} ${newsletter ? styles.checked : ''}`}
-                readOnly
+                onChange={() => {
+                  const newValue = !newsletter;
+                  setNewsletter(newValue);
+                  setFormData((prev) => ({
+                    ...prev,
+                    newsletter: newValue ? true : false,
+                  }));
+                }}
               />
             </div>
-            <label htmlFor="newsletter">
+            <label htmlFor="newsletter" onClick={(e) => e.preventDefault()}>
               <p>{contact.data.contact_input_newslettertext}</p>
             </label>
           </div>
