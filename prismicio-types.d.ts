@@ -134,6 +134,38 @@ export type ArtDirectionIconDocument<Lang extends string = string> =
   >;
 
 /**
+ * Content for Branding Icon documents
+ */
+interface BrandingIconDocumentData {
+  /**
+   * Branding Icon field in *Branding Icon*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: branding_icon.icon
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  icon: prismic.ImageField<never>;
+}
+
+/**
+ * Branding Icon document from Prismic
+ *
+ * - **API ID**: `branding_icon`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type BrandingIconDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<BrandingIconDocumentData>,
+    "branding_icon",
+    Lang
+  >;
+
+/**
  * Item in *Contact → Socials*
  */
 export interface ContactDocumentDataSocialsItem {
@@ -2021,6 +2053,7 @@ export type AllDocumentTypes =
   | AddressDocument
   | AiIconDocument
   | ArtDirectionIconDocument
+  | BrandingIconDocument
   | ContactDocument
   | GeneralIconDocument
   | GraphicIconDocument
@@ -2112,6 +2145,8 @@ declare module "@prismicio/client" {
       AiIconDocumentData,
       ArtDirectionIconDocument,
       ArtDirectionIconDocumentData,
+      BrandingIconDocument,
+      BrandingIconDocumentData,
       ContactDocument,
       ContactDocumentData,
       ContactDocumentDataSocialsItem,

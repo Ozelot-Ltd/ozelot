@@ -1,0 +1,19 @@
+{
+  "format": "custom",
+  "id": "branding_icon",
+  "label": "Branding Icon",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "icon": {
+        "type": "Image",
+        "config": {
+          "label": "Branding Icon",
+          "constraint": {},
+          "thumbnails": []
+        }
+      }
+    }
+  }
+}

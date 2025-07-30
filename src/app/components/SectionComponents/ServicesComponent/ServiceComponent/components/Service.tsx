@@ -8,6 +8,7 @@ import WebIcon from '@/app/components/SvgComponents/WebIcon/WebIcon';
 import GraphicDesignIcon from '@/app/components/SvgComponents/GraphicDesign/GraphicDesign';
 import ThreeD from '@/app/components/SvgComponents/ThreeD/ThreeD';
 import SoundDesignIcon from '@/app/components/SvgComponents/SoundDesign/SoundDesign';
+import Branding from '@/app/components/SvgComponents/Branding/Branding';
 import Arrow from '@/app/components/SvgComponents/Arrow/Arrow';
 
 import { useMobile } from '../../../../../../../context/MobileContext';
@@ -28,7 +29,7 @@ export const lottieSources = {
   art_direction:
     'https://lottie.host/927d0e46-d27b-4af8-9b4f-68df0baf831f/0cWlaP28W9.lottie',
   branding:
-    'https://lottie.host/b41d878b-2995-4520-858b-b3a179c86ae9/2FRjQpvd8Y.lottie',
+    'https://lottie.host/ef3beb99-245c-44e5-a39e-566252276656/MJkPVqNYe8.lottie',
 };
 
 type Props = {
@@ -130,6 +131,8 @@ const Service = ({ service, activeService, setActiveService }: Props) => {
                   <GraphicDesignIcon />
                 ) : service.data.service_type === 'ai' ? (
                   <AIIcon />
+                ) : service.data.service_type === 'branding' ? (
+                  <Branding />
                 ) : (
                   ''
                 )}
