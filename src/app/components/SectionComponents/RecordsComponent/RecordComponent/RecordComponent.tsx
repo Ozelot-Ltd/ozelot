@@ -7,7 +7,7 @@ import Record from './components/Record';
 import { useRouter } from 'next/navigation';
 import DescriptionComponent from '../DescriptionComponent/DescriptionComponent';
 import ImageComponent from '../ImageComponent/ImageComponent';
-import RecordsPlaceholder from '../RecordsPlaceholder/RecordsPlaceholder';
+import RecordsPlaceholder from './components/RecordsPlaceholder/RecordsPlaceholder';
 
 export default function RecordComponent({
   isRecordsActive,
@@ -22,6 +22,12 @@ export default function RecordComponent({
   const { recordArray } = useContents();
   const router = useRouter();
 
+  const releaseNames = recordArray.reverse().map((record) =>
+    record.data.record_title
+      ?.replace(/_/g, ' ')
+      .replace(/\b(EP|LP)\b/g, '')
+      .trim()
+  );
   useEffect(() => {
     setIsVisible(isRecordsActive && (transitionEnd ?? false));
   }, [isRecordsActive, transitionEnd]);
@@ -67,7 +73,10 @@ export default function RecordComponent({
       <section className={styles.rightContainer}>
         {!currentRecord ? (
           <div className={styles.previewContainer}>
-            <RecordsPlaceholder />
+            <RecordsPlaceholder
+              releaseNames={releaseNames}
+              recordArray={recordArray}
+            />
           </div>
         ) : currentRecord?.record_images?.length > 0 ? (
           <div className={styles.imageContainer}>
