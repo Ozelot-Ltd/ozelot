@@ -34,6 +34,10 @@
     background-color: transparent;
 }
 
+.object:hover {
+    cursor: grab
+}
+
 .object:active {
     cursor: grabbing;
 }

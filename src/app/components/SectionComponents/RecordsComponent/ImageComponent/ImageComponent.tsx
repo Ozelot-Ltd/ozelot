@@ -25,8 +25,6 @@ export default function ImageComponent({
       ? currentProject?.images?.length
       : 0;
 
-  console.log(currentProject);
-
   useEffect(() => {
     setCurrentIndex(0);
   }, [currentRecord, currentProject]);

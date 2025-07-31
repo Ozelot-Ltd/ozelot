@@ -76,6 +76,7 @@ export default function RecordComponent({
             <RecordsPlaceholder
               releaseNames={releaseNames}
               recordArray={recordArray}
+              setActiveRecord={setActiveRecord}
             />
           </div>
         ) : currentRecord?.record_images?.length > 0 ? (

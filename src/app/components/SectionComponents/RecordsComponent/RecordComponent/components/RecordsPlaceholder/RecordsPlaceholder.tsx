@@ -8,10 +8,12 @@ import { initPhysics } from './Matter';
 type RecordsPlaceholderProps = {
   releaseNames?: (string | undefined)[];
   recordArray?: RecordDocument[];
+  setActiveRecord?: (id: string) => void;
 };
 
 export default function RecordsPlaceholder({
   recordArray,
+  // setActiveRecord,
 }: RecordsPlaceholderProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
@@ -33,6 +35,11 @@ export default function RecordsPlaceholder({
             className={`${styles.object} object`}
             onMouseEnter={() => setHoveredIndex(index)}
             onMouseLeave={() => setHoveredIndex(null)}
+            // onClick={() => {
+            //   if (recordArray && recordArray[index].id && setActiveRecord) {
+            //     setActiveRecord(recordArray[index].id);
+            //   }
+            // }}
             style={{
               backgroundImage: `${hoveredIndex === index ? `url("${imageUrl}")` : 'none'}`,
             }}
