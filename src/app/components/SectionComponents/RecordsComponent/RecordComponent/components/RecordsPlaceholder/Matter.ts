@@ -6,7 +6,7 @@ const config = {
   friction: 0.8,
   frictionAir: 0.2,
   density: 0.1,
-  wallThickness: 10,
+  wallThickness: 100,
   mouseStiffness: 0.6,
 };
 
