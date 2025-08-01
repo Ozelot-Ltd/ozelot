@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import styles from './RecordsPlaceholder.module.css';
 import { RecordDocument } from '../../../../../../../../prismicio-types';
 import { initPhysics } from './Matter';
+import { useMobile } from '../../../../../../../../context/MobileContext';
 
 type RecordsPlaceholderProps = {
   releaseNames?: (string | undefined)[];
@@ -17,10 +18,11 @@ export default function RecordsPlaceholder({
 }: RecordsPlaceholderProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const { isMobile } = useMobile();
 
   useEffect(() => {
-    initPhysics(containerRef.current!);
-  }, []);
+    initPhysics(containerRef.current!, isMobile);
+  }, [isMobile]);
 
   return (
     <div className={styles.placeholderContainer} ref={containerRef}>

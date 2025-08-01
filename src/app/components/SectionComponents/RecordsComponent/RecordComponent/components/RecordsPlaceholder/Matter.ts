@@ -26,7 +26,7 @@ function clamp(val: number, min: number, max: number) {
   return Math.max(min, Math.min(max, val));
 }
 
-function initPhysics(container: HTMLDivElement) {
+function initPhysics(container: HTMLDivElement, isMobile: boolean) {
   engine = Matter.Engine.create();
   engine.gravity = config.gravity;
   engine.constraintIterations = 10;
@@ -74,8 +74,8 @@ function initPhysics(container: HTMLDivElement) {
 
     const startX =
       Math.random() * (containerRect.width - objRect.width) + objRect.width / 2;
-    const startY = -100 - index * 200; // More spread out starting positions
-    const startRotation = (Math.random() - 0.5) * 0.2; // Much less initial rotation
+    const startY = -400 - index * (isMobile ? 200 : 100); // More spread out starting positions
+    const startRotation = (Math.random() - 0.5) * (!isMobile ? 0.85 : 0.4); // Much less initial rotation
 
     const body = Matter.Bodies.rectangle(
       startX,
