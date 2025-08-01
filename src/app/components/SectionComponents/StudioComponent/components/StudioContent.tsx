@@ -34,8 +34,7 @@ export default function StudioContent({}: Props) {
         <div className={styles.upperContainer}>
           <div className={styles.leftContainer}>
             <div className={styles.titleContainer}>
-              <h2>ABOUT</h2>
-              <h2>OZELOT STUDIOS</h2>
+              <PrismicRichText field={data.subtitle} />
             </div>
             <div className={styles.infoContainer}>
               <div className={styles.descriptionContainer}>
@@ -52,7 +51,7 @@ export default function StudioContent({}: Props) {
                 </p>
               </div>
             </div>
-            <div>
+            <div className={styles.bottomContainer}>
               <SocialBar /> <LegalButton />
             </div>
           </div>

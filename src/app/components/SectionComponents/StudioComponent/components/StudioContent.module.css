@@ -35,7 +35,7 @@
 .leftContainer {
     display: flex;
     flex-direction: column;
-    gap: calc(1vw + 1rem);
+    gap: calc(0.5vw + 0.3rem);
 }
 
 .rightContainer {
@@ -52,8 +52,8 @@
 
 .titleContainer {}
 
-.titleContainer h2 {
-    font-size: calc(1.5rem + 1.5vw);
+.titleContainer h3 {
+    font-size: calc(1.25rem + 1.25vw);
     font-variation-settings: "wght" 500;
 
 }
@@ -72,7 +72,7 @@
 }
 
 .descriptionContainer p {
-    width: 75%;
+    width: 85%;
 }
 
 .addressContainer p {
@@ -85,6 +85,14 @@
 
 .addressContainer svg {
     transform: rotate(-45deg);
+}
+
+.bottomContainer {
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    width: 85%;
 }
 
 
