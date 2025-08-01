@@ -166,7 +166,7 @@ export default function MainComponent({
       setIsClicked('services');
       setSide('bottom');
     }
-  }, [pathname]);
+  }, [pathname, setIsClicked]);
 
   const handleClick = (
     text: string | undefined | null,
