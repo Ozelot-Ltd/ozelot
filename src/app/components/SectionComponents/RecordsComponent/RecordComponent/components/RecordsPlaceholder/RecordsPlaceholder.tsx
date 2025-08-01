@@ -43,7 +43,7 @@ export default function RecordsPlaceholder({
             //   }
             // }}
             style={{
-              backgroundImage: `${hoveredIndex === index ? `url("${imageUrl}")` : 'none'}`,
+              backgroundImage: `${hoveredIndex === index && `url("${imageUrl}")`}`,
             }}
           >
             <h2>

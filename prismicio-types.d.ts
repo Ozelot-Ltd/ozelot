@@ -1625,16 +1625,6 @@ export interface SettingsDocumentDataNavigationItemsLeftItem {
   >;
 
   /**
-   * Navigation Link Number field in *Settings → Navigation Items Left*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: 1
-   * - **API ID Path**: settings.navigation_items_left[].navigation_link_number
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  navigation_link_number: prismic.KeyTextField;
-
-  /**
    * Navigation Icon field in *Settings → Navigation Items Left*
    *
    * - **Field Type**: Image
@@ -1643,6 +1633,16 @@ export interface SettingsDocumentDataNavigationItemsLeftItem {
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   navigation_icon: prismic.ImageField<never>;
+
+  /**
+   * Navigation Link Number field in *Settings → Navigation Items Left*
+   *
+   * - **Field Type**: Number
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.navigation_items_left[].navigation_link_number
+   * - **Documentation**: https://prismic.io/docs/field#number
+   */
+  navigation_link_number: prismic.NumberField;
 }
 
 /**
@@ -1666,16 +1666,6 @@ export interface SettingsDocumentDataNavigationItemsRightItem {
   >;
 
   /**
-   * Navigation Link Number field in *Settings → Navigation items Right*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: 1
-   * - **API ID Path**: settings.navigation_items_right[].navigation_link_number
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  navigation_link_number: prismic.KeyTextField;
-
-  /**
    * Navigation Icon field in *Settings → Navigation items Right*
    *
    * - **Field Type**: Image
@@ -1684,6 +1674,16 @@ export interface SettingsDocumentDataNavigationItemsRightItem {
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   navigation_icon: prismic.ImageField<never>;
+
+  /**
+   * Navigation Link Number field in *Settings → Navigation items Right*
+   *
+   * - **Field Type**: Number
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.navigation_items_right[].navigation_link_number
+   * - **Documentation**: https://prismic.io/docs/field#number
+   */
+  navigation_link_number: prismic.NumberField;
 }
 
 /**

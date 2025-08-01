@@ -23,19 +23,19 @@
                 "repeat": false
               }
             },
-            "navigation_link_number": {
-              "type": "Text",
-              "config": {
-                "label": "Navigation Link Number",
-                "placeholder": "1"
-              }
-            },
             "navigation_icon": {
               "type": "Image",
               "config": {
                 "label": "Navigation Icon",
                 "constraint": {},
                 "thumbnails": []
+              }
+            },
+            "navigation_link_number": {
+              "type": "Number",
+              "config": {
+                "label": "Navigation Link Number",
+                "placeholder": ""
               }
             }
           }
@@ -58,19 +58,19 @@
                 "repeat": false
               }
             },
-            "navigation_link_number": {
-              "type": "Text",
-              "config": {
-                "label": "Navigation Link Number",
-                "placeholder": "1"
-              }
-            },
             "navigation_icon": {
               "type": "Image",
               "config": {
                 "label": "Navigation Icon",
                 "constraint": {},
                 "thumbnails": []
+              }
+            },
+            "navigation_link_number": {
+              "type": "Number",
+              "config": {
+                "label": "Navigation Link Number",
+                "placeholder": ""
               }
             }
           }

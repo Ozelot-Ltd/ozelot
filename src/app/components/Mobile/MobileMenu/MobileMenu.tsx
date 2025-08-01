@@ -51,21 +51,29 @@ export default function MobileMenu({
 
   const navigationArray = [...left, ...right];
 
+  console.log('navigationArray', navigationArray);
+
   return (
     <nav className={styles.navbar}>
       <ul className={styles.navlist}>
-        {navigationArray.map((item, index) => (
-          <li
-            key={index}
-            onClick={() =>
-              handleClick(item?.navigation_link?.text?.toLowerCase() ?? '')
-            }
-            className={styles.navitem}
-          >
-            <p>0{index + 1}</p>
-            <h3> {item.navigation_link.text}</h3>
-          </li>
-        ))}
+        {navigationArray
+          .sort((a, b) => {
+            const numA = a.navigation_link_number ?? 0;
+            const numB = b.navigation_link_number ?? 0;
+            return numA - numB;
+          })
+          .map((item, index) => (
+            <li
+              key={index}
+              onClick={() =>
+                handleClick(item?.navigation_link?.text?.toLowerCase() ?? '')
+              }
+              className={styles.navitem}
+            >
+              <p>0{index + 1}</p>
+              <h3> {item.navigation_link.text}</h3>
+            </li>
+          ))}
       </ul>
       {seeSocialBar && (
         <div className={styles.socialbar}>
