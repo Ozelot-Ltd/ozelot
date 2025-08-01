@@ -14,7 +14,7 @@ type RecordsPlaceholderProps = {
 
 export default function RecordsPlaceholder({
   recordArray,
-  // setActiveRecord,
+  setActiveRecord,
 }: RecordsPlaceholderProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
@@ -24,6 +24,10 @@ export default function RecordsPlaceholder({
     initPhysics(containerRef.current!, isMobile);
   }, [isMobile]);
 
+  const oddURL =
+    'https://images.prismic.io/ozelot/aIy07aTt2nPbZpWf_Bildschirmfoto2025-08-01um14.36.56.png?auto=format,compress';
+  const evenURL =
+    'https://images.prismic.io/ozelot/aIy0WaTt2nPbZpWK_Bildschirmfoto2025-08-01um14.34.20.png?auto=format,compress';
   return (
     <div className={styles.placeholderContainer} ref={containerRef}>
       {recordArray?.map((record, index) => {
@@ -36,14 +40,14 @@ export default function RecordsPlaceholder({
             key={index}
             className={`${styles.object} object`}
             onMouseEnter={() => setHoveredIndex(index)}
-            onMouseLeave={() => setHoveredIndex(null)}
-            // onClick={() => {
-            //   if (recordArray && recordArray[index].id && setActiveRecord) {
-            //     setActiveRecord(recordArray[index].id);
-            //   }
-            // }}
+            onClick={() => {
+              if (recordArray && recordArray[index].id && setActiveRecord) {
+                setActiveRecord(recordArray[index].id);
+              }
+            }}
             style={{
-              backgroundImage: `${hoveredIndex === index && `url("${imageUrl}")`}`,
+              backgroundImage: `${hoveredIndex === index ? `url("${imageUrl}")` : `url("${index % 2 === 0 ? evenURL : oddURL}")`}`,
+              transition: 'background-image 0.2s var(--bezier',
             }}
           >
             <h2>

@@ -1,0 +1,29 @@
+{
+  "format": "custom",
+  "id": "ai_popup",
+  "label": "AI Popup",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "title": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Title",
+          "placeholder": "AI & AI Prototyping",
+          "allowTargetBlank": true,
+          "multi": "heading3,heading4,heading5"
+        }
+      },
+      "text": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Text",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,hyperlink,strong,em"
+        }
+      }
+    }
+  }
+}

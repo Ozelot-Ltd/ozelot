@@ -16,6 +16,7 @@ import StudioComponent from './SectionComponents/StudioComponent/StudioComponent
 import ContactComponent from './SectionComponents/ContactComponent/ContactComponent';
 import RecordsComponent from './SectionComponents/RecordsComponent/RecordsComponent';
 import ServicesComponent from './SectionComponents/ServicesComponent/ServicesComponent';
+import AIPopup from './AIPopup/AIPopup';
 
 import { isClickedStore } from '../stores/IsClickedStore';
 
@@ -86,6 +87,7 @@ export default function MainComponent({
   const [isContactActive, setIsContactActive] = useState(false);
   const [isServicesActive, setIsServicesActive] = useState(false);
   const { isDesktop } = useMobile();
+  const [showPopup, setShowPopup] = useState(false);
 
   useEffect(() => {
     if (isClicked === 'projects') {
@@ -124,6 +126,14 @@ export default function MainComponent({
 
   const router = useRouter();
   const pathname = usePathname();
+
+  useEffect(() => {
+    if (pathname === '/') {
+      setTimeout(() => {
+        setShowPopup(true);
+      }, 1000);
+    }
+  }, [pathname]);
 
   useEffect(() => {
     const updateContainerWidth = () => {
@@ -208,6 +218,7 @@ export default function MainComponent({
     <>
       {isDesktop ? (
         <div className={styles.container}>
+          {showPopup && <AIPopup />}
           <div className={styles.logoContainer}>
             <div
               onClick={() => {

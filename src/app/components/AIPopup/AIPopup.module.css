@@ -1,0 +1,59 @@
+.container {
+    position: fixed;
+    bottom: 5rem;
+    left: 15rem;
+    opacity: 0;
+    width: 0;
+    height: fit-content;
+    border: var(--border);
+    overflow: hidden;
+    transition: width 0.6s var(--bezier);
+    background-color: var(--lightgrey);
+}
+
+.open {
+    width: calc(15rem + 15vw);
+    opacity: 1;
+    transition: width 0.6s var(--bezier);
+
+}
+
+.popupContainer {
+    position: relative;
+    width: calc(15rem + 15vw);
+}
+
+.popup {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: calc(0.5rem + 0.5vw);
+    white-space: wrap;
+    overflow: hidden;
+    width: calc(15rem + 15vw);
+    gap: 1rem;
+    height: 10rem;
+}
+
+.cross {
+    position: absolute;
+    top: 12%;
+    right: 3%;
+    z-index: 2;
+    cursor: pointer;
+}
+
+.cross div {
+    height: 0.5px;
+    width: calc(0.75rem + 0.75vw);
+    background-color: var(--black);
+
+}
+
+.cross div:nth-of-type(1) {
+    transform: rotate(45deg)
+}
+
+.cross div:nth-of-type(2) {
+    transform: rotate(-45deg)
+}

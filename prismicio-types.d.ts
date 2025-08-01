@@ -102,6 +102,49 @@ export type AiIconDocument<Lang extends string = string> =
   >;
 
 /**
+ * Content for AI Popup documents
+ */
+interface AiPopupDocumentData {
+  /**
+   * Title field in *AI Popup*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: AI & AI Prototyping
+   * - **API ID Path**: ai_popup.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Text field in *AI Popup*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: ai_popup.text
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  text: prismic.RichTextField;
+}
+
+/**
+ * AI Popup document from Prismic
+ *
+ * - **API ID**: `ai_popup`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type AiPopupDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<AiPopupDocumentData>,
+    "ai_popup",
+    Lang
+  >;
+
+/**
  * Content for Art Direction icon documents
  */
 interface ArtDirectionIconDocumentData {
@@ -2138,6 +2181,7 @@ export type WebIconDocument<Lang extends string = string> =
 export type AllDocumentTypes =
   | AddressDocument
   | AiIconDocument
+  | AiPopupDocument
   | ArtDirectionIconDocument
   | BrandingIconDocument
   | ContactDocument
@@ -2231,6 +2275,8 @@ declare module "@prismicio/client" {
       AddressDocumentData,
       AiIconDocument,
       AiIconDocumentData,
+      AiPopupDocument,
+      AiPopupDocumentData,
       ArtDirectionIconDocument,
       ArtDirectionIconDocumentData,
       BrandingIconDocument,
