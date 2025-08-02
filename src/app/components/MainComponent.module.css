@@ -173,6 +173,7 @@
     transform: translateX(-50%);
     z-index: 99;
 
+
 }
 
 .services p {
@@ -189,9 +190,9 @@
     transform-origin: bottom;
     position: absolute;
     bottom: 0;
-    background-color: transparent;
-    transition:
-        height var(--time) var(--bezier) 0s,
+
+    background-color: var(--lightgrey);
+    transition: height var(--time) var(--bezier) 0s,
         background-color var(--time) var(--bezier) 0.3s,
         backdrop-filter var(--time) var(--bezier) 0.3s;
 }
