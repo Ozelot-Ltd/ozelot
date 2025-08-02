@@ -21,6 +21,9 @@
     "@prismicio/next": "^2.0.0",
     "@prismicio/react": "^3.0.0",
     "@react-email/components": "0.0.36",
+    "@react-spring/core": "^10.0.1",
+    "@react-spring/three": "^10.0.1",
+    "@react-spring/web": "^10.0.1",
     "@react-three/drei": "10.0.0",
     "@react-three/fiber": "9.0.4",
     "@react-three/postprocessing": "v3.0.4",
@@ -37,7 +40,7 @@
     "react-dom": "19.1.0",
     "resend": "^4.3.0",
     "three": "^0.173.0",
-    "yet-another-react-lightbox": "^3.21.7",
+    "wiggle": "^0.0.17",
     "zustand": "^5.0.5"
   },
   "devDependencies": {

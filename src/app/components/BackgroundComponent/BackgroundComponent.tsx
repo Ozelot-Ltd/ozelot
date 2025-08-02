@@ -1,44 +1,25 @@
-'use client';
+"use client";
 
-import dynamic from 'next/dynamic';
-import { Suspense } from 'react';
-import { Experience } from './Experience/Experience';
-
-// import { Perf } from 'r3f-perf';
-const Canvas = dynamic(
-  () => import('@react-three/fiber').then((mod) => mod.Canvas),
-  {
-    ssr: false,
-  }
-);
+// import { Experience } from "./Experience/Experience";
+import { ExperienceAlt } from "./Experience/ExperienceAlt";
 
 export const BackgroundComponent = () => {
   return (
     <div
       style={{
-        position: 'fixed',
+        position: "fixed",
         top: 0,
         left: 0,
-        width: '100vw',
-        height: '100vh',
-        pointerEvents: 'none',
+        width: "100vw",
+        height: "100vh",
+        pointerEvents: "auto", // Allow pointer events for the 3D scene
       }}
     >
-      <Suspense fallback={null}>
-        <Canvas
-          style={{
-            width: '100%',
-            height: '100%',
-          }}
-          shadows
-          dpr={[1, 1.5]}
-          gl={{ antialias: true }}
-          camera={{ position: [0, 0, 15], fov: 17.5, near: 1, far: 20 }}
-        >
-          {/* <Perf style={{ right: '50%' }} /> */}
-          <Experience />
-        </Canvas>
-      </Suspense>
+      {/* Original component with movement animation */}
+      {/* <Experience /> */}
+
+      {/* Alternative component with fade animation */}
+      <ExperienceAlt />
     </div>
   );
 };

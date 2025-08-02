@@ -20,8 +20,10 @@ export default function AIPopup() {
     <div className={`${styles.container} ${isOpen ? styles.open : ''}`}>
       <div className={styles.popupContainer}>
         <div className={styles.cross} onClick={() => setIsOpen(false)}>
-          <div></div>
-          <div></div>
+          <div className={styles.crossLines}>
+            <div className={styles.string}></div>
+            <div className={styles.string}></div>
+          </div>
         </div>
         <div className={styles.popup}>
           <PrismicRichText field={aiPopup.data.title} />

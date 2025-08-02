@@ -19,6 +19,7 @@ import {
   SettingsDocumentDataNavigationItemsRightItem,
   Simplify,
 } from '../../../../prismicio-types';
+import AIPopup from '../AIPopup/AIPopup';
 
 export default function MobileComponent({
   left,
@@ -154,6 +155,7 @@ export default function MobileComponent({
           transitionEnd={transitionEnd}
         />
       </div>
+      <AIPopup />
     </div>
   );
 }

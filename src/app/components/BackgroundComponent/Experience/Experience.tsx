@@ -1,69 +1,103 @@
-import { useReducer, useMemo } from 'react';
-import { Environment } from '@react-three/drei';
-import { Physics } from '@react-three/rapier';
-import { EffectComposer, N8AO, Noise } from '@react-three/postprocessing';
-import { Connector } from './physics/Connector';
-import { Pointer } from './physics/Pointer';
-import { SceneLighting, EnvironmentLighting } from './scene/Lighting';
-import { useShuffleConfig } from '../../../hooks/useShuffleConfig';
-import { OzelogoSingle } from './models/OzelogoSingle';
-import * as THREE from 'three';
+import { Stage, Float } from "@react-three/drei";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
+import { Suspense, useRef, useMemo } from "react";
+import { ShirtM } from "./ShirtM";
+import * as THREE from "three";
+import { isClickedStore } from "@/app/stores/IsClickedStore";
+import { Perf } from "r3f-perf";
 
-// Define a type that extends ShuffleItem with the properties that Connector component uses
-interface ConnectorItem {
-  color: string;
-  roughness: number;
-  accent?: boolean;
-  position?: [number, number, number];
-  scale?: number | [number, number, number];
-}
+function ShirtGroup() {
+  const groupRef = useRef<THREE.Group>(null);
+  const isClicked = isClickedStore((state) => state.isClicked);
+  const setIsAnimating = isClickedStore((state) => state.setIsAnimating);
+  const { viewport } = useThree();
 
-// Let's go back to the original approach but optimize it
-export const Experience = () => {
-  const [accent] = useReducer(
-    (state: number) => ++state % useShuffleConfig.accents.length,
-    0
+  // Calculate offscreen positions based on viewport width
+  // Adding extra distance to ensure it's fully offscreen on any monitor size
+  const offscreenX = useMemo(
+    () => Math.max(viewport.width * 0.7, 8),
+    [viewport.width]
+  );
+  const offscreenY = useMemo(
+    () => Math.max(viewport.height * 0.7, 6),
+    [viewport.height]
   );
 
-  // Get the connectors configuration
-  const connectors = useMemo(() => {
-    // Create random positions for each connector
-    const randFloat = THREE.MathUtils.randFloatSpread;
-    return useShuffleConfig.shuffle(accent).map((item) => ({
-      ...item,
-      position: [randFloat(5), randFloat(5), randFloat(5) + 5] as [
-        number,
-        number,
-        number,
-      ],
-    })) as ConnectorItem[];
-  }, [accent]);
+  const targetPosition = useMemo<[number, number, number]>(() => {
+    switch (isClicked) {
+      case "studio":
+      case "projects":
+        return [offscreenX, 0.8, 0]; // Right side exit
+      case "records":
+      case "contact":
+        return [-offscreenX, 0.8, 0]; // Left side exit
+      case "services":
+        return [0, offscreenY, 0]; // Top exit
+      default:
+        return [0, 0.8, 0]; // Center position
+    }
+  }, [isClicked, offscreenX, offscreenY]);
+
+  const tempVec = useMemo(() => new THREE.Vector3(), []);
+
+  useFrame(() => {
+    if (groupRef.current) {
+      const current = groupRef.current.position;
+      const target = tempVec.set(...targetPosition);
+
+      // Check if returning to center
+      const isReturningToCenter =
+        targetPosition[0] === 0 &&
+        targetPosition[1] === 0.8 &&
+        targetPosition[2] === 0;
+
+      // Use faster, constant lerp factor when returning to center
+      let lerpFactor;
+      if (isReturningToCenter) {
+        lerpFactor = 0.2; // Much faster return to center
+      } else {
+        // For moving away, keep the smoother, distance-based lerp
+        const distance = current.distanceTo(target);
+        const viewportFactor = Math.min(
+          1,
+          5 / (viewport.width + viewport.height)
+        );
+        lerpFactor = Math.min(0.1, (0.05 + distance * 0.02) * viewportFactor);
+      }
+
+      current.lerp(target, lerpFactor);
+
+      // Consider animation complete when very close to target
+      const isAnimating = current.distanceTo(target) > 0.01;
+      setIsAnimating(isAnimating);
+    }
+  });
 
   return (
-    <>
-      <SceneLighting />
+    <group ref={groupRef} position={[0, 0.8, 0]} scale={1.2}>
+      <Suspense fallback={null}>
+        <directionalLight position={[3, 1.5, 4]} intensity={2.5} />
+        <Float
+          speed={5.75}
+          rotationIntensity={0.2}
+          floatIntensity={1}
+          floatingRange={[-0.05, 0.05]}
+        >
+          <ShirtM />
+        </Float>
+        <Stage adjustCamera={false} environment="warehouse" />
+      </Suspense>
+    </group>
+  );
+}
 
-      <Physics gravity={[0, 0, 0]} debug={false}>
-        <Pointer />
-
-        {/* Render connectors with individual OzelogoSingle components */}
-        {connectors.map((props, i) => (
-          <Connector key={i} {...props}>
-            <OzelogoSingle scale={0.6} />
-          </Connector>
-        ))}
-      </Physics>
-
-      {/* Reduce effect quality for performance */}
-      <EffectComposer enableNormalPass={false} multisampling={4}>
-        <N8AO distanceFalloff={1} aoRadius={1} intensity={2} />
-        <Noise opacity={0.1} />
-      </EffectComposer>
-
-      {/* Lower resolution for performance */}
-      <Environment resolution={64}>
-        <EnvironmentLighting />
-      </Environment>
-    </>
+export const Experience = () => {
+  return (
+    <Canvas shadows camera={{ position: [0, 1, 7], fov: 30 }}>
+      <color attach="background" args={["#ebebeb"]} />
+      <fog attach="fog" args={["#ebebeb", 5, 20]} />
+      <ShirtGroup />
+      <Perf position="top-left" />
+    </Canvas>
   );
 };
