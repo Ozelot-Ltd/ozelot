@@ -179,7 +179,8 @@
 .services p {
 
     width: fit-content;
-
+    min-height: 12rem;
+    text-align: center;
 }
 
 .bar {
