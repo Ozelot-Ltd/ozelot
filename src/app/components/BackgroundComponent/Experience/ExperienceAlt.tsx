@@ -1,21 +1,21 @@
-import { Stage, Float } from "@react-three/drei";
-import { Canvas } from "@react-three/fiber";
-import { Suspense, useRef, useEffect, useCallback } from "react";
-import { ShirtM } from "./ShirtM";
-import * as THREE from "three";
-import { isClickedStore } from "@/app/stores/IsClickedStore";
-import dynamic from "next/dynamic";
+import { Stage, Float } from '@react-three/drei';
+import { Canvas } from '@react-three/fiber';
+import { Suspense, useRef, useEffect, useCallback } from 'react';
+import { ShirtM } from './ShirtM';
+import * as THREE from 'three';
+import { isClickedStore } from '@/app/stores/IsClickedStore';
+import dynamic from 'next/dynamic';
 
 // Conditionally import Perf component only in development
 const Perf =
-  process.env.NODE_ENV === "development"
-    ? dynamic(() => import("r3f-perf").then((module) => module.Perf), {
+  process.env.NODE_ENV === 'development'
+    ? dynamic(() => import('r3f-perf').then((module) => module.Perf), {
         ssr: false,
       })
     : () => null;
 
 // Website background color from CSS variables
-const WEBSITE_BG_COLOR = "#ebebeb"; // --lightgrey from globals.css
+const WEBSITE_BG_COLOR = '#ebebeb'; // --lightgrey from globals.css
 
 // Create a single shared material for the fade plane
 const fadeMaterial = new THREE.MeshBasicMaterial({
@@ -36,7 +36,7 @@ function ShirtGroup() {
   const currentOpacityRef = useRef(0); // Start with 0 opacity (shirt visible)
   const isAnimatingRef = useRef(false);
   const isReturningRef = useRef(false);
-  const lastClickStateRef = useRef("");
+  const lastClickStateRef = useRef('');
 
   // Constants for animation timing
   const FADE_OUT_DURATION = 400; // ms - fade out shirt (fade in overlay)
@@ -167,7 +167,7 @@ export const ExperienceAlt = () => {
       camera={{ position: [0, 1, 7], fov: 30 }}
       gl={{
         antialias: false, // Disable antialiasing for performance
-        powerPreference: "high-performance",
+        powerPreference: 'high-performance',
       }}
       dpr={[1, 1.5]} // Limit pixel ratio for better performance
     >
@@ -175,7 +175,7 @@ export const ExperienceAlt = () => {
       <fog attach="fog" args={[WEBSITE_BG_COLOR, 5, 20]} />
       <ShirtGroup />
       {/* Only show performance monitor in development */}
-      {process.env.NODE_ENV === "development" && <Perf position="top-left" />}
+      {process.env.NODE_ENV === 'development' && <Perf position="top-left" />}
     </Canvas>
   );
 };

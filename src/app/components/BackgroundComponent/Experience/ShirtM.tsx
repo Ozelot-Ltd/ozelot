@@ -1,13 +1,13 @@
-import { useFrame, useGraph, useThree } from "@react-three/fiber";
-import type { ThreeEvent } from "@react-three/fiber";
-import { useGLTF } from "@react-three/drei";
-import { useEffect, useRef, useState, useCallback } from "react";
-import { WiggleRig } from "wiggle/rig";
-import * as THREE from "three";
-import { SkeletonUtils } from "three-stdlib";
-import React from "react";
-import type { GLTF } from "three-stdlib";
-import { useSpring } from "@react-spring/core";
+import { useFrame, useGraph, useThree } from '@react-three/fiber';
+import type { ThreeEvent } from '@react-three/fiber';
+import { useGLTF } from '@react-three/drei';
+import { useEffect, useRef, useState, useCallback } from 'react';
+import { WiggleRig } from 'wiggle/rig';
+import * as THREE from 'three';
+import { SkeletonUtils } from 'three-stdlib';
+import React from 'react';
+import type { GLTF } from 'three-stdlib';
+import { useSpring } from '@react-spring/core';
 
 type GLTFResult = GLTF & {
   nodes: Record<string, THREE.Object3D>;
@@ -15,7 +15,7 @@ type GLTFResult = GLTF & {
 };
 
 export const ShirtM = () => {
-  const { scene } = useGLTF("/models/ShirtT-transformed.glb");
+  const { scene } = useGLTF('/models/ShirtT-transformed.glb');
   const clone = React.useMemo(() => SkeletonUtils.clone(scene), [scene]);
   const { nodes } = useGraph(clone) as unknown as GLTFResult;
   const groupRef = useRef<THREE.Group>(null);
@@ -45,14 +45,15 @@ export const ShirtM = () => {
     randomRotationOffset.current = { x: 0, y: 0, z: 0 };
   }, []);
 
+  const { viewport } = useThree();
+
   // Click/tap detection
   const pointerDownPos = useRef({ x: 0, y: 0 });
   const pointerDownTime = useRef(0);
   const hasMoved = useRef(false);
-  const touchSide = useRef<"left" | "right">("right");
+  const touchSide = useRef<'left' | 'right'>('right');
 
   // Get viewport for proper coordinate conversion
-  const { viewport } = useThree();
 
   // React Spring for return-to-center animation only (no spinning)
   const [{ targetX, targetY, targetZ }, api] = useSpring(() => ({
@@ -72,7 +73,7 @@ export const ShirtM = () => {
     // Find SkinnedMesh
     let skinnedMesh: THREE.SkinnedMesh | null = null;
     skinnedMesh = groupRef.current.getObjectByName(
-      "Shirt"
+      'Shirt'
     ) as THREE.SkinnedMesh;
 
     if (!skinnedMesh) {
@@ -84,14 +85,14 @@ export const ShirtM = () => {
     }
 
     if (!skinnedMesh || !skinnedMesh.skeleton) {
-      console.warn("No SkinnedMesh or skeleton found");
+      console.warn('No SkinnedMesh or skeleton found');
       return;
     }
 
     console.log(
-      "Found skeleton with",
+      'Found skeleton with',
       skinnedMesh.skeleton.bones.length,
-      "bones"
+      'bones'
     );
 
     // Configure wiggle parameters on bones for optimal performance
@@ -99,9 +100,9 @@ export const ShirtM = () => {
     bones.forEach((bone, index) => {
       // Skip the root bone and primary shoulder bones
       if (
-        bone.name === "Root" ||
-        bone.name === "Shoulder_1" ||
-        bone.name === "Shoulder_2" ||
+        bone.name === 'Root' ||
+        bone.name === 'Shoulder_1' ||
+        bone.name === 'Shoulder_2' ||
         index === 0
       ) {
         return;
@@ -111,20 +112,20 @@ export const ShirtM = () => {
       bone.userData.wiggleVelocity = 0.12;
 
       if (
-        bone.name === "Spine 1" ||
-        bone.name === "Spine 2" ||
-        bone.name === "Spine 3"
+        bone.name === 'Spine 1' ||
+        bone.name === 'Spine 2' ||
+        bone.name === 'Spine 3'
       ) {
         bone.userData.wiggleStiffness = 0.15;
         bone.userData.wiggleDamping = 0.15;
-      } else if (bone.name === "Arm 1" || bone.name === "Arm 2") {
+      } else if (bone.name === 'Arm 1' || bone.name === 'Arm 2') {
         bone.userData.wiggleStiffness = 0.15;
         bone.userData.wiggleDamping = 0.15;
         bone.userData.wiggleVelocity = 0.15;
       } else if (
-        bone.name === "Arm 1_end" ||
-        bone.name === "Arm 2_end" ||
-        bone.name === "Spine 3_end"
+        bone.name === 'Arm 1_end' ||
+        bone.name === 'Arm 2_end' ||
+        bone.name === 'Spine 3_end'
       ) {
         bone.userData.wiggleStiffness = 0.95;
         bone.userData.wiggleDamping = 0.75;
@@ -137,9 +138,9 @@ export const ShirtM = () => {
 
     try {
       wiggleRigRef.current = new WiggleRig(skinnedMesh.skeleton);
-      console.log("WiggleRig created successfully");
+      console.log('WiggleRig created successfully');
     } catch (error) {
-      console.error("Failed to create WiggleRig:", error);
+      console.error('Failed to create WiggleRig:', error);
     }
 
     return () => {
@@ -152,7 +153,7 @@ export const ShirtM = () => {
   // Convert screen coordinates to world coordinates
   const screenToWorld = useCallback(
     (clientX: number, clientY: number) => {
-      const rect = document.querySelector("canvas")?.getBoundingClientRect();
+      const rect = document.querySelector('canvas')?.getBoundingClientRect();
       if (!rect) return { x: 0, y: 0 };
 
       const x = ((clientX - rect.left) / rect.width) * 2 - 1;
@@ -168,9 +169,9 @@ export const ShirtM = () => {
 
   // Trigger 360-degree spin animation based on direction (direct rotation, no spring)
   const triggerSpin = useCallback(
-    (direction: "left" | "right") => {
+    (direction: 'left' | 'right') => {
       if (isSpinningRef.current) {
-        console.log("Spin blocked - already spinning");
+        console.log('Spin blocked - already spinning');
         return; // Prevent multiple spins
       }
 
@@ -184,7 +185,7 @@ export const ShirtM = () => {
       isSpinningRef.current = true; // Set immediately to prevent double-clicks
       setIsSpinning(true);
 
-      const spinDirection = direction === "left" ? -1 : 1; // Left = counter-clockwise, Right = clockwise
+      const spinDirection = direction === 'left' ? -1 : 1; // Left = counter-clockwise, Right = clockwise
       const startRotation = totalSpinRotation.current;
       const targetRotation = startRotation + Math.PI * 2 * spinDirection; // 360 degrees in radians
       const startTime = Date.now();
@@ -229,7 +230,7 @@ export const ShirtM = () => {
 
       // Don't start new interactions while spinning
       if (isSpinningRef.current) {
-        console.log("Interaction blocked - currently spinning");
+        console.log('Interaction blocked - currently spinning');
         return;
       }
 
@@ -252,7 +253,7 @@ export const ShirtM = () => {
       // Determine side based on world position relative to object center
       // Account for current object position
       const relativeX = touchWorldPos.x - currentPosition.current.x;
-      touchSide.current = relativeX < 0 ? "left" : "right";
+      touchSide.current = relativeX < 0 ? 'left' : 'right';
 
       setIsDragging(true);
       isDraggingRef.current = true;
@@ -268,7 +269,7 @@ export const ShirtM = () => {
         y: worldPos.y - currentPosition.current.y,
       };
 
-      document.body.style.cursor = "grabbing";
+      document.body.style.cursor = 'grabbing';
     },
     [screenToWorld]
   );
@@ -279,9 +280,9 @@ export const ShirtM = () => {
       if (!isDraggingRef.current || isSpinningRef.current) return;
 
       const clientX =
-        "clientX" in event ? event.clientX : event.touches[0].clientX;
+        'clientX' in event ? event.clientX : event.touches[0].clientX;
       const clientY =
-        "clientY" in event ? event.clientY : event.touches[0].clientY;
+        'clientY' in event ? event.clientY : event.touches[0].clientY;
 
       // Check if pointer has moved significantly (for click detection)
       const deltaX = Math.abs(clientX - pointerDownPos.current.x);
@@ -326,13 +327,13 @@ export const ShirtM = () => {
       );
       triggerSpin(touchSide.current);
     } else {
-      console.log("Drag ended - returning to center");
+      console.log('Drag ended - returning to center');
     }
 
     // Always reset dragging state
     setIsDragging(false);
     isDraggingRef.current = false;
-    document.body.style.cursor = "auto";
+    document.body.style.cursor = 'auto';
 
     // Reset random rotation offsets for smooth return
     randomRotationOffset.current = { x: 0, y: 0, z: 0 };
@@ -355,9 +356,9 @@ export const ShirtM = () => {
 
     if (isDragging) {
       // Use only pointer events for modern browsers
-      window.addEventListener("pointermove", handleMove);
-      window.addEventListener("pointerup", handleUp);
-      window.addEventListener("pointercancel", handleUp);
+      window.addEventListener('pointermove', handleMove);
+      window.addEventListener('pointerup', handleUp);
+      window.addEventListener('pointercancel', handleUp);
 
       // Fallback for older browsers (not needed for most modern browsers)
       // window.addEventListener("mousemove", handleMove);
@@ -366,15 +367,15 @@ export const ShirtM = () => {
       // window.addEventListener("touchend", handleUp);
 
       return () => {
-        window.removeEventListener("pointermove", handleMove);
-        window.removeEventListener("pointerup", handleUp);
-        window.removeEventListener("pointercancel", handleUp);
+        window.removeEventListener('pointermove', handleMove);
+        window.removeEventListener('pointerup', handleUp);
+        window.removeEventListener('pointercancel', handleUp);
 
         // Also remove fallbacks just in case they were added before
-        window.removeEventListener("mousemove", handleMove);
-        window.removeEventListener("mouseup", handleUp);
-        window.removeEventListener("touchmove", handleMove);
-        window.removeEventListener("touchend", handleUp);
+        window.removeEventListener('mousemove', handleMove);
+        window.removeEventListener('mouseup', handleUp);
+        window.removeEventListener('touchmove', handleMove);
+        window.removeEventListener('touchend', handleUp);
       };
     }
   }, [isDragging, handlePointerMove, handlePointerUp]);
