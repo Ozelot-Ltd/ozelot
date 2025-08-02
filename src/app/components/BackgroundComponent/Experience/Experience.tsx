@@ -1,10 +1,10 @@
-import { Stage, Float } from "@react-three/drei";
-import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { Suspense, useRef, useMemo } from "react";
-import { ShirtM } from "./ShirtM";
-import * as THREE from "three";
-import { isClickedStore } from "@/app/stores/IsClickedStore";
-import { Perf } from "r3f-perf";
+import { Stage, Float } from '@react-three/drei';
+import { Canvas, useFrame, useThree } from '@react-three/fiber';
+import { Suspense, useRef, useMemo } from 'react';
+import { ShirtM } from './ShirtM';
+import * as THREE from 'three';
+import { isClickedStore } from '@/app/stores/IsClickedStore';
+// import { Perf } from "r3f-perf";
 
 function ShirtGroup() {
   const groupRef = useRef<THREE.Group>(null);
@@ -25,13 +25,13 @@ function ShirtGroup() {
 
   const targetPosition = useMemo<[number, number, number]>(() => {
     switch (isClicked) {
-      case "studio":
-      case "projects":
+      case 'studio':
+      case 'projects':
         return [offscreenX, 0.8, 0]; // Right side exit
-      case "records":
-      case "contact":
+      case 'records':
+      case 'contact':
         return [-offscreenX, 0.8, 0]; // Left side exit
-      case "services":
+      case 'services':
         return [0, offscreenY, 0]; // Top exit
       default:
         return [0, 0.8, 0]; // Center position
@@ -94,10 +94,9 @@ function ShirtGroup() {
 export const Experience = () => {
   return (
     <Canvas shadows camera={{ position: [0, 1, 7], fov: 30 }}>
-      <color attach="background" args={["#ebebeb"]} />
-      <fog attach="fog" args={["#ebebeb", 5, 20]} />
+      <color attach="background" args={['#ebebeb']} />
+      <fog attach="fog" args={['#ebebeb', 5, 20]} />
       <ShirtGroup />
-      <Perf position="top-left" />
     </Canvas>
   );
 };

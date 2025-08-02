@@ -28,7 +28,6 @@
     transition: all var(--time) var(--bezier);
     overflow: hidden;
     background-color: var(--lightgrey);
-
 }
 
 .right .column {
