@@ -20,13 +20,19 @@ const bodies: {
   element: HTMLElement;
   width: number;
   height: number;
+  recordIndex?: number;
 }[] = [];
 
 function clamp(val: number, min: number, max: number) {
   return Math.max(min, Math.min(max, val));
 }
 
-function initPhysics(container: HTMLDivElement, isMobile: boolean) {
+function initPhysics(
+  container: HTMLDivElement,
+  isMobile: boolean,
+  onRecordDrop?: (recordIndex: number) => void,
+  dropzoneElement?: HTMLElement
+) {
   engine = Matter.Engine.create();
   engine.gravity = config.gravity;
   engine.constraintIterations = 10;
@@ -97,6 +103,7 @@ function initPhysics(container: HTMLDivElement, isMobile: boolean) {
       element: obj as HTMLElement,
       width: objRect.width,
       height: objRect.height,
+      recordIndex: index, // Store the record index
     });
 
     Matter.World.add(engine.world, body);
@@ -147,6 +154,44 @@ function initPhysics(container: HTMLDivElement, isMobile: boolean) {
   });
 
   Matter.Events.on(mouseConstraint, 'enddrag', function () {
+    if (dragging && dropzoneElement && onRecordDrop) {
+      // Find the dragged body in our bodies array to get the record index
+      const draggedBodyData = bodies.find((b) => b.body === dragging);
+
+      if (draggedBodyData && draggedBodyData.recordIndex !== undefined) {
+        // Get dropzone bounds relative to container
+        const dropzoneRect = dropzoneElement.getBoundingClientRect();
+        const containerBounds = container.getBoundingClientRect();
+
+        // Convert dropzone position to Matter.js coordinates (relative to container)
+        const dropzoneX =
+          dropzoneRect.left - containerBounds.left + dropzoneRect.width / 2;
+        const dropzoneY =
+          dropzoneRect.top - containerBounds.top + dropzoneRect.height / 2;
+
+        // Check if the dragged body center is within the dropzone
+        const bodyX = dragging.position.x;
+        const bodyY = dragging.position.y;
+
+        const isInDropzone =
+          bodyX >= dropzoneX - dropzoneRect.width / 2 &&
+          bodyX <= dropzoneX + dropzoneRect.width / 2 &&
+          bodyY >= dropzoneY - dropzoneRect.height / 2 &&
+          bodyY <= dropzoneY + dropzoneRect.height / 2;
+
+        if (isInDropzone) {
+          console.log(
+            'Record dropped in dropzone:',
+            draggedBodyData.recordIndex
+          );
+          onRecordDrop(draggedBodyData.recordIndex);
+
+          // Optional: Add visual feedback or reset position
+          // You could animate the record back to a specific position here
+        }
+      }
+    }
+
     if (dragging) {
       Matter.Body.setInertia(dragging, originalInertia || 1);
       dragging = null;
