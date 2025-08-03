@@ -323,7 +323,7 @@ export default function MainComponent({
           {/************ Services ************/}
 
           <div
-            className={`${styles.nav} ${styles.services} ${isClicked === 'services' ? styles.background : ''}`}
+            className={`${styles.nav} ${styles.servicesBar} ${isClicked === 'services' ? styles.background : ''}`}
           >
             <Column
               item={right[2]}

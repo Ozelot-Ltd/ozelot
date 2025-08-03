@@ -41,7 +41,7 @@
 .rightContainer {
     display: flex;
     flex-wrap: wrap;
-    gap: calc(1vw + 1rem)
+    gap: calc(1vw + 1rem);
 }
 
 .rightContainer img {

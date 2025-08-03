@@ -117,7 +117,7 @@ const Service = ({ service, activeService, setActiveService }: Props) => {
         </div>
         <div className={styles.services}>
           {service.data.services_list.map((item, i) => (
-            <div key={i} className={styles.service}>
+            <div key={i} className={styles.serviceContainer}>
               <div className={styles.icon}>
                 {/* 0{index} */}
                 {service.data.service_type === '3d' ? (

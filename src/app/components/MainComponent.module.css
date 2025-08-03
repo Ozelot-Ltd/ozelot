@@ -165,18 +165,16 @@
 
 
 
-.services {
+.servicesBar {
     position: fixed;
     width: calc(100% - (var(--container-width) * 2));
     left: 50%;
     bottom: 0;
     transform: translateX(-50%);
     z-index: 99;
-
-
 }
 
-.services p {
+.servicesBar .navText {
 
     width: fit-content;
     min-height: 12rem;
