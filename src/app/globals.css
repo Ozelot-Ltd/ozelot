@@ -20,6 +20,9 @@
     --time-fast: 0.2s;
     --mobile-breakpoint: 30rem;
     --border-width: 0.5px;
+
+    --aipopupwidth: calc(18rem + 18vw);
+
 }
 
 /******** GLOBAL STYLES ********/
@@ -177,6 +180,7 @@ label {
         --time-fast: 0.2s;
         --mobile-breakpoint: 48rem;
         --border-width: 0.5px;
+        --aipopupwidth: calc(18rem + 18vw);
     }
 
 }

@@ -12,7 +12,7 @@
 }
 
 .open {
-    width: calc(15rem + 15vw);
+    width: var(--aipopupwidth);
     opacity: 1;
     transition: width 0.6s var(--bezier);
 
@@ -20,7 +20,7 @@
 
 .popupContainer {
     position: relative;
-    width: calc(15rem + 15vw);
+    width: var(--aipopupwidth);
 }
 
 .popup {
@@ -30,7 +30,7 @@
     padding: calc(0.5rem + 0.5vw);
     white-space: wrap;
     overflow: hidden;
-    width: calc(15rem + 15vw);
+    width: var(--aipopupwidth);
     gap: 1rem;
     height: 10rem;
 }
@@ -87,17 +87,17 @@
     }
 
     .open {
-        width: calc(20rem + 20vw);
+        width: var(--aipopupwidth);
         opacity: 1;
         transition: width 0.6s var(--bezier);
     }
 
     .popupContainer {
-        width: calc(20rem + 20vw);
+        width: var(--aipopupwidth);
     }
 
     .popup {
-        width: calc(20rem + 20vw);
+        width: var(--aipopupwidth);
     }
 }
 

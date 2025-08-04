@@ -62,7 +62,7 @@ export default function RecordsPlaceholder({
         ref={dropzoneRef}
         style={{ opacity: isDragging ? 0.5 : 0 }}
       >
-        <h2>Put the needle on the record</h2>
+        <h2>Record Dropzone</h2>
       </div>
 
       {recordArray?.map((record, index) => {

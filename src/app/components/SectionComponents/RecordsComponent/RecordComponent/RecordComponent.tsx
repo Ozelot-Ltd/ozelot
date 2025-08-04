@@ -9,6 +9,8 @@ import DescriptionComponent from '../DescriptionComponent/DescriptionComponent';
 import ImageComponent from '../ImageComponent/ImageComponent';
 import RecordsPlaceholder from './components/RecordsPlaceholder/RecordsPlaceholder';
 
+import { useMobile } from '../../../../../../context/MobileContext';
+
 export default function RecordComponent({
   isRecordsActive,
   transitionEnd,
@@ -21,6 +23,8 @@ export default function RecordComponent({
   const [activeRecord, setActiveRecord] = useState('');
   const { recordArray } = useContents();
   const router = useRouter();
+
+  const { isMobile } = useMobile();
 
   const releaseNames = recordArray.reverse().map((record) =>
     record.data.record_title
@@ -71,7 +75,7 @@ export default function RecordComponent({
         />{' '}
       </section>
       <section className={styles.rightContainer}>
-        {!currentRecord ? (
+        {!currentRecord && !isMobile ? (
           <div className={styles.previewContainer}>
             <RecordsPlaceholder
               releaseNames={releaseNames}
@@ -79,13 +83,12 @@ export default function RecordComponent({
               setActiveRecord={setActiveRecord}
             />
           </div>
-        ) : currentRecord?.record_images?.length > 0 ? (
+        ) : currentRecord?.record_images &&
+          currentRecord.record_images.length > 0 ? (
           <div className={styles.imageContainer}>
             <ImageComponent currentRecord={currentRecord} />{' '}
           </div>
-        ) : (
-          <h3>No Image Available</h3>
-        )}
+        ) : null}
       </section>
     </section>
   );
