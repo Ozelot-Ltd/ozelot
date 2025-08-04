@@ -33,6 +33,7 @@ export default function Splashscreen() {
       gsap.to(counterRef.current, {
         duration: 0.25,
         delay: 0.5,
+        filter: 'blur(50px)',
         opacity: 0,
       });
 
