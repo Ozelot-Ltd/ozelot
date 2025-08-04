@@ -3,7 +3,7 @@ import Matter from 'matter-js';
 const config = {
   gravity: { x: 0, y: 0.01, scale: 1 },
   restitution: 0.2,
-  friction: 0.8,
+  friction: 0.2,
   frictionAir: 0.2,
   density: 0.1,
   wallThickness: 100,
