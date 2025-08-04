@@ -27,7 +27,7 @@
 }
 
 .bar {
-    width: 10vw;
+    width: 10svw;
     height: 105svh;
     background-color: var(--lightgrey);
 }

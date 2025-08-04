@@ -22,7 +22,7 @@ export default function Splashscreen() {
     currentValue === 100
   );
 
-  const delay = Math.floor(Math.random() * 200 + 200);
+  const delay = Math.floor(Math.random() * 200 + 50);
 
   useGSAP(() => {
     if (currentValue === 0) {
