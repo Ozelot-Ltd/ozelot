@@ -32,7 +32,7 @@
     overflow: hidden;
     width: var(--aipopupwidth);
     gap: 1rem;
-    height: 10rem;
+    height: 15rem;
 }
 
 .cross {
@@ -69,6 +69,20 @@
 }
 
 .string:nth-of-type(2) {
+    transform: rotate(-45deg)
+}
+
+.cta {
+    text-transform: uppercase;
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    gap: calc(0.25rem + 0.25vw);
+    padding-top: calc(0.25rem + 0.25vw)
+}
+
+
+.cta svg {
     transform: rotate(-45deg)
 }
 

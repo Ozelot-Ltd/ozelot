@@ -4,6 +4,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import styles from './Splashscreen.module.css';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
+import { isSplashscreenFinishedStore } from '@/app/stores/SplashscreenIsFinished';
 
 gsap.registerPlugin(useGSAP);
 
@@ -14,6 +15,9 @@ export default function Splashscreen() {
   const lowerCountRef = useRef<HTMLDivElement>(null);
   const splashscreenRef = useRef<HTMLDivElement>(null);
   const [isMobile, setIsMobile] = useState(false);
+
+  const { isSplashscreenFinished, setIsSplashscreenFinished } =
+    isSplashscreenFinishedStore();
 
   useEffect(() => {
     const handleResize = () => {
@@ -61,6 +65,7 @@ export default function Splashscreen() {
               ease: 'power4.inOut',
               onComplete: () => {
                 if (splashscreenRef.current) {
+                  setIsSplashscreenFinished(!isSplashscreenFinished);
                   splashscreenRef.current.remove();
                 }
               },

@@ -23,6 +23,17 @@
           "allowTargetBlank": true,
           "multi": "paragraph,hyperlink,strong,em"
         }
+      },
+      "cta": {
+        "type": "Link",
+        "config": {
+          "label": "CTA",
+          "placeholder": "",
+          "select": null,
+          "allowTargetBlank": true,
+          "allowText": true,
+          "repeat": false
+        }
       }
     }
   }

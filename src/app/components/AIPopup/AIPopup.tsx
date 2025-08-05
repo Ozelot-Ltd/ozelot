@@ -7,10 +7,16 @@ import { PrismicRichText } from '@prismicio/react';
 
 import { usePathname } from 'next/navigation';
 
+import { isSplashscreenFinishedStore } from '@/app/stores/SplashscreenIsFinished';
+import { PrismicNextLink } from '@prismicio/next';
+import Arrow from '../SvgComponents/Arrow/Arrow';
+
 export default function AIPopup() {
   const { aiPopup } = useContents();
   const [isOpen, setIsOpen] = useState(false);
   const [hasBeenClosed, setHasBeenClosed] = useState(false);
+
+  const { isSplashscreenFinished } = isSplashscreenFinishedStore();
 
   const pathname = usePathname();
 
@@ -21,12 +27,14 @@ export default function AIPopup() {
   };
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsOpen(true);
-    }, 2500);
+    if (isSplashscreenFinished) {
+      const timer = setTimeout(() => {
+        setIsOpen(true);
+      }, 4500);
 
-    return () => clearTimeout(timer);
-  }, []);
+      return () => clearTimeout(timer);
+    }
+  }, [isSplashscreenFinished]);
 
   return (
     pathname === '/' &&
@@ -42,6 +50,10 @@ export default function AIPopup() {
           <div className={styles.popup}>
             <PrismicRichText field={aiPopup.data.title} />
             <PrismicRichText field={aiPopup.data.text} />
+            <div className={styles.cta} onClick={handleClose}>
+              <PrismicNextLink field={aiPopup.data.cta} />
+              <Arrow height="12" />
+            </div>
           </div>
         </div>
       </div>
