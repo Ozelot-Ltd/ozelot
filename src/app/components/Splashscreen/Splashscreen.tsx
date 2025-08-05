@@ -15,11 +15,31 @@ export default function Splashscreen() {
   const lowerCountRef = useRef<HTMLDivElement>(null);
   const splashscreenRef = useRef<HTMLDivElement>(null);
   const [isMobile, setIsMobile] = useState(false);
+  const [randomArray, setRandomArray] = useState<number[]>([]);
 
   const { isSplashscreenFinished, setIsSplashscreenFinished } =
     isSplashscreenFinishedStore();
 
   useEffect(() => {
+    const randomArrayGenerator = () => {
+      const number = Math.floor(Math.random() * 6 + 1);
+      if (number === 1) {
+        setRandomArray([9, 8, 6, 4, 1, 0]);
+      } else if (number === 2) {
+        setRandomArray([9, 7, 5, 3, 2, 0]);
+      } else if (number === 3) {
+        setRandomArray([9, 9, 4, 2, 1, 0]);
+      } else if (number === 4) {
+        setRandomArray([9, 8, 5, 3, 1, 0]);
+      } else if (number === 5) {
+        setRandomArray([9, 8, 6, 4, 2, 0]);
+      } else if (number === 6) {
+        setRandomArray([9, 9, 7, 5, 1, 0]);
+      }
+    };
+
+    randomArrayGenerator();
+
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
     };
@@ -32,7 +52,7 @@ export default function Splashscreen() {
     };
   }, []);
 
-  const upperNumbers = [9, 8, 6, 4, 1, 0];
+  const upperNumbers = randomArray;
   const lowerNumbers = [...upperNumbers].reverse();
   lowerNumbers[0] = 9;
 
