@@ -7,39 +7,70 @@
     pointer-events: none;
     z-index: 1000;
     display: flex;
+    background-color: var(--lightgrey);
+    overflow: hidden;
 }
 
+.splashscreen * {
+    color: var(--black);
+    border: none;
+}
 
 .container {
     height: 100%;
     width: 100%;
     position: relative;
-}
-
-.splashscreen * {
-    color: var(--lightgrey);
-    border: none;
-}
-
-
-.overlay {
     display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1rem 2rem;
 }
 
-.bar {
-    width: 10svw;
-    height: 105svh;
-    background-color: var(--black);
-}
 
-.counter {
-    position: fixed;
+.containerHeader {
+    display: flex;
+    justify-content: space-between;
     width: 100%;
-    height: 100%;
+
+}
+
+.containerHeader h2 {
+    font-variation-settings: var(--text-weight);
+    font-size: calc(0.5rem + 0.5vw);
+    text-align: center;
+}
+
+.countWrapper {
+    position: relative;
+    width: 180px;
+    height: 360px;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+    will-change: transform;
+}
+
+.count {
+    position: relative;
+    width: 1080px;
+    height: 360px;
     display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
-    border: none;
-    font-size: 20vw;
-    padding: 0 2em 0 4em
+    justify-content: space-between;
+    transform: translateX(-1080px);
+    will-change: transform;
+}
+
+.digit {
+    position: relative;
+    width: 180px;
+    height: 360px;
+}
+
+.digit h1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: max-content;
+    font-size: 300px;
+    font-weight: lighter;
+    line-height: 1;
 }

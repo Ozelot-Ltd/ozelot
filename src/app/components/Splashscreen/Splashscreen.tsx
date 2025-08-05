@@ -1,80 +1,100 @@
 'use client';
 
-import React, { useRef, useState } from 'react';
-
+import React, { useRef } from 'react';
 import styles from './Splashscreen.module.css';
-
-import startLoader from './StartLoader';
-
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 
 gsap.registerPlugin(useGSAP);
 
 export default function Splashscreen() {
-  const counterRef = useRef<HTMLHeadingElement>(null);
-  const barRef = useRef<(HTMLDivElement | null)[]>([]);
+  const upperContainerRef = useRef<HTMLDivElement>(null);
+  const lowerContainerRef = useRef<HTMLDivElement>(null);
+  const upperCountRef = useRef<HTMLDivElement>(null);
+  const lowerCountRef = useRef<HTMLDivElement>(null);
   const splashscreenRef = useRef<HTMLDivElement>(null);
 
-  const [currentValue, setCurrentValue] = useState(0);
-
-  const [isAnimationComplete, setIsAnimationComplete] = useState(
-    currentValue === 100
-  );
-
-  const delay = Math.floor(Math.random() * 200 + 50);
+  const upperNumbers = [9, 0, 9, 8, 6, 3];
+  const lowerNumbers = [...upperNumbers].reverse();
 
   useGSAP(() => {
-    if (currentValue === 0) {
-      startLoader(currentValue, setCurrentValue, counterRef, delay);
-    }
+    const windowWidth = window.innerWidth;
+    const wrapperWidth = 180;
+    const finalPosition = windowWidth - wrapperWidth;
+    const stepDistance = finalPosition / 6;
 
-    if (currentValue === 100) {
-      gsap.to(counterRef.current, {
-        duration: 0.25,
-        delay: 0.5,
-        filter: 'blur(50px)',
-        opacity: 0,
-      });
+    const tl = gsap.timeline();
 
-      gsap.to(barRef.current, {
-        duration: 1.5,
-        height: 0,
-        delay: 0.5,
+    tl.to([upperCountRef.current, lowerCountRef.current], {
+      x: -900,
+      duration: 0.85,
+      delay: 0.5,
+      ease: 'power4.inOut',
+    });
 
-        stagger: {
-          amount: 0.5,
+    for (let i = 1; i <= 6; i++) {
+      const xPosition = -900 + i * 180;
+      tl.to([upperCountRef.current, lowerCountRef.current], {
+        x: xPosition,
+        duration: 0.85,
+        ease: 'power4.inOut',
+        onComplete: () => {
+          if (i === 6) {
+            gsap.to(splashscreenRef.current, {
+              y: '-100vh',
+              duration: 0.85,
+              ease: 'power4.inOut',
+              delay: 1,
+              onComplete: () => {
+                if (splashscreenRef.current) {
+                  splashscreenRef.current.remove();
+                }
+              },
+            });
+          }
         },
-        ease: 'power2.inOut',
+        onStart: () => {
+          gsap.to([upperContainerRef.current, lowerContainerRef.current], {
+            x: stepDistance * i,
+            duration: 0.85,
+            ease: 'power4.inOut',
+          });
+        },
       });
-
-      if (splashscreenRef.current && isAnimationComplete) {
-        gsap.to(splashscreenRef.current, {
-          y: '-100%',
-          onComplete: () => {
-            setIsAnimationComplete(false);
-          },
-        });
-      }
     }
-  }, [currentValue]);
+  }, []);
 
   return (
     <div className={styles.splashscreen} ref={splashscreenRef}>
       <div className={styles.container}>
-        <h1 className={styles.counter} ref={counterRef}>
-          {currentValue}
-        </h1>
-        <div className={styles.overlay}>
-          {Array.from({ length: 10 }, (_, i) => (
-            <div
-              key={i}
-              className={styles.bar}
-              ref={(el) => {
-                barRef.current[i] = el;
-              }}
-            />
-          ))}
+        <div className={styles.containerHeader}>
+          <h2 className={styles.title}>Ozelot Studios</h2>
+          <h2 className={styles.title}>
+            Creative Agency & <br />
+            Records Label
+          </h2>
+          <h2 className={styles.title}>Est. Zurich, 2016</h2>
+        </div>
+        <div style={{ display: 'flex' }}>
+          <div className={styles.countWrapper} ref={upperContainerRef}>
+            <div className={styles.count} ref={upperCountRef}>
+              {upperNumbers.map((number, index) => (
+                <div key={index} className={styles.digit}>
+                  <h1>{number}</h1>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className={styles.countWrapper} ref={lowerContainerRef}>
+            <div className={styles.count} ref={lowerCountRef}>
+              {lowerNumbers.map((number, index) => (
+                <div key={index} className={styles.digit}>
+                  <h1>{number}</h1>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </div>
