@@ -4,6 +4,8 @@ import { repositoryName } from '@/prismicio';
 import { Host_Grotesk } from 'next/font/google';
 import { createClient } from '@/prismicio';
 
+import Script from 'next/script';
+
 import './globals.css';
 import MainComponent from './components/MainComponent';
 import { Providers } from './components/Providers/Providers';
@@ -140,6 +142,11 @@ export default async function RootLayout({
             <MainComponent {...settingsProps} />
             {children}
           </Providers>
+          <Script
+            data-collect-dnt="true"
+            async
+            src="https://scripts.simpleanalyticscdn.com/latest.js"
+          ></Script>
         </body>
         <PrismicPreview repositoryName={repositoryName} />
       </html>
