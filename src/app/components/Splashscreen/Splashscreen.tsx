@@ -45,7 +45,6 @@ export default function Splashscreen() {
               y: '-100vh',
               duration: 0.85,
               ease: 'power4.inOut',
-              delay: 1,
               onComplete: () => {
                 if (splashscreenRef.current) {
                   splashscreenRef.current.remove();
