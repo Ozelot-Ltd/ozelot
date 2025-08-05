@@ -14,8 +14,9 @@ export default function Splashscreen() {
   const lowerCountRef = useRef<HTMLDivElement>(null);
   const splashscreenRef = useRef<HTMLDivElement>(null);
 
-  const upperNumbers = [9, 0, 9, 8, 6, 3];
+  const upperNumbers = [9, 8, 6, 4, 1, 0];
   const lowerNumbers = [...upperNumbers].reverse();
+  lowerNumbers[0] = 9;
 
   useGSAP(() => {
     const windowWidth = window.innerWidth;
