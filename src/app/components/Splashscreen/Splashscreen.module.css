@@ -70,8 +70,122 @@
     left: 50%;
     transform: translate(-50%, -50%);
     width: max-content;
-    font-size: 300px;
+    font-size: 16vw;
     font-weight: lighter;
     line-height: 1;
-
 }
+
+/* Mobile */
+/* Up to 768px */
+@media (max-width: 48rem) {
+    .splashscreen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100svh;
+        width: 100svw;
+        pointer-events: none;
+        z-index: 1000;
+        display: flex;
+        background-color: var(--lightgrey);
+        overflow: hidden;
+    }
+
+    .splashscreen * {
+        color: var(--black);
+        border: none;
+    }
+
+    .container {
+        height: 100%;
+        width: 100%;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 1rem 2rem;
+    }
+
+
+    .containerHeader {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+
+    }
+
+    .containerHeader h2 {
+        font-variation-settings: var(--text-weight);
+        font-size: calc(0.5rem + 0.5vw);
+        text-align: center;
+    }
+
+    .countWrapper {
+        position: relative;
+        width: 180px;
+        height: 360px;
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+        will-change: transform;
+    }
+
+    .count {
+        position: relative;
+        width: 1080px;
+        height: 360px;
+        display: flex;
+        justify-content: space-between;
+        transform: translateX(-1080px);
+        will-change: transform;
+    }
+
+    .digit {
+        position: relative;
+        width: 180px;
+        height: 360px;
+    }
+
+    .digit h1 {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: max-content;
+        font-size: 24vw;
+        font-weight: lighter;
+        line-height: 1;
+    }
+}
+
+/* Tablet */
+/* 768px to 1184px */
+@media (min-width: 48rem) and (max-width: 74rem) {}
+
+/* Tablet - Portrait Orientation */
+/* 768px to 1184px in portrait mode */
+@media (min-width: 48rem) and (max-width: 74rem) and (orientation: portrait) {}
+
+/* Desktop */
+/* 1184px and up */
+@media (min-width: 74rem) {}
+
+/* Large Desktop */
+/* 1440px and up */
+@media (min-width: 90rem) {}
+
+@media (min-width: 120rem) {}
+
+/* Touch Devices */
+/* Any touch device regardless of size */
+@media (hover: none) {}
+
+/* Non-Touch Devices */
+/* Devices with precise pointer (mouse) */
+@media (hover: hover) and (pointer: fine) {}
+
+/* Prefers Dark Mode */
+/* User has set dark mode preference */
+@media (prefers-color-scheme: dark) {}
+
+/* Prefers Reduced Motion */
+/* User has requested minimal animations */
+@media (prefers-reduced-motion: reduce) {}

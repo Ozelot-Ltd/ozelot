@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import styles from './Splashscreen.module.css';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
@@ -13,6 +13,20 @@ export default function Splashscreen() {
   const upperCountRef = useRef<HTMLDivElement>(null);
   const lowerCountRef = useRef<HTMLDivElement>(null);
   const splashscreenRef = useRef<HTMLDivElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    handleResize(); // Initial check
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   const upperNumbers = [9, 8, 6, 4, 1, 0];
   const lowerNumbers = [...upperNumbers].reverse();
@@ -62,7 +76,7 @@ export default function Splashscreen() {
         },
       });
     }
-  }, []);
+  }, [isMobile]);
 
   return (
     <div className={styles.splashscreen} ref={splashscreenRef}>
