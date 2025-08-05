@@ -22,24 +22,19 @@ export default function Splashscreen() {
 
   useEffect(() => {
     const randomArrayGenerator = () => {
-      const number = Math.floor(Math.random() * 6 + 1);
-      if (number === 1) {
-        setRandomArray([9, 8, 6, 4, 1, 0]);
-      } else if (number === 2) {
-        setRandomArray([9, 7, 5, 3, 2, 0]);
-      } else if (number === 3) {
-        setRandomArray([9, 9, 4, 2, 1, 0]);
-      } else if (number === 4) {
-        setRandomArray([9, 8, 5, 3, 1, 0]);
-      } else if (number === 5) {
-        setRandomArray([9, 8, 6, 4, 2, 0]);
-      } else if (number === 6) {
-        setRandomArray([9, 9, 7, 5, 1, 0]);
-      }
+      const arrays = [
+        [9, 8, 6, 4, 1, 0],
+        [9, 7, 5, 3, 2, 0],
+        [8, 9, 4, 2, 1, 0],
+        [9, 8, 5, 3, 1, 0],
+        [9, 8, 6, 4, 2, 0],
+        [8, 9, 7, 5, 1, 0],
+      ];
+
+      setRandomArray(arrays[Math.floor(Math.random() * 6)]);
     };
 
     randomArrayGenerator();
-
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
     };
@@ -110,7 +105,7 @@ export default function Splashscreen() {
           <h2 className={styles.title}>Ozelot Studios</h2>
           <h2 className={styles.title}>
             Creative Agency & <br />
-            Records Label
+            Record Label
           </h2>
           <h2 className={styles.title}>Est. Zurich, 2016</h2>
         </div>

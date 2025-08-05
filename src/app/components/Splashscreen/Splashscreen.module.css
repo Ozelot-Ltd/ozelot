@@ -7,12 +7,12 @@
     pointer-events: none;
     z-index: 1000;
     display: flex;
-    background-color: var(--lightgrey);
+    background-color: var(--black);
     overflow: hidden;
 }
 
 .splashscreen * {
-    color: var(--black);
+    color: var(--lightgrey);
     border: none;
 }
 
@@ -31,7 +31,6 @@
     display: flex;
     justify-content: space-between;
     width: 100%;
-
 }
 
 .containerHeader h2 {
@@ -56,6 +55,7 @@
     justify-content: space-between;
     transform: translateX(-1080px);
     will-change: transform;
+    border-bottom: 0.5px solid var(--lightgrey);
 }
 
 .digit {
