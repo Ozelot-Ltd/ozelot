@@ -10,13 +10,12 @@
     align-items: center;
     height: fit-content;
     width: 100%;
-    padding: calc(0.5rem + 0.5vw) 0;
+    padding: calc(0.25rem + 0.5vw) 0;
     border-bottom: var(--border);
     flex: 1;
     cursor: e-resize;
+
 }
-
-
 
 .catalogContainer,
 .vinylContainer,
@@ -44,7 +43,7 @@
 
 .catalogContainer h3 {
     font-variation-settings: var(--text-weight);
-    font-size: calc(0.6rem + 0.7vw);
+    font-size: calc(0.5rem + 0.8vw);
     text-transform: uppercase;
     transition: font-variation-settings 1s var(--bezier);
 }
@@ -64,6 +63,12 @@
     justify-content: center;
 }
 
+
+.vinylContainer svg {
+    height: calc(0.4rem + 0.8vw);
+    width: calc(0.4rem + 0.8vw);
+}
+
 .arrowContainer {
     justify-content: flex-end;
 
@@ -80,6 +85,7 @@
 
 .releaseComponent:hover .arrowContainer svg {
     transform: rotate(180deg);
+
 }
 
 .imageContainer {

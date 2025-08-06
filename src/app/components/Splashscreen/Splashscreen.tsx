@@ -165,7 +165,7 @@ export default function Splashscreen() {
           // Mobile counter
           <div className={styles.mobileCountWrapper}>
             <div className={styles.mobileCount} ref={mobileCountRef}>
-              <h1>{mobileCount}%</h1>
+              <h1>{mobileCount}</h1>
             </div>
           </div>
         ) : (

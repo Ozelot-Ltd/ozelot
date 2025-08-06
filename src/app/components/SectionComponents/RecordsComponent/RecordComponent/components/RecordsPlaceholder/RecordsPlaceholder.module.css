@@ -3,12 +3,17 @@
     top: 0;
     left: 0;
     width: 100%;
+    display: flex;
+    justify-content: center;
     height: 100%;
 }
 
 .dropzone {
+    justify-self: center;
     width: 100%;
     margin-top: calc(2.5rem + 2.5vw);
+    margin-left: calc(2.5rem + 2.5vw);
+
     height: calc(2.5rem + 2.5vw);
     display: flex;
     align-items: center;
@@ -41,7 +46,7 @@
 }
 
 .object h2 {
-    font-size: calc(.7rem + .7vw);
+    font-size: calc(.6rem + .6vw);
     text-wrap: nowrap;
     font-variation-settings: var(--text-weight);
 }

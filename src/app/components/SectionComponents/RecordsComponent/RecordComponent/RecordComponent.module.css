@@ -18,15 +18,16 @@
 
 .leftContainer {
     border-right: var(--border);
-    padding-right: 2rem;
-    padding-top: 2rem;
+    padding-right: calc(1rem + 1vw);
+    padding-top: calc(1rem + 1vw);
     display: grid;
-    grid-template-rows: 1.3fr 1fr;
+    grid-template-rows: 1fr 1fr;
     height: 100%;
+    gap: 1vw;
 }
 
 .rightContainer {
-    padding-left: 2rem;
+    padding-left: 0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -42,7 +43,7 @@
 .listContainer {
     overflow-y: hidden;
     max-height: 100%;
-    height: calc(var(--container-height) * 5.3);
+    height: calc(var(--container-height) * 5);
 }
 
 .descriptionContainer {
@@ -56,14 +57,12 @@
     max-height: 100%;
     overflow: scroll;
     overflow-x: hidden;
-    padding-top: calc(0.5rem + 0.5vw);
 
 }
 
 .listComponent {
     height: 100%;
     width: 100%;
-
 }
 
 .iconContainer {
@@ -75,7 +74,6 @@
 .pills {
     display: flex;
     gap: 0.5rem;
-
 }
 
 .pills p {
@@ -123,10 +121,11 @@
     gap: calc(var(--container-height) / 4);
 }
 
-.releasetext p {
+.releasetext p,
+.description {
+    font-size: var(--description-size);
     font-variation-settings: var(--text-weight);
     width: fit-content;
-
 }
 
 .text {
@@ -134,6 +133,11 @@
     flex-direction: column;
     gap: 0.5vw;
 }
+
+.description * {
+    font-size: var(--description-size);
+}
+
 
 .artist,
 .releasename,
@@ -144,18 +148,18 @@
 .artist h4,
 .releasename h4,
 .releaseyear h4 {
-    width: 4rem;
+    width: calc(2rem + 1.5vw);
+    font-size: var(--description-size);
 }
 
 .subtitle {
     border: var(--border);
-    padding: 0.25rem 0.5rem;
+    padding: calc(0.125rem + 0.125vw) calc(0.25rem + 0.25vw);
     border-radius: 50px;
-
 }
 
 .subtitle p {
-    font-size: calc(0.3rem + 0.3vw);
+    font-size: calc(0.2rem + 0.3vw);
     color: var(--black)
 }
 
@@ -216,7 +220,7 @@
     padding: 0.5rem 1rem;
     border-radius: 30px;
     font-variation-settings: var(--text-weight);
-    font-size: 2rem;
+    font-size: calc(1rem + 1vw);
 }
 
 .disciplinesContainer {
@@ -441,17 +445,9 @@
 
 /* Tablet */
 /* 768px to 1184px */
-@media (min-width: 48rem) and (max-width: 74rem) {
+@media (min-width: 48rem) and (max-width: 78rem) {
 
-    .container {
-        height: 100%;
-        width: 100%;
-        display: flex;
-        position: relative;
-        flex-direction: column;
-        padding: 3rem 0;
-        gap: calc(4rem + 2vw);
-    }
+    .container {}
 
     .container .leftContainer,
     .container .rightContainer {
@@ -482,8 +478,9 @@
     .listContainer {
         overflow-y: hidden;
         max-height: 100%;
-        height: calc(var(--container-height) * 6);
+        height: calc(var(--container-height) * 5);
         padding-bottom: 2rem;
+
     }
 
     .descriptionContainer {
@@ -552,14 +549,15 @@
     }
 
     .title h2 {
-        font-size: calc(0.8rem + 0.9vw);
+        font-size: calc(0.5rem + 0.9vw);
     }
 
     .releasetext {
         padding: calc(0.5rem + 0.5vw) 0;
         display: flex;
         flex-direction: column;
-        gap: calc(var(--container-height) / 4);
+        gap: calc(var(--container-height) / 8);
+
     }
 
     .releasetext p {
@@ -577,7 +575,7 @@
     .releasename h4,
     .releaseyear h4 {
         width: 4rem;
-        font-size: calc(0.7rem + 0.7vw)
+        font-size: calc(0.5rem + 0.5vw);
     }
 
     .subtitle {
@@ -589,7 +587,7 @@
 
     .subtitle p {
         font-size: calc(0.2rem + 0.25vw);
-        color: var(--black)
+        color: var(--black);
     }
 
     .socials {
@@ -598,7 +596,7 @@
     }
 
     .contactPhrase {
-        padding-top: 1rem;
+        padding-top: 0rem;
         display: inline-block;
     }
 
@@ -606,6 +604,7 @@
     .contactPhrase {
         display: flex;
         gap: calc(0.2rem + 0.25vw);
+        align-items: center;
     }
 
     .contactPhrase a {

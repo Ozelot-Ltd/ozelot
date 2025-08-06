@@ -146,7 +146,7 @@ export default function DescriptionComponent({
               )}
             </div>
 
-            <div className={styles.text}>
+            <div className={styles.description}>
               <PrismicRichText field={currentProject.description} />
             </div>
             <div className={styles.contactPhrase}>

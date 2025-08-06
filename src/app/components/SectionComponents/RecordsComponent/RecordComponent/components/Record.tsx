@@ -50,7 +50,11 @@ export default function Record({
           <Vinyl height="21" width="21" fill="var(--black)" />
         </div>
         <div className={styles.arrowContainer}>
-          <Arrow height="20" width="20" fill="var(--black)" />
+          <Arrow
+            height="max(16px, min(2vw, 24px))"
+            width="max(16px, min(1.2vw, 24px))"
+            fill="var(--black)"
+          />
         </div>{' '}
       </div>
     </FadeIn>

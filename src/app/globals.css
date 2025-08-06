@@ -22,7 +22,7 @@
     --border-width: 0.5px;
 
     --aipopupwidth: calc(18rem + 18vw);
-
+    --description-size: calc(0.45rem + 0.45vw);
 }
 
 /******** GLOBAL STYLES ********/
