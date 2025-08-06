@@ -104,6 +104,12 @@
         display: flex;
     }
 
+
+    .releaseComponent {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
     .catalogContainer {
         gap: calc(0.2rem + 0.3vw);
     }
@@ -113,7 +119,7 @@
     }
 
     .catalogContainer h3 {
-        font-size: calc(0.6rem + 0.7vw);
+        font-size: calc(0.8rem + 0.7vw);
     }
 
     .active .catalogContainer h3 {
@@ -131,8 +137,10 @@
     }
 
 
+
     .vinylContainer svg {
-        scale: 0.9;
+        height: calc(0.6rem + 0.8vw);
+        width: calc(0.6rem + 0.8vw);
     }
 
 }

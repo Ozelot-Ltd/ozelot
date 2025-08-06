@@ -20,7 +20,7 @@
     border-bottom: var(--border);
     width: 100%;
     padding: calc(0.5rem + 0.5vw) 0;
-    justify-content: space-between;
+    justify-content: space-between
 }
 
 .navitem h3 {
@@ -43,3 +43,88 @@
 .isActive {
     font-variation-settings: var(--title-weight)
 }
+
+
+/* Mobile */
+/* Up to 768px */
+@media (max-width: 48rem) {}
+
+/* Tablet */
+/* 768px to 1184px */
+@media (min-width: 48rem) and (max-width: 90rem) {
+    .navbar {
+        height: 100svh;
+        width: 100svw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: calc(4rem + 4vw) calc(2rem + 2vw);
+        flex-direction: column;
+        background-color: var(--lightgrey);
+    }
+
+    .navlist {
+        width: 100%;
+        height: 100%;
+    }
+
+    .navitem {
+        display: flex;
+        gap: calc(0.2rem + 0.2vw);
+        border-bottom: var(--border);
+        width: 100%;
+        padding: calc(0.5rem + 0.5vw) 0;
+        justify-content: space-between
+    }
+
+    .navitem h3 {
+        font-variation-settings: var(--text-weight);
+        font-size: calc(1rem + 1vw);
+    }
+
+    .socialbar {
+        width: 100%;
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        align-items: flex-end;
+    }
+
+    .socialbar img {
+        height: 1rem;
+    }
+
+    .isActive {
+        font-variation-settings: var(--title-weight)
+    }
+}
+
+/* Tablet - Portrait Orientation */
+/* 768px to 1184px in portrait mode */
+@media (min-width: 48rem) and (max-width: 74rem) and (orientation: portrait) {}
+
+/* Desktop */
+/* 1184px and up */
+@media (min-width: 74rem) {}
+
+/* Large Desktop */
+/* 1440px and up */
+@media (min-width: 90rem) {}
+
+@media (min-width: 120rem) {}
+
+/* Touch Devices */
+/* Any touch device regardless of size */
+@media (hover: none) {}
+
+/* Non-Touch Devices */
+/* Devices with precise pointer (mouse) */
+@media (hover: hover) and (pointer: fine) {}
+
+/* Prefers Dark Mode */
+/* User has set dark mode preference */
+@media (prefers-color-scheme: dark) {}
+
+/* Prefers Reduced Motion */
+/* User has requested minimal animations */
+@media (prefers-reduced-motion: reduce) {}

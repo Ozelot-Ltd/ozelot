@@ -110,13 +110,7 @@ export default function MobileComponent({
           <Logo height={'32'} />
         </div>
       </div>
-      <div
-        className={mobileStyles.navigation}
-        onClick={() => {
-          setIsNavigationActive(!isNavigationActive);
-          setIsClicked('');
-        }}
-      >
+      <div className={mobileStyles.navigation}>
         <MobileNavigation
           isNavigationActive={isNavigationActive}
           setIsNavigationActive={setIsNavigationActive}

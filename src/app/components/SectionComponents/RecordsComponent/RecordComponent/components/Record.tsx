@@ -52,7 +52,7 @@ export default function Record({
         <div className={styles.arrowContainer}>
           <Arrow
             height="max(16px, min(2vw, 24px))"
-            width="max(16px, min(1.2vw, 24px))"
+            width="max(16px, min(2vw, 24px))"
             fill="var(--black)"
           />
         </div>{' '}

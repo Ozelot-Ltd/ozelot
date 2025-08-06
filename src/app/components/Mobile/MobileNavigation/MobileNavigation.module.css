@@ -25,6 +25,7 @@
     flex-direction: column;
     width: 100%;
     gap: calc(5px + 0.2vw);
+    cursor: pointer;
 }
 
 .cross {
