@@ -86,9 +86,8 @@ const Service = ({ service, activeService, setActiveService }: Props) => {
     ) {
       setIsExpanded(!isExpanded);
       setActiveService(service.id);
-      router.replace(`/services/${service.uid}`, undefined);
     }
-  }, [isExpanded, setActiveService, service.id, service.uid, router]);
+  }, [isExpanded, setActiveService, service.id]);
 
   useEffect(() => {
     if (activeService === service.uid) {

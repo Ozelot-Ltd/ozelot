@@ -51,8 +51,6 @@ export default function MobileMenu({
 
   const navigationArray = [...left, ...right];
 
-  console.log('navigationArray', navigationArray);
-
   return (
     <nav className={styles.navbar}>
       <ul className={styles.navlist}>

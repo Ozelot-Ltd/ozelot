@@ -12,12 +12,7 @@ export default function ServicesComponent({
 }) {
   return (
     <MainContainer>
-      {isServicesActive && transitionEnd && (
-        <ServiceComponent
-          isServicesActive={isServicesActive}
-          transitionEnd={transitionEnd}
-        />
-      )}
+      {isServicesActive && transitionEnd && <ServiceComponent />}
     </MainContainer>
   );
 }

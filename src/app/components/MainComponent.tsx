@@ -87,7 +87,6 @@ export default function MainComponent({
   const [isContactActive, setIsContactActive] = useState(false);
   const [isServicesActive, setIsServicesActive] = useState(false);
   const { isDesktop } = useMobile();
-  const [showPopup, setShowPopup] = useState(false);
 
   useEffect(() => {
     if (isClicked === 'projects') {
@@ -126,14 +125,6 @@ export default function MainComponent({
 
   const router = useRouter();
   const pathname = usePathname();
-
-  useEffect(() => {
-    if (pathname === '/') {
-      setTimeout(() => {
-        setShowPopup(true);
-      }, 1000);
-    }
-  }, [pathname]);
 
   useEffect(() => {
     const updateContainerWidth = () => {
@@ -218,7 +209,7 @@ export default function MainComponent({
     <>
       {isDesktop ? (
         <div className={styles.container}>
-          {showPopup && <AIPopup />}
+          <AIPopup />
           <div className={styles.logoContainer}>
             <div
               onClick={() => {

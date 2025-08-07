@@ -9,6 +9,8 @@
     overflow: hidden;
     transition: width 0.6s var(--bezier);
     background-color: var(--lightgrey);
+    z-index: 1;
+
 }
 
 .open {
@@ -98,6 +100,7 @@
         bottom: 5rem;
         opacity: 0;
         width: 0;
+        z-index: 0;
     }
 
     .open {

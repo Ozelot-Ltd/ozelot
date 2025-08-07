@@ -33,7 +33,7 @@ function ShirtGroup() {
 
   // Animation refs
   const animationRef = useRef<number | null>(null);
-  const currentOpacityRef = useRef(0); // Start with 0 opacity (shirt visible)
+  const currentOpacityRef = useRef(0);
   const isAnimatingRef = useRef(false);
   const isReturningRef = useRef(false);
   const lastClickStateRef = useRef('');

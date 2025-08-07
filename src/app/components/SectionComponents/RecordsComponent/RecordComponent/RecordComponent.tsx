@@ -4,12 +4,13 @@ import React, { useEffect, useState } from 'react';
 import styles from './RecordComponent.module.css';
 import { useContents } from '../../../../../../context/ContentContext';
 import Record from './components/Record';
-import { useRouter } from 'next/navigation';
 import DescriptionComponent from '../DescriptionComponent/DescriptionComponent';
 import ImageComponent from '../ImageComponent/ImageComponent';
 import RecordsPlaceholder from './components/RecordsPlaceholder/RecordsPlaceholder';
 
 import { useMobile } from '../../../../../../context/MobileContext';
+
+import { isSplashscreenFinishedStore } from '@/app/stores/SplashscreenIsFinished';
 
 export default function RecordComponent({
   isRecordsActive,
@@ -22,7 +23,8 @@ export default function RecordComponent({
   const [isVisible, setIsVisible] = useState(false);
   const [activeRecord, setActiveRecord] = useState('');
   const { recordArray } = useContents();
-  const router = useRouter();
+
+  const { isSplashscreenFinished } = isSplashscreenFinishedStore();
 
   const { isMobile } = useMobile();
 
@@ -57,7 +59,6 @@ export default function RecordComponent({
                 className={styles.listComponent}
                 onClick={() => {
                   setActiveRecord(record.id);
-                  router.replace(`/records/${record.uid}`, undefined);
                 }}
               >
                 <Record
@@ -75,7 +76,7 @@ export default function RecordComponent({
         />{' '}
       </section>
       <section className={styles.rightContainer}>
-        {!currentRecord && !isMobile ? (
+        {!currentRecord && !isMobile && isSplashscreenFinished ? (
           <div className={styles.previewContainer}>
             <RecordsPlaceholder
               releaseNames={releaseNames}

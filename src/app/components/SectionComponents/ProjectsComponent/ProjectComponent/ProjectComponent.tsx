@@ -6,7 +6,6 @@ import styles from '../../RecordsComponent/RecordComponent/RecordComponent.modul
 
 import { useContents } from '../../../../../../context/ContentContext';
 
-import { useRouter } from 'next/navigation';
 import ImageComponent from '../../RecordsComponent/ImageComponent/ImageComponent';
 import Project from './components/Project';
 import DescriptionComponent from '../../RecordsComponent/DescriptionComponent/DescriptionComponent';
@@ -25,7 +24,6 @@ export default function ProjectComponent({
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [isVisible, setIsVisible] = useState(false);
   const { projectArray, servicesOffered, projectsGif } = useContents();
-  const router = useRouter();
   const [activeProject, setActiveProject] = useState('');
   const [filter, setFilter] = useState('all');
 
@@ -72,7 +70,6 @@ export default function ProjectComponent({
                 className={styles.listComponent}
                 onClick={() => {
                   setActiveProject(project.id);
-                  router.replace(`/projects/${project.uid}`, undefined);
                 }}
               >
                 <Project

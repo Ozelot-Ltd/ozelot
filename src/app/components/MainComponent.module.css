@@ -28,6 +28,7 @@
     transition: all var(--time) var(--bezier);
     overflow: hidden;
     background-color: var(--lightgrey);
+
 }
 
 .right .column {
@@ -95,7 +96,8 @@
 }
 
 .columnContent {
-    writing-mode: sideways-lr;
+    writing-mode: vertical-lr;
+    transform: rotate(180deg);
     padding: 1rem 0;
     height: 100%;
     display: flex;
@@ -190,7 +192,6 @@
     position: absolute;
     bottom: 0;
 
-    background-color: var(--lightgrey);
     transition: height var(--time) var(--bezier) 0s,
         background-color var(--time) var(--bezier) 0.3s,
         backdrop-filter var(--time) var(--bezier) 0.3s;

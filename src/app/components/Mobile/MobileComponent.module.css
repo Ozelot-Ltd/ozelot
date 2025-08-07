@@ -6,11 +6,13 @@
     justify-content: space-between;
     align-items: center;
     height: fit-content;
+    z-index: 3;
+
 }
 
 .logocontainer,
 .navigation {
-    z-index: 2;
+    z-index: 3;
     width: 100%;
     display: flex;
     align-items: center;
@@ -42,7 +44,8 @@
     left: 0;
     height: 100svh;
     width: 100svw;
-    transition: transform var(--time) var(--bezier)
+    transition: transform var(--time) var(--bezier);
+
 }
 
 
@@ -52,6 +55,7 @@
 
 .menu {
     transform: translateY(-100%);
+
 }
 
 .menuOpen,

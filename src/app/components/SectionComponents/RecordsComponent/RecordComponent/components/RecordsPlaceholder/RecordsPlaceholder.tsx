@@ -29,10 +29,6 @@ export default function RecordsPlaceholder({
         const recordId =
           recordArray[recordIndex].id || recordArray[recordIndex].uid;
         setActiveRecord(recordId);
-        console.log(
-          'Record dropped in dropzone:',
-          recordArray[recordIndex].data.record_title
-        );
       }
     },
     [recordArray, setActiveRecord]

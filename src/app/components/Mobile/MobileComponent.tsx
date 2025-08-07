@@ -100,9 +100,6 @@ export default function MobileComponent({
         <div
           onClick={() => {
             setIsClicked('');
-            if (isNavigationActive) {
-              setIsNavigationActive(false);
-            }
             router.push('/');
           }}
           className={`${styles.logo} ${isClicked !== '' ? styles.animate : ''}`}
@@ -117,7 +114,8 @@ export default function MobileComponent({
           isClicked={isClicked}
           setIsClicked={setIsClicked}
         />
-      </div>
+      </div>{' '}
+      <AIPopup />
       <div
         onTransitionEnd={() => setTransitionEnd(true)}
         className={`${mobileStyles.menu} ${isNavigationActive && isClicked === '' ? mobileStyles.menuOpen : ''}`}
@@ -149,7 +147,6 @@ export default function MobileComponent({
           transitionEnd={transitionEnd}
         />
       </div>
-      <AIPopup />
     </div>
   );
 }

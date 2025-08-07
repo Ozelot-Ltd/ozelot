@@ -445,7 +445,7 @@
 /* 768px to 1184px */
 @media (min-width: 48rem) and (max-width: 78rem) {
 
-    .container {}
+
 
     .container .leftContainer,
     .container .rightContainer {

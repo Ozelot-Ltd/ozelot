@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styles from './Contact.module.css';
 import { useContents } from '../../../../../../context/ContentContext';
 import { PrismicRichText } from '@prismicio/react';
@@ -12,24 +12,10 @@ import ContactForm from './ContactForm';
 import FadeIn from '@/app/components/FadeIn/FadeIn';
 import LegalComponent from '@/app/components/LegalComponent/LegalComponent';
 
-export default function Contact({
-  isContactActive,
-  transitionEnd,
-}: {
-  isContactActive: boolean;
-  transitionEnd: boolean;
-}) {
-  const [isVisible, setIsVisible] = useState(false);
-
+export default function Contact() {
   const cube = lottieSources['3d'];
 
   const { contact } = useContents();
-
-  console.log(isVisible);
-
-  useEffect(() => {
-    setIsVisible(isContactActive && transitionEnd);
-  }, [isContactActive, transitionEnd]);
 
   return (
     <section className={styles.container}>

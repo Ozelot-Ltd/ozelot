@@ -12,12 +12,7 @@ export default function ContactComponent({
 }) {
   return (
     <MainContainer>
-      {isContactActive && transitionEnd && (
-        <Contact
-          isContactActive={isContactActive}
-          transitionEnd={transitionEnd}
-        />
-      )}
+      {isContactActive && transitionEnd && <Contact />}
     </MainContainer>
   );
 }
