@@ -41,6 +41,8 @@
 }
 
 
+
+
 .catalogContainer h3 {
     font-variation-settings: var(--text-weight);
     font-size: calc(0.5rem + 0.8vw);
@@ -51,6 +53,7 @@
 .active .catalogContainer h3 {
     font-variation-settings: var(--title-weight);
     transition: font-variation-settings 1s var(--bezier);
+    background-color: var(--lightgrey);
 }
 
 .releaseComponent:hover .catalogContainer h3,

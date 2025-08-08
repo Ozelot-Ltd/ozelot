@@ -37,6 +37,12 @@ export default function Record({
       <div
         ref={containerRef}
         className={`${styles.releaseComponent} ${activeRecord === record.id ? styles.active : ''}`}
+        style={{
+          backgroundImage: `url(${activeRecord === record.id ? record.data.record_images?.[0]?.record_image?.url : ''})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }}
       >
         <div className={styles.catalogContainer}>
           <p>
@@ -44,7 +50,11 @@ export default function Record({
               ? `0${record.data.release_number}`
               : record.data.release_number}
           </p>
-          <PrismicRichText field={record.data.catalog} />
+          <div
+            className={`${styles.catalogText} ${activeRecord === record.id ? styles.activeRecord : ''}`}
+          >
+            <PrismicRichText field={record.data.catalog} />
+          </div>
         </div>
         <div className={styles.vinylContainer}>
           <Vinyl height="21" width="21" fill="var(--black)" />
