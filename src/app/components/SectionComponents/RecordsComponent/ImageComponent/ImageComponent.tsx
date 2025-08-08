@@ -68,7 +68,7 @@ export default function ImageComponent({
           ) : currentProject ? (
             <PrismicNextImage
               field={currentProject.images[currentIndex].image}
-              className={styles.sliderImage}
+              className={`${styles.sliderImage}`}
             />
           ) : (
             <h3>No Image Available</h3>
