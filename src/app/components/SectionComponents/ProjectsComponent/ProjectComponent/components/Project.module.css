@@ -13,7 +13,8 @@
     padding: calc(0.25rem + 0.5vw) 0;
     border-bottom: var(--border);
     flex: 1;
-    cursor: e-resize;
+    cursor: pointer;
+
 }
 
 .catalogContainer,

@@ -13,7 +13,7 @@ import FadeIn from '@/app/components/FadeIn/FadeIn';
 
 export default function ProjectComponent() {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { projectArray, servicesOffered, projectsGif } = useContents();
+  const { projectArray, servicesOffered } = useContents();
   const [activeProject, setActiveProject] = useState('');
   const [filter, setFilter] = useState('all');
 
