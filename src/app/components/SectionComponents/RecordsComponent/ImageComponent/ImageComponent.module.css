@@ -9,9 +9,6 @@
     position: relative;
 }
 
-.imageContainerWithout {
-    gap: 2rem;
-}
 
 .sliderContainer {
     width: 100%;
@@ -29,6 +26,8 @@
     align-items: center;
     justify-content: center;
     overflow: hidden;
+
+
 }
 
 .sliderImage {
@@ -36,6 +35,7 @@
     height: 100%;
     object-fit: contain;
     transition: opacity 0.3s ease;
+    scale: 1.2;
 }
 
 .sliderImageRecord {
@@ -50,11 +50,11 @@
 
 .navButton {
     position: absolute;
-    color: white;
+    top: 0;
     background-color: transparent;
     border: none;
-    width: 40px;
-    height: 40px;
+    width: calc(0.5rem + 0.5vw);
+    height: calc(0.5rem + 0.5vw);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -69,8 +69,7 @@
 }
 
 .prevButton {
-    left: 10px;
-
+    left: 45%;
 }
 
 .prevButton svg {
@@ -78,7 +77,7 @@
 }
 
 .nextButton {
-    right: 10px;
+    right: 45%;
 }
 
 .indicators {
@@ -87,6 +86,7 @@
     position: absolute;
     bottom: 15px;
     width: 100%;
+
 }
 
 .indicator {

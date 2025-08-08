@@ -35,6 +35,8 @@ export default function ImageComponent({
     }
   };
 
+  console.log(totalImages);
+
   const prevImage = () => {
     if (totalImages > 0) {
       setCurrentIndex(
@@ -43,18 +45,11 @@ export default function ImageComponent({
     }
   };
 
-  if ((!currentRecord && !currentProject) || !totalImages) {
-    return (
-      <div className={styles.imageContainerWithout}>
-        {currentRecord?.meta_title}
-      </div>
-    );
-  }
-
   return (
     <div className={styles.imageContainer}>
       <div className={styles.sliderContainer}>
-        {currentRecord && currentRecord?.record_images?.length > 1 && (
+        {(currentRecord && currentRecord?.record_images?.length > 1) ||
+        (currentProject && currentProject?.images?.length > 1) ? (
           <button
             onClick={prevImage}
             className={`${styles.navButton} ${styles.prevButton}`}
@@ -62,7 +57,7 @@ export default function ImageComponent({
           >
             <Arrow />
           </button>
-        )}
+        ) : null}
 
         <div className={styles.imageWrapper}>
           {currentRecord ? (
@@ -80,15 +75,16 @@ export default function ImageComponent({
           )}
         </div>
 
-        {currentRecord && currentRecord?.record_images?.length > 1 && (
-          <button
-            onClick={nextImage}
-            className={`${styles.navButton} ${styles.nextButton}`}
-            aria-label="Next image"
-          >
-            <Arrow />
-          </button>
-        )}
+        {(currentRecord && currentRecord?.record_images?.length > 1) ||
+          (currentProject && currentProject?.images?.length > 1 && (
+            <button
+              onClick={nextImage}
+              className={`${styles.navButton} ${styles.nextButton}`}
+              aria-label="Next image"
+            >
+              <Arrow />
+            </button>
+          ))}
       </div>
     </div>
   );
