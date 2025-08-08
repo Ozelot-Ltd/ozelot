@@ -12,12 +12,7 @@ export default function ProjectsComponent({
 }) {
   return (
     <MainContainer>
-      {isProjectsActive && transitionEnd && (
-        <ProjectComponent
-          isProjectsActive={isProjectsActive}
-          transitionEnd={transitionEnd}
-        />
-      )}
+      {isProjectsActive && transitionEnd && <ProjectComponent />}
     </MainContainer>
   );
 }

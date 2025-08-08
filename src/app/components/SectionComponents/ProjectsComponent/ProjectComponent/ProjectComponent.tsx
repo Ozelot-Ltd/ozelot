@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 import styles from '../../RecordsComponent/RecordComponent/RecordComponent.module.css';
 
@@ -10,19 +10,9 @@ import ImageComponent from '../../RecordsComponent/ImageComponent/ImageComponent
 import Project from './components/Project';
 import DescriptionComponent from '../../RecordsComponent/DescriptionComponent/DescriptionComponent';
 import FadeIn from '@/app/components/FadeIn/FadeIn';
-import { PrismicNextImage } from '@prismicio/next';
 
-interface ProjectComponentProps {
-  isProjectsActive: boolean;
-  transitionEnd: boolean;
-}
-
-export default function ProjectComponent({
-  isProjectsActive,
-  transitionEnd,
-}: ProjectComponentProps) {
+export default function ProjectComponent() {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [isVisible, setIsVisible] = useState(false);
   const { projectArray, servicesOffered, projectsGif } = useContents();
   const [activeProject, setActiveProject] = useState('');
   const [filter, setFilter] = useState('all');
@@ -32,10 +22,6 @@ export default function ProjectComponent({
     const numB = b.data.project_number ?? 0;
     return numB - numA;
   });
-
-  useEffect(() => {
-    setIsVisible(isProjectsActive && transitionEnd);
-  }, [isProjectsActive, transitionEnd]);
 
   const currentProject = projectArray.find(
     (project) => project.id === activeProject
@@ -86,11 +72,26 @@ export default function ProjectComponent({
       <section className={styles.rightContainer}>
         <div className={styles.imageContainer}>
           {!currentProject && (
-            <div className={styles.previewContainer}>
-              <PrismicNextImage
-                field={projectsGif.data.projects_gif}
-                className={styles.gifImage}
-              />
+            <div
+              className={styles.previewContainer}
+              style={{ pointerEvents: 'none' }}
+            >
+              <iframe
+                width="464"
+                height="824"
+                src="https://www.youtube.com/embed/feDFrm5b2R0?autoplay=1&loop=1&playlist=feDFrm5b2R0&mute=1"
+                title="Quality Test"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+                style={{
+                  scale: '1.2',
+                  borderRadius: '8px',
+                  pointerEvents: 'none',
+                  border: 'none',
+                  outline: 'none',
+                }}
+              ></iframe>
             </div>
           )}
           {currentProject && <ImageComponent currentProject={currentProject} />}
