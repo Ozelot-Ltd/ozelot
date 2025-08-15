@@ -46,6 +46,8 @@
 
 .imageWrapper img {
     max-height: 50vh;
+    image-rendering: pixelated;
+    scale: 1.001;
 }
 
 .navButton {

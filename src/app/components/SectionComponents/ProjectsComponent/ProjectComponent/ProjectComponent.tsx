@@ -78,8 +78,8 @@ export default function ProjectComponent() {
               <iframe
                 width="464"
                 height="824"
-                src="https://www.youtube.com/embed/feDFrm5b2R0?autoplay=1&loop=1&playlist=feDFrm5b2R0&mute=1"
-                title="Quality Test"
+                src="https://www.youtube.com/embed/3Be2m78vCsI?autoplay=1&loop=1&playlist=3Be2m78vCsI&mute=1"
+                title="Website Video"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 referrerPolicy="strict-origin-when-cross-origin"
                 allowFullScreen
