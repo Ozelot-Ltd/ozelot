@@ -70,7 +70,7 @@ export default function Splashscreen() {
             if (splashscreenRef.current) {
               gsap.to(splashscreenRef.current, {
                 y: '-100vh',
-                duration: 0.85,
+                duration: 0.5,
                 delay: 0.3,
                 ease: 'power4.inOut',
                 onComplete: () => {
@@ -105,7 +105,7 @@ export default function Splashscreen() {
 
       tl.to([upperCountRef.current, lowerCountRef.current], {
         x: -900,
-        duration: 0.85,
+        duration: 0.5,
         delay: 0.5,
         ease: 'power4.inOut',
       });
@@ -114,14 +114,14 @@ export default function Splashscreen() {
         const xPosition = -900 + i * 180;
         tl.to([upperCountRef.current, lowerCountRef.current], {
           x: xPosition,
-          duration: 0.85,
+          duration: 0.5,
           ease: 'power4.inOut',
           onComplete: () => {
             if (i === 6) {
               if (splashscreenRef.current) {
                 gsap.to(splashscreenRef.current, {
                   y: '-100vh',
-                  duration: 0.85,
+                  duration: 0.5,
                   ease: 'power4.inOut',
                   onComplete: () => {
                     if (splashscreenRef.current) {
@@ -137,7 +137,7 @@ export default function Splashscreen() {
             if (upperContainerRef.current && lowerContainerRef.current) {
               gsap.to([upperContainerRef.current, lowerContainerRef.current], {
                 x: stepDistance * i,
-                duration: 0.85,
+                duration: 0.5,
                 ease: 'power4.inOut',
               });
             }
