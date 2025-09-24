@@ -53,23 +53,21 @@ export default function RecordComponent({
       <section className={styles.leftContainer}>
         <div className={styles.listContainer}>
           <div className={styles.scrollContainer}>
-            {!isMobile &&
-              currentRecord &&
-              sortedArray.map((record, index) => (
-                <div
-                  key={`${record.id}-${index}`}
-                  className={styles.listComponent}
-                  onClick={() => {
-                    setActiveRecord(record.id);
-                  }}
-                >
-                  <Record
-                    record={record}
-                    activeRecord={activeRecord}
-                    index={index}
-                  />
-                </div>
-              ))}
+            {sortedArray.map((record, index) => (
+              <div
+                key={`${record.id}-${index}`}
+                className={styles.listComponent}
+                onClick={() => {
+                  setActiveRecord(record.id);
+                }}
+              >
+                <Record
+                  record={record}
+                  activeRecord={activeRecord}
+                  index={index}
+                />
+              </div>
+            ))}
           </div>
         </div>
         <DescriptionComponent

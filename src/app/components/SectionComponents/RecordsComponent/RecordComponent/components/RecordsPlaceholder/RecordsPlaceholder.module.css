@@ -48,6 +48,7 @@
     font-size: calc(.6rem + .6vw);
     text-wrap: nowrap;
     font-variation-settings: var(--text-weight);
+    color: var(--lightgrey)
 }
 
 .object h2::selection {
