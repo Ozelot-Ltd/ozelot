@@ -34,7 +34,7 @@
     overflow: hidden;
     width: var(--aipopupwidth);
     gap: 1rem;
-    height: 15rem;
+    min-height: 15rem;
 }
 
 .cross {
