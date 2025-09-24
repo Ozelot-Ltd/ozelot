@@ -128,7 +128,7 @@ textarea {
     padding: calc(0.25rem + 0.25vw) calc(0.25rem + 0.25vw);
     width: 100%;
     font-family: inherit;
-
+    color: var(--black);
 }
 
 

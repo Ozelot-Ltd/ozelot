@@ -3,8 +3,8 @@ import React from 'react';
 export default function Earth({
   height = 24,
   width = 24,
-  fill = '#5F6368',
-  strokeWidth = 2,
+  fill = 'var(--black)',
+  strokeWidth = 3,
 }: {
   height?: number;
   width?: number;

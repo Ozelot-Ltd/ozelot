@@ -27,7 +27,9 @@ export default function RecordsPlaceholder({
     (recordIndex: number) => {
       if (recordArray && recordArray[recordIndex] && setActiveRecord) {
         const recordId =
-          recordArray[recordIndex].id || recordArray[recordIndex].uid;
+          recordArray.find(
+            (record) => record.id === recordArray[recordIndex].id
+          )?.id || recordArray[recordIndex].uid;
         setActiveRecord(recordId);
       }
     },
@@ -56,7 +58,7 @@ export default function RecordsPlaceholder({
       <div
         className={styles.dropzone}
         ref={dropzoneRef}
-        style={{ opacity: isDragging ? 0.5 : 0 }}
+        style={{ opacity: isDragging ? 1 : 0 }}
       >
         <h2>Record Dropzone</h2>
       </div>
@@ -70,8 +72,9 @@ export default function RecordsPlaceholder({
           <div
             key={index}
             className={`${styles.object} object`}
-            data-record-index={index} // Add data attribute for Matter.js to reference
+            data-record-index={index}
             onMouseEnter={() => setHoveredIndex(index)}
+            onMouseLeave={() => setHoveredIndex(null)}
             style={{
               backgroundImage: `${hoveredIndex === index ? `url("${imageUrl}")` : `url("${index % 2 === 0 ? evenURL : oddURL}")`}`,
               transition: 'background-image 0.2s var(--bezier',

@@ -28,7 +28,7 @@ export default function RecordComponent({
 
   const { isMobile } = useMobile();
 
-  const releaseNames = recordArray.reverse().map((record) =>
+  const releaseNames = recordArray.map((record) =>
     record.data.record_title
       ?.replace(/_/g, ' ')
       .replace(/\b(EP|LP)\b/g, '')

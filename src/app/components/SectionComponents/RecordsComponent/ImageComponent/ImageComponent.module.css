@@ -30,24 +30,25 @@
 
 }
 
+.imageWrapper img {
+    image-rendering: pixelated;
+    scale: 1.001;
+}
+
 .sliderImage {
     width: 100%;
     height: 100%;
     object-fit: contain;
+    max-height: 60vh;
     transition: opacity 0.3s ease;
-    scale: 1.2;
+
 }
 
 .sliderImageRecord {
     width: 80%;
     height: 80%;
     object-fit: contain;
-}
-
-.imageWrapper img {
     max-height: 50vh;
-    image-rendering: pixelated;
-    scale: 1.001;
 }
 
 .navButton {

@@ -6,7 +6,6 @@ import { ProjectDocument } from '../../../../../../../prismicio-types';
 import styles from './Project.module.css';
 import { PrismicRichText } from '@prismicio/react';
 import Arrow from '@/app/components/SvgComponents/Arrow/Arrow';
-import IconSwitchComponent from '@/app/components/SvgComponents/IconSwitchComponent/IconSwitchComponent';
 import FadeIn from '@/app/components/FadeIn/FadeIn';
 
 type Props = {
@@ -42,9 +41,7 @@ export default function Project({ project, activeProject, index }: Props) {
           </p>
           <PrismicRichText field={project.data.list_title} />
         </div>
-        <div className={styles.iconContainer}>
-          <IconSwitchComponent currentProject={project.data} />
-        </div>
+        <div className={styles.iconContainer}></div>
         <div className={styles.arrowContainer}>
           <Arrow
             height="max(16px, min(2vw, 24px))"

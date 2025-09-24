@@ -35,8 +35,6 @@ export default function ImageComponent({
     }
   };
 
-  console.log(totalImages);
-
   const prevImage = () => {
     if (totalImages > 0) {
       setCurrentIndex(

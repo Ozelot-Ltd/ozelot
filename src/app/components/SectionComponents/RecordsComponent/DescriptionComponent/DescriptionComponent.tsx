@@ -12,7 +12,6 @@ import Vinyl from '@/app/components/SvgComponents/Vinyl/Vinyl';
 import { PrismicNextLink } from '@prismicio/next';
 import { PrismicRichText } from '@prismicio/react';
 
-import IconSwitchComponent from '@/app/components/SvgComponents/IconSwitchComponent/IconSwitchComponent';
 import Link from 'next/link';
 import Arrow from '@/app/components/SvgComponents/Arrow/Arrow';
 
@@ -57,7 +56,7 @@ export default function DescriptionComponent({
           </div>
           <div className={styles.rightContainerLower}>
             <div className={styles.title}>
-              <Vinyl height="24" width="24" fill="#494C4F" />
+              <Vinyl height="24" width="24" fill="var(--black)" />
               <div className={styles.title}>
                 <PrismicRichText field={currentRecord.title} />
               </div>
@@ -106,9 +105,6 @@ export default function DescriptionComponent({
           </div>
           <div className={styles.rightContainerLower}>
             <div className={styles.title}>
-              <div className={styles.iconContainer}>
-                <IconSwitchComponent currentProject={currentProject} />
-              </div>
               <div className={styles.title}>
                 <PrismicRichText field={currentProject.title} />
               </div>

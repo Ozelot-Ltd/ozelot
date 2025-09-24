@@ -19,14 +19,14 @@ export default function Arrow({
     >
       <path
         d="M1.00013 11.4999L20.2017 11.4999"
-        stroke={fill || '#494C4F'}
+        stroke={fill || 'var(--black)'}
         strokeWidth="2"
         strokeLinecap="square"
         strokeLinejoin="round"
       />
       <path
         d="M11.3992 1.89922L21 11.5L11.3992 21.1008"
-        stroke={fill || '#494C4F'}
+        stroke={fill || 'var(--black)'}
         strokeWidth="2"
         strokeLinecap="square"
         strokeLinejoin="round"

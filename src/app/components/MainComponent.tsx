@@ -10,7 +10,6 @@ import {
   SettingsDocumentDataNavigationItemsRightItem,
 } from '../../../prismicio-types';
 import Logo from './SvgComponents/Logo/Logo';
-import { PrismicNextImage } from '@prismicio/next';
 import ProjectsComponent from './SectionComponents/ProjectsComponent/ProjectsComponent';
 import StudioComponent from './SectionComponents/StudioComponent/StudioComponent';
 import ContactComponent from './SectionComponents/ContactComponent/ContactComponent';
@@ -57,9 +56,6 @@ const Column: React.FC<ColumnProps> = ({
         onTransitionStart={() => setTransitionEnd(false)}
       >
         <p className={styles.navText}>{item?.navigation_link.text}</p>
-        {itemId !== 'services' && (
-          <PrismicNextImage field={item?.navigation_icon} />
-        )}
       </div>
       <div className={styles.section}>
         <div className={styles.content} data-content={itemId}>
