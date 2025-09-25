@@ -63,6 +63,44 @@
           }
         }
       },
+      "gallery": {
+        "type": "Group",
+        "config": {
+          "label": "Gallery",
+          "repeat": true,
+          "fields": {
+            "asset_id": {
+              "type": "Text",
+              "config": {
+                "label": "Asset ID",
+                "placeholder": ""
+              }
+            },
+            "media_type": {
+              "type": "Select",
+              "config": {
+                "label": "Media Type",
+                "placeholder": "",
+                "options": ["image", "video"]
+              }
+            },
+            "alt_text": {
+              "type": "Text",
+              "config": {
+                "label": "Alt Text",
+                "placeholder": ""
+              }
+            },
+            "caption": {
+              "type": "Text",
+              "config": {
+                "label": "Caption",
+                "placeholder": ""
+              }
+            }
+          }
+        }
+      },
       "is_main_discipline": {
         "type": "Select",
         "config": {

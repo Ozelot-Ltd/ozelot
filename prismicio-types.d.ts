@@ -787,6 +787,51 @@ export interface ProjectDocumentDataImagesItem {
   image: prismic.ImageField<never>;
 }
 
+/**
+ * Item in *Project → Gallery*
+ */
+export interface ProjectDocumentDataGalleryItem {
+  /**
+   * Asset ID field in *Project → Gallery*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project.gallery[].asset_id
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  asset_id: prismic.KeyTextField;
+
+  /**
+   * Media Type field in *Project → Gallery*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project.gallery[].media_type
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  media_type: prismic.SelectField<"image" | "video">;
+
+  /**
+   * Alt Text field in *Project → Gallery*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project.gallery[].alt_text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  alt_text: prismic.KeyTextField;
+
+  /**
+   * Caption field in *Project → Gallery*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project.gallery[].caption
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  caption: prismic.KeyTextField;
+}
+
 type ProjectDocumentDataSlicesSlice = never;
 
 /**
@@ -847,6 +892,17 @@ interface ProjectDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#group
    */
   images: prismic.GroupField<Simplify<ProjectDocumentDataImagesItem>>;
+
+  /**
+   * Gallery field in *Project*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project.gallery[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  gallery: prismic.GroupField<Simplify<ProjectDocumentDataGalleryItem>>;
 
   /**
    * Is Main Discipline field in *Project*
@@ -2312,6 +2368,7 @@ declare module "@prismicio/client" {
       ProjectDocument,
       ProjectDocumentData,
       ProjectDocumentDataImagesItem,
+      ProjectDocumentDataGalleryItem,
       ProjectDocumentDataSlicesSlice,
       ProjectsDocument,
       ProjectsDocumentData,
