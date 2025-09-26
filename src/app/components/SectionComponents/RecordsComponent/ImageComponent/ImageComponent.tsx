@@ -25,14 +25,14 @@ export default function ImageComponent({
   const videourl = 'https://res.cloudinary.com/ddkwj78mq/video/upload/';
 
   const totalImages = currentRecord
-    ? currentRecord?.record_images?.length
+    ? currentRecord?.record_images?.length || 0
     : currentProject
-      ? currentProject?.gallery?.length
+      ? currentProject?.gallery?.length || 0
       : 0;
 
   useEffect(() => {
     setCurrentIndex(0);
-  }, [currentRecord, currentProject]);
+  }, [currentProject, currentRecord]);
 
   const nextImage = () => {
     if (totalImages > 0) {
@@ -47,6 +47,16 @@ export default function ImageComponent({
       );
     }
   };
+
+  // Safety check - ensure we have valid data before rendering
+  const hasValidRecord =
+    currentRecord &&
+    currentRecord.record_images &&
+    currentRecord.record_images[currentIndex];
+  const hasValidProject =
+    currentProject &&
+    currentProject.gallery &&
+    currentProject.gallery[currentIndex];
 
   return (
     <div className={styles.imageContainer}>
@@ -63,23 +73,24 @@ export default function ImageComponent({
         ) : null}
 
         <div className={styles.imageWrapper}>
-          {currentRecord ? (
+          {hasValidRecord ? (
             <PrismicNextImage
               field={currentRecord.record_images[currentIndex].record_image}
               className={styles.sliderImageRecord}
             />
-          ) : currentProject?.gallery[currentIndex].media_type === 'image' ? (
+          ) : hasValidProject &&
+            currentProject.gallery[currentIndex].media_type === 'image' ? (
             <Image
-              src={`${url}/${currentProject?.gallery[currentIndex].asset_id}.jpg`}
+              src={`${url}/${currentProject.gallery[currentIndex].asset_id}.jpg`}
               alt={
-                currentProject?.gallery[currentIndex].alt_text ||
-                'Project Image'
+                currentProject.gallery[currentIndex].alt_text || 'Project Image'
               }
               width={800}
               height={600}
               className={styles.sliderImageProject}
             />
-          ) : currentProject?.gallery[currentIndex].media_type === 'video' ? (
+          ) : hasValidProject &&
+            currentProject.gallery[currentIndex].media_type === 'video' ? (
             <video
               src={`${videourl}/${currentProject.gallery[currentIndex].asset_id}.mp4`}
               controls={false}
@@ -95,16 +106,17 @@ export default function ImageComponent({
         </div>
 
         {(currentRecord && currentRecord?.record_images?.length > 1) ||
-          (currentProject && currentProject?.gallery?.length > 1 && (
-            <button
-              onClick={nextImage}
-              className={`${styles.navButton} ${styles.nextButton}`}
-              aria-label="Next image"
-            >
-              <Arrow />
-            </button>
-          ))}
+        (currentProject && currentProject?.gallery?.length > 1) ? (
+          <button
+            onClick={nextImage}
+            className={`${styles.navButton} ${styles.nextButton}`}
+            aria-label="Next image"
+          >
+            <Arrow />
+          </button>
+        ) : null}
       </div>
+
       <div className={styles.imageCounter}>
         {Array.from({ length: totalImages }).map((_, index) => (
           <div
