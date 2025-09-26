@@ -112,6 +112,23 @@
     transform-origin: center;
 }
 
+.imageCounter {
+    display: flex;
+    gap: calc(1rem + 1vw);
+    min-height: calc(0.2rem + 0.2vw)
+}
+
+.imageCounter div {
+    height: calc(0.2rem + 0.2vw);
+    width: calc(0.2rem + 0.2vw);
+    border-radius: 50%;
+    border: var(--border);
+}
+
+.active {
+    background-color: var(--black);
+}
+
 /* For improved mobile experience */
 @media (max-width: 768px) {
     .navButton {

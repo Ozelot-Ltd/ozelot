@@ -225,7 +225,9 @@
 }
 
 
-
+.description a {
+    text-decoration: underline;
+}
 
 
 /* Mobile */

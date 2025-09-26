@@ -70,9 +70,10 @@ export default function ImageComponent({
             />
           ) : currentProject?.gallery[currentIndex].media_type === 'image' ? (
             <Image
-              src={`${url}/${currentProject.gallery[currentIndex].asset_id}.jpg`}
+              src={`${url}/${currentProject?.gallery[currentIndex].asset_id}.jpg`}
               alt={
-                currentProject.gallery[currentIndex].alt_text || 'Project Image'
+                currentProject?.gallery[currentIndex].alt_text ||
+                'Project Image'
               }
               width={800}
               height={600}
@@ -103,6 +104,14 @@ export default function ImageComponent({
               <Arrow />
             </button>
           ))}
+      </div>
+      <div className={styles.imageCounter}>
+        {Array.from({ length: totalImages }).map((_, index) => (
+          <div
+            key={index}
+            className={`${styles.dot} ${index === currentIndex ? styles.active : ''}`}
+          />
+        ))}
       </div>
     </div>
   );
