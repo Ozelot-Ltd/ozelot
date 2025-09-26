@@ -773,21 +773,6 @@ export type PageDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
 
 /**
- * Item in *Project → Images*
- */
-export interface ProjectDocumentDataImagesItem {
-  /**
-   * Image field in *Project → Images*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: project.images[].image
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */
-  image: prismic.ImageField<never>;
-}
-
-/**
  * Item in *Project → Gallery*
  */
 export interface ProjectDocumentDataGalleryItem {
@@ -881,17 +866,6 @@ interface ProjectDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   description: prismic.RichTextField;
-
-  /**
-   * Images field in *Project*
-   *
-   * - **Field Type**: Group
-   * - **Placeholder**: *None*
-   * - **API ID Path**: project.images[]
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#group
-   */
-  images: prismic.GroupField<Simplify<ProjectDocumentDataImagesItem>>;
 
   /**
    * Gallery field in *Project*
@@ -2367,7 +2341,6 @@ declare module "@prismicio/client" {
       PageDocumentDataSlicesSlice,
       ProjectDocument,
       ProjectDocumentData,
-      ProjectDocumentDataImagesItem,
       ProjectDocumentDataGalleryItem,
       ProjectDocumentDataSlicesSlice,
       ProjectsDocument,
