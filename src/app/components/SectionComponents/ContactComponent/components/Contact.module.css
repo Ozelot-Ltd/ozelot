@@ -35,6 +35,7 @@
 .textContainer p {
     width: 75%;
     text-align: center;
+    font-size: calc(0.75rem + 0.75vw)
 }
 
 .textContainer *,
@@ -62,6 +63,7 @@
     width: 100%;
     max-width: 10rem;
     text-align: center;
+
 }
 
 @keyframes spinning {
@@ -102,6 +104,8 @@
 
 .rightContainer h1 {
     font-size: calc(1.2rem + 1vw);
+    border: none;
+
 }
 
 
