@@ -57,21 +57,12 @@ export default function Record({
           </div>
         </div>
         <div className={styles.vinylContainer}>
-          <Vinyl
-            height="21"
-            width="21"
-            fill={
-              activeRecord === record.id ? 'var(--lightgrey)' : 'var(--black)'
-            }
-          />
+          <Vinyl height="21" width="21" />
         </div>
         <div className={styles.arrowContainer}>
           <Arrow
-            height="max(16px, min(2vw, 24px))"
-            width="max(16px, min(2vw, 24px))"
-            fill={
-              activeRecord === record.id ? 'var(--lightgrey)' : 'var(--black)'
-            }
+            height="max(16px, min(1.2vw, 24px))"
+            width="max(16px, min(1.2vw, 24px))"
           />
         </div>{' '}
       </div>

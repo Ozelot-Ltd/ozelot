@@ -53,14 +53,11 @@
 .active .catalogContainer h3 {
     font-variation-settings: var(--title-weight);
     transition: font-variation-settings 1s var(--bezier);
-    color: var(--lightgrey);
+
 
 }
 
-.active .catalogContainer p {
-    color: var(--lightgrey);
 
-}
 
 .releaseComponent:hover .catalogContainer h3,
 .releaseComponent:hover .catalogContainer p {

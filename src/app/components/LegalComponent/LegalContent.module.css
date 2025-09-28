@@ -3,7 +3,7 @@
     max-height: 100svh;
     width: 100svw;
     position: fixed;
-    background-color: #ebebeb;
+    background-color: var(--lightgrey);
     z-index: 10;
     top: 0;
     left: 0;

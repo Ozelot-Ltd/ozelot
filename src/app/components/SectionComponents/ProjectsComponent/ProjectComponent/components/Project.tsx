@@ -27,12 +27,58 @@ export default function Project({ project, activeProject, index }: Props) {
     }
   }, []);
 
+  const url = 'https://res.cloudinary.com/ddkwj78mq/image/upload/';
+  const videourl = 'https://res.cloudinary.com/ddkwj78mq/video/upload/';
+
+  const backgroundMedia =
+    activeProject === project.id ? project.data.gallery[0] : null;
+
   return (
     <FadeIn stylesProps={styles} delay={index} multiplier={0.1}>
       <div
         ref={containerRef}
         className={`${styles.projectComponent} ${activeProject === project.id ? styles.active : ''}`}
+        style={{ position: 'relative' }}
       >
+        {backgroundMedia &&
+          (backgroundMedia.media_type === 'video' ? (
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                zIndex: -1,
+              }}
+            >
+              <source
+                src={`${videourl}${backgroundMedia.asset_id}`}
+                type="video/mp4"
+              />
+            </video>
+          ) : (
+            <div
+              style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: '100%',
+                backgroundImage: `url(${url}${backgroundMedia.asset_id})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat',
+                zIndex: -1,
+              }}
+            />
+          ))}
+
         <div className={styles.catalogContainer}>
           <p>
             {project.data.project_number && project.data.project_number < 10
@@ -44,10 +90,9 @@ export default function Project({ project, activeProject, index }: Props) {
         <div className={styles.iconContainer}></div>
         <div className={styles.arrowContainer}>
           <Arrow
-            height="max(16px, min(2vw, 24px))"
+            height="max(16px, min(1.2vw, 24px))"
             width="max(16px, min(1.2vw, 24px))"
-            fill="var(--black)"
-          />{' '}
+          />
         </div>
       </div>
     </FadeIn>
