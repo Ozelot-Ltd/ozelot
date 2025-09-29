@@ -20,7 +20,6 @@
     --time-fast: 0.2s;
     --mobile-breakpoint: 30rem;
     --border-width: 0.5px;
-    --apricot: rgb(35, 18, 217);
     --aipopupwidth: calc(18rem + 18vw);
     --description-size: calc(0.45rem + 0.45vw);
 }
