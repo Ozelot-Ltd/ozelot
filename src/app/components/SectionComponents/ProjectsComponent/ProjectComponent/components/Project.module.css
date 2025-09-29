@@ -93,8 +93,15 @@
 /* Mobile */
 /* Up to 768px */
 @media (max-width: 48rem) {
+    .fadeIn {
+        width: 100%;
+        overflow: hidden;
+        display: flex;
+    }
 
     .projectComponent {
+        display: flex;
+        justify-content: space-between;
         align-items: center;
         height: fit-content;
         width: 100%;
@@ -104,10 +111,17 @@
         cursor: pointer;
     }
 
-    .fadeIn {
-        width: 100%;
-        overflow: hidden;
+
+    .vinylContainer,
+    .arrowContainer {
         display: flex;
+        width: 10%;
+        align-items: center;
+
+    }
+
+    .catalogContainer {
+        width: 90%;
     }
 
 
@@ -117,10 +131,21 @@
 
     .catalogContainer p {
         font-size: calc(0.3rem + 0.3vw);
+        align-self: flex-start;
     }
 
+    .catalogContainer h3,
+    .catalogContainer p {
+        transition: font-variation-settings 1s var(--bezier);
+
+    }
+
+
     .catalogContainer h3 {
-        font-size: calc(0.8rem + 0.7vw);
+        font-variation-settings: var(--text-weight);
+        font-size: calc(0.7rem + 0.8vw);
+        text-transform: uppercase;
+        transition: font-variation-settings 1s var(--bezier);
     }
 
     .active .catalogContainer h3 {
@@ -133,15 +158,17 @@
         font-variation-settings: var(--title-weight);
     }
 
-
     .iconContainer {
-
-        width: fit-content;
+        justify-content: center;
     }
 
-    .arrowContainer {
-        width: 100%;
+    .iconContainer img {
+        height: calc(0.4rem + 0.8vw);
+        width: calc(0.4rem + 0.8vw);
     }
+
+
+
 }
 
 
