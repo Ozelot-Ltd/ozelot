@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 
@@ -11,6 +11,8 @@ gsap.registerPlugin(useGSAP);
 export default function MouseFollowSVG() {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const imageRef = useRef<HTMLImageElement | null>(null);
+  const [image, setImage] = useState<string | null>(null);
+  const url = 'https://res.cloudinary.com/ddkwj78mq/image/upload/v1759149385/';
 
   useGSAP(() => {
     const container = containerRef.current;
@@ -41,6 +43,16 @@ export default function MouseFollowSVG() {
     };
   });
 
+  useEffect(() => {
+    const number = Math.random();
+
+    if (number < 0.5) {
+      setImage('Untitled-1_ut48io.png');
+    } else {
+      setImage('bing_thipgu.png');
+    }
+  }, [image]);
+
   return (
     <div
       ref={containerRef}
@@ -57,9 +69,7 @@ export default function MouseFollowSVG() {
     >
       <Image
         ref={imageRef}
-        src={
-          'https://res.cloudinary.com/ddkwj78mq/image/upload/v1759149385/Untitled-1_ut48io.png'
-        }
+        src={`${url}${image}`}
         alt="Decorative"
         width={50}
         height={50}
