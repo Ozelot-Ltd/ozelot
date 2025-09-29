@@ -11,6 +11,7 @@ import styles from './ImageComponent.module.css';
 import Arrow from '@/app/components/SvgComponents/Arrow/Arrow';
 
 import Image from 'next/image';
+import ComingSoonPlaceholder from '@/app/components/ComingSoonImage/ComingSoonPlaceholder';
 
 export default function ImageComponent({
   currentRecord,
@@ -101,7 +102,9 @@ export default function ImageComponent({
               className={styles.sliderVideoProject}
             />
           ) : (
-            <h3>No Image Available</h3>
+            <div>
+              <ComingSoonPlaceholder />
+            </div>
           )}
         </div>
 
