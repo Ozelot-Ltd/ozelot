@@ -69,7 +69,10 @@ export default function ImageComponent({
             className={`${styles.navButton} ${styles.prevButton}`}
             aria-label="Previous image"
           >
-            <Arrow />
+            <Arrow
+              height="max(12px, min(1.2vw, 24px))"
+              width="max(12px, min(1.2vw, 24px))"
+            />
           </button>
         ) : null}
 
@@ -115,7 +118,10 @@ export default function ImageComponent({
             className={`${styles.navButton} ${styles.nextButton}`}
             aria-label="Next image"
           >
-            <Arrow />
+            <Arrow
+              height="max(12px, min(1.2vw, 24px))"
+              width="max(12px, min(1.2vw, 24px))"
+            />
           </button>
         ) : null}
       </div>

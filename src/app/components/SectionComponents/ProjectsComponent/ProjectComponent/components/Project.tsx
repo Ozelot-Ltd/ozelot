@@ -87,11 +87,10 @@ export default function Project({ project, activeProject, index }: Props) {
           </p>
           <PrismicRichText field={project.data.list_title} />
         </div>
-        <div className={styles.iconContainer}></div>
         <div className={styles.arrowContainer}>
           <Arrow
-            height="max(16px, min(1.2vw, 24px))"
-            width="max(16px, min(1.2vw, 24px))"
+            height="max(12px, min(1.2vw, 24px))"
+            width="max(12px, min(1.2vw, 24px))"
           />
         </div>
       </div>

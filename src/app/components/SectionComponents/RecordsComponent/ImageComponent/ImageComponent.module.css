@@ -146,4 +146,17 @@
         height: 8px;
         margin: 0 3px;
     }
+
+    .prevButton {
+        left: 35%;
+    }
+
+    .prevButton svg {
+        transform: rotate(180deg)
+    }
+
+    .nextButton {
+        right: 35%;
+    }
+
 }

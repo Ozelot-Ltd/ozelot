@@ -167,9 +167,6 @@ label {
 /* Up to 768px */
 @media (max-width: 48rem) {
     :root {
-        --black: #545454;
-        --black-active: #393636;
-        --lightgrey: #ebebeb;
         --title-weight: "wght" 600;
         --radius-large: 20px;
         --border: 0.5px solid var(--black);

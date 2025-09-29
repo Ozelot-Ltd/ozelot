@@ -5,8 +5,8 @@
 }
 
 .projectComponent {
-    display: grid;
-    grid-template-columns: 2fr 0.75fr 2fr;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
     height: fit-content;
     width: 100%;
@@ -14,7 +14,6 @@
     border-bottom: var(--border);
     flex: 1;
     cursor: pointer;
-
 }
 
 .catalogContainer,
@@ -94,16 +93,25 @@
 /* Mobile */
 /* Up to 768px */
 @media (max-width: 48rem) {
+
+    .projectComponent {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: fit-content;
+        width: 100%;
+        padding: calc(0.25rem + 0.5vw) 0;
+        border-bottom: var(--border);
+        flex: 1;
+        cursor: pointer;
+    }
+
     .fadeIn {
         width: 100%;
         overflow: hidden;
         display: flex;
     }
 
-    .projectComponent {
-        display: grid;
-        grid-template-columns: 3fr 1fr 1fr;
-    }
 
     .catalogContainer {
         gap: calc(0.2rem + 0.3vw);
@@ -136,12 +144,6 @@
     .arrowContainer {
         width: 100%;
     }
-
-    .iconContainer img {
-        height: calc(0.6rem + 0.8vw);
-        width: calc(0.6rem + 0.8vw);
-    }
-
 }
 
 
