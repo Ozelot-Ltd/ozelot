@@ -16,15 +16,11 @@ const ServiceComponent = () => {
 
   const [activeService, setActiveService] = useState('');
 
-  const url = 'https://res.cloudinary.com/ddkwj78mq/image/upload/v1759149385/';
-
   const sortedArray = serviceArray.sort((a, b) => {
     const numA = a.data.service_index ?? 0;
     const numB = b.data.service_index ?? 0;
     return numA - numB;
   });
-
-  const imageLength = servicesMain.data.images?.length ?? 0;
 
   return (
     <div className={styles.container}>
