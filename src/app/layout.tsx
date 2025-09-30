@@ -137,7 +137,7 @@ export default async function RootLayout({
       <html lang="en">
         <body className={host.className}>
           {/* <Splashscreen /> */}
-          {!isBackgroundShown && <BackgroundComponent />}
+          {isBackgroundShown && <BackgroundComponent />}
           <Providers contentProps={contentProps}>
             <MainComponent {...settingsProps} />
             {children}

@@ -13,6 +13,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: home.data.meta_title,
     description: home.data.meta_description,
+    viewport: 'width=device-width, initial-scale=1',
     openGraph: {
       title: home.data.meta_title ?? undefined,
       images: [{ url: home.data.meta_image.url ?? '' }],

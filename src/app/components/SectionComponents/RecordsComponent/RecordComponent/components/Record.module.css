@@ -113,10 +113,8 @@
 
 
     .releaseComponent {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        padding: calc(0.25rem + 0.5vw) 0;
-        background-color: red;
+        display: flex;
+        justify-content: space-between;
     }
 
     .catalogContainer {
