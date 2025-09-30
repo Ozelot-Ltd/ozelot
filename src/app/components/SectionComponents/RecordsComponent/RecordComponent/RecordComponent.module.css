@@ -351,6 +351,7 @@
 
     .title {
         display: flex;
+
         gap: calc(0.4rem + 0.5vw);
         max-width: fit-content;
     }
