@@ -78,7 +78,6 @@ export default function Project({ project, activeProject, index }: Props) {
               }}
             />
           ))}
-
         <div className={styles.catalogContainer}>
           <p>
             {project.data.project_number && project.data.project_number < 10
@@ -86,7 +85,7 @@ export default function Project({ project, activeProject, index }: Props) {
               : project.data.project_number}
           </p>
           <PrismicRichText field={project.data.list_title} />
-        </div>
+        </div>{' '}
         <div className={styles.arrowContainer}>
           <Arrow
             height="max(12px, min(1.2vw, 24px))"

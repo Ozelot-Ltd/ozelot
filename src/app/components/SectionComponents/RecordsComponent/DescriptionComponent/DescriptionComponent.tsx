@@ -43,6 +43,8 @@ export default function DescriptionComponent({
     }
   }
 
+  const iconHeight = 'calc(0.75rem + 0.75vw)';
+
   return (
     <>
       {currentRecord && (
@@ -56,7 +58,11 @@ export default function DescriptionComponent({
           </div>
           <div className={styles.rightContainerLower}>
             <div className={styles.title}>
-              <Vinyl height="24" width="24" fill="var(--black)" />
+              <Vinyl
+                height={iconHeight}
+                width={iconHeight}
+                fill="var(--black)"
+              />
               <div className={styles.title}>
                 <PrismicRichText field={currentRecord.title} />
               </div>
@@ -86,7 +92,11 @@ export default function DescriptionComponent({
 
               {currentRecord.has_own_website && (
                 <PrismicNextLink field={currentRecord.website_link}>
-                  <Earth height={22} width={22} />
+                  <Earth
+                    height={iconHeight}
+                    width={iconHeight}
+                    fill="var(--black)"
+                  />
                 </PrismicNextLink>
               )}
             </div>
@@ -105,6 +115,8 @@ export default function DescriptionComponent({
           </div>
           <div className={styles.rightContainerLower}>
             <div className={styles.title}>
+              {' '}
+              <Earth fill="var(--black)" />
               <div className={styles.title}>
                 <PrismicRichText field={currentProject.title} />
               </div>

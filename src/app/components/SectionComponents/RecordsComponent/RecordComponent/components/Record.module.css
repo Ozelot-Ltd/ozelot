@@ -27,6 +27,7 @@
 
 .catalogContainer {
     gap: calc(0.2rem + 0.3vw);
+
 }
 
 .catalogContainer p {
@@ -113,7 +114,8 @@
 
     .releaseComponent {
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+        padding: calc(0.25rem + 0.5vw) 0;
     }
 
     .catalogContainer {
@@ -138,15 +140,20 @@
         font-variation-settings: var(--title-weight);
     }
 
+
     .arrowContainer svg {
         scale: 0.75;
     }
 
 
+    .vinylContainer {
+        display: none;
+    }
 
     .vinylContainer svg {
         height: calc(0.6rem + 0.8vw);
         width: calc(0.6rem + 0.8vw);
+        background-color: red;
     }
 
 }

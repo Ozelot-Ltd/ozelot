@@ -22,6 +22,9 @@ export default function ProjectComponent() {
     return numB - numA;
   });
 
+  const placeholderURL =
+    'https://res.cloudinary.com/ddkwj78mq/video/upload/v1759222722/websitevideo_compressed_ilku8j.mp4';
+
   const currentProject = projectArray.find(
     (project) => project.id === activeProject
   )?.data;
@@ -75,22 +78,15 @@ export default function ProjectComponent() {
               className={styles.previewContainer}
               style={{ pointerEvents: 'none' }}
             >
-              <iframe
-                width="464"
-                height="824"
-                src="https://www.youtube.com/embed/3Be2m78vCsI?autoplay=1&loop=1&playlist=3Be2m78vCsI&mute=1"
-                title="Website Video"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerPolicy="strict-origin-when-cross-origin"
-                allowFullScreen
-                style={{
-                  scale: '1',
-                  pointerEvents: 'none',
-                  border: 'none',
-                  outline: 'none',
-                  aspectRatio: '9/16',
-                }}
-              ></iframe>
+              <video
+                src={`${placeholderURL}`}
+                controls={false}
+                autoPlay
+                loop
+                muted
+                playsInline
+                className={styles.sliderVideoProject}
+              />
             </div>
           )}
           {currentProject && <ImageComponent currentProject={currentProject} />}

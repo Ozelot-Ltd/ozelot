@@ -1,21 +1,21 @@
 import React from 'react';
 
 export default function Earth({
-  height = 24,
-  width = 24,
+  height,
+  width,
   fill = 'var(--black)',
   strokeWidth = 3,
 }: {
-  height?: number;
-  width?: number;
+  height?: string;
+  width?: string;
   fill?: string;
   strokeWidth?: number;
 }) {
   return (
     <div>
       <svg
-        width={width}
-        height={height}
+        width={width || '20'}
+        height={height || '21'}
         viewBox="0 0 121 121"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"

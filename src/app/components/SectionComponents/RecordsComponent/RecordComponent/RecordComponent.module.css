@@ -48,7 +48,7 @@
 
 .descriptionContainer {
     display: flex;
-    gap: 0.5rem;
+    gap: 1vw;
     height: 100%;
 }
 
@@ -95,7 +95,6 @@
 
 .titleContainer {
     display: flex;
-    gap: 0.75rem;
 }
 
 .titleContainer p {
@@ -108,11 +107,15 @@
     display: flex;
     align-items: center;
     gap: calc(0.4rem + 0.5vw);
+    justify-content: center;
 }
 
 .title h2 {
     font-size: calc(0.4rem + 1vw);
+    line-height: 0;
 }
+
+.title svg {}
 
 .releasetext {
     padding: calc(0.5rem + 0.5vw) 0;
@@ -203,6 +206,9 @@
     justify-content: center;
 }
 
+.previewContainer video {
+    max-height: 80vh;
+}
 
 
 .imageContainer img {
@@ -266,7 +272,7 @@
         display: flex;
         height: fit-content;
         padding-bottom: 10rem;
-        min-height: 40rem;
+        min-height: 50rem;
     }
 
 
@@ -274,15 +280,15 @@
     .listContainer {
         overflow-y: hidden;
         max-height: 100%;
-        height: calc(var(--container-height) * 6.6);
+        min-height: calc(var(--container-height) * 6.6);
         padding-bottom: 1rem;
     }
 
+
     .descriptionContainer {
         display: flex;
-        gap: 0.5vw;
-        height: fit-content;
-        flex-direction: row;
+        gap: 0.5rem;
+        height: 100%;
     }
 
     .scrollContainer {
@@ -307,17 +313,19 @@
     .pills {
         display: flex;
         gap: 0.5rem;
-
+        flex-wrap: wrap;
     }
 
     .pills p {
         text-transform: uppercase;
         color: #65696d;
+
     }
 
     .iconContainer img {
         height: 16px;
         width: 16px;
+
     }
 
 
@@ -345,6 +353,7 @@
         display: flex;
         align-items: center;
         gap: calc(0.4rem + 0.5vw);
+
     }
 
     .title h2 {
@@ -418,6 +427,9 @@
         scale: 0.8;
     }
 
+    .previewContainer video {
+        max-height: 120%;
+    }
 
 
     .socials * {
