@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   ProjectDocumentData,
   RecordDocumentData,
@@ -15,6 +15,8 @@ import { PrismicRichText } from '@prismicio/react';
 import Link from 'next/link';
 import Arrow from '@/app/components/SvgComponents/Arrow/Arrow';
 
+import { useMobile } from '../../../../../../context/MobileContext';
+
 export default function DescriptionComponent({
   currentProject,
   currentRecord,
@@ -24,6 +26,17 @@ export default function DescriptionComponent({
   currentProject?: Simplify<ProjectDocumentData> | undefined;
   styles: { readonly [key: string]: string };
 }) {
+  const [height, setHeight] = useState('22');
+  const { isMobile } = useMobile();
+
+  useEffect(() => {
+    if (isMobile) {
+      setHeight('18');
+    } else {
+      setHeight('22');
+    }
+  }, [isMobile]);
+
   function isMainDiscipline() {
     switch (currentProject?.is_main_discipline) {
       case '3d':
@@ -56,7 +69,7 @@ export default function DescriptionComponent({
           </div>
           <div className={styles.rightContainerLower}>
             <div className={styles.title}>
-              <Vinyl fill="var(--black)" />
+              <Vinyl fill="var(--black)" height={height} width={height} />
               <div className={styles.title}>
                 <PrismicRichText field={currentRecord.title} />
               </div>
@@ -86,7 +99,7 @@ export default function DescriptionComponent({
 
               {currentRecord.has_own_website && (
                 <PrismicNextLink field={currentRecord.website_link}>
-                  <Earth fill="var(--black)" />
+                  <Earth fill="var(--black)" height={height} width={height} />
                 </PrismicNextLink>
               )}
             </div>
@@ -106,7 +119,7 @@ export default function DescriptionComponent({
           <div className={styles.rightContainerLower}>
             <div className={styles.title}>
               {' '}
-              <Earth fill="var(--black)" />
+              <Earth fill="var(--black)" height={height} width={height} />
               <div className={styles.title}>
                 <PrismicRichText field={currentProject.title} />
               </div>
