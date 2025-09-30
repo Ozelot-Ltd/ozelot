@@ -8,8 +8,7 @@ import Service from './components/Service';
 import FadeIn from '@/app/components/FadeIn/FadeIn';
 import { PrismicRichText } from '@prismicio/react';
 import Arrow from '@/app/components/SvgComponents/Arrow/Arrow';
-import Image from 'next/image';
-import Marquee from 'react-fast-marquee';
+import ServiceMarquee from './components/ServiceMarquee';
 
 const ServiceComponent = () => {
   const { serviceArray, servicesMain } = useContents();
@@ -44,55 +43,18 @@ const ServiceComponent = () => {
           </FadeIn>
         </div>
       </div>
-      <div className={styles.marqueeContainer}>
-        <div className={styles.marquee}>
-          <Marquee
-            gradient={false}
-            speed={20}
-            autoFill={true}
-            style={{
-              overflow: 'hidden',
-              display: 'flex',
-              alignItems: 'center',
-              width: '200rem',
-            }}
-          >
-            <div className={styles.imageContainer}>
-              {servicesMain.data.images
-                ?.filter(
-                  (image) =>
-                    typeof image.asset_id === 'string' && image.asset_id
-                )
-                .map((image, index) => (
-                  <Image
-                    key={index}
-                    src={image.asset_id as string}
-                    alt={image.alt || ''}
-                    width={200}
-                    height={200}
-                    className={styles.image}
-                  />
-                ))}
-            </div>
-          </Marquee>
-        </div>
-      </div>
+      <FadeIn multiplier={0.1} delay={0} yDown={500} duration={1}>
+        <ServiceMarquee />
+      </FadeIn>
       <div className={styles.scrollContainer}>
         {sortedArray.map((service, index) => (
-          <FadeIn
-            key={`${service.id}-${index}`}
-            stylesProps={styles}
-            multiplier={0.3}
-            delay={index + 1}
-            yDown={500}
-            duration={1}
-          >
+          <div key={`${service.id}-${index}`}>
             <Service
               service={service}
               activeService={activeService}
               setActiveService={setActiveService}
             />
-          </FadeIn>
+          </div>
         ))}
       </div>
     </div>

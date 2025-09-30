@@ -1,0 +1,19 @@
+.marqueeContainer {
+    position: relative;
+    height: 30rem;
+    padding: 2rem 0;
+    width: 100%;
+    overflow: hidden;
+}
+
+
+.image {
+    height: 28rem;
+    padding: 0 2rem;
+}
+
+.imageContainer {
+    width: fit-content;
+    display: flex;
+    height: 100%;
+}
