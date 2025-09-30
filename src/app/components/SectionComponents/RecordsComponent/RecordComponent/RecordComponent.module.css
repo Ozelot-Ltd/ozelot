@@ -108,7 +108,6 @@
     align-items: center;
     gap: calc(0.4rem + 0.5vw);
     justify-content: center;
-    background-color: red;
     width: fit-content;
 }
 

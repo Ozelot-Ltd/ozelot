@@ -58,11 +58,7 @@ export default function DescriptionComponent({
           </div>
           <div className={styles.rightContainerLower}>
             <div className={styles.title}>
-              <Vinyl
-                height={iconHeight}
-                width={iconHeight}
-                fill="var(--black)"
-              />
+              <Vinyl fill="var(--black)" />
               <div className={styles.title}>
                 <PrismicRichText field={currentRecord.title} />
               </div>
