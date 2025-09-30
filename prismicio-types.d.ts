@@ -1574,6 +1574,98 @@ export type ServiceDocument<Lang extends string = string> =
     Lang
   >;
 
+/**
+ * Item in *Service Main Content → Images*
+ */
+export interface ServiceMainContentDocumentDataImagesItem {
+  /**
+   * asset id field in *Service Main Content → Images*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: service_main_content.images[].asset_id
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  asset_id: prismic.KeyTextField;
+
+  /**
+   * alt field in *Service Main Content → Images*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: service_main_content.images[].alt
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  alt: prismic.KeyTextField;
+}
+
+/**
+ * Content for Service Main Content documents
+ */
+interface ServiceMainContentDocumentData {
+  /**
+   * Service Title field in *Service Main Content*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: service_main_content.service_title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  service_title: prismic.RichTextField;
+
+  /**
+   * Description field in *Service Main Content*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: service_main_content.description
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * Service Subtitle field in *Service Main Content*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: service_main_content.service_subtitle
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  service_subtitle: prismic.RichTextField;
+
+  /**
+   * Images field in *Service Main Content*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: service_main_content.images[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  images: prismic.GroupField<
+    Simplify<ServiceMainContentDocumentDataImagesItem>
+  >;
+}
+
+/**
+ * Service Main Content document from Prismic
+ *
+ * - **API ID**: `service_main_content`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ServiceMainContentDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<ServiceMainContentDocumentData>,
+    "service_main_content",
+    Lang
+  >;
+
 type ServicesDocumentDataSlicesSlice = never;
 
 /**
@@ -2237,6 +2329,7 @@ export type AllDocumentTypes =
   | RecordDocument
   | RecordsDocument
   | ServiceDocument
+  | ServiceMainContentDocument
   | ServicesDocument
   | ServicesOfferedDocument
   | SettingsDocument
@@ -2359,6 +2452,9 @@ declare module "@prismicio/client" {
       ServiceDocumentData,
       ServiceDocumentDataServicesListItem,
       ServiceDocumentDataSlicesSlice,
+      ServiceMainContentDocument,
+      ServiceMainContentDocumentData,
+      ServiceMainContentDocumentDataImagesItem,
       ServicesDocument,
       ServicesDocumentData,
       ServicesDocumentDataSlicesSlice,

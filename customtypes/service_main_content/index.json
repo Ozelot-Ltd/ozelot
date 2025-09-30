@@ -1,0 +1,61 @@
+{
+  "format": "custom",
+  "id": "service_main_content",
+  "label": "Service Main Content",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "service_title": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Service Title",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "heading2"
+        }
+      },
+      "description": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Description",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,heading4,heading5,heading6,strong,em,hyperlink"
+        }
+      },
+      "service_subtitle": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Service Subtitle",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "heading3"
+        }
+      },
+      "images": {
+        "type": "Group",
+        "config": {
+          "label": "Images",
+          "repeat": true,
+          "fields": {
+            "asset_id": {
+              "type": "Text",
+              "config": {
+                "label": "asset id",
+                "placeholder": ""
+              }
+            },
+            "alt": {
+              "type": "Text",
+              "config": {
+                "label": "alt",
+                "placeholder": ""
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

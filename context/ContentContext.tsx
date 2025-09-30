@@ -22,6 +22,7 @@ import {
   BrandingIconDocument,
   ProjectsGifDocument,
   AiPopupDocument,
+  ServiceMainContentDocument,
 } from '../prismicio-types';
 
 export type ContentProps = {
@@ -44,6 +45,7 @@ export type ContentProps = {
   brandingIcon: BrandingIconDocument;
   projectsGif: ProjectsGifDocument;
   aiPopup: AiPopupDocument;
+  servicesMain: ServiceMainContentDocument;
 };
 
 // ContentContext.tsx

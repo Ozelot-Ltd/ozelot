@@ -51,6 +51,7 @@ export default async function RootLayout({
       brandingIcon,
       projectsGif,
       aiPopup,
+      servicesMain,
     ] = await Promise.all([
       client.getSingle('studio'),
       client.getSingle('contact'),
@@ -71,6 +72,7 @@ export default async function RootLayout({
       client.getSingle('branding_icon'),
       client.getSingle('projects_gif'),
       client.getSingle('ai_popup'),
+      client.getSingle('service_main_content'),
     ]);
 
     if (
@@ -93,7 +95,8 @@ export default async function RootLayout({
       !address ||
       !brandingIcon ||
       !projectsGif ||
-      !aiPopup
+      !aiPopup ||
+      !servicesMain
     ) {
       throw new Error('Failed to load required data');
     }
@@ -118,6 +121,7 @@ export default async function RootLayout({
       brandingIcon,
       projectsGif,
       aiPopup,
+      servicesMain,
     };
 
     const leftField = settings.data.navigation_items_left;

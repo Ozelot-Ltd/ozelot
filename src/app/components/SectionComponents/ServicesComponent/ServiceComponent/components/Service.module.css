@@ -3,7 +3,7 @@
 }
 
 .container {
-    border-bottom: var(--border);
+    border-top: var(--border);
     overflow: hidden;
     height: var(--upper-height);
     transition: height calc(var(--time))var(--bezier);
@@ -19,7 +19,7 @@
 }
 
 .noBorder {
-    border-bottom: none;
+    border-bottom: var(--border);
 }
 
 
