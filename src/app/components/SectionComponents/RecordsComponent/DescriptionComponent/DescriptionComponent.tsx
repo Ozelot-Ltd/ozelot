@@ -43,8 +43,6 @@ export default function DescriptionComponent({
     }
   }
 
-  const iconHeight = 'calc(0.75rem + 0.75vw)';
-
   return (
     <>
       {currentRecord && (
@@ -88,11 +86,7 @@ export default function DescriptionComponent({
 
               {currentRecord.has_own_website && (
                 <PrismicNextLink field={currentRecord.website_link}>
-                  <Earth
-                    height={iconHeight}
-                    width={iconHeight}
-                    fill="var(--black)"
-                  />
+                  <Earth fill="var(--black)" />
                 </PrismicNextLink>
               )}
             </div>
