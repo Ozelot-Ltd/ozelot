@@ -96,7 +96,6 @@
 }
 
 .imageContainer {
-
     height: 100%;
 }
 
@@ -111,10 +110,10 @@
         display: flex;
     }
 
-
     .releaseComponent {
         display: flex;
         justify-content: space-between;
+        background-color: red;
     }
 
     .catalogContainer {
@@ -152,7 +151,6 @@
     .vinylContainer svg {
         height: calc(0.6rem + 0.8vw);
         width: calc(0.6rem + 0.8vw);
-        background-color: red;
     }
 
 }
