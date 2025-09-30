@@ -8,8 +8,6 @@ import DescriptionComponent from '../DescriptionComponent/DescriptionComponent';
 import ImageComponent from '../ImageComponent/ImageComponent';
 import RecordsPlaceholder from './components/RecordsPlaceholder/RecordsPlaceholder';
 
-import { useMobile } from '../../../../../../context/MobileContext';
-
 import { isSplashscreenFinishedStore } from '@/app/stores/SplashscreenIsFinished';
 
 export default function RecordComponent({
@@ -25,8 +23,6 @@ export default function RecordComponent({
   const { recordArray } = useContents();
 
   const { isSplashscreenFinished } = isSplashscreenFinishedStore();
-
-  const { isMobile } = useMobile();
 
   const releaseNames = recordArray.map((record) =>
     record.data.record_title
@@ -76,7 +72,7 @@ export default function RecordComponent({
         />{' '}
       </section>
       <section className={styles.rightContainer}>
-        {!currentRecord && !isMobile && isSplashscreenFinished ? (
+        {!currentRecord && isSplashscreenFinished ? (
           <div className={styles.previewContainer}>
             <RecordsPlaceholder
               releaseNames={releaseNames}

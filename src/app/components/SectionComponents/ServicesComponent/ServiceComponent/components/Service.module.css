@@ -133,6 +133,7 @@
 
 .icon img {
     height: calc(0.5rem + 0.5vw);
+    filter: invert(1);
 }
 
 

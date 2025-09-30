@@ -66,7 +66,11 @@
 
 /* Mobile */
 /* Up to 768px */
-@media (max-width: 48rem) {}
+@media (max-width: 48rem) {
+    .previewContainer {
+        display: none;
+    }
+}
 
 /* Tablet */
 /* 768px to 1184px */
