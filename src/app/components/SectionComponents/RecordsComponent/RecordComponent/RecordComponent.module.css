@@ -347,14 +347,12 @@
     .titleContainer p {
         font-size: calc(0.3rem + 0.5vw);
         align-items: flex-start;
-
     }
 
     .title {
         display: flex;
-        align-items: center;
         gap: calc(0.4rem + 0.5vw);
-        width: fit-content;
+        max-width: fit-content;
     }
 
     .title h2 {
