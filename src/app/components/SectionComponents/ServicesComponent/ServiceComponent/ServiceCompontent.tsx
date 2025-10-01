@@ -19,12 +19,13 @@ const ServiceComponent = () => {
   useEffect(() => {
     if (containerRef.current) {
       const containerWidth = containerRef.current.offsetWidth;
+      console.log('container width set to:', containerWidth);
       document.documentElement.style.setProperty(
         '--service-container-width',
         `${containerWidth}px`
       );
     }
-  }, []);
+  }, [containerRef]);
 
   const sortedArray = serviceArray.sort((a, b) => {
     const numA = a.data.service_index ?? 0;
@@ -33,7 +34,7 @@ const ServiceComponent = () => {
   });
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} ref={containerRef}>
       <div className={styles.upperContainer}>
         <div>
           <FadeIn multiplier={0.1} delay={0} yDown={500} duration={1}>
