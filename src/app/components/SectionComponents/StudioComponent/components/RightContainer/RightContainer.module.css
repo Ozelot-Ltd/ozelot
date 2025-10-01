@@ -28,7 +28,7 @@
         width: 100%;
         display: flex;
         flex-direction: column;
-        justify-content: space-evenly;
+        gap: calc(2rem + 2vh)
     }
 
 

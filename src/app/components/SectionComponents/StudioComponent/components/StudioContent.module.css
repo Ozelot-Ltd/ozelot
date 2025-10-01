@@ -72,7 +72,8 @@
         width: 100%;
         overflow: scroll;
         position: relative;
-        height: 100%;
+        height: fit-content;
+        gap: calc(2rem + 2vh);
     }
 
 
@@ -88,7 +89,7 @@
     .upperContainer {
         display: flex;
         flex-direction: column;
-        gap: calc(2rem + 2vw);
+        gap: calc(2rem + 2vh);
     }
 
     .lowerContainer {
