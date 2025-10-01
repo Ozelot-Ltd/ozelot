@@ -46,7 +46,10 @@ export default function ComingSoonPlaceholder({}) {
         fontSize: '1.5rem',
       }}
     >
-      <h1 style={{ border: 'none', zIndex: 2 }} ref={textRef}>
+      <h1
+        style={{ border: 'none', zIndex: 2, fontSize: 'calc(1.5rem + 1.5vw)' }}
+        ref={textRef}
+      >
         coming soon
       </h1>
 

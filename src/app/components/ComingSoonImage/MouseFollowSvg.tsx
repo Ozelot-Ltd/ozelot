@@ -73,7 +73,7 @@ export default function MouseFollowSVG() {
         alt="Decorative"
         width={50}
         height={50}
-        style={{ height: '6rem' }}
+        style={{ height: '6rem', width: 'auto' }}
       />
     </div>
   );
