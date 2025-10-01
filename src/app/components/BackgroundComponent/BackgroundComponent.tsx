@@ -69,7 +69,22 @@ export default function BackgroundComponent(): JSX.Element {
 
   return (
     <>
-      <Leva collapsed hidden={false} />
+      <div
+        style={{
+          pointerEvents: 'all',
+          position: 'absolute',
+          top: 20,
+          right: 20,
+          zIndex: 1,
+        }}
+      >
+        <Leva
+          collapsed={false}
+          hidden={true}
+          titleBar={{ position: { x: -1010, y: 10 } }}
+        />
+      </div>
+
       <Canvas
         shadows
         camera={{ position: [0, -1, 4], fov: 65 }}

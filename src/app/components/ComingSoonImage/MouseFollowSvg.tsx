@@ -46,7 +46,7 @@ export default function MouseFollowSVG() {
   useEffect(() => {
     const number = Math.random();
 
-    if (number < 0.5) {
+    if (number < 0.7) {
       setImage('Untitled-1_ut48io.png');
     } else {
       setImage('bing_thipgu.png');
