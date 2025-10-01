@@ -10,6 +10,7 @@
 .image {
     height: 28rem;
     padding: 0 2rem;
+    object-fit: contain
 }
 
 .imageContainer {
