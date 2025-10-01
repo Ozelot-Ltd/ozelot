@@ -1,35 +1,10 @@
 .container {
     height: calc(100vh - 5rem);
     padding: calc(2vw + 2rem);
-    width: 100%;
-    overflow: hidden;
-    position: relative;
-    overflow: hidden;
-}
-
-
-.content {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    justify-content: space-between;
-    width: 100%;
-
-}
-
-.upperContainer {
     display: grid;
-    grid-template-columns: 1fr 0.75fr;
-    height: 100%;
-    overflow: hidden;
+    grid-template-rows: 1.5fr 0.5fr;
 }
 
-.lowerContainer {
-    height: 40%;
-    width: 100%;
-    display: flex;
-    align-items: center;
-}
 
 
 .leftContainer {
@@ -38,17 +13,6 @@
     gap: calc(0.5vw + 0.3rem);
 }
 
-.rightContainer {
-    display: flex;
-    flex-wrap: wrap;
-    gap: calc(1vw + 1rem);
-}
-
-.rightContainer img {
-    height: calc(0.7rem + 0.7vw);
-    padding: 0 calc(0.4vw + 0.4rem);
-    width: fit-content;
-}
 
 
 
@@ -72,7 +36,7 @@
 }
 
 .descriptionContainer p {
-    width: 85%;
+    width: 60%;
 }
 
 .addressContainer p {
@@ -92,7 +56,7 @@
     align-items: center;
     flex-direction: row-reverse;
     justify-content: space-between;
-    width: 85%;
+    width: 60%;
 }
 
 
@@ -170,6 +134,12 @@
     .addressContainer h5 {
         text-transform: none;
         font-variation-settings: var(--text-weight);
+    }
+
+    .bottomContainer {
+        align-items: flex-start;
+        flex-direction: column;
+        width: 100%;
     }
 }
 
