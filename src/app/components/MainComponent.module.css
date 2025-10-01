@@ -191,7 +191,7 @@
     transform-origin: bottom;
     position: absolute;
     bottom: 0;
-
+    background-color: var(--lightgrey);
     transition: height var(--time) var(--bezier) 0s,
         background-color var(--time) var(--bezier) 0.3s,
         backdrop-filter var(--time) var(--bezier) 0.3s;

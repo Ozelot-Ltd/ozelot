@@ -1,10 +1,11 @@
 .container {
     width: 100%;
-    max-width: 100%;
+    min-width: 100%;
     height: fit-content;
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    overflow-x: hidden;
 
 }
 
@@ -12,6 +13,7 @@
     display: flex;
     padding-top: 4rem;
     flex-direction: column;
+    width: 100%;
 }
 
 .upperContainer h2 {
@@ -46,11 +48,6 @@
     width: 100%;
     padding-top: calc((0.7rem + 0.6vw) * 2);
 }
-
-.fadeIn {
-    width: 100%;
-}
-
 
 
 /* Mobile */

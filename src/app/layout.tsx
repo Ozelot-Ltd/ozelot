@@ -9,7 +9,8 @@ import Script from 'next/script';
 import './globals.css';
 import MainComponent from './components/MainComponent';
 import { Providers } from './components/Providers/Providers';
-import { BackgroundComponent } from './components/BackgroundComponent/BackgroundComponent';
+
+import BackgroundComponent from './components/BackgroundComponent/BackgroundComponent';
 
 // import Splashscreen from './components/Splashscreen/Splashscreen';
 
@@ -19,8 +20,6 @@ const host = Host_Grotesk({
   preload: true,
   subsets: ['latin'],
 });
-
-const isBackgroundShown = false;
 
 export default async function RootLayout({
   children,
@@ -141,7 +140,16 @@ export default async function RootLayout({
       <html lang="en">
         <body className={host.className}>
           {/* <Splashscreen /> */}
-          {isBackgroundShown && <BackgroundComponent />}
+          <div
+            style={{
+              position: 'fixed',
+              inset: 0,
+              zIndex: 0,
+              pointerEvents: 'all',
+            }}
+          >
+            <BackgroundComponent />
+          </div>
           <Providers contentProps={contentProps}>
             <MainComponent {...settingsProps} />
             {children}

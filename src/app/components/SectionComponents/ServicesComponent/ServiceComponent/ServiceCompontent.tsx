@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 
 import styles from './ServiceComponent.module.css';
 
@@ -12,8 +12,19 @@ import ServiceMarquee from './components/ServiceMarquee';
 
 const ServiceComponent = () => {
   const { serviceArray, servicesMain } = useContents();
-
   const [activeService, setActiveService] = useState('');
+
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (containerRef.current) {
+      const containerWidth = containerRef.current.offsetWidth;
+      document.documentElement.style.setProperty(
+        '--service-container-width',
+        `${containerWidth}px`
+      );
+    }
+  }, []);
 
   const sortedArray = serviceArray.sort((a, b) => {
     const numA = a.data.service_index ?? 0;

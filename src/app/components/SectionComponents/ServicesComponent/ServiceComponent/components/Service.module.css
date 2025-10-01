@@ -1,7 +1,3 @@
-.fadeIn {
-    width: 100%;
-}
-
 .container {
     border-top: var(--border);
     overflow: hidden;
@@ -9,8 +5,8 @@
     transition: height calc(var(--time))var(--bezier);
     will-change: height;
     transition-delay: 0.2s;
-    max-width: 100%;
-    width: 100%;
+    width: var(--service-container-width) !important;
+    background-color: red;
 }
 
 
@@ -37,6 +33,7 @@
     align-items: center;
     height: fit-content;
     height: calc(8rem + 7vw);
+    width: var(--service-container-width)
 }
 
 .titleContainer {
@@ -82,8 +79,6 @@
     font-variation-settings: "wght" 380;
     transition: font-variation-settings 1s var(--bezier);
 }
-
-
 
 
 .index {
@@ -145,8 +140,6 @@
     grid-template-columns: repeat(2, 1fr);
     justify-content: space-between;
     width: 95%;
-
-
 }
 
 .description {
