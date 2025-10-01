@@ -17,3 +17,63 @@
     display: flex;
     height: 100%;
 }
+
+/* Mobile */
+/* Up to 768px */
+@media (max-width: 48rem) {
+    .marqueeContainer {
+        position: relative;
+        height: 18rem;
+        padding: 0rem 0;
+        width: 80%;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+    }
+
+
+    .image {
+        height: 14rem;
+        padding: 0 1rem;
+    }
+
+    .imageContainer {
+        width: fit-content;
+        display: flex;
+        height: 100%;
+    }
+}
+
+/* Tablet */
+/* 768px to 1184px */
+@media (min-width: 48rem) and (max-width: 74rem) {}
+
+/* Tablet - Portrait Orientation */
+/* 768px to 1184px in portrait mode */
+@media (min-width: 48rem) and (max-width: 74rem) and (orientation: portrait) {}
+
+/* Desktop */
+/* 1184px and up */
+@media (min-width: 74rem) {}
+
+/* Large Desktop */
+/* 1440px and up */
+@media (min-width: 90rem) {}
+
+@media (min-width: 120rem) {}
+
+/* Touch Devices */
+/* Any touch device regardless of size */
+@media (hover: none) {}
+
+/* Non-Touch Devices */
+/* Devices with precise pointer (mouse) */
+@media (hover: hover) and (pointer: fine) {}
+
+/* Prefers Dark Mode */
+/* User has set dark mode preference */
+@media (prefers-color-scheme: dark) {}
+
+/* Prefers Reduced Motion */
+/* User has requested minimal animations */
+@media (prefers-reduced-motion: reduce) {}

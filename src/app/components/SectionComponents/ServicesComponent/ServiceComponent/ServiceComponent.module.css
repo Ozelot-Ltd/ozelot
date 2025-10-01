@@ -56,8 +56,21 @@
 /* Up to 768px */
 @media (max-width: 48rem) {
 
+    .upperContainer {
+        display: flex;
+        padding-top: 0rem;
+        flex-direction: column;
+    }
+
     .scrollContainer {
         padding-top: calc((0.3rem + 0.6vw));
+    }
+
+    .description p {
+        font-variation-settings: var(--text-weight);
+        padding-top: calc(0.5rem + 0.5vw);
+        width: fit-content;
+        width: 100%;
     }
 
 }

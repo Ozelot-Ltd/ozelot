@@ -67,11 +67,12 @@
 /* Up to 768px */
 @media (max-width: 48rem) {
     .container {
-        height: fit-content;
+
         padding: 0;
         width: 100%;
         overflow: scroll;
         position: relative;
+        height: 100%;
     }
 
 
