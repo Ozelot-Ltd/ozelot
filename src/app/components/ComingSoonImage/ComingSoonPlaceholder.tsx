@@ -41,10 +41,16 @@ export default function ComingSoonPlaceholder({}) {
         textTransform: 'uppercase',
         border: '1px solid var(--black)',
         fontSize: '1.5rem',
+        backgroundColor: 'var(--black)',
       }}
     >
       <h1
-        style={{ border: 'none', zIndex: 2, fontSize: 'calc(1.5rem + 1.5vw)' }}
+        style={{
+          border: 'none',
+          zIndex: 2,
+          fontSize: 'calc(1.5rem + 1.5vw)',
+          color: 'var(--lightgrey)',
+        }}
         ref={textRef}
       >
         coming soon
