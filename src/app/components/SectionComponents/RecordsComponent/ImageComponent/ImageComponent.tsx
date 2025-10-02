@@ -12,7 +12,6 @@ import Arrow from '@/app/components/SvgComponents/Arrow/Arrow';
 
 import Image from 'next/image';
 import ComingSoonPlaceholder from '@/app/components/ComingSoonImage/ComingSoonPlaceholder';
-
 import LoadingComponent from './LoadingComponent/LoadingComponent';
 
 export default function ImageComponent({
@@ -57,10 +56,12 @@ export default function ImageComponent({
   };
 
   const handleImageLoad = () => {
+    console.log('Image loaded');
     setIsLoading(false);
   };
 
   const handleVideoLoad = () => {
+    console.log('Video loaded');
     setIsLoading(false);
   };
 
@@ -93,13 +94,11 @@ export default function ImageComponent({
 
         <div className={styles.imageWrapper}>
           {isLoading && <LoadingComponent />}
-
           {hasValidRecord ? (
             <PrismicNextImage
               field={currentRecord.record_images[currentIndex].record_image}
               className={styles.sliderImageRecord}
               onLoad={handleImageLoad}
-              style={{ display: isLoading ? 'none' : 'block' }}
             />
           ) : hasValidProject &&
             currentProject.gallery[currentIndex].media_type === 'image' ? (
@@ -111,8 +110,7 @@ export default function ImageComponent({
               width={800}
               height={600}
               className={styles.sliderImageProject}
-              onLoad={handleImageLoad}
-              style={{ display: isLoading ? 'none' : 'block' }}
+              onLoadingComplete={handleImageLoad}
             />
           ) : hasValidProject &&
             currentProject.gallery[currentIndex].media_type === 'video' ? (
@@ -124,12 +122,11 @@ export default function ImageComponent({
               muted
               playsInline
               className={styles.sliderVideoProject}
-              onLoadedData={handleVideoLoad}
-              style={{ display: isLoading ? 'none' : 'block' }}
+              onCanPlay={handleVideoLoad}
             />
           ) : (
             <div>
-              <ComingSoonPlaceholder setIsLoading={setIsLoading} />
+              <ComingSoonPlaceholder />
             </div>
           )}
         </div>

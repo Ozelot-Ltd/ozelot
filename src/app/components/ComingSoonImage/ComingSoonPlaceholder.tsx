@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef, useEffect } from 'react';
+import React, { useRef } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { SplitText } from 'gsap/SplitText';
@@ -8,11 +8,7 @@ import MouseFollowSVG from './MouseFollowSvg';
 
 gsap.registerPlugin(SplitText, useGSAP);
 
-export default function ComingSoonPlaceholder({
-  setIsLoading,
-}: {
-  setIsLoading: (value: boolean) => void;
-}) {
+export default function ComingSoonPlaceholder({}) {
   const textRef = useRef<HTMLHeadingElement | null>(null);
 
   useGSAP(() => {
@@ -33,10 +29,6 @@ export default function ComingSoonPlaceholder({
       };
     }
   });
-
-  useEffect(() => {
-    setIsLoading(false);
-  }, [setIsLoading]);
 
   return (
     <div
