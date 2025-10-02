@@ -30,7 +30,7 @@ function clamp(val: number, min: number, max: number) {
 function initPhysics(
   container: HTMLDivElement,
   isMobile: boolean,
-  onRecordDrop?: (recordIndex: number) => void,
+  onRecordDrop?: (recordID: number) => void,
   dropzoneElement?: HTMLElement
 ) {
   engine = Matter.Engine.create();
@@ -78,10 +78,16 @@ function initPhysics(
       height: (obj as HTMLElement).offsetHeight,
     };
 
+    // Read the data-record-index attribute from the element
+    const recordIndex = parseInt(
+      (obj as HTMLElement).dataset.recordIndex || '0',
+      10
+    );
+
     const startX =
       Math.random() * (containerRect.width - objRect.width) + objRect.width / 2;
-    const startY = -400 - index * (isMobile ? 200 : 100); // More spread out starting positions
-    const startRotation = (Math.random() - 0.5) * (!isMobile ? 0.85 : 0.4); // Much less initial rotation
+    const startY = -400 - index * (isMobile ? 200 : 100);
+    const startRotation = (Math.random() - 0.5) * (!isMobile ? 0.85 : 0.4);
 
     const body = Matter.Bodies.rectangle(
       startX,
@@ -103,7 +109,7 @@ function initPhysics(
       element: obj as HTMLElement,
       width: objRect.width,
       height: objRect.height,
-      recordIndex: index, // Store the record index
+      recordIndex: recordIndex,
     });
 
     Matter.World.add(engine.world, body);
@@ -155,21 +161,17 @@ function initPhysics(
 
   Matter.Events.on(mouseConstraint, 'enddrag', function () {
     if (dragging && dropzoneElement && onRecordDrop) {
-      // Find the dragged body in our bodies array to get the record index
       const draggedBodyData = bodies.find((b) => b.body === dragging);
 
       if (draggedBodyData && draggedBodyData.recordIndex !== undefined) {
-        // Get dropzone bounds relative to container
         const dropzoneRect = dropzoneElement.getBoundingClientRect();
         const containerBounds = container.getBoundingClientRect();
 
-        // Convert dropzone position to Matter.js coordinates (relative to container)
         const dropzoneX =
           dropzoneRect.left - containerBounds.left + dropzoneRect.width / 2;
         const dropzoneY =
           dropzoneRect.top - containerBounds.top + dropzoneRect.height / 2;
 
-        // Check if the dragged body center is within the dropzone
         const bodyX = dragging.position.x;
         const bodyY = dragging.position.y;
 
@@ -185,9 +187,6 @@ function initPhysics(
             draggedBodyData.recordIndex
           );
           onRecordDrop(draggedBodyData.recordIndex);
-
-          // Optional: Add visual feedback or reset position
-          // You could animate the record back to a specific position here
         }
       }
     }

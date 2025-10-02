@@ -38,7 +38,6 @@ export default function RecordsPlaceholder({
 
   useEffect(() => {
     if (containerRef.current && dropzoneRef.current) {
-      // Pass the callback function and dropzone element to initPhysics
       initPhysics(
         containerRef.current,
         isMobile,
@@ -63,34 +62,39 @@ export default function RecordsPlaceholder({
         <h2>Record Dropzone</h2>
       </div>
 
-      {recordArray?.map((record, index) => {
-        const imageUrl =
-          record.data.record_images[0]?.record_image.url ||
-          record.data.meta_image;
+      {recordArray
+        ?.slice()
+        .reverse()
+        .map((record, displayIndex) => {
+          const originalIndex = recordArray.length - 1 - displayIndex;
 
-        return (
-          <div
-            key={index}
-            className={`${styles.object} object`}
-            data-record-index={index}
-            onMouseEnter={() => setHoveredIndex(index)}
-            onMouseLeave={() => setHoveredIndex(null)}
-            style={{
-              backgroundImage: `${hoveredIndex === index ? `url("${imageUrl}")` : `url("${index % 2 === 0 ? evenURL : oddURL}")`}`,
-              transition: 'background-image 0.2s var(--bezier',
-            }}
-            onMouseDown={() => setIsDragging(true)}
-            onMouseUp={() => setIsDragging(false)}
-          >
-            <h2>
-              {record.data.record_title
-                ?.replace(/_/g, ' ')
-                .replace(/\b(EP|LP)\b/g, '')
-                .trim()}
-            </h2>
-          </div>
-        );
-      })}
+          const imageUrl =
+            record.data.record_images[0]?.record_image.url ||
+            record.data.meta_image;
+
+          return (
+            <div
+              key={displayIndex}
+              className={`${styles.object} object`}
+              data-record-index={originalIndex}
+              onMouseEnter={() => setHoveredIndex(displayIndex)}
+              onMouseLeave={() => setHoveredIndex(null)}
+              style={{
+                backgroundImage: `${hoveredIndex === displayIndex ? `url("${imageUrl}")` : `url("${displayIndex % 2 === 0 ? evenURL : oddURL}")`}`,
+                transition: 'background-image 0.2s var(--bezier',
+              }}
+              onMouseDown={() => setIsDragging(true)}
+              onMouseUp={() => setIsDragging(false)}
+            >
+              <h2>
+                {record.data.record_title
+                  ?.replace(/_/g, ' ')
+                  .replace(/\b(EP|LP)\b/g, '')
+                  .trim()}
+              </h2>
+            </div>
+          );
+        })}
     </div>
   );
 }
