@@ -1,7 +1,7 @@
 .container {
     position: fixed;
     bottom: calc(3rem + 3vw);
-    left: 10.5%;
+    left: calc(5.5rem + 5.5vw);
     opacity: 0;
     width: 0;
     height: fit-content;
@@ -120,11 +120,21 @@
 
 /* Tablet */
 /* 768px to 1184px */
-@media (min-width: 48rem) and (max-width: 74rem) {}
+@media (min-width: 48rem) and (max-width: 74rem) {
+    .container {
+        bottom: 6rem;
+        left: 1rem;
+    }
+}
 
 /* Tablet - Portrait Orientation */
 /* 768px to 1184px in portrait mode */
-@media (min-width: 48rem) and (max-width: 74rem) and (orientation: portrait) {}
+@media (min-width: 48rem) and (max-width: 74rem) and (orientation: portrait) {
+    .container {
+        bottom: 6rem;
+        left: 1rem;
+    }
+}
 
 /* Desktop */
 /* 1184px and up */
