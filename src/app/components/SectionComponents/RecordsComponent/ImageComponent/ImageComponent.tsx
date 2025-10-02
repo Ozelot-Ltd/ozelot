@@ -13,6 +13,8 @@ import Arrow from '@/app/components/SvgComponents/Arrow/Arrow';
 import Image from 'next/image';
 import ComingSoonPlaceholder from '@/app/components/ComingSoonImage/ComingSoonPlaceholder';
 
+import LoadingComponent from './LoadingComponent/LoadingComponent';
+
 export default function ImageComponent({
   currentRecord,
   currentProject,
@@ -21,7 +23,7 @@ export default function ImageComponent({
   currentProject?: Simplify<ProjectDocumentData> | undefined;
 }) {
   const [currentIndex, setCurrentIndex] = useState(0);
-
+  const [isLoading, setIsLoading] = useState(true);
   const url = 'https://res.cloudinary.com/ddkwj78mq/image/upload/';
   const videourl = 'https://res.cloudinary.com/ddkwj78mq/video/upload/';
 
@@ -35,6 +37,11 @@ export default function ImageComponent({
     setCurrentIndex(0);
   }, [currentProject, currentRecord]);
 
+  // Reset loading state when index changes
+  useEffect(() => {
+    setIsLoading(true);
+  }, [currentIndex]);
+
   const nextImage = () => {
     if (totalImages > 0) {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % totalImages);
@@ -47,6 +54,14 @@ export default function ImageComponent({
         (prevIndex) => (prevIndex - 1 + totalImages) % totalImages
       );
     }
+  };
+
+  const handleImageLoad = () => {
+    setIsLoading(false);
+  };
+
+  const handleVideoLoad = () => {
+    setIsLoading(false);
   };
 
   // Safety check - ensure we have valid data before rendering
@@ -77,10 +92,14 @@ export default function ImageComponent({
         ) : null}
 
         <div className={styles.imageWrapper}>
+          {isLoading && <LoadingComponent />}
+
           {hasValidRecord ? (
             <PrismicNextImage
               field={currentRecord.record_images[currentIndex].record_image}
               className={styles.sliderImageRecord}
+              onLoad={handleImageLoad}
+              style={{ display: isLoading ? 'none' : 'block' }}
             />
           ) : hasValidProject &&
             currentProject.gallery[currentIndex].media_type === 'image' ? (
@@ -92,6 +111,8 @@ export default function ImageComponent({
               width={800}
               height={600}
               className={styles.sliderImageProject}
+              onLoad={handleImageLoad}
+              style={{ display: isLoading ? 'none' : 'block' }}
             />
           ) : hasValidProject &&
             currentProject.gallery[currentIndex].media_type === 'video' ? (
@@ -103,10 +124,12 @@ export default function ImageComponent({
               muted
               playsInline
               className={styles.sliderVideoProject}
+              onLoadedData={handleVideoLoad}
+              style={{ display: isLoading ? 'none' : 'block' }}
             />
           ) : (
             <div>
-              <ComingSoonPlaceholder />
+              <ComingSoonPlaceholder setIsLoading={setIsLoading} />
             </div>
           )}
         </div>
