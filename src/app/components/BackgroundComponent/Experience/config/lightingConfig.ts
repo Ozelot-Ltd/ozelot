@@ -40,14 +40,14 @@ export const LIGHTING_CONFIG = {
   // Rim light
   RIM_LIGHT: {
     position: [-5.2, 3.2, -2.2] as [number, number, number],
-    intensity: 3.6,
-    color: "#ffd7b3",
+    intensity: 2.6,
+    color: "#dfeaff",
   },
   
   // Hair/top light
   HAIR_LIGHT: {
-    position: [0, 5.4, 0.6] as [number, number, number],
-    intensity: 0.75,
+    position: [0, 45, -10] as [number, number, number],
+    intensity: 5,
     color: "#dfeaff",
   },
 } as const;

@@ -55,7 +55,7 @@ const BONE_CONFIGS: BoneConfig[] = [
 ];
 
 export const ShirtM = () => {
-  const { scene } = useGLTF("/models/ShirtT-transformed.glb");
+  const { scene } = useGLTF("/models/Shirt-transformed.glb");
   const clone = React.useMemo(() => SkeletonUtils.clone(scene), [scene]);
   const { nodes } = useGraph(clone) as unknown as GLTFResult;
   const groupRef = useRef<THREE.Group>(null);

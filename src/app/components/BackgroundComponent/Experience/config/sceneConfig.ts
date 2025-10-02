@@ -27,7 +27,7 @@ export const SCENE_CONFIG = {
   
   // Shirt positioning and scaling
   SHIRT: {
-    position: [0, 0.6, 0] as [number, number, number],
+    position: [0, 0, 0] as [number, number, number],
     scale: 1.2,
     modelScale: 0.5,
   },
