@@ -137,7 +137,7 @@ export default function DescriptionComponent({
               )}
               {currentProject.is_web && (
                 <div className={styles.subtitle}>
-                  <p>Web Development</p>
+                  <p>Web & Web3</p>
                 </div>
               )}
               {currentProject.is_graphic_design && (
