@@ -21,10 +21,7 @@ export default function ComingSoonPlaceholder({}) {
         duration: 1,
         y: -100,
         stagger: 0.2,
-        yoyo: true,
         ease: 'power1.inOut',
-        repeat: 1,
-        repeatDelay: 3,
       });
 
       return () => {
@@ -39,7 +36,7 @@ export default function ComingSoonPlaceholder({}) {
         overflow: 'hidden',
         display: 'inline-block',
         position: 'relative',
-        height: 'calc(10rem + 10vw)',
+        height: `calc(10rem + 10vw)`,
         width: '100%',
         textTransform: 'uppercase',
         border: '1px solid var(--black)',
@@ -52,7 +49,6 @@ export default function ComingSoonPlaceholder({}) {
       >
         coming soon
       </h1>
-
       <MouseFollowSVG />
     </div>
   );

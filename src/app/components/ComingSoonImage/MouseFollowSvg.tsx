@@ -6,6 +6,8 @@ import { useGSAP } from '@gsap/react';
 
 import Image from 'next/image';
 
+import { useMobile } from '../../../../context/MobileContext';
+
 gsap.registerPlugin(useGSAP);
 
 export default function MouseFollowSVG() {
@@ -13,6 +15,7 @@ export default function MouseFollowSVG() {
   const imageRef = useRef<HTMLImageElement | null>(null);
   const [image, setImage] = useState<string | null>(null);
   const url = 'https://res.cloudinary.com/ddkwj78mq/image/upload/v1759149385/';
+  const { isMobile } = useMobile();
 
   useGSAP(() => {
     const container = containerRef.current;
@@ -46,7 +49,7 @@ export default function MouseFollowSVG() {
   useEffect(() => {
     const number = Math.random();
 
-    if (number < 0.7) {
+    if (number < 0.58) {
       setImage('Untitled-1_ut48io.png');
     } else {
       setImage('bing_thipgu.png');
@@ -73,7 +76,7 @@ export default function MouseFollowSVG() {
         alt="Decorative"
         width={50}
         height={50}
-        style={{ height: '6rem', width: 'auto' }}
+        style={{ height: `${!isMobile ? 6 : 4}rem`, width: 'auto' }}
       />
     </div>
   );
