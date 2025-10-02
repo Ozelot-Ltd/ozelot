@@ -30,7 +30,7 @@ export default function AIPopup() {
     if (isSplashscreenFinished) {
       const timer = setTimeout(() => {
         setIsOpen(true);
-      }, 4500);
+      }, 3000);
 
       return () => clearTimeout(timer);
     }

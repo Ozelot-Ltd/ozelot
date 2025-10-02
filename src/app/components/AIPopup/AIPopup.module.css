@@ -1,7 +1,7 @@
 .container {
     position: fixed;
-    bottom: 5rem;
-    left: 15rem;
+    bottom: calc(3rem + 3vw);
+    left: 10.5%;
     opacity: 0;
     width: 0;
     height: fit-content;

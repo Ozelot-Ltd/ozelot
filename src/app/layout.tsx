@@ -12,7 +12,7 @@ import { Providers } from './components/Providers/Providers';
 
 import BackgroundComponent from './components/BackgroundComponent/BackgroundComponent';
 
-// import Splashscreen from './components/Splashscreen/Splashscreen';
+import Splashscreen from './components/Splashscreen/Splashscreen';
 
 const host = Host_Grotesk({
   weight: 'variable',
@@ -139,7 +139,7 @@ export default async function RootLayout({
     return (
       <html lang="en">
         <body className={host.className}>
-          {/* <Splashscreen /> */}
+          <Splashscreen />
           <div
             style={{
               position: 'fixed',
