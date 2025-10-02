@@ -15,7 +15,6 @@ import { useMobile } from '../../../../../../../context/MobileContext';
 
 import { useRouter } from 'next/navigation';
 
-import ShowAnimation from './ShowAnimation';
 import AIIcon from '@/app/components/SvgComponents/AI/AI';
 
 export const lottieSources = {
@@ -44,7 +43,6 @@ const Service = ({ service, activeService, setActiveService }: Props) => {
   const upperContainerRef = useRef<HTMLDivElement>(null);
   const lowerContainerRef = useRef<HTMLDivElement>(null);
   const [isExpanded, setIsExpanded] = useState(false);
-  const [showElement, setShowElement] = useState(false);
   const router = useRouter();
 
   const { isMobile } = useMobile();
@@ -67,16 +65,6 @@ const Service = ({ service, activeService, setActiveService }: Props) => {
       );
     }
   }, []);
-
-  useEffect(() => {
-    if (isExpanded) {
-      setShowElement(true);
-    } else {
-      setTimeout(() => {
-        setShowElement(false);
-      }, 500);
-    }
-  }, [isExpanded]);
 
   const handleToggle = useCallback(() => {
     if (
@@ -146,13 +134,7 @@ const Service = ({ service, activeService, setActiveService }: Props) => {
           <PrismicRichText field={service.data.text} />
         </div>
         <div className={styles.image}>
-          <div className={styles.lottieContainer}>
-            <ShowAnimation
-              showElement={showElement}
-              serviceType={service.data.service_type}
-              lottieSources={lottieSources}
-            />
-          </div>
+          <div className={styles.lottieContainer}></div>
         </div>
       </div>
     </div>
