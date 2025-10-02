@@ -1,7 +1,6 @@
 "use client";
 
-// import { Experience } from "./Experience/Experience";
-import { ExperienceAlt } from "./Experience/ExperienceAlt";
+import { Experience } from "./Experience/Experience";
 
 export const BackgroundComponent = () => {
   return (
@@ -15,11 +14,7 @@ export const BackgroundComponent = () => {
         pointerEvents: "auto", // Allow pointer events for the 3D scene
       }}
     >
-      {/* Original component with movement animation */}
-      {/* <Experience /> */}
-
-      {/* Alternative component with fade animation */}
-      <ExperienceAlt />
+      <Experience />
     </div>
   );
 };
