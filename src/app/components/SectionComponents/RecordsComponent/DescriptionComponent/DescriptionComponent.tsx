@@ -186,7 +186,9 @@ export default function DescriptionComponent({
               <Link
                 href="/contact"
                 onClick={() => {
-                  window.sa_event?.(`contact_from_${currentProject.title}`);
+                  type TitleType = { text: string };
+                  const titleText = (currentProject.title[0] as TitleType).text;
+                  window.sa_event?.(titleText);
                 }}
               >
                 contact us <Arrow height="12" />
