@@ -55,7 +55,10 @@ export default function RecordComponent({
                 className={styles.listComponent}
                 onClick={() => {
                   setActiveRecord(record.id);
-                  window.sa_event?.(record.id);
+                  type TitleType = { text: string };
+                  const recordTitleText = (record.data.title[0] as TitleType)
+                    .text;
+                  window.sa_event?.(`record_${recordTitleText}`);
                 }}
               >
                 <Record

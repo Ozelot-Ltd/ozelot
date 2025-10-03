@@ -41,6 +41,7 @@ export default function StudioContent({}: Props) {
             <p
               onClick={() => {
                 router.push('/contact');
+                window.sa_event?.(`contact_from_studio`);
               }}
             >
               {data.contact_link.text}

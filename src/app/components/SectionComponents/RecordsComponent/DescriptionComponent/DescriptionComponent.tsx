@@ -100,20 +100,26 @@ export default function DescriptionComponent({
               >
                 <BandcampLogo height={24} width={24} />
               </PrismicNextLink>
-              <PrismicNextLink field={currentRecord.spotify_link}>
-                <SpotifyLogo
-                  height={22}
-                  width={22}
-                  onClick={() => {
-                    window.sa_event?.(
-                      `spotify_${currentRecord.record_title?.toLowerCase()}`
-                    );
-                  }}
-                />
+              <PrismicNextLink
+                field={currentRecord.spotify_link}
+                onClick={() => {
+                  window.sa_event?.(
+                    `spotify_${currentRecord.record_title?.toLowerCase()}`
+                  );
+                }}
+              >
+                <SpotifyLogo height={22} width={22} />
               </PrismicNextLink>
 
               {currentRecord.has_own_website && (
-                <PrismicNextLink field={currentRecord.website_link}>
+                <PrismicNextLink
+                  field={currentRecord.website_link}
+                  onClick={() => {
+                    window.sa_event?.(
+                      `website_${currentRecord.record_title?.toLowerCase()}`
+                    );
+                  }}
+                >
                   <Earth fill="var(--black)" height={height} width={height} />
                 </PrismicNextLink>
               )}
@@ -177,7 +183,12 @@ export default function DescriptionComponent({
             </div>
             <div className={styles.contactPhrase}>
               <p>If you interested about {isMainDiscipline()} </p>{' '}
-              <Link href="/contact">
+              <Link
+                href="/contact"
+                onClick={() => {
+                  window.sa_event?.(`contact_from_${currentProject.title}`);
+                }}
+              >
                 contact us <Arrow height="12" />
               </Link>
             </div>

@@ -30,6 +30,13 @@
                 "allowText": true,
                 "repeat": false
               }
+            },
+            "type": {
+              "type": "Text",
+              "config": {
+                "label": "type",
+                "placeholder": ""
+              }
             }
           }
         }

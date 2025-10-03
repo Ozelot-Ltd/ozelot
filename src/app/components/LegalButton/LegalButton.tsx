@@ -20,6 +20,9 @@ export default function LegalButton() {
       delay={0.8}
       onClick={() => {
         setIsLegalVisible(!isLegalVisible);
+        if (!isLegalVisible) {
+          window.sa_event?.(`legal_opened`);
+        }
       }}
     >
       <div className={styles.legalButton}>

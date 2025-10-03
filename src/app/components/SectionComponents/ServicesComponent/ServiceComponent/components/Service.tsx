@@ -17,20 +17,6 @@ import { useRouter } from 'next/navigation';
 
 import AIIcon from '@/app/components/SvgComponents/AI/AI';
 
-export const lottieSources = {
-  web: 'https://lottie.host/541eadd1-ec51-441e-bdc8-fb6e620fca72/R7DuUC8GYy.lottie',
-  '3d': 'https://lottie.host/079a73d7-583d-46f9-af62-416ec4cc342d/CNLftiWST9.lottie',
-  graphic:
-    'https://lottie.host/41847dca-6480-4741-9b7f-d48e53af9147/f2vZjk0A79.lottie',
-  sounddesign:
-    'https://lottie.host/7470ee5c-2c8e-4c38-aa94-1f7cec2cdd9b/T8jU7z0Z9N.lottie',
-  ai: 'https://lottie.host/a118d970-7878-4236-a4eb-adcc0db89dd9/esvtMRWy0b.lottie',
-  art_direction:
-    'https://lottie.host/927d0e46-d27b-4af8-9b4f-68df0baf831f/0cWlaP28W9.lottie',
-  branding:
-    'https://lottie.host/ef3beb99-245c-44e5-a39e-566252276656/MJkPVqNYe8.lottie',
-};
-
 type Props = {
   service: ServiceDocument;
   activeService: string;
@@ -89,7 +75,17 @@ const Service = ({ service, activeService, setActiveService }: Props) => {
       ref={mainContainerRef}
     >
       <div className={styles.upperContainer} ref={upperContainerRef}>
-        <div className={styles.titleContainer} onClick={handleToggle}>
+        <div
+          className={styles.titleContainer}
+          onClick={() => {
+            handleToggle();
+            if (!isExpanded) {
+              window.sa_event?.(`services_${service.data.service_type}_opened`);
+            } else {
+              window.sa_event?.(`services_${service.data.service_type}_closed`);
+            }
+          }}
+        >
           <div className={styles.index}>
             <p>{index && index < 10 ? `0${index}` : index}</p>
           </div>

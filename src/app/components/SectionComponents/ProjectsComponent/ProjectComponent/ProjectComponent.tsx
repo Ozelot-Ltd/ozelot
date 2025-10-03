@@ -9,12 +9,10 @@ import { useContents } from '../../../../../../context/ContentContext';
 import ImageComponent from '../../RecordsComponent/ImageComponent/ImageComponent';
 import Project from './components/Project';
 import DescriptionComponent from '../../RecordsComponent/DescriptionComponent/DescriptionComponent';
-import FadeIn from '@/app/components/FadeIn/FadeIn';
 
 export default function ProjectComponent() {
-  const { projectArray, servicesOffered } = useContents();
+  const { projectArray } = useContents();
   const [activeProject, setActiveProject] = useState('');
-  const [filter, setFilter] = useState('all');
 
   const sortedArray = projectArray.sort((a, b) => {
     const numA = a.data.project_number ?? 0;
@@ -33,24 +31,6 @@ export default function ProjectComponent() {
     <div className={styles.container}>
       <section className={styles.leftContainer}>
         <div className={styles.listContainer}>
-          <div className={styles.disciplinesContainer}>
-            {servicesOffered.data.services_offered.map((service, index) => (
-              <FadeIn key={service.service} delay={index} multiplier={0.1}>
-                <div
-                  onClick={() => {
-                    setFilter(
-                      filter === service.service
-                        ? 'all'
-                        : (service.service ?? '')
-                    );
-                  }}
-                  className={`${styles.discipline} ${filter === service.service ? styles.filterActive : ''}`}
-                >
-                  <p>{service.service}</p>
-                </div>
-              </FadeIn>
-            ))}
-          </div>
           <div className={styles.scrollContainer}>
             {sortedArray.map((project, index) => (
               <div
@@ -58,6 +38,9 @@ export default function ProjectComponent() {
                 className={styles.listComponent}
                 onClick={() => {
                   setActiveProject(project.id);
+                  type TitleType = { text: string };
+                  const titleText = (project.data.title[0] as TitleType).text;
+                  window.sa_event?.(`project_${titleText}`);
                 }}
               >
                 <Project

@@ -12,7 +12,14 @@ export default function SocialBar() {
   return (
     <FadeIn stylesProps={styles} delay={0.6}>
       {socialBar.data.socials.map((item, index) => (
-        <div key={index}>
+        <div
+          key={index}
+          onClick={() => {
+            if (typeof item.type === 'string') {
+              window.sa_event?.(item.type);
+            }
+          }}
+        >
           <PrismicNextLink field={item.link}>
             <PrismicNextImage field={item.icon} />
           </PrismicNextLink>
