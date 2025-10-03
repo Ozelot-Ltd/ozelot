@@ -138,6 +138,20 @@ export default async function RootLayout({
     return (
       <html lang="en">
         <body className={host.className}>
+          <Script
+            src="https://scripts.simpleanalyticscdn.com/latest.js"
+            data-collect-dnt="true"
+            strategy="afterInteractive"
+          />
+          <Script
+            id="sa-event"
+            strategy="afterInteractive"
+            dangerouslySetInnerHTML={{
+              __html: `
+         window.sa_event=window.sa_event||function(){var a=[].slice.call(arguments);window.sa_event.q?window.sa_event.q.push(a):window.sa_event.q=[a]};
+       `,
+            }}
+          />{' '}
           <Splashscreen />
           <div
             style={{
@@ -153,11 +167,6 @@ export default async function RootLayout({
             <MainComponent {...settingsProps} />
             {children}
           </Providers>
-          <Script
-            data-collect-dnt="true"
-            async
-            src="https://scripts.simpleanalyticscdn.com/latest.js"
-          ></Script>
         </body>
         <PrismicPreview repositoryName={repositoryName} />
       </html>

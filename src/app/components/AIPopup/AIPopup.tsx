@@ -24,6 +24,7 @@ export default function AIPopup() {
     setIsOpen(false);
     setHasBeenClosed(!hasBeenClosed);
     localStorage.setItem('aiPopupClosed', 'true');
+    window.sa_event?.('close_ai_popup');
   };
 
   useEffect(() => {
@@ -51,7 +52,12 @@ export default function AIPopup() {
             <PrismicRichText field={aiPopup.data.title} />
             <PrismicRichText field={aiPopup.data.text} />
             <div className={styles.cta} onClick={handleClose}>
-              <PrismicNextLink field={aiPopup.data.cta} />
+              <PrismicNextLink
+                field={aiPopup.data.cta}
+                onClick={() => {
+                  window.sa_event?.('click_ai_popup_link');
+                }}
+              />
               <Arrow height="12" />
             </div>
           </div>
