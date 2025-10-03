@@ -106,7 +106,8 @@ export const Experience = () => {
 
       <SparklesSetup type="background" />
       <ShirtGroup />
-      <DevPerformanceMonitor />
+
+      {process.env.NODE_ENV === 'development' && <DevPerformanceMonitor />}
 
       <CameraShake
         maxYaw={SCENE_CONFIG.CAMERA_SHAKE.maxYaw}
