@@ -166,7 +166,7 @@ export default function MainComponent({
     if (!transitionEnd && isClicked !== '') {
       return;
     }
-
+    window.sa_event?.(`main_avigation_${text.toLowerCase()}`);
     // Closing current section
     if (isClicked === lowercaseText) {
       setIsClicked('');
