@@ -166,7 +166,7 @@ export default function MainComponent({
     if (!transitionEnd && isClicked !== '') {
       return;
     }
-    window.sa_event?.(`main_avigation_${text.toLowerCase()}`);
+    window.sa_event?.(`main_navigation_${text.toLowerCase()}`);
     // Closing current section
     if (isClicked === lowercaseText) {
       setIsClicked('');
@@ -212,6 +212,7 @@ export default function MainComponent({
                 setIsClicked('');
                 setSide('');
                 router.push('/');
+                window.sa_event?.(`main_navigation_logo}`);
               }}
               className={`${styles.logo} ${isClicked !== '' ? styles.animate : ''}`}
             >

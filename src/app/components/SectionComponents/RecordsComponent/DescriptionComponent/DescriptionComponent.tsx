@@ -90,11 +90,26 @@ export default function DescriptionComponent({
               </div>
             </div>
             <div className={styles.socials}>
-              <PrismicNextLink field={currentRecord.bandcamp_link}>
+              <PrismicNextLink
+                field={currentRecord.bandcamp_link}
+                onClick={() => {
+                  window.sa_event?.(
+                    `bandcamp_${currentRecord.record_title?.toLowerCase()}`
+                  );
+                }}
+              >
                 <BandcampLogo height={24} width={24} />
               </PrismicNextLink>
               <PrismicNextLink field={currentRecord.spotify_link}>
-                <SpotifyLogo height={22} width={22} />
+                <SpotifyLogo
+                  height={22}
+                  width={22}
+                  onClick={() => {
+                    window.sa_event?.(
+                      `spotify_${currentRecord.record_title?.toLowerCase()}`
+                    );
+                  }}
+                />
               </PrismicNextLink>
 
               {currentRecord.has_own_website && (

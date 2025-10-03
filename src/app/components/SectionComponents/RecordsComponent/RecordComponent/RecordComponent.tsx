@@ -55,6 +55,7 @@ export default function RecordComponent({
                 className={styles.listComponent}
                 onClick={() => {
                   setActiveRecord(record.id);
+                  window.sa_event?.(record.id);
                 }}
               >
                 <Record
