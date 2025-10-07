@@ -1,0 +1,19 @@
+.main {
+    height: 100svh;
+    width: 100svw;
+    background-color: var(--lightgrey);
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.5s linear;
+}
+
+.main h1 {
+    border: none;
+}
+
+.hidden {
+    transform: translateY(-100%)
+}

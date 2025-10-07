@@ -21,6 +21,7 @@ import { isClickedStore } from '../stores/IsClickedStore';
 
 import { useMobile } from '../../../context/MobileContext';
 import MobileComponent from './Mobile/MobileComponent';
+import NewsletterSuccess from './NewsletterSuccess/NewsletterSuccess';
 
 interface ColumnProps {
   item:
@@ -83,6 +84,17 @@ export default function MainComponent({
   const [isContactActive, setIsContactActive] = useState(false);
   const [isServicesActive, setIsServicesActive] = useState(false);
   const { isDesktop } = useMobile();
+  const [isNewsletterVisible, setIsNewsletterVisible] = useState(false);
+  const router = useRouter();
+  const pathname = usePathname();
+
+  useEffect(() => {
+    if (pathname.includes('newsletter-confirmed')) {
+      setIsNewsletterVisible(true);
+    } else {
+      setIsNewsletterVisible(false);
+    }
+  }, [pathname]);
 
   useEffect(() => {
     if (isClicked === 'projects') {
@@ -114,13 +126,9 @@ export default function MainComponent({
       setIsStudioActive(false);
       setIsRecordsActive(false);
       setIsContactActive(false);
-
       setIsServicesActive(true);
     }
   }, [isClicked]);
-
-  const router = useRouter();
-  const pathname = usePathname();
 
   useEffect(() => {
     const updateContainerWidth = () => {
@@ -205,6 +213,7 @@ export default function MainComponent({
     <>
       {isDesktop ? (
         <div className={styles.container}>
+          {isNewsletterVisible && <NewsletterSuccess />}
           <AIPopup />
           <div className={styles.logoContainer}>
             <div
