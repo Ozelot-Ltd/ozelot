@@ -51,10 +51,12 @@ export default function ContactForm({ contact }: Props) {
   useEffect(() => {
     if (isClicked && !isSent) {
       setButtonText('SENDING...');
-    } else {
+    } else if (isClicked && isSent) {
       setButtonText('THANKS FOR YOUR MESSAGE');
+    } else {
+      setButtonText(contact.data.contact_button_text);
     }
-  }, [isClicked, isSent]);
+  }, [isClicked, isSent, contact]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

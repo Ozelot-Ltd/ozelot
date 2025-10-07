@@ -647,6 +647,49 @@ export type LegalDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithoutUID<Simplify<LegalDocumentData>, "legal", Lang>;
 
 /**
+ * Content for Newsletter Success documents
+ */
+interface NewsletterSuccessDocumentData {
+  /**
+   * Logout Success field in *Newsletter Success*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: newsletter_success.logout_success
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  logout_success: prismic.RichTextField;
+
+  /**
+   * Logout success text field in *Newsletter Success*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: newsletter_success.logout_success_text
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  logout_success_text: prismic.RichTextField;
+}
+
+/**
+ * Newsletter Success document from Prismic
+ *
+ * - **API ID**: `newsletter_success`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type NewsletterSuccessDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<NewsletterSuccessDocumentData>,
+    "newsletter_success",
+    Lang
+  >;
+
+/**
  * Content for Ozelot Lab Popup documents
  */
 interface OzelotLabPopupDocumentData {
@@ -2331,6 +2374,7 @@ export type AllDocumentTypes =
   | GeneralIconDocument
   | GraphicIconDocument
   | LegalDocument
+  | NewsletterSuccessDocument
   | OzelotLabPopupDocument
   | PageDocument
   | ProjectDocument
@@ -2437,6 +2481,8 @@ declare module "@prismicio/client" {
       LegalDocumentData,
       LegalDocumentDataCategoriesItem,
       LegalDocumentDataPrivacyGroupItem,
+      NewsletterSuccessDocument,
+      NewsletterSuccessDocumentData,
       OzelotLabPopupDocument,
       OzelotLabPopupDocumentData,
       PageDocument,
