@@ -196,6 +196,7 @@
     transition: height var(--time) var(--bezier) 0s,
         background-color var(--time) var(--bezier) 0.3s,
         backdrop-filter var(--time) var(--bezier) 0.3s;
+    border-top: var(--border)
 }
 
 

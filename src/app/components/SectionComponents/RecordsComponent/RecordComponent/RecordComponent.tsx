@@ -10,6 +10,8 @@ import RecordsPlaceholder from './components/RecordsPlaceholder/RecordsPlacehold
 
 import { isSplashscreenFinishedStore } from '@/app/stores/SplashscreenIsFinished';
 
+import { useMobile } from '../../../../../../context/MobileContext';
+
 export default function RecordComponent({
   isRecordsActive,
   transitionEnd,
@@ -21,6 +23,8 @@ export default function RecordComponent({
   const [isVisible, setIsVisible] = useState(false);
   const [activeRecord, setActiveRecord] = useState('');
   const { recordArray } = useContents();
+
+  const { isMobile } = useMobile();
 
   const { isSplashscreenFinished } = isSplashscreenFinishedStore();
 
@@ -76,7 +80,7 @@ export default function RecordComponent({
         />{' '}
       </section>
       <section className={styles.rightContainer}>
-        {!currentRecord && isSplashscreenFinished ? (
+        {!currentRecord && isSplashscreenFinished && !isMobile ? (
           <div className={styles.previewContainer}>
             <RecordsPlaceholder
               releaseNames={releaseNames}
