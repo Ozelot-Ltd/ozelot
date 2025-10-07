@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ContactDocument } from '../../../../../../prismicio-types';
 import styles from './ContactForm.module.css';
 import Arrow from '@/app/components/SvgComponents/Arrow/Arrow';
@@ -21,6 +21,10 @@ export default function ContactForm({ contact }: Props) {
   const [agreement, setAgreement] = useState(false);
   const [newsletter, setNewsletter] = useState(false);
   const [isSent, setIsSent] = useState(false);
+  const [isClicked, setIsClicked] = useState(false);
+  const [buttonText, setButtonText] = useState(
+    contact.data.contact_button_text
+  );
 
   const { setIsLegalVisible } = isLegalVisibleStore();
 
@@ -43,6 +47,14 @@ export default function ContactForm({ contact }: Props) {
       [name]: value,
     }));
   };
+
+  useEffect(() => {
+    if (isClicked && !isSent) {
+      setButtonText('SENDING...');
+    } else {
+      setButtonText('THANKS FOR YOUR MESSAGE');
+    }
+  }, [isClicked, isSent]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -282,10 +294,9 @@ export default function ContactForm({ contact }: Props) {
           type="submit"
           className={`${styles.button} ${!agreement ? styles.disabled : ''}`}
           disabled={!agreement}
+          onClick={() => setIsClicked(true)}
         >
-          {!isSent
-            ? contact.data.contact_button_text
-            : 'THANKS FOR YOUR MESSAGE!'}
+          {buttonText}
           <span
             className={`${styles.arrowContainer} ${isSent ? styles.sent : ''}`}
           >
