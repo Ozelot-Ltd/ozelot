@@ -293,7 +293,7 @@ export default function ContactForm({ contact }: Props) {
         <button
           type="submit"
           className={`${styles.button} ${!agreement ? styles.disabled : ''}`}
-          disabled={!agreement}
+          disabled={!agreement || isSent}
           onClick={() => setIsClicked(true)}
         >
           {buttonText}
