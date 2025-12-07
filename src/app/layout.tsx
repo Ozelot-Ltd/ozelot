@@ -10,7 +10,6 @@ import './globals.css';
 import MainComponent from './components/MainComponent';
 import { Providers } from './components/Providers/Providers';
 
-import { BackgroundComponent } from './components/BackgroundComponent/BackgroundComponent';
 import Splashscreen from './components/Splashscreen/Splashscreen';
 
 const host = Host_Grotesk({
