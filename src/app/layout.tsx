@@ -161,7 +161,7 @@ export default async function RootLayout({
               pointerEvents: 'all',
             }}
           >
-            <BackgroundComponent />
+            {/* <BackgroundComponent /> */}
           </div>
           <Providers contentProps={contentProps}>
             <MainComponent {...settingsProps} />
