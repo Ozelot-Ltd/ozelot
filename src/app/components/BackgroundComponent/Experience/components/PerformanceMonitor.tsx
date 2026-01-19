@@ -1,14 +1,6 @@
-import dynamic from 'next/dynamic';
+// r3f-perf disabled temporarily - incompatible with Next.js 16 bundler
+// See: https://github.com/utsuboco/r3f-perf/issues
 
-// Conditionally import Perf component only in development
-export const PerformanceMonitor = dynamic(
-  () => import('r3f-perf').then((module) => module.Perf),
-  {
-    ssr: false,
-  }
-);
-
-// Wrapper component that only renders in development
-export const DevPerformanceMonitor = () => {
-  return <PerformanceMonitor position="top-left" />;
-};
+// Placeholder components that render nothing
+export const PerformanceMonitor = () => null;
+export const DevPerformanceMonitor = () => null;
