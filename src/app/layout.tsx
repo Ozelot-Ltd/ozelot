@@ -11,6 +11,7 @@ import MainComponent from './components/MainComponent';
 import { Providers } from './components/Providers/Providers';
 
 import Splashscreen from './components/Splashscreen/Splashscreen';
+import { BackgroundComponent } from './components/BackgroundComponent/BackgroundComponent';
 
 const host = Host_Grotesk({
   weight: 'variable',
@@ -160,7 +161,7 @@ export default async function RootLayout({
               pointerEvents: 'all',
             }}
           >
-            {/* <BackgroundComponent /> */}
+            <BackgroundComponent />
           </div>
           <Providers contentProps={contentProps}>
             <MainComponent {...settingsProps} />
