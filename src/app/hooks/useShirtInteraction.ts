@@ -5,11 +5,11 @@ import { useSpring } from '@react-spring/core';
 
 export const useShirtInteraction = () => {
   const { viewport } = useThree();
-  
+
   // Interaction state
   const [isDragging, setIsDragging] = useState(false);
   const [isSpinning, setIsSpinning] = useState(false);
-  
+
   // Refs for immediate state access
   const isDraggingRef = useRef(false);
   const isSpinningRef = useRef(false);
@@ -63,7 +63,7 @@ export const useShirtInteraction = () => {
         y: y * (viewport.height / 2),
       };
     },
-    [viewport]
+    [viewport],
   );
 
   // Trigger 360-degree spin animation
@@ -78,6 +78,12 @@ export const useShirtInteraction = () => {
       if (isDraggingRef.current) {
         isDraggingRef.current = false;
         setIsDragging(false);
+      }
+
+      if (direction === 'left') {
+        window.sa_event?.('left spin');
+      } else if (direction === 'right') {
+        window.sa_event?.('right spin');
       }
 
       console.log(`✅ Triggering 360-degree spin ${direction}`);
@@ -108,13 +114,15 @@ export const useShirtInteraction = () => {
           totalSpinRotation.current = targetRotation;
           isSpinningRef.current = false;
           setIsSpinning(false);
-          console.log(`Spin completed - final rotation: ${totalSpinRotation.current}`);
+          console.log(
+            `Spin completed - final rotation: ${totalSpinRotation.current}`,
+          );
         }
       };
 
       requestAnimationFrame(animateRotation);
     },
-    [setIsSpinning]
+    [setIsSpinning],
   );
 
   // Mouse/touch interaction handlers
@@ -138,18 +146,19 @@ export const useShirtInteraction = () => {
       // Detect which side of the object was touched for spin direction
       const touchWorldPos = screenToWorld(
         event.nativeEvent.clientX,
-        event.nativeEvent.clientY
+        event.nativeEvent.clientY,
       );
 
       const relativeX = touchWorldPos.x - currentPosition.current.x;
       touchSide.current = relativeX < 0 ? 'left' : 'right';
 
       setIsDragging(true);
+
       isDraggingRef.current = true;
 
       const worldPos = screenToWorld(
         event.nativeEvent.clientX,
-        event.nativeEvent.clientY
+        event.nativeEvent.clientY,
       );
 
       dragOffset.current = {
@@ -159,7 +168,7 @@ export const useShirtInteraction = () => {
 
       document.body.style.cursor = 'grabbing';
     },
-    [screenToWorld]
+    [screenToWorld],
   );
 
   const handlePointerMove = useCallback(
@@ -196,7 +205,7 @@ export const useShirtInteraction = () => {
         baseRotationY.current = 0;
       }
     },
-    [screenToWorld, isSpinning]
+    [screenToWorld, isSpinning],
   );
 
   const handlePointerUp = useCallback(() => {
@@ -206,8 +215,12 @@ export const useShirtInteraction = () => {
     const wasClick = !hasMoved.current && pressDuration < maxClickDuration;
 
     if (wasClick && !isSpinningRef.current) {
-      console.log(`Click detected on ${touchSide.current} side - triggering spin`);
+      console.log(
+        `Click detected on ${touchSide.current} side - triggering spin`,
+      );
       triggerSpin(touchSide.current);
+    } else if (hasMoved.current) {
+      window.sa_event?.(`shirt_dragged`);
     } else {
       console.log('Drag ended - returning to center');
     }
@@ -254,21 +267,21 @@ export const useShirtInteraction = () => {
     // State
     isDragging,
     isSpinning,
-    
+
     // Refs for direct access
     currentPosition,
     currentRotation,
     baseRotationY,
     totalSpinRotation,
-    
+
     // Spring values
     targetX,
     targetY,
     targetZ,
-    
+
     // Handlers
     handlePointerDown,
-    
+
     // Utility functions
     screenToWorld,
     triggerSpin,
