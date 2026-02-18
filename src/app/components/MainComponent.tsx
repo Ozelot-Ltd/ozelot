@@ -47,7 +47,7 @@ const Column: React.FC<ColumnProps> = ({
 
   return (
     <div
-      className={`${itemId === 'services' ? styles.bar : styles.column} ${itemId !== 'services' && isActive ? styles.fullWidth : ''} ${isActive && itemId === 'services' ? styles.fullHeight : ''} `}
+      className={`${itemId === 'records' ? styles.bar : styles.column} ${itemId !== 'records' && isActive ? styles.fullWidth : ''} ${isActive && itemId === 'records' ? styles.fullHeight : ''} `}
       id={itemId}
     >
       <div
@@ -151,14 +151,14 @@ export default function MainComponent({
     } else if (pathname.includes('studio')) {
       setIsClicked('studio');
       setSide('left');
-    } else if (pathname.includes('records')) {
-      setIsClicked('records');
+    } else if (pathname.includes('services')) {
+      setIsClicked('services');
       setSide('right');
     } else if (pathname.includes('contact')) {
       setIsClicked('contact');
       setSide('right');
-    } else if (pathname.includes('services')) {
-      setIsClicked('services');
+    } else if (pathname.includes('records')) {
+      setIsClicked('records');
       setSide('bottom');
     }
   }, [pathname, setIsClicked]);
@@ -183,8 +183,7 @@ export default function MainComponent({
     }
     // Opening a new section (but wait if any transition is in progress)
     else {
-      if (isClicked === 'services' && lowercaseText !== 'services') {
-        // First close services
+      if (isClicked === 'records' && lowercaseText !== 'records') {
         setIsClicked('');
         setSide('');
 
@@ -193,7 +192,7 @@ export default function MainComponent({
           setSide(clickedSide);
           router.push(`/${lowercaseText}`);
         }, 500);
-      } else if (isClicked !== '' && lowercaseText === 'services') {
+      } else if (isClicked !== '' && lowercaseText === 'records') {
         setIsClicked('');
         setSide('');
 
@@ -279,18 +278,13 @@ export default function MainComponent({
             <Column
               item={right[0]}
               side="right"
-              isActive={
-                isClicked === right[0]?.navigation_link.text?.toLowerCase() &&
-                side === 'right'
-              }
-              onClick={() =>
-                handleClick(right[0]?.navigation_link.text, 'right')
-              }
+              isActive={isClicked === 'services' && side === 'right'}
+              onClick={() => handleClick('services', 'right')}
               transitionEnd={transitionEnd}
               setTransitionEnd={setTransitionEnd}
             >
-              <RecordsComponent
-                isRecordsActive={isRecordsActive}
+              <ServicesComponent
+                isServicesActive={isServicesActive}
                 transitionEnd={transitionEnd}
               />
             </Column>
@@ -300,13 +294,8 @@ export default function MainComponent({
             <Column
               item={right[1]}
               side="right"
-              isActive={
-                isClicked === right[1]?.navigation_link.text?.toLowerCase() &&
-                side === 'right'
-              }
-              onClick={() =>
-                handleClick(right[1]?.navigation_link.text, 'right')
-              }
+              isActive={isClicked === 'contact' && side === 'right'}
+              onClick={() => handleClick('contact', 'right')}
               transitionEnd={transitionEnd}
               setTransitionEnd={setTransitionEnd}
             >
@@ -320,23 +309,18 @@ export default function MainComponent({
           {/************ Services ************/}
 
           <div
-            className={`${styles.nav} ${styles.servicesBar} ${isClicked === 'services' ? styles.background : ''}`}
+            className={`${styles.nav} ${styles.servicesBar} ${isClicked === 'records' ? styles.background : ''}`}
           >
             <Column
               item={right[2]}
               side="bottom"
-              isActive={
-                isClicked === right[2]?.navigation_link.text?.toLowerCase() &&
-                side === 'bottom'
-              }
-              onClick={() =>
-                handleClick(right[2]?.navigation_link.text, 'bottom')
-              }
+              isActive={isClicked === 'records' && side === 'bottom'}
+              onClick={() => handleClick('records', 'bottom')}
               transitionEnd={transitionEnd}
               setTransitionEnd={setTransitionEnd}
             >
-              <ServicesComponent
-                isServicesActive={isServicesActive}
+              <RecordsComponent
+                isRecordsActive={isRecordsActive}
                 transitionEnd={transitionEnd}
               />
             </Column>
