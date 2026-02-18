@@ -136,7 +136,7 @@ export default function MainComponent({
         const width = containerRef.current.offsetWidth;
         document.documentElement.style.setProperty(
           '--container-width',
-          `${width}px`
+          `${width}px`,
         );
       }
     };
@@ -165,7 +165,7 @@ export default function MainComponent({
 
   const handleClick = (
     text: string | undefined | null,
-    clickedSide: 'left' | 'right' | 'bottom'
+    clickedSide: 'left' | 'right' | 'bottom',
   ) => {
     if (!text) return;
     const lowercaseText = text.toLowerCase();
