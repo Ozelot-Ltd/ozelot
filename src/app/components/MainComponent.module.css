@@ -134,7 +134,7 @@
 }
 
 .section {
-    overflow: hidden;
+    overflow: scroll;
 }
 
 
