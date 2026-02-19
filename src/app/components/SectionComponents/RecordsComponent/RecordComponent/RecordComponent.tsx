@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import styles from './RecordComponent.module.css';
 import { useContents } from '../../../../../../context/ContentContext';
 import Record from './components/Record';
@@ -19,8 +19,6 @@ export default function RecordComponent({
   isRecordsActive: boolean;
   transitionEnd?: boolean;
 }) {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [isVisible, setIsVisible] = useState(false);
   const [activeRecord, setActiveRecord] = useState('');
   const { recordArray } = useContents();
 
@@ -34,10 +32,6 @@ export default function RecordComponent({
       .replace(/\b(EP|LP)\b/g, '')
       .trim(),
   );
-  useEffect(() => {
-    setIsVisible(isRecordsActive && (transitionEnd ?? false));
-  }, [isRecordsActive, transitionEnd]);
-
   const sortedArray = recordArray.sort((a, b) => {
     const numA = a.data.release_number ?? 0;
     const numB = b.data.release_number ?? 0;
@@ -91,7 +85,7 @@ export default function RecordComponent({
         ) : currentRecord?.record_images &&
           currentRecord.record_images.length > 0 ? (
           <div className={styles.imageContainer}>
-            <ImageComponent currentRecord={currentRecord} />{' '}
+            <ImageComponent key={activeRecord} currentRecord={currentRecord} />{' '}
           </div>
         ) : null}
       </section>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
   ProjectDocumentData,
   RecordDocumentData,
@@ -32,23 +32,16 @@ export default function ImageComponent({
       ? currentProject?.gallery?.length || 0
       : 0;
 
-  useEffect(() => {
-    setCurrentIndex(0);
-  }, [currentProject, currentRecord]);
-
-  // Reset loading state when index changes
-  useEffect(() => {
-    setIsLoading(true);
-  }, [currentIndex]);
-
   const nextImage = () => {
     if (totalImages > 0) {
+      setIsLoading(true);
       setCurrentIndex((prevIndex) => (prevIndex + 1) % totalImages);
     }
   };
 
   const prevImage = () => {
     if (totalImages > 0) {
+      setIsLoading(true);
       setCurrentIndex(
         (prevIndex) => (prevIndex - 1 + totalImages) % totalImages
       );

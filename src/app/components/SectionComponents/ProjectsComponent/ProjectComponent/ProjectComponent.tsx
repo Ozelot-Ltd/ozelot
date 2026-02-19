@@ -72,7 +72,7 @@ export default function ProjectComponent() {
               />
             </div>
           )}
-          {currentProject && <ImageComponent currentProject={currentProject} />}
+          {currentProject && <ImageComponent key={activeProject} currentProject={currentProject} />}
         </div>
       </section>
     </div>

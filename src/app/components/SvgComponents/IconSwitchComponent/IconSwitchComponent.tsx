@@ -12,22 +12,18 @@ type Props = {
 };
 
 export default function IconSwitchComponent({ currentProject }: Props) {
-  const Icon = () => {
-    switch (currentProject?.is_main_discipline) {
-      case 'direction':
-        return <ArtDirection />;
-      case '3d':
-        return <ThreeD />;
-      case 'web':
-        return <WebIcon />;
-      case 'general':
-        return <GeneralIcon />;
-      case 'sounddesign':
-        return <SoundDesignIcon />;
-      default:
-        return null;
-    }
-  };
-
-  return <>{Icon()}</>;
+  switch (currentProject?.is_main_discipline) {
+    case 'direction':
+      return <ArtDirection />;
+    case '3d':
+      return <ThreeD />;
+    case 'web':
+      return <WebIcon />;
+    case 'general':
+      return <GeneralIcon />;
+    case 'sounddesign':
+      return <SoundDesignIcon />;
+    default:
+      return null;
+  }
 }
