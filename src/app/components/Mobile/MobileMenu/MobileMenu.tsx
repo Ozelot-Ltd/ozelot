@@ -51,14 +51,21 @@ export default function MobileMenu({
 
   const navigationArray = [...left, ...right];
 
+  const menuOrder = ['services', 'projects', 'studio', 'contact', 'records'];
+
   return (
     <nav className={styles.navbar}>
       <ul className={styles.navlist}>
         {navigationArray
           .sort((a, b) => {
-            const numA = a.navigation_link_number ?? 0;
-            const numB = b.navigation_link_number ?? 0;
-            return numA - numB;
+            const nameA = a.navigation_link?.text?.toLowerCase() ?? '';
+            const nameB = b.navigation_link?.text?.toLowerCase() ?? '';
+            const indexA = menuOrder.indexOf(nameA);
+            const indexB = menuOrder.indexOf(nameB);
+            return (
+              (indexA === -1 ? menuOrder.length : indexA) -
+              (indexB === -1 ? menuOrder.length : indexB)
+            );
           })
           .map((item, index) => (
             <li
