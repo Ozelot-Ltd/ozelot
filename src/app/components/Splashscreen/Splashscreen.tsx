@@ -43,6 +43,7 @@ export default function Splashscreen() {
 
       tl.to(textRef.current, {
         y: '0%',
+        rotateY: '0deg',
         duration: 0.6,
         ease: 'power2.out',
       })
@@ -52,6 +53,8 @@ export default function Splashscreen() {
 
         .to(textRef.current, {
           y: '-100%',
+          rotateY: '-90deg',
+
           duration: 0.3,
           ease: 'power2.in',
           delay: 0.6,

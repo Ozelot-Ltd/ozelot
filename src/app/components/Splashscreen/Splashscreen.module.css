@@ -25,11 +25,12 @@
     overflow: hidden;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%)
+    transform: translate(-50%, -50%);
+
 }
 
 .text img {
-    transform: translateY(120%);
+    transform: translateY(120%) rotateY(145deg);
 }
 
 /* Mobile */
