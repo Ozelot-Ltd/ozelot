@@ -9,6 +9,7 @@ import type { GLTF } from 'three-stdlib';
 import { useShirtInteraction } from '@/app/hooks/useShirtInteraction';
 import { SCENE_CONFIG } from '../config/sceneConfig';
 import { BoneConfig } from '@/types';
+import { isSplashscreenFinishedStore } from '@/app/stores/SplashscreenIsFinished';
 
 type GLTFResult = GLTF & {
   nodes: Record<string, THREE.Object3D>;
@@ -55,6 +56,7 @@ const BONE_CONFIGS: BoneConfig[] = [
 ];
 
 export const ShirtM = () => {
+  const setIsSceneLoaded = isSplashscreenFinishedStore((s) => s.setIsSceneLoaded);
   const { scene } = useGLTF('/models/Shirt-transformed.glb');
   const clone = React.useMemo(() => SkeletonUtils.clone(scene), [scene]);
   const { nodes } = useGraph(clone) as unknown as GLTFResult;
@@ -131,8 +133,10 @@ export const ShirtM = () => {
     try {
       wiggleRigRef.current = new WiggleRig(skinnedMesh.skeleton);
       console.log('WiggleRig created successfully');
+      setIsSceneLoaded(true);
     } catch (error) {
       console.error('Failed to create WiggleRig:', error);
+      setIsSceneLoaded(true);
     }
 
     return () => {

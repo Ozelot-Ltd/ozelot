@@ -15,7 +15,6 @@ import StudioComponent from './SectionComponents/StudioComponent/StudioComponent
 import ContactComponent from './SectionComponents/ContactComponent/ContactComponent';
 import RecordsComponent from './SectionComponents/RecordsComponent/RecordsComponent';
 import ServicesComponent from './SectionComponents/ServicesComponent/ServicesComponent';
-import AIPopup from './AIPopup/AIPopup';
 
 import { isClickedStore } from '../stores/IsClickedStore';
 
@@ -213,7 +212,7 @@ export default function MainComponent({
       {isDesktop ? (
         <div className={styles.container}>
           {isNewsletterVisible && <NewsletterSuccess />}
-          <AIPopup />
+
           <div className={styles.logoContainer}>
             <div
               onClick={() => {

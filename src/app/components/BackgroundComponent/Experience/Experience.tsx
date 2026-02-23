@@ -11,6 +11,7 @@ import { useFadeAnimation } from '@/app/hooks/useFadeAnimation';
 import { isClickedStore } from '@/app/stores/IsClickedStore';
 import { SCENE_CONFIG } from './config/sceneConfig';
 
+
 function ShirtGroup() {
   const groupRef = useRef<THREE.Group>(null);
   const isClicked = isClickedStore((state) => state.isClicked);

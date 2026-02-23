@@ -15,9 +15,10 @@
     top: 0;
     background-color: var(--lightgrey);
     height: 100%;
-    transform: scaleX(0);
+    transform: scaleX(0) rotateX(15deg);
     transform-origin: left;
     will-change: transform;
+    border-right: 20px solid var(--black);
 }
 
 .text {

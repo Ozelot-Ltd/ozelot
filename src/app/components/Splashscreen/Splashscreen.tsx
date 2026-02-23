@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useEffect } from 'react';
 import styles from './Splashscreen.module.css';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
@@ -13,14 +13,17 @@ export default function Splashscreen() {
   const splashscreenRef = useRef<HTMLDivElement>(null);
   const animationsquareRefs = useRef<HTMLDivElement[] | null>([]);
   const textRef = useRef<HTMLImageElement>(null);
-  const { setIsSplashscreenFinished } = isSplashscreenFinishedStore();
+  const { setIsSplashscreenFinished, isSceneLoaded } =
+    isSplashscreenFinishedStore();
+  const part2Ref = useRef<gsap.core.Timeline | null>(null);
 
   const count = 6;
   const sliceWidth = 100 / count;
 
+  // Part 1: squares animate in, then trigger scene loading
   useGSAP(
     () => {
-      if (!animationsquareRefs.current || !textRef.current) return;
+      if (!animationsquareRefs.current) return;
 
       const tl = gsap.timeline();
 
@@ -30,41 +33,44 @@ export default function Splashscreen() {
           el,
           {
             scaleX: 1,
-            duration: 0.6,
+            duration: 0.3,
             ease: 'power2.out',
+            delay: 0.8,
+            borderWidth: '0.5px',
+            rotateX: 0,
           },
           index * 0.08,
-        ).to(splashscreenRef.current, {
-          backgroundColor: 'transparent',
-          duration: 0,
-          delay: 0.15,
-        });
+        );
       });
 
-      tl.to(textRef.current, {
-        y: '0%',
-        rotateY: '0deg',
-        duration: 0.6,
-        ease: 'power2.out',
-      })
-        .call(() => {
-          setIsSplashscreenFinished(true);
-        })
+      tl.call(() => {
+        setIsSplashscreenFinished(true);
+      });
 
-        .to(textRef.current, {
-          y: '-100%',
-          rotateY: '-90deg',
-
-          duration: 0.3,
-          ease: 'power2.in',
-          delay: 0.6,
+      const part2 = gsap.timeline({ paused: true });
+      part2
+        .to(splashscreenRef.current, {
+          backgroundColor: 'transparent',
+          duration: 0,
         })
         .to(splashscreenRef.current, {
           y: '-100%',
+          ease: 'power2.out',
+          duration: 0.6,
+          delay: 0.2,
         });
+
+      part2Ref.current = part2;
     },
     { scope: splashscreenRef },
   );
+
+  // Play part 2 when scene is loaded
+  useEffect(() => {
+    if (isSceneLoaded && part2Ref.current) {
+      part2Ref.current.play();
+    }
+  }, [isSceneLoaded]);
 
   return (
     <div className={styles.splashscreen} ref={splashscreenRef}>
@@ -80,16 +86,6 @@ export default function Splashscreen() {
           }}
         ></div>
       ))}
-
-      <div className={styles.text}>
-        <Image
-          alt="logo"
-          ref={textRef}
-          src={'/svg/ozelot_logo.svg'}
-          width={150}
-          height={150}
-        />
-      </div>
     </div>
   );
 }
