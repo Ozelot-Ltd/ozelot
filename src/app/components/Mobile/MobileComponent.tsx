@@ -19,7 +19,6 @@ import {
   SettingsDocumentDataNavigationItemsRightItem,
   Simplify,
 } from '../../../../prismicio-types';
-import AIPopup from '../AIPopup/AIPopup';
 
 export default function MobileComponent({
   left,
@@ -115,7 +114,6 @@ export default function MobileComponent({
           setIsClicked={setIsClicked}
         />
       </div>{' '}
-      <AIPopup />
       <div
         onTransitionEnd={() => setTransitionEnd(true)}
         className={`${mobileStyles.menu} ${isNavigationActive && isClicked === '' ? mobileStyles.menuOpen : ''}`}

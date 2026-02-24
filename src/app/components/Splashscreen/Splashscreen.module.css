@@ -6,111 +6,38 @@
     width: 100svw;
     pointer-events: none;
     z-index: 1000;
-    display: flex;
     background-color: var(--black);
     overflow: hidden;
+    border: 0.5px solid var(--black)
 }
 
-.splashscreen * {
-    color: var(--lightgrey);
-    border: none;
-}
-
-.container {
-    height: 100%;
-    width: 100%;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 1rem 2rem;
-}
-
-
-.containerHeader {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-}
-
-
-.titleHeader {
-    display: flex;
-}
-
-.title {
-    font-variation-settings: var(--text-weight);
-    font-size: calc(0.5rem + 0.5vw);
-    text-align: center;
-}
-
-.countWrapper {
-    position: relative;
-    width: 180px;
-    height: 360px;
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-    will-change: transform;
-}
-
-.count {
-    position: relative;
-    width: 1080px;
-    height: 360px;
-    display: flex;
-    justify-content: space-between;
-    transform: translateX(-1080px);
-    will-change: transform;
-}
-
-.digit {
-    position: relative;
-    width: 180px;
-    height: 360px;
-}
-
-.digit h1 {
+.animationsquare {
     position: absolute;
+    top: 0;
+    background-color: var(--lightgrey);
+    height: 100%;
+    transform: scaleX(0) rotateX(15deg);
+    transform-origin: left;
+    will-change: transform;
+    border-right: 20px solid var(--black);
+}
+
+.text {
+    position: absolute;
+    overflow: hidden;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: max-content;
-    font-size: clamp(5rem, 16vw, 300px);
-    font-weight: lighter;
-    line-height: 1;
+
+}
+
+.text img {
+    transform: translateY(120%) rotateY(145deg);
 }
 
 /* Mobile */
 /* Up to 768px */
-@media (max-width: 48rem) {
-    .container {
-        height: 100%;
-        width: 100%;
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        padding: 0.5rem 0.5rem;
-    }
-
-    .containerHeader {
-        display: flex;
-        justify-content: space-between;
-        flex-direction: column;
-        width: 100%;
-        gap: calc(0.5rem + 0.5vw);
-    }
-
-    .containerHeader h2 {
-        font-variation-settings: var(--text-weight);
-        font-size: calc(1rem + 0.8vw);
-        text-align: center;
-        text-align: left;
-    }
-
-    .mobileCount h1 {
-        font-size: 20vw;
-    }
-}
+@media (max-width: 48rem) {}
 
 /* Tablet */
 /* 768px to 1184px */
