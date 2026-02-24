@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 import Logo from '../SvgComponents/Logo/Logo';
 
@@ -17,12 +17,12 @@ import { GroupField } from '@prismicio/client';
 import {
   SettingsDocumentDataNavigationItemsLeftItem,
   SettingsDocumentDataNavigationItemsRightItem,
-  Simplify,
+  Simplify
 } from '../../../../prismicio-types';
 
 export default function MobileComponent({
   left,
-  right,
+  right
 }: {
   left: GroupField<Simplify<SettingsDocumentDataNavigationItemsLeftItem>>;
   right: GroupField<Simplify<SettingsDocumentDataNavigationItemsRightItem>>;
