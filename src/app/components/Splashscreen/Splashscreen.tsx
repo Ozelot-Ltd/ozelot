@@ -5,7 +5,6 @@ import styles from './Splashscreen.module.css';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { isSplashscreenFinishedStore } from '@/app/stores/SplashscreenIsFinished';
-import Image from 'next/image';
 
 gsap.registerPlugin(useGSAP);
 
