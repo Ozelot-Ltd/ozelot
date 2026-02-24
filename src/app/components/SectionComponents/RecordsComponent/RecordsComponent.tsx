@@ -11,12 +11,7 @@ export default function RecordsComponent({
 }) {
   return (
     <MainContainer>
-      {isRecordsActive && transitionEnd && (
-        <RecordComponent
-          isRecordsActive={isRecordsActive}
-          transitionEnd={transitionEnd}
-        />
-      )}
+      {isRecordsActive && transitionEnd && <RecordComponent />}
     </MainContainer>
   );
 }
