@@ -12,13 +12,7 @@ import { isSplashscreenFinishedStore } from '@/app/stores/SplashscreenIsFinished
 
 import { useMobile } from '../../../../../../context/MobileContext';
 
-export default function RecordComponent({
-  isRecordsActive,
-  transitionEnd,
-}: {
-  isRecordsActive: boolean;
-  transitionEnd?: boolean;
-}) {
+export default function RecordComponent() {
   const [activeRecord, setActiveRecord] = useState('');
   const { recordArray } = useContents();
 
@@ -30,7 +24,7 @@ export default function RecordComponent({
     record.data.record_title
       ?.replace(/_/g, ' ')
       .replace(/\b(EP|LP)\b/g, '')
-      .trim(),
+      .trim()
   );
   const sortedArray = recordArray.sort((a, b) => {
     const numA = a.data.release_number ?? 0;
@@ -39,7 +33,7 @@ export default function RecordComponent({
   });
 
   const currentRecord = recordArray.find(
-    (record) => record.id === activeRecord,
+    (record) => record.id === activeRecord
   )?.data;
 
   return (
@@ -85,7 +79,10 @@ export default function RecordComponent({
         ) : currentRecord?.record_images &&
           currentRecord.record_images.length > 0 ? (
           <div className={styles.imageContainer}>
-            <ImageComponent key={activeRecord} currentRecord={currentRecord} />{' '}
+            <ImageComponent
+              key={activeRecord}
+              currentRecord={currentRecord}
+            />{' '}
           </div>
         ) : null}
       </section>
