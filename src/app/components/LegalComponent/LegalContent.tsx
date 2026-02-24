@@ -1,7 +1,5 @@
 'use client';
 
-import React from 'react';
-
 import styles from './LegalContent.module.css';
 import { LegalDocument } from '../../../../prismicio-types';
 import { PrismicRichText } from '@prismicio/react';
@@ -40,7 +38,7 @@ export default function LegalContent({ legal }: Props) {
                 style={{
                   display: 'flex',
                   alignItems: 'center',
-                  gap: `${!isMobile ? '0.5vw' : '2vw'}`,
+                  gap: `${!isMobile ? '0.5vw' : '2vw'}`
                 }}
               >
                 <PrismicNextLink field={legal.data.agb_download} />

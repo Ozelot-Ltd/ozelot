@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState, useCallback } from 'react';
+import { useRef, useEffect, useState, useCallback } from 'react';
 
 import styles from './Service.module.css';
 import { ServiceDocument } from '../../../../../../../prismicio-types';

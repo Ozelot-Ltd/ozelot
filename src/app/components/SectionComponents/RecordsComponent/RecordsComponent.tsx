@@ -1,12 +1,10 @@
-import React from 'react';
-
 import RecordComponent from './RecordComponent/RecordComponent';
 
 import MainContainer from '../MainContainer';
 
 export default function RecordsComponent({
   isRecordsActive,
-  transitionEnd,
+  transitionEnd
 }: {
   isRecordsActive: boolean;
   transitionEnd?: boolean;

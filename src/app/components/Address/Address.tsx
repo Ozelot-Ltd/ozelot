@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { useContents } from '../../../../context/ContentContext';
 import { PrismicRichText } from '@prismicio/react';
 import { PrismicNextLink } from '@prismicio/next';

@@ -1,11 +1,10 @@
-import React from 'react';
 import MainContainer from '../MainContainer';
 
 import ProjectComponent from './ProjectComponent/ProjectComponent';
 
 export default function ProjectsComponent({
   isProjectsActive,
-  transitionEnd,
+  transitionEnd
 }: {
   isProjectsActive: boolean;
   transitionEnd: boolean | undefined;

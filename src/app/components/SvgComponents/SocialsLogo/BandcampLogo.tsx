@@ -1,9 +1,7 @@
-import React from 'react';
-
 export default function BandcampLogo({
   width = 26,
   height = 26,
-  fill = 'var(--black)',
+  fill = 'var(--black)'
 }: {
   width?: number;
   height?: number;

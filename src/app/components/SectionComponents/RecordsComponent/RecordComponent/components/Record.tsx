@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
 import styles from './Record.module.css';
 
@@ -15,7 +15,7 @@ import Arrow from '@/app/components/SvgComponents/Arrow/Arrow';
 export default function Record({
   record,
   activeRecord,
-  index,
+  index
 }: {
   record: RecordDocument;
   activeRecord: string;
@@ -41,7 +41,7 @@ export default function Record({
           backgroundImage: `url(${activeRecord === record.id ? record.data.record_images?.[0]?.record_image?.url : ''})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
+          backgroundRepeat: 'no-repeat'
         }}
       >
         <div className={styles.catalogContainer}>

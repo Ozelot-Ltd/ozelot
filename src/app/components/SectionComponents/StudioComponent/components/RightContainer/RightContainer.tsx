@@ -1,5 +1,3 @@
-import React from 'react';
-
 import styles from './RightContainer.module.css';
 
 import { useContents } from '../../../../../../../context/ContentContext';

@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import {
   ProjectDocumentData,
   RecordDocumentData,
-  Simplify,
+  Simplify
 } from '../../../../../../prismicio-types';
 
 import { PrismicNextImage } from '@prismicio/next';
@@ -16,7 +16,7 @@ import LoadingComponent from './LoadingComponent/LoadingComponent';
 
 export default function ImageComponent({
   currentRecord,
-  currentProject,
+  currentProject
 }: {
   currentRecord?: Simplify<RecordDocumentData> | undefined;
   currentProject?: Simplify<ProjectDocumentData> | undefined;

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 
@@ -35,7 +35,7 @@ export default function MouseFollowSVG() {
         x: x - image.getBoundingClientRect().width / 10,
         y: y - image.getBoundingClientRect().height / 10,
         duration: 1.5,
-        ease: 'power2.out',
+        ease: 'power2.out'
       });
     };
 
@@ -67,7 +67,7 @@ export default function MouseFollowSVG() {
         overflow: 'hidden',
         top: '0',
         left: '0',
-        zIndex: '1',
+        zIndex: '1'
       }}
     >
       <Image

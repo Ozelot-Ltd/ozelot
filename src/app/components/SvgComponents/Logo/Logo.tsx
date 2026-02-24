@@ -1,12 +1,10 @@
 'use client';
 
-import React from 'react';
-
 import styles from './Logo.module.css';
 
 export default function Logo({
   width,
-  height,
+  height
 }: {
   width?: string;
   height?: string;

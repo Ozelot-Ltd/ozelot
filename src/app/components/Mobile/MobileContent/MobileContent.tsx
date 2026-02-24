@@ -1,7 +1,5 @@
 'use client';
 
-import React from 'react';
-
 import RecordsComponent from '../../SectionComponents/RecordsComponent/RecordsComponent';
 import ServicesComponent from '../../SectionComponents/ServicesComponent/ServicesComponent';
 import ProjectsComponent from '../../SectionComponents/ProjectsComponent/ProjectsComponent';
@@ -23,7 +21,7 @@ export default function MobileContent({
   isStudioActive,
   isContactActive,
   isServicesActive,
-  transitionEnd,
+  transitionEnd
 }: MobileContentProps) {
   return (
     <>

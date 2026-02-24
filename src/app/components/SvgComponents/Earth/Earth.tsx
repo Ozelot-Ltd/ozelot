@@ -1,10 +1,8 @@
-import React from 'react';
-
 export default function Earth({
   height,
   width,
   fill = 'var(--black)',
-  strokeWidth = 3,
+  strokeWidth = 3
 }: {
   height?: string;
   width?: string;

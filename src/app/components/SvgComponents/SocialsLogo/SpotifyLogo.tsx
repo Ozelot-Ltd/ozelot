@@ -1,11 +1,9 @@
 'use client';
 
-import React from 'react';
-
 export default function SpotifyLogo({
   fill,
   width = 24,
-  height = 24,
+  height = 24
 }: {
   fill?: string;
   width?: number;

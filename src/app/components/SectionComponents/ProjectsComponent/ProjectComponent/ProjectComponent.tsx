@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import styles from '../../RecordsComponent/RecordComponent/RecordComponent.module.css';
 
@@ -72,7 +72,12 @@ export default function ProjectComponent() {
               />
             </div>
           )}
-          {currentProject && <ImageComponent key={activeProject} currentProject={currentProject} />}
+          {currentProject && (
+            <ImageComponent
+              key={activeProject}
+              currentProject={currentProject}
+            />
+          )}
         </div>
       </section>
     </div>

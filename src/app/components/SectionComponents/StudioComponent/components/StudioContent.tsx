@@ -1,7 +1,5 @@
 'use client';
 
-import React from 'react';
-
 import { useContents } from '../../../../../../context/ContentContext';
 import { PrismicRichText } from '@prismicio/react';
 

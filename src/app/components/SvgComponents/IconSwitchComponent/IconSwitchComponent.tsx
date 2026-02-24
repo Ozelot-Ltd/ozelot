@@ -1,4 +1,3 @@
-import React from 'react';
 import { ProjectDocumentData } from '../../../../../prismicio-types';
 
 import ArtDirection from '../ArtDirection/ArtDirection';

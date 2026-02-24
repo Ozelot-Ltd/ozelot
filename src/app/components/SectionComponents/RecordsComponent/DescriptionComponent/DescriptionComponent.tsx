@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   ProjectDocumentData,
   RecordDocumentData,
-  Simplify,
+  Simplify
 } from '../../../../../../prismicio-types';
 
 import Earth from '@/app/components/SvgComponents/Earth/Earth';
@@ -20,7 +20,7 @@ import { useMobile } from '../../../../../../context/MobileContext';
 export default function DescriptionComponent({
   currentProject,
   currentRecord,
-  styles,
+  styles
 }: {
   currentRecord?: Simplify<RecordDocumentData> | undefined;
   currentProject?: Simplify<ProjectDocumentData> | undefined;

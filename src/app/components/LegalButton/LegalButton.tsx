@@ -1,4 +1,3 @@
-import React from 'react';
 import Arrow from '../SvgComponents/Arrow/Arrow';
 import FadeIn from '../FadeIn/FadeIn';
 
@@ -15,7 +14,7 @@ export default function LegalButton() {
         alignItems: 'center',
         justifyContent: 'center',
         cursor: 'pointer',
-        gap: 'calc(0.2rem + 0.2vw)',
+        gap: 'calc(0.2rem + 0.2vw)'
       }}
       delay={0.8}
       onClick={() => {

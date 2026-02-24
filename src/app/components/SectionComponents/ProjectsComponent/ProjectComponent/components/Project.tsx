@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef, useEffect } from 'react';
+import { useRef, useEffect } from 'react';
 import { ProjectDocument } from '../../../../../../../prismicio-types';
 
 import styles from './Project.module.css';
@@ -54,7 +54,7 @@ export default function Project({ project, activeProject, index }: Props) {
                 width: '100%',
                 height: '100%',
                 objectFit: 'cover',
-                zIndex: -1,
+                zIndex: -1
               }}
             >
               <source
@@ -74,7 +74,7 @@ export default function Project({ project, activeProject, index }: Props) {
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 backgroundRepeat: 'no-repeat',
-                zIndex: -1,
+                zIndex: -1
               }}
             />
           ))}

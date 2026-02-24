@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { useContents } from '../../../../context/ContentContext';
 import LegalContent from './LegalContent';
 

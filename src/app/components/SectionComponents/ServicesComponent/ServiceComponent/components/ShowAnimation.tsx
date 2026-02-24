@@ -1,4 +1,3 @@
-import React from 'react';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 
 type Props = {
@@ -10,7 +9,7 @@ type Props = {
 export default function ShowAnimation({
   showElement,
   serviceType,
-  lottieSources,
+  lottieSources
 }: Props) {
   if (showElement && serviceType && lottieSources[serviceType]) {
     return <DotLottieReact autoplay loop src={lottieSources[serviceType]} />;

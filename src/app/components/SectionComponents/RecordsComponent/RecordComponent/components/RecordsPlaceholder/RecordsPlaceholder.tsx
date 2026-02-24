@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import styles from './RecordsPlaceholder.module.css';
 import { RecordDocument } from '../../../../../../../../prismicio-types';
 import { initPhysics } from './Matter';
@@ -14,7 +14,7 @@ type RecordsPlaceholderProps = {
 
 export default function RecordsPlaceholder({
   recordArray,
-  setActiveRecord,
+  setActiveRecord
 }: RecordsPlaceholderProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const dropzoneRef = useRef<HTMLDivElement>(null);
@@ -81,7 +81,7 @@ export default function RecordsPlaceholder({
               onMouseLeave={() => setHoveredIndex(null)}
               style={{
                 backgroundImage: `${hoveredIndex === displayIndex ? `url("${imageUrl}")` : `url("${displayIndex % 2 === 0 ? evenURL : oddURL}")`}`,
-                transition: 'background-image 0.2s var(--bezier',
+                transition: 'background-image 0.2s var(--bezier'
               }}
               onMouseDown={() => setIsDragging(true)}
               onMouseUp={() => setIsDragging(false)}

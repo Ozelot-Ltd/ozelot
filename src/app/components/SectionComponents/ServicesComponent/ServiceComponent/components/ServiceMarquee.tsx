@@ -1,5 +1,3 @@
-import React from 'react';
-
 import Marquee from 'react-fast-marquee';
 import Image from 'next/image';
 import styles from './ServiceMarquee.module.css';
@@ -19,7 +17,7 @@ export default function ServiceMarquee() {
             overflow: 'hidden',
             display: 'flex',
             alignItems: 'center',
-            width: '200rem',
+            width: '200rem'
           }}
         >
           <div className={styles.imageContainer}>

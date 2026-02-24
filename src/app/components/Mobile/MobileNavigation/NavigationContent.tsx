@@ -1,7 +1,5 @@
 'use client';
 
-import React from 'react';
-
 import { MobileNavigationProps } from './MobileNavigation';
 
 import styles from './MobileNavigation.module.css';
@@ -12,7 +10,7 @@ export default function NavigationContent({
   isNavigationActive,
   setIsNavigationActive,
   isClicked = '',
-  setIsClicked,
+  setIsClicked
 }: MobileNavigationProps) {
   const handleClick = () => {
     if (setIsNavigationActive) {

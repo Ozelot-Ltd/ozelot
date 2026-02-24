@@ -1,6 +1,5 @@
 'use client';
 
-import React from 'react';
 import styles from './Contact.module.css';
 import { useContents } from '../../../../../../context/ContentContext';
 import { PrismicRichText } from '@prismicio/react';
