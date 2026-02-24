@@ -8,9 +8,8 @@ import {
   Img,
   Link,
   Row,
-  Column,
+  Column
 } from '@react-email/components';
-import * as React from 'react';
 
 import { mailSocials } from './mailSocials';
 // import { projectLinks } from './projectLinks';
@@ -34,7 +33,7 @@ export default function ContactFormMain(formData: FormData) {
           fallbackFontFamily={['Arial', 'Helvetica', 'sans-serif']}
           webFont={{
             url: 'https://fonts.googleapis.com/css2?family=Host+Grotesk:wght@400;700&display=swap',
-            format: 'woff2',
+            format: 'woff2'
           }}
           fontWeight={400}
           fontStyle="normal"
@@ -130,7 +129,7 @@ export default function ContactFormMain(formData: FormData) {
                 ...addressStyle,
                 fontWeight: '600',
                 fontSize: '16px',
-                width: '100%',
+                width: '100%'
               }}
             >
               Ozelot Studios
@@ -140,7 +139,7 @@ export default function ContactFormMain(formData: FormData) {
                 ...addressStyle,
                 fontWeight: '300',
                 fontSize: '12px',
-                width: '100%',
+                width: '100%'
               }}
             >
               Flüelastrasse 6
@@ -167,7 +166,7 @@ const html = {
   width: '100%',
   padding: '0px',
   margin: '0px',
-  fontFamily: 'Host Grotesk, Arial, Helvetica, sans-serif',
+  fontFamily: 'Host Grotesk, Arial, Helvetica, sans-serif'
 };
 
 const body = {
@@ -176,7 +175,7 @@ const body = {
   maxWidth: '700px',
   backgroundColor: 'rgba(247, 247, 247,1)',
   backgroundImage:
-    'url(https://images.prismic.io/ozelot/aAoCQ_IqRLdaBkLI_mailbg.png?auto=format,compress)',
+    'url(https://images.prismic.io/ozelot/aAoCQ_IqRLdaBkLI_mailbg.png?auto=format,compress)'
 };
 
 const mainHeading = {
@@ -185,7 +184,7 @@ const mainHeading = {
   padding: '0px',
   fontSize: '54px',
   lineHeight: '60px',
-  color: '#545454',
+  color: '#545454'
 };
 
 // const subHeading = {
@@ -203,7 +202,7 @@ const greeting = {
   padding: '0px',
   fontSize: '20px',
   lineHeight: '24px',
-  color: '#545454',
+  color: '#545454'
 };
 
 const text = {
@@ -213,7 +212,7 @@ const text = {
   paddingTop: '12px',
   fontSize: '14px',
   lineHeight: '24px',
-  color: '#545454',
+  color: '#545454'
 };
 
 // const projectName = {
@@ -255,7 +254,7 @@ const text = {
 const footer = {
   paddingTop: '24px',
   marignTop: '24px',
-  borderTop: '1px solid #545454',
+  borderTop: '1px solid #545454'
 };
 
 const addressStyle = {
@@ -263,5 +262,5 @@ const addressStyle = {
   padding: '0px',
   paddingTop: '12px',
   color: '#545454',
-  lineHeight: '8px',
+  lineHeight: '8px'
 };
