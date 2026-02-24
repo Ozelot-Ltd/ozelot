@@ -11,7 +11,6 @@ gsap.registerPlugin(useGSAP);
 export default function Splashscreen() {
   const splashscreenRef = useRef<HTMLDivElement>(null);
   const animationsquareRefs = useRef<HTMLDivElement[] | null>([]);
-  const textRef = useRef<HTMLImageElement>(null);
   const { setIsSplashscreenFinished, isSceneLoaded } =
     isSplashscreenFinishedStore();
   const part2Ref = useRef<gsap.core.Timeline | null>(null);
@@ -36,9 +35,9 @@ export default function Splashscreen() {
             ease: 'power2.out',
             delay: 0.8,
             borderWidth: '0.5px',
-            rotateX: 0,
+            rotateX: 0
           },
-          index * 0.08,
+          index * 0.08
         );
       });
 
@@ -50,18 +49,18 @@ export default function Splashscreen() {
       part2
         .to(splashscreenRef.current, {
           backgroundColor: 'transparent',
-          duration: 0,
+          duration: 0
         })
         .to(splashscreenRef.current, {
           y: '-100%',
           ease: 'power2.out',
           duration: 0.6,
-          delay: 0.2,
+          delay: 0.2
         });
 
       part2Ref.current = part2;
     },
-    { scope: splashscreenRef },
+    { scope: splashscreenRef }
   );
 
   // Play part 2 when scene is loaded

@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 import styles from './ServiceComponent.module.css';
 
@@ -22,7 +22,7 @@ const ServiceComponent = () => {
       console.log('container width set to:', containerWidth);
       document.documentElement.style.setProperty(
         '--service-container-width',
-        `${containerWidth}px`
+        `${containerWidth}px`,
       );
     }
   }, [containerRef]);
