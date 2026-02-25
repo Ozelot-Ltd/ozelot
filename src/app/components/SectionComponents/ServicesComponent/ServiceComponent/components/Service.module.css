@@ -91,7 +91,7 @@
 }
 
 .item ul li::before {
-    content: "→";
+    content: "⇨";
     padding-right: 1rem;
 }
 
