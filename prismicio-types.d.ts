@@ -1732,6 +1732,21 @@ export type ServiceMainContentDocument<Lang extends string = string> =
   >;
 
 /**
+ * Item in *serviceNew → Description Items*
+ */
+export interface ServicenewDocumentDataDescriptionItemsItem {
+  /**
+   * item field in *serviceNew → Description Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: servicenew.description_items[].item
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  item: prismic.RichTextField;
+}
+
+/**
  * Content for serviceNew documents
  */
 interface ServicenewDocumentData {
@@ -1778,6 +1793,19 @@ interface ServicenewDocumentData {
    * - **Documentation**: https://prismic.io/docs/fields/rich-text
    */
   description: prismic.RichTextField;
+
+  /**
+   * Description Items field in *serviceNew*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: servicenew.description_items[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  description_items: prismic.GroupField<
+    Simplify<ServicenewDocumentDataDescriptionItemsItem>
+  >;
 }
 
 /**
@@ -2598,6 +2626,7 @@ declare module '@prismicio/client' {
       ServiceMainContentDocumentDataImagesItem,
       ServicenewDocument,
       ServicenewDocumentData,
+      ServicenewDocumentDataDescriptionItemsItem,
       ServicesDocument,
       ServicesDocumentData,
       ServicesDocumentDataSlicesSlice,

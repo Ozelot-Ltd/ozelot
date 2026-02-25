@@ -45,6 +45,24 @@
           "allowTargetBlank": true,
           "multi": "heading4,heading5,strong,em,paragraph,list-item,o-list-item,hyperlink"
         }
+      },
+      "description_items": {
+        "type": "Group",
+        "config": {
+          "label": "Description Items",
+          "repeat": true,
+          "fields": {
+            "item": {
+              "type": "StructuredText",
+              "config": {
+                "label": "item",
+                "placeholder": "",
+                "allowTargetBlank": true,
+                "multi": "paragraph,heading5,heading6,strong,em,hyperlink,list-item,o-list-item,image"
+              }
+            }
+          }
+        }
       }
     }
   }

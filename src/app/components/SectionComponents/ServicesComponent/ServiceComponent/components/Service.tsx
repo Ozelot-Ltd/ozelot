@@ -30,10 +30,10 @@ const Service = ({ service }: Props) => {
       ScrollTrigger.create({
         trigger: mainContainerRef.current,
         scroller: scroller,
-        start: 'top 20%',
+        start: 'top 30%',
         end: 'bottom bottom',
         markers: process.env.NODE === 'development',
-        scrub: 0.1,
+        scrub: 0.5,
         onUpdate: (self) => {
           const container = leftContainerRef.current!;
           const index = indexRef.current!;
@@ -60,19 +60,24 @@ const Service = ({ service }: Props) => {
   return (
     <div className={`${styles.container}`} ref={mainContainerRef}>
       <div className={styles.leftcontainer} ref={leftContainerRef}>
-        <div className={styles.titlecontainer}>
-          <h2 className={styles.index} ref={indexRef}>
-            0{service.data.index}
-          </h2>
+        <div className={styles.titlecontainer} ref={indexRef}>
+          <h2 className={styles.index}>0{service.data.index}</h2>
+          <h2>–</h2>
+          <div className={styles.titletext}>
+            <PrismicRichText field={service.data.title} />
+          </div>
         </div>
       </div>
       <div className={styles.rightcontainer}>
-        <div className={styles.righttitle}>
-          <PrismicRichText field={service.data.title} />{' '}
+        <div className={styles.subtitle}>
           <PrismicRichText field={service.data.subtitle} />
         </div>
         <div className={styles.description}>
-          <PrismicRichText field={service.data.description} />
+          {service.data.description_items.map((item, index) => (
+            <div className={styles.item} key={index}>
+              <PrismicRichText field={item.item} />
+            </div>
+          ))}
         </div>
       </div>
     </div>

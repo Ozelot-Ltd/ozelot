@@ -1,9 +1,9 @@
 .container {
     --padding-bottomtop: calc(2rem + 2vw);
-    padding-top: var(--padding-bottomtop);
+    padding: var(--padding-bottomtop) 0;
     overflow: hidden;
     display: grid;
-    grid-template-columns: 0.35fr 1fr;
+    grid-template-columns: 0.4fr 1fr;
     width: var(--service-container-width) !important;
 }
 
@@ -17,39 +17,35 @@
 
 .leftcontainer {
     display: flex;
-    justify-content: center;
     width: 100%;
 }
 
 .rightcontainer {
     border-top: var(--border);
     padding-top: calc(1rem + 1vw);
-    display: grid;
-    grid-template-columns: 0.4fr 1fr;
+
 }
 
 .titlecontainer {
     display: flex;
     height: fit-content;
     padding: 0;
+    flex-direction: column;
+    gap: calc(0.5rem + 0.5vw);
+    align-items: flex-start;
 }
 
-.index {
-    font-size: calc(4rem + 6vw);
-    padding: 0;
-    height: fit-content;
-    line-height: 0.7;
+.titlecontainer h2 {
+    font-size: 2.2rem;
 }
 
+.subtitle h3 {
+    font-size: 1.4rem;
+}
 
 .righttitle {
     padding-bottom: calc(1rem + 1vw);
     height: fit-content;
-}
-
-.righttitle h3 {
-    font-size: 0.8rem;
-
 }
 
 .description {
@@ -58,6 +54,47 @@
     gap: calc(0.5rem + 0.5vw);
     padding-top: 2rem;
 }
+
+.item {
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+    padding-top: 1rem;
+}
+
+
+.item h5 {
+
+    font-size: 1.1rem;
+    padding-bottom: 0.2rem;
+
+}
+
+
+.item ul,
+.item ol {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.item li {
+    font-size: var(--font-size);
+    font-weight: 0;
+    font-variation-settings: var(--text-weight);
+    padding: 0.25rem;
+}
+
+.item ul li {
+    position: relative;
+    padding-left: 1rem;
+}
+
+.item ul li::before {
+    content: "→";
+    padding-right: 1rem;
+}
+
 
 /* Mobile */
 /* Up to 768px */
