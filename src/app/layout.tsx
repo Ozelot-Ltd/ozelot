@@ -17,11 +17,11 @@ const host = Host_Grotesk({
   weight: 'variable',
   style: 'normal',
   preload: true,
-  subsets: ['latin'],
+  subsets: ['latin']
 });
 
 export default async function RootLayout({
-  children,
+  children
 }: {
   children: React.ReactNode;
 }) {
@@ -48,8 +48,8 @@ export default async function RootLayout({
       address,
       brandingIcon,
       projectsGif,
-      aiPopup,
-      servicesMain,
+
+      servicesMain
     ] = await Promise.all([
       client.getSingle('studio'),
       client.getSingle('contact'),
@@ -69,8 +69,8 @@ export default async function RootLayout({
       client.getSingle('address'),
       client.getSingle('branding_icon'),
       client.getSingle('projects_gif'),
-      client.getSingle('ai_popup'),
-      client.getSingle('service_main_content'),
+
+      client.getSingle('service_main_content')
     ]);
 
     if (
@@ -93,7 +93,6 @@ export default async function RootLayout({
       !address ||
       !brandingIcon ||
       !projectsGif ||
-      !aiPopup ||
       !servicesMain
     ) {
       throw new Error('Failed to load required data');
@@ -118,8 +117,7 @@ export default async function RootLayout({
       address,
       brandingIcon,
       projectsGif,
-      aiPopup,
-      servicesMain,
+      servicesMain
     };
 
     const leftField = settings.data.navigation_items_left;
@@ -132,7 +130,7 @@ export default async function RootLayout({
 
     const settingsProps = {
       left: leftField,
-      right: rightField,
+      right: rightField
     };
 
     return (
@@ -149,7 +147,7 @@ export default async function RootLayout({
             dangerouslySetInnerHTML={{
               __html: `
          window.sa_event=window.sa_event||function(){var a=[].slice.call(arguments);window.sa_event.q?window.sa_event.q.push(a):window.sa_event.q=[a]};
-       `,
+       `
             }}
           />{' '}
           <Splashscreen />
@@ -158,7 +156,7 @@ export default async function RootLayout({
               position: 'fixed',
               inset: 0,
               zIndex: 0,
-              pointerEvents: 'all',
+              pointerEvents: 'all'
             }}
           >
             <BackgroundComponent />

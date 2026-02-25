@@ -21,8 +21,7 @@ import {
   AddressDocument,
   BrandingIconDocument,
   ProjectsGifDocument,
-  AiPopupDocument,
-  ServiceMainContentDocument,
+  ServiceMainContentDocument
 } from '../prismicio-types';
 
 export type ContentProps = {
@@ -44,7 +43,6 @@ export type ContentProps = {
   address: AddressDocument;
   brandingIcon: BrandingIconDocument;
   projectsGif: ProjectsGifDocument;
-  aiPopup: AiPopupDocument;
   servicesMain: ServiceMainContentDocument;
 };
 
@@ -53,7 +51,7 @@ const ContentContext = createContext<ContentProps | undefined>(undefined);
 
 export function ContentProvider({
   children,
-  contentProps,
+  contentProps
 }: {
   children: React.ReactNode;
   contentProps: ContentProps;
