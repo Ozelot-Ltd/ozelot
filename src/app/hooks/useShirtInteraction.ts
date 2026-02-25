@@ -34,8 +34,8 @@ export const useShirtInteraction = () => {
     config: {
       mass: 1,
       tension: 170,
-      friction: 26,
-    },
+      friction: 26
+    }
   }));
 
   // Initialize refs to ensure consistent behavior
@@ -60,17 +60,16 @@ export const useShirtInteraction = () => {
 
       return {
         x: x * (viewport.width / 2),
-        y: y * (viewport.height / 2),
+        y: y * (viewport.height / 2)
       };
     },
-    [viewport],
+    [viewport]
   );
 
   // Trigger 360-degree spin animation
   const triggerSpin = useCallback(
     (direction: 'left' | 'right') => {
       if (isSpinningRef.current) {
-        console.log('Spin blocked - already spinning');
         return;
       }
 
@@ -86,7 +85,6 @@ export const useShirtInteraction = () => {
         window.sa_event?.('right spin');
       }
 
-      console.log(`✅ Triggering 360-degree spin ${direction}`);
       isSpinningRef.current = true;
       setIsSpinning(true);
 
@@ -114,15 +112,12 @@ export const useShirtInteraction = () => {
           totalSpinRotation.current = targetRotation;
           isSpinningRef.current = false;
           setIsSpinning(false);
-          console.log(
-            `Spin completed - final rotation: ${totalSpinRotation.current}`,
-          );
         }
       };
 
       requestAnimationFrame(animateRotation);
     },
-    [setIsSpinning],
+    [setIsSpinning]
   );
 
   // Mouse/touch interaction handlers
@@ -131,7 +126,6 @@ export const useShirtInteraction = () => {
       event.stopPropagation();
 
       if (isSpinningRef.current) {
-        console.log('Interaction blocked - currently spinning');
         return;
       }
 
@@ -139,14 +133,14 @@ export const useShirtInteraction = () => {
 
       pointerDownPos.current = {
         x: event.nativeEvent.clientX,
-        y: event.nativeEvent.clientY,
+        y: event.nativeEvent.clientY
       };
       pointerDownTime.current = Date.now();
 
       // Detect which side of the object was touched for spin direction
       const touchWorldPos = screenToWorld(
         event.nativeEvent.clientX,
-        event.nativeEvent.clientY,
+        event.nativeEvent.clientY
       );
 
       const relativeX = touchWorldPos.x - currentPosition.current.x;
@@ -158,17 +152,17 @@ export const useShirtInteraction = () => {
 
       const worldPos = screenToWorld(
         event.nativeEvent.clientX,
-        event.nativeEvent.clientY,
+        event.nativeEvent.clientY
       );
 
       dragOffset.current = {
         x: worldPos.x - currentPosition.current.x,
-        y: worldPos.y - currentPosition.current.y,
+        y: worldPos.y - currentPosition.current.y
       };
 
       document.body.style.cursor = 'grabbing';
     },
-    [screenToWorld],
+    [screenToWorld]
   );
 
   const handlePointerMove = useCallback(
@@ -205,7 +199,7 @@ export const useShirtInteraction = () => {
         baseRotationY.current = 0;
       }
     },
-    [screenToWorld, isSpinning],
+    [screenToWorld, isSpinning]
   );
 
   const handlePointerUp = useCallback(() => {
@@ -215,9 +209,6 @@ export const useShirtInteraction = () => {
     const wasClick = !hasMoved.current && pressDuration < maxClickDuration;
 
     if (wasClick && !isSpinningRef.current) {
-      console.log(
-        `Click detected on ${touchSide.current} side - triggering spin`,
-      );
       triggerSpin(touchSide.current);
     } else if (hasMoved.current) {
       window.sa_event?.(`shirt_dragged`);
@@ -235,7 +226,7 @@ export const useShirtInteraction = () => {
       api.start({
         targetX: 0,
         targetY: 0,
-        targetZ: 0,
+        targetZ: 0
       });
     }
   }, [api, triggerSpin]);
@@ -284,6 +275,6 @@ export const useShirtInteraction = () => {
 
     // Utility functions
     screenToWorld,
-    triggerSpin,
+    triggerSpin
   };
 };

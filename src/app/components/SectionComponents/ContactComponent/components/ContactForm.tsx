@@ -33,7 +33,7 @@ export default function ContactForm({ contact }: Props) {
     surname: '',
     email: '',
     message: '',
-    newsletter: false,
+    newsletter: false
   });
 
   const [formStatus, setFormStatus] = useState('idle');
@@ -44,7 +44,7 @@ export default function ContactForm({ contact }: Props) {
     const { name, value } = e.target;
     setFormData((prevState) => ({
       ...prevState,
-      [name]: value,
+      [name]: value
     }));
   };
 
@@ -67,9 +67,9 @@ export default function ContactForm({ contact }: Props) {
       const response = await fetch('/api/emails/main', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/json'
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(formData)
       });
 
       if (!response.ok) {
@@ -84,13 +84,13 @@ export default function ContactForm({ contact }: Props) {
         const subscribeResponse = await fetch('/api/emails/subscribe', {
           method: 'POST',
           headers: {
-            'Content-Type': 'application/json',
+            'Content-Type': 'application/json'
           },
           body: JSON.stringify({
             email: formData.email,
             firstname: formData.name,
-            surname: formData.surname,
-          }),
+            surname: formData.surname
+          })
         });
 
         if (!subscribeResponse.ok) {
@@ -114,7 +114,7 @@ export default function ContactForm({ contact }: Props) {
         surname: '',
         email: '',
         message: '',
-        newsletter: false,
+        newsletter: false
       });
 
       setAgreement(false);
@@ -278,7 +278,7 @@ export default function ContactForm({ contact }: Props) {
                   setNewsletter(newValue);
                   setFormData((prev) => ({
                     ...prev,
-                    newsletter: newValue ? true : false,
+                    newsletter: newValue ? true : false
                   }));
                 }}
               />

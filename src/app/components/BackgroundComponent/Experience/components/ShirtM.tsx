@@ -23,40 +23,42 @@ const BONE_CONFIGS: BoneConfig[] = [
   { name: 'Shoulder_2', skip: true },
   {
     name: 'Spine 1',
-    wiggleConfig: { velocity: 0.12, stiffness: 0.15, damping: 0.15 },
+    wiggleConfig: { velocity: 0.12, stiffness: 0.15, damping: 0.15 }
   },
   {
     name: 'Spine 2',
-    wiggleConfig: { velocity: 0.12, stiffness: 0.15, damping: 0.15 },
+    wiggleConfig: { velocity: 0.12, stiffness: 0.15, damping: 0.15 }
   },
   {
     name: 'Spine 3',
-    wiggleConfig: { velocity: 0.12, stiffness: 0.15, damping: 0.15 },
+    wiggleConfig: { velocity: 0.12, stiffness: 0.15, damping: 0.15 }
   },
   {
     name: 'Arm 1',
-    wiggleConfig: { velocity: 0.15, stiffness: 0.15, damping: 0.15 },
+    wiggleConfig: { velocity: 0.15, stiffness: 0.15, damping: 0.15 }
   },
   {
     name: 'Arm 2',
-    wiggleConfig: { velocity: 0.15, stiffness: 0.15, damping: 0.15 },
+    wiggleConfig: { velocity: 0.15, stiffness: 0.15, damping: 0.15 }
   },
   {
     name: 'Arm 1_end',
-    wiggleConfig: { velocity: 0.25, stiffness: 0.95, damping: 0.75 },
+    wiggleConfig: { velocity: 0.25, stiffness: 0.95, damping: 0.75 }
   },
   {
     name: 'Arm 2_end',
-    wiggleConfig: { velocity: 0.25, stiffness: 0.95, damping: 0.75 },
+    wiggleConfig: { velocity: 0.25, stiffness: 0.95, damping: 0.75 }
   },
   {
     name: 'Spine 3_end',
-    wiggleConfig: { velocity: 0.25, stiffness: 0.95, damping: 0.75 },
-  },
+    wiggleConfig: { velocity: 0.25, stiffness: 0.95, damping: 0.75 }
+  }
 ];
 
 export const ShirtM = () => {
-  const setIsSceneLoaded = isSplashscreenFinishedStore((s) => s.setIsSceneLoaded);
+  const setIsSceneLoaded = isSplashscreenFinishedStore(
+    (s) => s.setIsSceneLoaded
+  );
   const { scene } = useGLTF('/models/Shirt-transformed.glb');
   const clone = React.useMemo(() => SkeletonUtils.clone(scene), [scene]);
   const { nodes } = useGraph(clone) as unknown as GLTFResult;
@@ -73,7 +75,7 @@ export const ShirtM = () => {
     targetX,
     targetY,
     targetZ,
-    handlePointerDown,
+    handlePointerDown
   } = useShirtInteraction();
 
   // Initialize wiggle rig
@@ -99,12 +101,6 @@ export const ShirtM = () => {
       return;
     }
 
-    console.log(
-      'Found skeleton with',
-      skinnedMesh.skeleton.bones.length,
-      'bones'
-    );
-
     // Configure wiggle parameters on bones
     const bones = skinnedMesh.skeleton.bones;
     bones.forEach((bone, index) => {
@@ -122,7 +118,7 @@ export const ShirtM = () => {
       const wiggleConfig = config?.wiggleConfig || {
         velocity: 0.12,
         stiffness: 0.2,
-        damping: 0.85,
+        damping: 0.85
       };
 
       bone.userData.wiggleVelocity = wiggleConfig.velocity;
@@ -132,7 +128,7 @@ export const ShirtM = () => {
 
     try {
       wiggleRigRef.current = new WiggleRig(skinnedMesh.skeleton);
-      console.log('WiggleRig created successfully');
+
       setIsSceneLoaded(true);
     } catch (error) {
       console.error('Failed to create WiggleRig:', error);

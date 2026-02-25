@@ -49,12 +49,10 @@ export default function ImageComponent({
   };
 
   const handleImageLoad = () => {
-    console.log('Image loaded');
     setIsLoading(false);
   };
 
   const handleVideoLoad = () => {
-    console.log('Video loaded');
     setIsLoading(false);
   };
 

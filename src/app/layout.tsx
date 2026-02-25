@@ -48,14 +48,13 @@ export default async function RootLayout({
       address,
       brandingIcon,
       projectsGif,
-
       servicesMain
     ] = await Promise.all([
       client.getSingle('studio'),
       client.getSingle('contact'),
       client.getByType('project'),
       client.getByType('record'),
-      client.getByType('service'),
+      client.getByType('servicenew'),
       client.getSingle('threed_icon'),
       client.getSingle('art_direction_icon'),
       client.getSingle('web_icon'),
@@ -69,7 +68,6 @@ export default async function RootLayout({
       client.getSingle('address'),
       client.getSingle('branding_icon'),
       client.getSingle('projects_gif'),
-
       client.getSingle('service_main_content')
     ]);
 

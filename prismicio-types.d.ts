@@ -1731,6 +1731,71 @@ export type ServiceMainContentDocument<Lang extends string = string> =
     Lang
   >;
 
+/**
+ * Content for serviceNew documents
+ */
+interface ServicenewDocumentData {
+  /**
+   * index field in *serviceNew*
+   *
+   * - **Field Type**: Number
+   * - **Placeholder**: *None*
+   * - **API ID Path**: servicenew.index
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/number
+   */
+  index: prismic.NumberField;
+
+  /**
+   * Title field in *serviceNew*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: servicenew.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Subtitle field in *serviceNew*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: servicenew.subtitle
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  subtitle: prismic.RichTextField;
+
+  /**
+   * description field in *serviceNew*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: servicenew.description
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  description: prismic.RichTextField;
+}
+
+/**
+ * serviceNew document from Prismic
+ *
+ * - **API ID**: `servicenew`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/content-modeling
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ServicenewDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<ServicenewDocumentData>,
+    'servicenew',
+    Lang
+  >;
+
 type ServicesDocumentDataSlicesSlice = never;
 
 /**
@@ -2405,6 +2470,7 @@ export type AllDocumentTypes =
   | RecordsDocument
   | ServiceDocument
   | ServiceMainContentDocument
+  | ServicenewDocument
   | ServicesDocument
   | ServicesOfferedDocument
   | SettingsDocument
@@ -2530,6 +2596,8 @@ declare module '@prismicio/client' {
       ServiceMainContentDocument,
       ServiceMainContentDocumentData,
       ServiceMainContentDocumentDataImagesItem,
+      ServicenewDocument,
+      ServicenewDocumentData,
       ServicesDocument,
       ServicesDocumentData,
       ServicesDocumentDataSlicesSlice,

@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { useRef, useEffect } from 'react';
 
 import styles from './ServiceComponent.module.css';
 
@@ -7,29 +7,28 @@ import { useContents } from '../../../../../../context/ContentContext';
 import Service from './components/Service';
 import FadeIn from '@/app/components/FadeIn/FadeIn';
 import { PrismicRichText } from '@prismicio/react';
-import Arrow from '@/app/components/SvgComponents/Arrow/Arrow';
-import ServiceMarquee from './components/ServiceMarquee';
+import useSmoothScroll from '@/app/hooks/useSmoothScroll';
 
 const ServiceComponent = () => {
   const { serviceArray, servicesMain } = useContents();
-  const [activeService, setActiveService] = useState('');
 
   const containerRef = useRef<HTMLDivElement>(null);
+
+  useSmoothScroll(containerRef, { lerp: 0.01, wheelMultiplier: 2 });
 
   useEffect(() => {
     if (containerRef.current) {
       const containerWidth = containerRef.current.offsetWidth;
-      console.log('container width set to:', containerWidth);
       document.documentElement.style.setProperty(
         '--service-container-width',
-        `${containerWidth}px`,
+        `${containerWidth}px`
       );
     }
   }, [containerRef]);
 
   const sortedArray = serviceArray.sort((a, b) => {
-    const numA = a.data.service_index ?? 0;
-    const numB = b.data.service_index ?? 0;
+    const numA = a.data.index ?? 0;
+    const numB = b.data.index ?? 0;
     return numA - numB;
   });
 
@@ -42,30 +41,23 @@ const ServiceComponent = () => {
           </FadeIn>
         </div>
         <div>
-          <FadeIn multiplier={0.1} delay={0} yDown={500} duration={1}>
-            <div className={styles.subtitle}>
-              <Arrow height="16" />
-              <PrismicRichText field={servicesMain.data.service_subtitle} />
-            </div>
-          </FadeIn>
           <FadeIn multiplier={0.1} delay={0} yDown={2000} duration={2}>
             <div className={styles.description}>
-              <PrismicRichText field={servicesMain.data.description} />
+              <p style={{ width: '60%' }}>
+                We design brands and build digital products that are culturally
+                relevant and built to last. Ozelot Studios combines visual
+                excellence with product thinking – grounded in a deep
+                understanding of culture, audiences, and context.
+              </p>
             </div>
           </FadeIn>
         </div>
       </div>
-      <FadeIn multiplier={0.1} delay={0} yDown={500} duration={1}>
-        <ServiceMarquee />
-      </FadeIn>
+
       <div className={styles.scrollContainer}>
         {sortedArray.map((service, index) => (
           <div key={`${service.id}-${index}`}>
-            <Service
-              service={service}
-              activeService={activeService}
-              setActiveService={setActiveService}
-            />
+            <Service service={service} />
           </div>
         ))}
       </div>
