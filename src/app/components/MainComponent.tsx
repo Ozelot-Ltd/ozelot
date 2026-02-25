@@ -7,7 +7,7 @@ import { Simplify } from '../../../prismicio-types';
 import { useRouter, usePathname } from 'next/navigation';
 import {
   SettingsDocumentDataNavigationItemsLeftItem,
-  SettingsDocumentDataNavigationItemsRightItem,
+  SettingsDocumentDataNavigationItemsRightItem
 } from '../../../prismicio-types';
 import Logo from './SvgComponents/Logo/Logo';
 import ProjectsComponent from './SectionComponents/ProjectsComponent/ProjectsComponent';
@@ -20,7 +20,6 @@ import { isClickedStore } from '../stores/IsClickedStore';
 
 import { useMobile } from '../../../context/MobileContext';
 import MobileComponent from './Mobile/MobileComponent';
-import NewsletterSuccess from './NewsletterSuccess/NewsletterSuccess';
 
 interface ColumnProps {
   item:
@@ -40,7 +39,7 @@ const Column: React.FC<ColumnProps> = ({
   isActive,
   onClick,
   setTransitionEnd,
-  children,
+  children
 }) => {
   const itemId = item?.navigation_link.text?.toLowerCase();
 
@@ -68,7 +67,7 @@ const Column: React.FC<ColumnProps> = ({
 
 export default function MainComponent({
   left,
-  right,
+  right
 }: {
   left: GroupField<Simplify<SettingsDocumentDataNavigationItemsLeftItem>>;
   right: GroupField<Simplify<SettingsDocumentDataNavigationItemsRightItem>>;
@@ -83,17 +82,8 @@ export default function MainComponent({
   const [isContactActive, setIsContactActive] = useState(false);
   const [isServicesActive, setIsServicesActive] = useState(false);
   const { isDesktop } = useMobile();
-  const [isNewsletterVisible, setIsNewsletterVisible] = useState(false);
   const router = useRouter();
   const pathname = usePathname();
-
-  useEffect(() => {
-    if (pathname.includes('newsletter-confirmed')) {
-      setIsNewsletterVisible(true);
-    } else {
-      setIsNewsletterVisible(false);
-    }
-  }, [pathname]);
 
   useEffect(() => {
     if (isClicked === 'projects') {
@@ -135,7 +125,7 @@ export default function MainComponent({
         const width = containerRef.current.offsetWidth;
         document.documentElement.style.setProperty(
           '--container-width',
-          `${width}px`,
+          `${width}px`
         );
       }
     };
@@ -164,7 +154,7 @@ export default function MainComponent({
 
   const handleClick = (
     text: string | undefined | null,
-    clickedSide: 'left' | 'right' | 'bottom',
+    clickedSide: 'left' | 'right' | 'bottom'
   ) => {
     if (!text) return;
     const lowercaseText = text.toLowerCase();
@@ -211,8 +201,6 @@ export default function MainComponent({
     <>
       {isDesktop ? (
         <div className={styles.container}>
-          {isNewsletterVisible && <NewsletterSuccess />}
-
           <div className={styles.logoContainer}>
             <div
               onClick={() => {
