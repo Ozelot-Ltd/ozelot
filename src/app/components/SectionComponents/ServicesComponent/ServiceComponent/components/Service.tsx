@@ -30,7 +30,7 @@ const Service = ({ service }: Props) => {
       ScrollTrigger.create({
         trigger: mainContainerRef.current,
         scroller: scroller,
-        start: 'top 30%',
+        start: 'top 35%',
         end: 'bottom bottom',
         markers: process.env.NODE === 'development',
         scrub: 0.5,
