@@ -43,7 +43,7 @@ const ServiceComponent = () => {
         <div>
           <FadeIn multiplier={0.1} delay={0} yDown={2000} duration={2}>
             <div className={styles.description}>
-              <p style={{ width: '60%' }}>
+              <p style={{ width: '60%', fontSize: '1.5rem' }}>
                 We design brands and build digital products that are culturally
                 relevant and built to last. Ozelot Studios combines visual
                 excellence with product thinking – grounded in a deep

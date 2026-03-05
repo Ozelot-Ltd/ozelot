@@ -15,8 +15,24 @@
     transform: translateX(0)
 }
 
-.arrow {
-    transform: rotate(90deg)
+.contentcontainer {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.dropdowncontainer {
+
+    width: 100%;
+}
+
+.textcontainer {
+    width: 80%;
+}
+
+.textcontainer p {
+    font-size: 1.2rem;
+    line-height: 150%;
 }
 
 .select {
@@ -41,6 +57,15 @@
 .pickedValue {
     color: var(--black);
 
+}
+
+.arrow {
+    transform: rotate(90deg);
+    transition: transform 0.2s var(--bezier)
+}
+
+.dropdownopen {
+    transform: rotate(-90deg)
 }
 
 .option {
