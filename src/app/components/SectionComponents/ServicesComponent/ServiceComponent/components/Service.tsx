@@ -80,7 +80,7 @@ const Service = ({ service }: Props) => {
         </div>
         <div className={styles.topicitems}>
           {service.data.description_items.map((item, index) => (
-            <ServiceItem item={item} />
+            <ServiceItem item={item} key={`${item.item_title}-${index}`} />
           ))}
         </div>
       </div>
