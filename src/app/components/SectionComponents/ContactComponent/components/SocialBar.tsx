@@ -1,6 +1,6 @@
 import styles from './SocialBar.module.css';
 
-import { useContents } from '../../../../../../context/ContentContext';
+import { useContents } from '@/context/ContentContext';
 
 import { PrismicNextImage, PrismicNextLink } from '@prismicio/next';
 import FadeIn from '@/app/components/FadeIn/FadeIn';

@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 import styles from '../../RecordsComponent/RecordComponent/RecordComponent.module.css';
 
-import { useContents } from '../../../../../../context/ContentContext';
+import { useContents } from '@/context/ContentContext';
 
 import ImageComponent from '../../RecordsComponent/ImageComponent/ImageComponent';
 import Project from './components/Project';

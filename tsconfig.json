@@ -22,7 +22,8 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@/prismicio-types": ["./prismicio-types"]
     }
   },
   "include": [

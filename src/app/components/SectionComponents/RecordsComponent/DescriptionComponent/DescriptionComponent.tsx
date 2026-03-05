@@ -3,7 +3,7 @@ import {
   ProjectDocumentData,
   RecordDocumentData,
   Simplify
-} from '../../../../../../prismicio-types';
+} from '@/prismicio-types';
 
 import Earth from '@/app/components/SvgComponents/Earth/Earth';
 import BandcampLogo from '@/app/components/SvgComponents/SocialsLogo/BandcampLogo';
@@ -15,7 +15,7 @@ import { PrismicRichText } from '@prismicio/react';
 import Link from 'next/link';
 import Arrow from '@/app/components/SvgComponents/Arrow/Arrow';
 
-import { useMobile } from '../../../../../../context/MobileContext';
+import { useMobile } from '@/context/MobileContext';
 
 export default function DescriptionComponent({
   currentProject,

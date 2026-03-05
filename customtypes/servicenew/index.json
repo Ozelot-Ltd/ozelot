@@ -37,13 +37,13 @@
           "multi": "heading3"
         }
       },
-      "description": {
+      "interlude": {
         "type": "StructuredText",
         "config": {
-          "label": "description",
+          "label": "Interlude",
           "placeholder": "",
           "allowTargetBlank": true,
-          "multi": "heading4,heading5,strong,em,paragraph,list-item,o-list-item,hyperlink"
+          "multi": "paragraph,strong,em"
         }
       },
       "description_items": {
@@ -52,6 +52,15 @@
           "label": "Description Items",
           "repeat": true,
           "fields": {
+            "item_title": {
+              "type": "StructuredText",
+              "config": {
+                "label": "Item Title",
+                "placeholder": "",
+                "allowTargetBlank": true,
+                "single": "heading5,strong,em"
+              }
+            },
             "item": {
               "type": "StructuredText",
               "config": {

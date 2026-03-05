@@ -6,7 +6,7 @@ import { useGSAP } from '@gsap/react';
 
 import Image from 'next/image';
 
-import { useMobile } from '../../../../context/MobileContext';
+import { useMobile } from '@/context/MobileContext';
 
 gsap.registerPlugin(useGSAP);
 

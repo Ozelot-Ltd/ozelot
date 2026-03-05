@@ -4,7 +4,7 @@ import { useRef, useEffect } from 'react';
 import styles from './Splashscreen.module.css';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-import { isSplashscreenFinishedStore } from '@/app/stores/SplashscreenIsFinished';
+import { isSplashscreenFinishedStore } from '@/stores/SplashscreenIsFinished';
 
 gsap.registerPlugin(useGSAP);
 

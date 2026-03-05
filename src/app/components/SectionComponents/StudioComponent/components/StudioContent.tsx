@@ -1,6 +1,6 @@
 'use client';
 
-import { useContents } from '../../../../../../context/ContentContext';
+import { useContents } from '@/context/ContentContext';
 import { PrismicRichText } from '@prismicio/react';
 
 import styles from './StudioContent.module.css';

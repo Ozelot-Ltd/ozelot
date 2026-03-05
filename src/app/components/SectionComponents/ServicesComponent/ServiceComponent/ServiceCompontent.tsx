@@ -2,12 +2,12 @@ import { useRef, useEffect } from 'react';
 
 import styles from './ServiceComponent.module.css';
 
-import { useContents } from '../../../../../../context/ContentContext';
+import { useContents } from '@/context/ContentContext';
 
 import Service from './components/Service';
 import FadeIn from '@/app/components/FadeIn/FadeIn';
 import { PrismicRichText } from '@prismicio/react';
-import useSmoothScroll from '@/app/hooks/useSmoothScroll';
+import useSmoothScroll from '@/hooks/useSmoothScroll';
 
 const ServiceComponent = () => {
   const { serviceArray, servicesMain } = useContents();

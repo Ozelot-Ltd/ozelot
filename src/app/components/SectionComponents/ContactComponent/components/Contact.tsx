@@ -1,7 +1,7 @@
 'use client';
 
 import styles from './Contact.module.css';
-import { useContents } from '../../../../../../context/ContentContext';
+import { useContents } from '@/context/ContentContext';
 import { PrismicRichText } from '@prismicio/react';
 
 import SocialBar from './SocialBar';

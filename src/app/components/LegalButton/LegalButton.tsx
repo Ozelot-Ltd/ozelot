@@ -1,7 +1,7 @@
 import Arrow from '../SvgComponents/Arrow/Arrow';
 import FadeIn from '../FadeIn/FadeIn';
 
-import { isLegalVisibleStore } from '@/app/stores/IsLegalVisible';
+import { isLegalVisibleStore } from '@/stores/IsLegalVisible';
 
 import styles from './LegalButton.module.css';
 

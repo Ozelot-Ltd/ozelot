@@ -5,8 +5,8 @@ import { GroupField } from '@prismicio/client';
 import {
   SettingsDocumentDataNavigationItemsLeftItem,
   SettingsDocumentDataNavigationItemsRightItem,
-  Simplify,
-} from '../../../../../prismicio-types';
+  Simplify
+} from '@/prismicio-types';
 
 import SocialBar from '../../SectionComponents/ContactComponent/components/SocialBar';
 import Address from '../../Address/Address';
@@ -33,7 +33,7 @@ export default function MobileMenu({
   setIsNavigationActive,
   isNavigationActive = false,
   left,
-  right,
+  right
 }: MobileMenuProps) {
   const router = useRouter();
 

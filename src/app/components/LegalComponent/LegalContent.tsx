@@ -1,13 +1,13 @@
 'use client';
 
 import styles from './LegalContent.module.css';
-import { LegalDocument } from '../../../../prismicio-types';
+import { LegalDocument } from '@/prismicio-types';
 import { PrismicRichText } from '@prismicio/react';
 
-import { isLegalVisibleStore } from '@/app/stores/IsLegalVisible';
+import { isLegalVisibleStore } from '@/stores/IsLegalVisible';
 import { PrismicNextLink } from '@prismicio/next';
 import Arrow from '../SvgComponents/Arrow/Arrow';
-import { useMobile } from '../../../../context/MobileContext';
+import { useMobile } from '@/context/MobileContext';
 
 type Props = {
   legal: LegalDocument;

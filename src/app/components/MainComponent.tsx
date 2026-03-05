@@ -3,12 +3,13 @@
 import React, { useRef, useEffect, useState } from 'react';
 import styles from './MainComponent.module.css';
 import { GroupField } from '@prismicio/client';
-import { Simplify } from '../../../prismicio-types';
-import { useRouter, usePathname } from 'next/navigation';
 import {
+  Simplify,
   SettingsDocumentDataNavigationItemsLeftItem,
   SettingsDocumentDataNavigationItemsRightItem
-} from '../../../prismicio-types';
+} from '@/prismicio-types';
+import { useRouter, usePathname } from 'next/navigation';
+
 import Logo from './SvgComponents/Logo/Logo';
 import ProjectsComponent from './SectionComponents/ProjectsComponent/ProjectsComponent';
 import StudioComponent from './SectionComponents/StudioComponent/StudioComponent';
@@ -16,9 +17,9 @@ import ContactComponent from './SectionComponents/ContactComponent/ContactCompon
 import RecordsComponent from './SectionComponents/RecordsComponent/RecordsComponent';
 import ServicesComponent from './SectionComponents/ServicesComponent/ServicesComponent';
 
-import { isClickedStore } from '../stores/IsClickedStore';
+import { isClickedStore } from '@/stores/IsClickedStore';
 
-import { useMobile } from '../../../context/MobileContext';
+import { useMobile } from '@/context/MobileContext';
 import MobileComponent from './Mobile/MobileComponent';
 
 interface ColumnProps {

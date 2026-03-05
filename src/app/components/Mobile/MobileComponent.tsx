@@ -18,7 +18,7 @@ import {
   SettingsDocumentDataNavigationItemsLeftItem,
   SettingsDocumentDataNavigationItemsRightItem,
   Simplify
-} from '../../../../prismicio-types';
+} from '@/prismicio-types';
 
 export default function MobileComponent({
   left,

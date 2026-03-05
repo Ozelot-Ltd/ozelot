@@ -2,9 +2,9 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react';
 import styles from './RecordsPlaceholder.module.css';
-import { RecordDocument } from '../../../../../../../../prismicio-types';
+import { RecordDocument } from '@/prismicio-types';
 import { initPhysics } from './Matter';
-import { useMobile } from '../../../../../../../../context/MobileContext';
+import { useMobile } from '@/context/MobileContext';
 
 type RecordsPlaceholderProps = {
   releaseNames?: (string | undefined)[];

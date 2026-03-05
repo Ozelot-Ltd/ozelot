@@ -2,15 +2,15 @@
 
 import { useState } from 'react';
 import styles from './RecordComponent.module.css';
-import { useContents } from '../../../../../../context/ContentContext';
+import { useContents } from '@/context/ContentContext';
 import Record from './components/Record';
 import DescriptionComponent from '../DescriptionComponent/DescriptionComponent';
 import ImageComponent from '../ImageComponent/ImageComponent';
 import RecordsPlaceholder from './components/RecordsPlaceholder/RecordsPlaceholder';
 
-import { isSplashscreenFinishedStore } from '@/app/stores/SplashscreenIsFinished';
+import { isSplashscreenFinishedStore } from '@/stores/SplashscreenIsFinished';
 
-import { useMobile } from '../../../../../../context/MobileContext';
+import { useMobile } from '@/context/MobileContext';
 
 export default function RecordComponent() {
   const [activeRecord, setActiveRecord] = useState('');

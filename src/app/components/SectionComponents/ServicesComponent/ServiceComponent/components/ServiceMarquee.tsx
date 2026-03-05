@@ -1,7 +1,7 @@
 import Marquee from 'react-fast-marquee';
 import Image from 'next/image';
 import styles from './ServiceMarquee.module.css';
-import { useContents } from '../../../../../../../context/ContentContext';
+import { useContents } from '@/context/ContentContext';
 
 export default function ServiceMarquee() {
   const { servicesMain } = useContents();

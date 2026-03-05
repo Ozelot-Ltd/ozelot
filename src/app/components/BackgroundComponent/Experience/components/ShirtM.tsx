@@ -6,10 +6,10 @@ import * as THREE from 'three';
 import { SkeletonUtils } from 'three-stdlib';
 import React from 'react';
 import type { GLTF } from 'three-stdlib';
-import { useShirtInteraction } from '@/app/hooks/useShirtInteraction';
+import { useShirtInteraction } from '@/hooks/useShirtInteraction';
 import { SCENE_CONFIG } from '../config/sceneConfig';
 import { BoneConfig } from '@/types';
-import { isSplashscreenFinishedStore } from '@/app/stores/SplashscreenIsFinished';
+import { isSplashscreenFinishedStore } from '@/stores/SplashscreenIsFinished';
 
 type GLTFResult = GLTF & {
   nodes: Record<string, THREE.Object3D>;

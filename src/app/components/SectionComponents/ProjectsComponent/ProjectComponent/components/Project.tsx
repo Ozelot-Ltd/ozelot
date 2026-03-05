@@ -1,7 +1,7 @@
 'use client';
 
 import { useRef, useEffect } from 'react';
-import { ProjectDocument } from '../../../../../../../prismicio-types';
+import { ProjectDocument } from '@/prismicio-types';
 
 import styles from './Project.module.css';
 import { PrismicRichText } from '@prismicio/react';

@@ -1,11 +1,11 @@
 'use client';
 
 import dynamic from 'next/dynamic';
-import { isSplashscreenFinishedStore } from '@/app/stores/SplashscreenIsFinished';
+import { isSplashscreenFinishedStore } from '@/stores/SplashscreenIsFinished';
 
 const Experience = dynamic(
   () => import('./Experience/Experience').then((mod) => mod.Experience),
-  { ssr: false },
+  { ssr: false }
 );
 
 export const BackgroundComponent = () => {
@@ -21,7 +21,7 @@ export const BackgroundComponent = () => {
         left: 0,
         width: '100vw',
         height: '100vh',
-        pointerEvents: 'auto',
+        pointerEvents: 'auto'
       }}
     >
       <Experience />

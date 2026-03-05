@@ -22,7 +22,7 @@ import {
   BrandingIconDocument,
   ProjectsGifDocument,
   ServiceMainContentDocument
-} from '../prismicio-types';
+} from '@/prismicio-types';
 
 export type ContentProps = {
   studio: StudioDocument;

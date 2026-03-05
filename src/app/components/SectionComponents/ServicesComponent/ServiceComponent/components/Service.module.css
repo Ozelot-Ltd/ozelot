@@ -41,57 +41,22 @@
     font-size: 1.4rem;
 }
 
-.righttitle {
-    padding-bottom: calc(1rem + 1vw);
-    height: fit-content;
-}
-
-.description {
+.uppercontainer {
     display: flex;
     flex-direction: column;
-    gap: calc(0.5rem + 0.5vw);
-    padding-top: 2rem;
-}
-
-.item {
-    display: flex;
-    flex-direction: column;
-    gap: .25rem;
-    padding-top: 1rem;
+    gap: calc(0.25rem + 0.25vw)
 }
 
 
-.item h5 {
-
-    font-size: 1.1rem;
-    padding-bottom: 0.2rem;
-
-}
 
 
-.item ul,
-.item ol {
-    display: flex;
-    flex-direction: column;
 
-}
 
-.item li {
-    font-size: var(--font-size);
-    font-weight: 0;
-    font-variation-settings: var(--text-weight);
-    padding: 0.25rem;
-}
 
-.item ul li {
-    position: relative;
-    padding-left: 1rem;
-}
 
-.item ul li::before {
-    content: "⇨";
-    padding-right: 1rem;
-}
+
+
+
 
 /* hello*/
 

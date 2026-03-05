@@ -1,4 +1,4 @@
-import { useContents } from '../../../../context/ContentContext';
+import { useContents } from '@/context/ContentContext';
 import { PrismicRichText } from '@prismicio/react';
 import { PrismicNextLink } from '@prismicio/next';
 

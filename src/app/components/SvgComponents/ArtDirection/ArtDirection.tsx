@@ -1,5 +1,5 @@
 import { PrismicNextImage } from '@prismicio/next';
-import { useContents } from '../../../../../context/ContentContext';
+import { useContents } from '@/context/ContentContext';
 
 export default function ArtDirection({}) {
   const { artDirectionIcon } = useContents();

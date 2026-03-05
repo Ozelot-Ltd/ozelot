@@ -3,7 +3,7 @@ import {
   ProjectDocumentData,
   RecordDocumentData,
   Simplify
-} from '../../../../../../prismicio-types';
+} from '@/prismicio-types';
 
 import { PrismicNextImage } from '@prismicio/next';
 

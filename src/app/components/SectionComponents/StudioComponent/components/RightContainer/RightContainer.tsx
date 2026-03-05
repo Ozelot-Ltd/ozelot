@@ -1,9 +1,9 @@
 import styles from './RightContainer.module.css';
 
-import { useContents } from '../../../../../../../context/ContentContext';
+import { useContents } from '@/context/ContentContext';
 import { PrismicNextImage } from '@prismicio/next';
 
-import { useMobile } from '../../../../../../../context/MobileContext';
+import { useMobile } from '@/context/MobileContext';
 
 import Marquee from 'react-fast-marquee';
 

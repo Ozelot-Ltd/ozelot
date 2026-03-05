@@ -1736,6 +1736,16 @@ export type ServiceMainContentDocument<Lang extends string = string> =
  */
 export interface ServicenewDocumentDataDescriptionItemsItem {
   /**
+   * Item Title field in *serviceNew → Description Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: servicenew.description_items[].item_title
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  item_title: prismic.RichTextField;
+
+  /**
    * item field in *serviceNew → Description Items*
    *
    * - **Field Type**: Rich Text
@@ -1784,15 +1794,15 @@ interface ServicenewDocumentData {
   subtitle: prismic.RichTextField;
 
   /**
-   * description field in *serviceNew*
+   * Interlude field in *serviceNew*
    *
    * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: servicenew.description
+   * - **API ID Path**: servicenew.interlude
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/fields/rich-text
    */
-  description: prismic.RichTextField;
+  interlude: prismic.RichTextField;
 
   /**
    * Description Items field in *serviceNew*

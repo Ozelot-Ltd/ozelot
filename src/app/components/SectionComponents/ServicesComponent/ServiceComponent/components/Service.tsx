@@ -1,12 +1,13 @@
 import { useRef } from 'react';
 
 import styles from './Service.module.css';
-import { ServicenewDocument } from '../../../../../../../prismicio-types';
+import { ServicenewDocument } from '@/prismicio-types';
 import { PrismicRichText } from '@prismicio/react';
 
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import ServiceItem from './ServiceItem';
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
@@ -69,14 +70,17 @@ const Service = ({ service }: Props) => {
         </div>
       </div>
       <div className={styles.rightcontainer}>
-        <div className={styles.subtitle}>
-          <PrismicRichText field={service.data.subtitle} />
+        <div className={styles.uppercontainer}>
+          <div className={styles.subtitle}>
+            <PrismicRichText field={service.data.subtitle} />
+          </div>
+          <div className={styles.interludecontainer}>
+            <PrismicRichText field={service.data.interlude} />
+          </div>
         </div>
-        <div className={styles.description}>
+        <div className={styles.topicitems}>
           {service.data.description_items.map((item, index) => (
-            <div className={styles.item} key={index}>
-              <PrismicRichText field={item.item} />
-            </div>
+            <ServiceItem item={item} />
           ))}
         </div>
       </div>

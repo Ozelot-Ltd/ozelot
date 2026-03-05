@@ -1,4 +1,4 @@
-import { ProjectDocumentData } from '../../../../../prismicio-types';
+import { ProjectDocumentData } from '@/prismicio-types';
 
 import ArtDirection from '../ArtDirection/ArtDirection';
 import ThreeD from '../ThreeD/ThreeD';

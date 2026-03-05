@@ -6,7 +6,7 @@ import styles from './Record.module.css';
 
 import { PrismicRichText } from '@prismicio/react';
 
-import { RecordDocument } from '../../../../../../../prismicio-types';
+import { RecordDocument } from '@/prismicio-types';
 
 import FadeIn from '@/app/components/FadeIn/FadeIn';
 import Vinyl from '@/app/components/SvgComponents/Vinyl/Vinyl';

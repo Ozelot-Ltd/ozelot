@@ -1,4 +1,4 @@
-import { useContents } from '../../../../context/ContentContext';
+import { useContents } from '@/context/ContentContext';
 import LegalContent from './LegalContent';
 
 export default function LegalComponent() {

@@ -7,10 +7,9 @@ import { LightingSetup } from './components/LightingSetup';
 import { SparklesSetup } from './components/SparklesSetup';
 import { StudioEnvironment } from './components/StudioEnvironment';
 import { DevPerformanceMonitor } from './components/PerformanceMonitor';
-import { useFadeAnimation } from '@/app/hooks/useFadeAnimation';
-import { isClickedStore } from '@/app/stores/IsClickedStore';
+import { useFadeAnimation } from '@/hooks/useFadeAnimation';
+import { isClickedStore } from '@/stores/IsClickedStore';
 import { SCENE_CONFIG } from './config/sceneConfig';
-
 
 function ShirtGroup() {
   const groupRef = useRef<THREE.Group>(null);
@@ -23,7 +22,7 @@ function ShirtGroup() {
     getCurrentOpacity,
     setOpacity,
     cleanupAnimation,
-    fadeMaterial,
+    fadeMaterial
   } = useFadeAnimation();
 
   // Handle section transitions
@@ -37,7 +36,7 @@ function ShirtGroup() {
       animateFade({
         startOpacity: getCurrentOpacity(),
         targetOpacity: 1,
-        duration: SCENE_CONFIG.ANIMATION.FADE_OUT_DURATION,
+        duration: SCENE_CONFIG.ANIMATION.FADE_OUT_DURATION
       });
     } else if (isReturningHome) {
       // Returning home - delay then fade OUT the overlay (making shirt visible)
@@ -49,7 +48,7 @@ function ShirtGroup() {
         animateFade({
           startOpacity: 1,
           targetOpacity: 0,
-          duration: SCENE_CONFIG.ANIMATION.FADE_IN_DURATION,
+          duration: SCENE_CONFIG.ANIMATION.FADE_IN_DURATION
         });
       }, SCENE_CONFIG.ANIMATION.RETURN_DELAY);
     }
