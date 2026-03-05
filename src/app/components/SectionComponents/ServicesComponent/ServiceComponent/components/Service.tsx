@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 
 import styles from './Service.module.css';
 import { ServicenewDocument } from '@/prismicio-types';
@@ -20,7 +20,6 @@ const Service = ({ service }: Props) => {
   const mainContainerRef = useRef<HTMLDivElement>(null);
   const indexRef = useRef<HTMLHeadingElement>(null);
   const leftContainerRef = useRef<HTMLDivElement>(null);
-  const [isContainerOpen, setIsContainerOpen] = useState<string>('');
 
   useGSAP(
     () => {
@@ -79,15 +78,8 @@ const Service = ({ service }: Props) => {
             <PrismicRichText field={service.data.interlude} />
           </div>
         </div>
-        <ServiceItems
-          service={service}
-          setIsContainerOpen={setIsContainerOpen}
-        />
-        <Overlay
-          service={service}
-          isContainerOpen={isContainerOpen}
-          setIsContainerOpen={setIsContainerOpen}
-        />
+        <ServiceItems service={service} />
+        <Overlay service={service} />
       </div>
     </div>
   );

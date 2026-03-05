@@ -20,6 +20,7 @@
     "@prismicio/client": "^7.21.0",
     "@prismicio/next": "^2.0.2",
     "@prismicio/react": "^3.2.2",
+    "@radix-ui/react-select": "^2.2.6",
     "@react-email/components": "1.0.1",
     "@react-spring/core": "^10.0.3",
     "@react-spring/three": "^10.0.3",
@@ -54,9 +55,9 @@
     "concurrently": "^9.2.1",
     "eslint": "^9.39.1",
     "eslint-config-next": "^16.0.7",
+    "prettier": "^3.8.1",
     "react-email": "5.0.6",
     "slice-machine-ui": "^2.20.2",
-    "typescript": "^5.9.3",
-    "prettier": "^3.8.1"
+    "typescript": "^5.9.3"
   }
 }

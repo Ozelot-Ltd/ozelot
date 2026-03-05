@@ -8,8 +8,56 @@
     z-index: 10;
     transform: translateX(100%);
     transition: all 0.4s var(--bezier);
+    padding: calc(2rem + 2vw) 0
 }
 
 .open {
     transform: translateX(0)
+}
+
+.arrow {
+    transform: rotate(90deg)
+}
+
+.select {
+    appearance: none;
+    border: none;
+    background-color: var(--lightgrey);
+    color: var(--black);
+    outline: none;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: space-between;
+    width: 55%;
+    align-items: center;
+}
+
+.dropdown {
+    background-color: var(--lightgrey);
+    z-index: 100;
+}
+
+.pickedValue {
+    color: var(--black);
+
+}
+
+.option {
+    font-size: 1.5rem;
+    cursor: pointer;
+    width: 100%;
+    color: var(--black);
+    padding: 0.25rem 0;
+    text-transform: uppercase;
+}
+
+.option:hover,
+.option[data-highlighted] {
+    background-color: var(--black);
+    color: var(--lightgrey);
+    appearance: none;
+    border: none;
+    outline: none;
+
 }

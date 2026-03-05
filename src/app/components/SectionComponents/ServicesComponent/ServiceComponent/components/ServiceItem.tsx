@@ -16,7 +16,6 @@ type ServiceItemProps = {
   setIsActive: Dispatch<SetStateAction<number | null>>;
   index: number;
   id: string;
-  setIsContainerOpen: Dispatch<SetStateAction<string>>;
 };
 
 export default function ServiceItem({
@@ -24,13 +23,12 @@ export default function ServiceItem({
   isActive,
   index,
   setIsActive,
-  id,
-  setIsContainerOpen
+  id
 }: ServiceItemProps) {
   const [firstString, secondString] = asText(item.item_title).split('&');
   const [isHovered, setIsHovered] = useState<boolean>(false);
 
-  const { setActiveService } = useActiveServiceStore();
+  const { setActiveService, setIsContainerOpen } = useActiveServiceStore();
 
   return (
     <div

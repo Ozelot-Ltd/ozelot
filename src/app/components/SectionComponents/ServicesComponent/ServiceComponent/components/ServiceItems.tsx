@@ -1,17 +1,13 @@
-import { Dispatch, SetStateAction, useState } from 'react';
+import { useState } from 'react';
 import styles from './ServiceItems.module.css';
 import ServiceItem from './ServiceItem';
 import { ServicenewDocument } from '@/prismicio-types';
 
 export type ServiceItemsProps = {
   service: ServicenewDocument;
-  setIsContainerOpen: Dispatch<SetStateAction<string>>;
 };
 
-export default function ServiceItems({
-  service,
-  setIsContainerOpen
-}: ServiceItemsProps) {
+export default function ServiceItems({ service }: ServiceItemsProps) {
   const [isActive, setIsActive] = useState<number | null>(null);
 
   return (
@@ -24,7 +20,6 @@ export default function ServiceItems({
           setIsActive={setIsActive}
           index={index}
           id={service.id}
-          setIsContainerOpen={setIsContainerOpen}
         />
       ))}
     </div>
