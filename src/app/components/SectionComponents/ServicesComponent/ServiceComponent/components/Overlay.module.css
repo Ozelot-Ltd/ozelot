@@ -1,0 +1,15 @@
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: var(--lightgrey);
+    z-index: 10;
+    transform: translateX(100%);
+    transition: all 0.4s var(--bezier);
+}
+
+.open {
+    transform: translateX(0)
+}

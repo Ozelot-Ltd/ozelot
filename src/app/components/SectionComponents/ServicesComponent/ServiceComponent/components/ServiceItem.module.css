@@ -1,0 +1,60 @@
+.item {
+    width: 100%;
+    border: var(--border);
+    padding: calc(0.5rem + 0.25vw);
+    position: relative;
+
+    background-color: var(--lightgrey-lighter);
+    max-height: 12.5rem;
+    height: 12.5rem;
+    overflow: hidden;
+    z-index: 1;
+    cursor: pointer;
+    transition: height 0.2s var(--bezier), max-height 0.2s var(--bezier), width 0.2s var(--bezier), scale 0.2s var(--bezier);
+}
+
+
+
+.upperTitle {
+    display: flex;
+    gap: calc(0.2rem + 0.2vw)
+}
+
+.title h5 {
+    text-transform: none;
+}
+
+.crosscontainer {
+    position: absolute;
+    bottom: 0.5rem;
+    right: 0.5rem;
+
+}
+
+.cross {
+    position: relative;
+    height: calc(.4rem + .4vw);
+    width: calc(.4rem + .4vw);
+}
+
+
+.inner div {
+    position: absolute;
+    top: 0%;
+    left: 50%;
+    width: 1px;
+    height: 100%;
+    background-color: var(--black);
+    transform: translate(-50%, -50%)
+}
+
+.inner {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+
+.inner .rotated {
+    transform: translate(-50%, -50%) rotate(90deg)
+}

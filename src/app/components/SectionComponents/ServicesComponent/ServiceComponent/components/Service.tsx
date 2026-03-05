@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 
 import styles from './Service.module.css';
 import { ServicenewDocument } from '@/prismicio-types';
@@ -7,7 +7,8 @@ import { PrismicRichText } from '@prismicio/react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import ServiceItem from './ServiceItem';
+import ServiceItems from './ServiceItems';
+import Overlay from './Overlay';
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
@@ -19,6 +20,7 @@ const Service = ({ service }: Props) => {
   const mainContainerRef = useRef<HTMLDivElement>(null);
   const indexRef = useRef<HTMLHeadingElement>(null);
   const leftContainerRef = useRef<HTMLDivElement>(null);
+  const [isContainerOpen, setIsContainerOpen] = useState<string>('');
 
   useGSAP(
     () => {
@@ -33,7 +35,6 @@ const Service = ({ service }: Props) => {
         scroller: scroller,
         start: 'top 35%',
         end: 'bottom bottom',
-        markers: process.env.NODE === 'development',
         scrub: 0.5,
         onUpdate: (self) => {
           const container = leftContainerRef.current!;
@@ -78,11 +79,15 @@ const Service = ({ service }: Props) => {
             <PrismicRichText field={service.data.interlude} />
           </div>
         </div>
-        <div className={styles.topicitems}>
-          {service.data.description_items.map((item, index) => (
-            <ServiceItem item={item} key={`${item.item_title}-${index}`} />
-          ))}
-        </div>
+        <ServiceItems
+          service={service}
+          setIsContainerOpen={setIsContainerOpen}
+        />
+        <Overlay
+          service={service}
+          isContainerOpen={isContainerOpen}
+          setIsContainerOpen={setIsContainerOpen}
+        />
       </div>
     </div>
   );

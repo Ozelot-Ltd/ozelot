@@ -21,6 +21,7 @@
 .rightcontainer {
     border-top: var(--border);
     padding-top: calc(1rem + 1vw);
+    position: relative;
 
 }
 
@@ -46,19 +47,6 @@
     flex-direction: column;
     gap: calc(0.25rem + 0.25vw)
 }
-
-
-
-
-
-
-
-
-
-
-
-
-/* hello*/
 
 
 /* Mobile */

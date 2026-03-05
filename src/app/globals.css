@@ -8,6 +8,7 @@
     --black: #ebebeb;
     --black-active: #ebebeb;
     --lightgrey: #262626;
+    --lightgrey-lighter: #2d2d2d;
     --title-weight: "wght" 500;
     --radius-large: 20px;
     --border: 0.5px solid var(--black);
@@ -20,7 +21,6 @@
     --time-fast: 0.2s;
     --mobile-breakpoint: 30rem;
     --border-width: 0.5px;
-
     --description-size: calc(0.45rem + 0.45vw);
 }
 
