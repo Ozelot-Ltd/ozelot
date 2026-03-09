@@ -4,7 +4,7 @@ import { ServicenewDocument } from '@/prismicio-types';
 import * as Select from '@radix-ui/react-select';
 import styles from './Overlay.module.css';
 
-import { asText } from '@prismicio/client';
+import { asText, isFilled } from '@prismicio/client';
 
 import { useActiveServiceStore } from '@/stores/useActiveServiceStore';
 import Arrow from '@/app/components/SvgComponents/Arrow/Arrow';
@@ -67,7 +67,17 @@ export default function Overlay({ service }: OverlayProps) {
                         className={styles.option}
                       >
                         <Select.ItemText>
-                          {asText(item.item_title)}
+                          <span>
+                            <PrismicRichText field={item.item_title} />{' '}
+                            {isFilled.richText(item.item_title_second) && (
+                              <>
+                                <h5>&</h5>{' '}
+                                <PrismicRichText
+                                  field={item.item_title_second}
+                                />
+                              </>
+                            )}
+                          </span>
                         </Select.ItemText>
                       </Select.Item>
                     ))}
