@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { PrismicRichText } from '@prismicio/react';
 import {
   ServicenewDocumentDataDescriptionItemsItem,
@@ -7,7 +6,7 @@ import {
 import styles from './ServiceItem.module.css';
 import { asText } from '@prismicio/client';
 import { Dispatch, SetStateAction } from 'react';
-
+import { isFilled } from '@prismicio/client';
 import { useActiveServiceStore } from '@/stores/useActiveServiceStore';
 
 type ServiceItemProps = {
@@ -25,30 +24,27 @@ export default function ServiceItem({
   setIsActive,
   id
 }: ServiceItemProps) {
-  const [firstString, secondString] = asText(item.item_title).split('&');
-  const [isHovered, setIsHovered] = useState<boolean>(false);
-
   const { setActiveService, setIsContainerOpen } = useActiveServiceStore();
 
   return (
     <div
       className={styles.item}
-      style={{ scale: isHovered ? 1.025 : 1 }}
       onClick={() => {
         isActive !== index ? setIsActive(index) : setIsActive(null);
         setActiveService(asText(item.item_title) as string);
         setIsContainerOpen(id);
       }}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
     >
       <div className={styles.title}>
         <div className={styles.upperTitle}>
-          <h5>{firstString}</h5> <h5>&</h5>
+          <PrismicRichText field={item.item_title} />{' '}
+          <>{isFilled.richText(item.item_title_second) && <h5>&</h5>}</>
         </div>
-        <div>
-          <h5>{secondString}</h5>
-        </div>
+        {isFilled.richText(item.item_title_second) && (
+          <div>
+            <PrismicRichText field={item.item_title_second} />
+          </div>
+        )}
       </div>
       <div style={{ opacity: 0 }}>
         <PrismicRichText field={item.item} />

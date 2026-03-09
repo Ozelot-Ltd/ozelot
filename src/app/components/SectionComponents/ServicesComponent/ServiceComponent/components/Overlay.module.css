@@ -8,7 +8,12 @@
     z-index: 10;
     transform: translateX(100%);
     transition: all 0.4s var(--bezier);
-    padding: calc(2rem + 2vw) 0
+    padding: var(--spacing) 0;
+    padding-bottom: calc(var(--spacing) * 2);
+    margin-top: var(--spacing);
+    border-top: var(--border);
+
+    --spacing: calc(1rem + 1vw);
 }
 
 .open {
@@ -19,6 +24,7 @@
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    height: 100%;
 }
 
 .dropdowncontainer {
@@ -47,6 +53,8 @@
     justify-content: space-between;
     width: 55%;
     align-items: center;
+    width: fit-content;
+    gap: 2rem;
 }
 
 .dropdown {
@@ -85,4 +93,19 @@
     border: none;
     outline: none;
 
+}
+
+.buttoncontainer {
+    align-self: flex-end;
+}
+
+.buttoncontainer button {
+    text-transform: uppercase;
+    border-radius: none;
+    outline: none;
+    padding: calc(0.25rem + 0.25vw) calc(0.5rem + 0.5vw);
+    background-color: var(--lightgrey);
+    border: var(--border);
+    color: var(--black);
+    cursor: pointer;
 }

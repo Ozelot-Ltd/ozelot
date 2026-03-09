@@ -61,6 +61,15 @@
                 "single": "heading5,strong,em"
               }
             },
+            "item_title_second": {
+              "type": "StructuredText",
+              "config": {
+                "label": "Item Title Second",
+                "placeholder": "",
+                "allowTargetBlank": true,
+                "multi": "heading5,strong,em"
+              }
+            },
             "item": {
               "type": "StructuredText",
               "config": {

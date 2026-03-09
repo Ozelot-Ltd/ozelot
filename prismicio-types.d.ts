@@ -1746,6 +1746,16 @@ export interface ServicenewDocumentDataDescriptionItemsItem {
   item_title: prismic.RichTextField;
 
   /**
+   * Item Title Second field in *serviceNew → Description Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: servicenew.description_items[].item_title_second
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  item_title_second: prismic.RichTextField;
+
+  /**
    * item field in *serviceNew → Description Items*
    *
    * - **Field Type**: Rich Text

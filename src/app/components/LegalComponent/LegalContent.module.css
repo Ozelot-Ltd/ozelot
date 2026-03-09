@@ -54,16 +54,16 @@
 
 .cross {
     position: relative;
-    height: calc(1rem + 1vw);
-    width: calc(1rem + 1vw);
+    height: calc(0.75rem + 0.75vw);
+    width: calc(0.75rem + 0.75vw);
 
 }
 
 .cross div {
     position: absolute;
     height: 100%;
-    width: var(--border-width);
-    background-color: black;
+    width: calc(var(--border-width) * 2);
+    background-color: var(--black);
     top: 50%;
     left: 50%;
     transform-origin: center;

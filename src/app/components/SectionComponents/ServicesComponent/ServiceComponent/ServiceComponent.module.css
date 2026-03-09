@@ -18,6 +18,7 @@
     font-size: calc(1rem + 2.4vw);
     font-variation-settings: "wght" 380;
     transition: font-variation-settings 1s var(--bezier);
+
 }
 
 .subtitle {

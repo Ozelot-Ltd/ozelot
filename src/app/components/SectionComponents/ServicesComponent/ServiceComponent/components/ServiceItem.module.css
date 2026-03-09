@@ -3,16 +3,19 @@
     border: var(--border);
     padding: calc(0.5rem + 0.25vw);
     position: relative;
-
     background-color: var(--lightgrey-lighter);
     max-height: 12.5rem;
     height: 12.5rem;
     overflow: hidden;
     z-index: 1;
     cursor: pointer;
-    transition: height 0.2s var(--bezier), max-height 0.2s var(--bezier), width 0.2s var(--bezier), scale 0.2s var(--bezier);
+    transition: all 0.3s var(--bezier)
 }
 
+
+.item:hover {
+    transform: rotateZ(0.5deg) scale(1.01)
+}
 
 
 .upperTitle {
@@ -22,6 +25,7 @@
 
 .title h5 {
     text-transform: none;
+    transition: color 0.3s var(--bezier)
 }
 
 .crosscontainer {
@@ -38,6 +42,14 @@
 }
 
 
+.inner {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+
+
 .inner div {
     position: absolute;
     top: 0%;
@@ -46,12 +58,6 @@
     height: 100%;
     background-color: var(--black);
     transform: translate(-50%, -50%)
-}
-
-.inner {
-    position: relative;
-    height: 100%;
-    width: 100%;
 }
 
 

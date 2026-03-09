@@ -8,7 +8,6 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import ServiceItems from './ServiceItems';
-import Overlay from './Overlay';
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
@@ -79,7 +78,6 @@ const Service = ({ service }: Props) => {
           </div>
         </div>
         <ServiceItems service={service} />
-        <Overlay service={service} />
       </div>
     </div>
   );

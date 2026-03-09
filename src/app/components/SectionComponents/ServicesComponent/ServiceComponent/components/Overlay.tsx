@@ -81,7 +81,9 @@ export default function Overlay({ service }: OverlayProps) {
         </div>
       </div>
 
-      <div onClick={() => setIsContainerOpen('')}>lcose</div>
+      <div className={styles.buttoncontainer}>
+        <button onClick={() => setIsContainerOpen('')}>close</button>
+      </div>
     </div>
   );
 }

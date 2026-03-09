@@ -2,6 +2,7 @@ import { useState } from 'react';
 import styles from './ServiceItems.module.css';
 import ServiceItem from './ServiceItem';
 import { ServicenewDocument } from '@/prismicio-types';
+import Overlay from './Overlay';
 
 export type ServiceItemsProps = {
   service: ServicenewDocument;
@@ -22,6 +23,7 @@ export default function ServiceItems({ service }: ServiceItemsProps) {
           id={service.id}
         />
       ))}
+      <Overlay service={service} />
     </div>
   );
 }
