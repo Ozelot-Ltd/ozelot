@@ -9,12 +9,16 @@ import FadeIn from '@/app/components/FadeIn/FadeIn';
 import { PrismicRichText } from '@prismicio/react';
 import useSmoothScroll from '@/hooks/useSmoothScroll';
 
+import { useMobile } from '@/context/MobileContext';
+
 const ServiceComponent = () => {
   const { serviceArray, servicesMain } = useContents();
+  const { isDesktop } = useMobile();
 
   const containerRef = useRef<HTMLDivElement>(null);
 
-  useSmoothScroll(containerRef, { lerp: 0.01, wheelMultiplier: 2 });
+  isDesktop &&
+    useSmoothScroll(containerRef, { lerp: 0.01, wheelMultiplier: 2 });
 
   useEffect(() => {
     if (containerRef.current) {
