@@ -169,6 +169,7 @@
         border-top: var(--border);
         --spacing: calc(1rem + 1vw);
         --dropdown-fontsize: 1.4rem;
+        padding-top: 4rem
     }
 
     .open {

@@ -62,6 +62,13 @@
 /* Mobile */
 /* Up to 768px */
 @media (max-width: 48rem) {
+
+    .item {
+
+        height: 10rem;
+
+    }
+
     .title h5 {
         text-transform: none;
         font-size: 1rem;
