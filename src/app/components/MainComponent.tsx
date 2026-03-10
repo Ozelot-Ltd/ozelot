@@ -77,48 +77,15 @@ export default function MainComponent({
   const { isClicked, setIsClicked } = isClickedStore();
   const [side, setSide] = useState<'left' | 'right' | 'bottom' | ''>('');
   const [transitionEnd, setTransitionEnd] = useState(false);
-  const [isProjectsActive, setIsProjectsActive] = useState(false);
-  const [isStudioActive, setIsStudioActive] = useState(false);
-  const [isRecordsActive, setIsRecordsActive] = useState(false);
-  const [isContactActive, setIsContactActive] = useState(false);
-  const [isServicesActive, setIsServicesActive] = useState(false);
   const { isDesktop } = useMobile();
   const router = useRouter();
   const pathname = usePathname();
 
-  useEffect(() => {
-    if (isClicked === 'projects') {
-      setIsProjectsActive(true);
-      setIsStudioActive(false);
-      setIsRecordsActive(false);
-      setIsContactActive(false);
-      setIsServicesActive(false);
-    } else if (isClicked === 'studio') {
-      setIsProjectsActive(false);
-      setIsStudioActive(true);
-      setIsRecordsActive(false);
-      setIsContactActive(false);
-      setIsServicesActive(false);
-    } else if (isClicked === 'records') {
-      setIsProjectsActive(false);
-      setIsStudioActive(false);
-      setIsRecordsActive(true);
-      setIsContactActive(false);
-      setIsServicesActive(false);
-    } else if (isClicked === 'contact') {
-      setIsProjectsActive(false);
-      setIsStudioActive(false);
-      setIsRecordsActive(false);
-      setIsContactActive(true);
-      setIsServicesActive(false);
-    } else if (isClicked === 'services') {
-      setIsProjectsActive(false);
-      setIsStudioActive(false);
-      setIsRecordsActive(false);
-      setIsContactActive(false);
-      setIsServicesActive(true);
-    }
-  }, [isClicked]);
+  const isProjectsActive = isClicked === 'projects';
+  const isStudioActive = isClicked === 'studio';
+  const isRecordsActive = isClicked === 'records';
+  const isContactActive = isClicked === 'contact';
+  const isServicesActive = isClicked === 'services';
 
   useEffect(() => {
     const updateContainerWidth = () => {
