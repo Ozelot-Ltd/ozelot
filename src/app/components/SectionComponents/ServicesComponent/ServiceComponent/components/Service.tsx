@@ -26,33 +26,42 @@ const Service = ({ service }: Props) => {
         mainContainerRef.current?.closest('[data-content]')?.parentElement;
       if (!scroller || !indexRef.current || !leftContainerRef.current) return;
 
-      const speed = 0.1; // slower = more lag (0 = frozen, 1 = normal scroll)
+      const speed = 0.1;
+      let containerHeight = leftContainerRef.current.offsetHeight;
+      let indexHeight = indexRef.current.offsetHeight;
+      let maxY = containerHeight - indexHeight;
 
-      ScrollTrigger.create({
+      const resizeObserver = new ResizeObserver(() => {
+        containerHeight = leftContainerRef.current!.offsetHeight;
+        indexHeight = indexRef.current!.offsetHeight;
+        maxY = containerHeight - indexHeight;
+      });
+      resizeObserver.observe(leftContainerRef.current);
+      resizeObserver.observe(indexRef.current);
+
+      const trigger = ScrollTrigger.create({
         trigger: mainContainerRef.current,
         scroller: scroller,
         start: 'top 35%',
         end: 'bottom bottom',
         scrub: 0.5,
         onUpdate: (self) => {
-          const container = leftContainerRef.current!;
-          const index = indexRef.current!;
-          const containerHeight = container.offsetHeight;
-          const indexHeight = index.offsetHeight;
-          const maxY = containerHeight - indexHeight;
-
-          // How far the container has scrolled past the viewport top
           const scrollDistance = containerHeight * self.progress;
           const y = Math.min(Math.max(scrollDistance * (1 - speed), 0), maxY);
 
-          gsap.to(index, {
+          gsap.to(indexRef.current, {
             y,
-            duration: 3,
-            ease: 'power4.out',
+            duration: 1,
+            ease: 'power2.out',
             overwrite: true
           });
         }
       });
+
+      return () => {
+        trigger.kill();
+        resizeObserver.disconnect();
+      };
     },
     { scope: mainContainerRef }
   );

@@ -2,9 +2,10 @@ import { useEffect, RefObject } from 'react';
 
 export default function useSmoothScroll(
   containerRef: RefObject<HTMLElement | null>,
-  { lerp = 0.08, wheelMultiplier = 1 } = {}
+  { lerp = 0.08, wheelMultiplier = 1, enabled = true } = {}
 ) {
   useEffect(() => {
+    if (!enabled) return;
     const container = containerRef.current;
     if (!container) return;
 
@@ -65,5 +66,5 @@ export default function useSmoothScroll(
       scroller.removeEventListener('scroll', onScroll);
       cancelAnimationFrame(animationId);
     };
-  }, [containerRef, lerp, wheelMultiplier]);
+  }, [containerRef, lerp, wheelMultiplier, enabled]);
 }

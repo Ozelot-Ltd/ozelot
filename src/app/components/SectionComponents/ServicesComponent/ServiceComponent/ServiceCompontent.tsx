@@ -1,3 +1,5 @@
+'use client';
+
 import { useRef, useEffect } from 'react';
 
 import styles from './ServiceComponent.module.css';
@@ -17,8 +19,11 @@ const ServiceComponent = () => {
 
   const containerRef = useRef<HTMLDivElement>(null);
 
-  isDesktop &&
-    useSmoothScroll(containerRef, { lerp: 0.01, wheelMultiplier: 2 });
+  useSmoothScroll(containerRef, {
+    lerp: 0.01,
+    wheelMultiplier: 2,
+    enabled: isDesktop
+  });
 
   useEffect(() => {
     if (containerRef.current) {
@@ -30,7 +35,7 @@ const ServiceComponent = () => {
     }
   }, [containerRef]);
 
-  const sortedArray = serviceArray.sort((a, b) => {
+  const sortedArray = [...serviceArray].sort((a, b) => {
     const numA = a.data.index ?? 0;
     const numB = b.data.index ?? 0;
     return numA - numB;
