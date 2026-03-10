@@ -7,7 +7,7 @@ const config = {
   frictionAir: 0.2,
   density: 0.1,
   wallThickness: 100,
-  mouseStiffness: 0.6,
+  mouseStiffness: 0.6
 };
 
 let engine: Matter.Engine;
@@ -66,7 +66,7 @@ function initPhysics(
       wallThickness,
       containerRect.height + wallThickness * 2,
       { isStatic: true }
-    ),
+    )
   ];
 
   Matter.World.add(engine.world, walls);
@@ -75,7 +75,7 @@ function initPhysics(
   objects.forEach((obj, index) => {
     const objRect = {
       width: (obj as HTMLElement).offsetWidth,
-      height: (obj as HTMLElement).offsetHeight,
+      height: (obj as HTMLElement).offsetHeight
     };
 
     // Read the data-record-index attribute from the element
@@ -98,7 +98,7 @@ function initPhysics(
         restitution: config.restitution,
         friction: config.friction,
         frictionAir: config.frictionAir,
-        density: config.density,
+        density: config.density
       }
     );
 
@@ -109,7 +109,7 @@ function initPhysics(
       element: obj as HTMLElement,
       width: objRect.width,
       height: objRect.height,
-      recordIndex: recordIndex,
+      recordIndex: recordIndex
     });
 
     Matter.World.add(engine.world, body);
@@ -140,8 +140,8 @@ function initPhysics(
     mouse: mouse,
     constraint: {
       stiffness: config.mouseStiffness,
-      render: { visible: false },
-    },
+      render: { visible: false }
+    }
   });
 
   mouseConstraint.mouse.element.oncontextmenu = () => false;
@@ -182,10 +182,6 @@ function initPhysics(
           bodyY <= dropzoneY + dropzoneRect.height / 2;
 
         if (isInDropzone) {
-          console.log(
-            'Record dropped in dropzone:',
-            draggedBodyData.recordIndex
-          );
           onRecordDrop(draggedBodyData.recordIndex);
         }
       }
@@ -209,12 +205,12 @@ function initPhysics(
 
         Matter.Body.setPosition(dragging, {
           x: clamp(dragging.position.x, minX, maxX),
-          y: clamp(dragging.position.y, minY, maxY),
+          y: clamp(dragging.position.y, minY, maxY)
         });
 
         Matter.Body.setVelocity(dragging, {
           x: clamp(dragging.velocity.x, -20, 20),
-          y: clamp(dragging.velocity.y, -20, 20),
+          y: clamp(dragging.velocity.y, -20, 20)
         });
       }
     }
