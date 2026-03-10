@@ -35,17 +35,22 @@
 }
 
 .titlecontainer h2 {
-    font-size: 2.2rem;
+    font-size: 2.5rem;
 }
 
 .subtitle h3 {
-    font-size: 1.4rem;
+    font-size: 1.75rem;
 }
 
 .uppercontainer {
     display: flex;
     flex-direction: column;
     gap: calc(0.25rem + 0.25vw)
+}
+
+.uppercontainer p {
+
+    font-size: 1.2rem;
 }
 
 

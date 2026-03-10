@@ -13,6 +13,7 @@
     margin-top: var(--spacing);
     border-top: var(--border);
     --spacing: calc(1rem + 1vw);
+    --dropdown-fontsize: 1.4rem;
 }
 
 .open {
@@ -33,12 +34,33 @@
 
 .textcontainer {
     width: 80%;
+
 }
 
-.textcontainer p {
-    font-size: 1.2rem;
+.textcontainer * {
+    font-size: var(--font-size);
     line-height: 150%;
+
 }
+
+.textcontainer h5 {
+    font-size: 1.2rem;
+    font-variation-settings: var(--title-weight);
+    padding-top: 1.5rem;
+}
+
+
+.textcontainer ul {
+    list-style-position: inside;
+    padding-top: 0.5rem;
+}
+
+.textcontainer li {
+    list-style-type: circle;
+    font-variation-settings: var(--text-weight);
+
+}
+
 
 .select {
     appearance: none;
@@ -46,7 +68,7 @@
     background-color: var(--lightgrey);
     color: var(--black);
     outline: none;
-    font-size: 1.5rem;
+    font-size: var(--dropdown-fontsize) !important;
     text-transform: uppercase;
     display: flex;
     justify-content: space-between;
@@ -59,8 +81,9 @@
 .dropdown {
     background-color: var(--lightgrey);
     z-index: 100;
-    padding-top: 2rem;
-    border-right: var(--border)
+    margin-top: 1%;
+    border: var(--border);
+    padding: 0.5rem;
 }
 
 .pickedValue {
@@ -95,7 +118,7 @@
 }
 
 .option[data-highlighted] span h5 {
-    color: var(--lightgrey)
+    color: var(--lightgrey);
 }
 
 .option span {
@@ -106,12 +129,11 @@
 }
 
 .option:hover span h5 {
-    color: var(--lightgrey)
+    color: var(--lightgrey);
 }
 
 .option span h5 {
-    font-size: 1.5rem;
-
+    font-size: var(--dropdown-fontsize);
 }
 
 .buttoncontainer {
