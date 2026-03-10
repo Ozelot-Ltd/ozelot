@@ -42,7 +42,7 @@ export default function Overlay({ service }: OverlayProps) {
           >
             <Select.Trigger className={styles.select}>
               <Select.Value
-                placeholder={`${asText(displayedService?.item_title)} `}
+                placeholder={`${asText(displayedService?.item_title)} ${isFilled.richText(displayedService?.item_title_second) ? `& ${asText(displayedService.item_title_second)}` : ''}`}
                 className={styles.pickedValue}
               />
               <div

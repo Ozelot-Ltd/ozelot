@@ -100,7 +100,6 @@
 }
 
 .option {
-
     cursor: pointer;
     width: 100%;
     color: var(--black);
@@ -150,3 +149,108 @@
     color: var(--black);
     cursor: pointer;
 }
+
+/* Mobile */
+/* Up to 768px */
+@media (max-width: 48rem) {
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background-color: var(--lightgrey);
+        z-index: 10;
+        transform: translateX(100%);
+        transition: all 0.4s var(--bezier);
+        padding: var(--spacing) 0;
+        padding-bottom: calc(var(--spacing) * 2);
+        margin-top: var(--spacing);
+        border-top: var(--border);
+        --spacing: calc(1rem + 1vw);
+        --dropdown-fontsize: 1.4rem;
+    }
+
+    .open {
+        transform: translateX(0)
+    }
+
+    .contentcontainer {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        height: fit-content;
+    }
+
+    .dropdowncontainer {
+
+        width: 100%;
+    }
+
+    .textcontainer {
+        width: 100%;
+
+    }
+
+    .textcontainer * {
+        font-size: calc(0.7rem + 0.5vw);
+        line-height: 150%;
+    }
+
+
+    .select {
+        width: 100%;
+        gap: 1rem;
+    }
+
+
+    .buttoncontainer {
+        align-self: auto;
+        padding-top: 2rem;
+    }
+
+    .buttoncontainer button {
+        text-transform: uppercase;
+        border-radius: none;
+        outline: none;
+        padding: calc(0.25rem + 0.25vw) calc(0.5rem + 0.5vw);
+        background-color: var(--lightgrey);
+        border: var(--border);
+        color: var(--black);
+        cursor: pointer;
+    }
+}
+
+/* Tablet */
+/* 768px to 1184px */
+@media (min-width: 48rem) and (max-width: 74rem) {}
+
+/* Tablet - Portrait Orientation */
+/* 768px to 1184px in portrait mode */
+@media (min-width: 48rem) and (max-width: 74rem) and (orientation: portrait) {}
+
+/* Desktop */
+/* 1184px and up */
+@media (min-width: 74rem) {}
+
+/* Large Desktop */
+/* 1440px and up */
+@media (min-width: 90rem) {}
+
+@media (min-width: 120rem) {}
+
+/* Touch Devices */
+/* Any touch device regardless of size */
+@media (hover: none) {}
+
+/* Non-Touch Devices */
+/* Devices with precise pointer (mouse) */
+@media (hover: hover) and (pointer: fine) {}
+
+/* Prefers Dark Mode */
+/* User has set dark mode preference */
+@media (prefers-color-scheme: dark) {}
+
+/* Prefers Reduced Motion */
+/* User has requested minimal animations */
+@media (prefers-reduced-motion: reduce) {}
