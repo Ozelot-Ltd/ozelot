@@ -10,7 +10,7 @@ import FadeIn from '@/app/components/FadeIn/FadeIn';
 
 type Props = {
   project: ProjectDocument;
-  activeProject: string;
+  activeProject: string | ProjectDocument;
   index?: number;
 };
 
@@ -31,13 +31,13 @@ export default function Project({ project, activeProject, index }: Props) {
   const videourl = 'https://res.cloudinary.com/ddkwj78mq/video/upload/';
 
   const backgroundMedia =
-    activeProject === project.id ? project.data.gallery[0] : null;
+    activeProject === project.uid ? project.data.gallery[0] : null;
 
   return (
     <FadeIn stylesProps={styles} delay={index} multiplier={0.1}>
       <div
         ref={containerRef}
-        className={`${styles.projectComponent} ${activeProject === project.id ? styles.active : ''}`}
+        className={`${styles.projectComponent} ${activeProject === project.uid ? styles.active : ''}`}
         style={{ position: 'relative' }}
       >
         {backgroundMedia &&

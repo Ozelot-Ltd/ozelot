@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import styles from '../../RecordsComponent/RecordComponent/RecordComponent.module.css';
 
@@ -10,9 +10,16 @@ import ImageComponent from '../../RecordsComponent/ImageComponent/ImageComponent
 import Project from './components/Project';
 import DescriptionComponent from '../../RecordsComponent/DescriptionComponent/DescriptionComponent';
 
+import { useRouter, usePathname } from 'next/navigation';
+import { ProjectDocument } from '@/prismicio-types';
+
 export default function ProjectComponent() {
+  const router = useRouter();
   const { projectArray } = useContents();
-  const [activeProject, setActiveProject] = useState('');
+  const [activeProject, setActiveProject] = useState<string | ProjectDocument>(
+    ''
+  );
+  const pathname = usePathname();
 
   const sortedArray = projectArray.sort((a, b) => {
     const numA = a.data.project_number ?? 0;
@@ -24,8 +31,18 @@ export default function ProjectComponent() {
     'https://res.cloudinary.com/ddkwj78mq/video/upload/v1759222722/websitevideo_compressed_ilku8j.mp4';
 
   const currentProject = projectArray.find(
-    (project) => project.id === activeProject
+    (project) => project.uid === activeProject
   )?.data;
+
+  useEffect(() => {
+    const chosenProject = projectArray.filter((project) =>
+      pathname.includes(project.uid)
+    );
+
+    if (chosenProject[0]) {
+      setActiveProject(chosenProject[0].uid);
+    }
+  }, [pathname, projectArray]);
 
   return (
     <div className={styles.container}>
@@ -37,7 +54,8 @@ export default function ProjectComponent() {
                 key={`${project.id}-${index}`}
                 className={styles.listComponent}
                 onClick={() => {
-                  setActiveProject(project.id);
+                  setActiveProject(project.uid);
+                  router.push(`/projects/${project.uid}`);
                   type TitleType = { text: string };
                   const titleText = (project.data.title[0] as TitleType).text;
                   window.sa_event?.(`project_${titleText}`);
@@ -74,7 +92,7 @@ export default function ProjectComponent() {
           )}
           {currentProject && (
             <ImageComponent
-              key={activeProject}
+              key={activeProject as string}
               currentProject={currentProject}
             />
           )}
