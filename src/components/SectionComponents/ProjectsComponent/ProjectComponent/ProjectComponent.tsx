@@ -15,11 +15,11 @@ import { ProjectDocument } from '@/prismicio-types';
 
 export default function ProjectComponent() {
   const router = useRouter();
+  const pathname = usePathname();
   const { projectArray } = useContents();
   const [activeProject, setActiveProject] = useState<string | ProjectDocument>(
     ''
   );
-  const pathname = usePathname();
 
   const sortedArray = projectArray.sort((a, b) => {
     const numA = a.data.project_number ?? 0;

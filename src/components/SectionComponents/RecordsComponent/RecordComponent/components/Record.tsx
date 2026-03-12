@@ -36,9 +36,9 @@ export default function Record({
     <FadeIn stylesProps={styles} delay={index} multiplier={0.1}>
       <div
         ref={containerRef}
-        className={`${styles.releaseComponent} ${activeRecord === record.id ? styles.active : ''}`}
+        className={`${styles.releaseComponent} ${activeRecord === record.uid ? styles.active : ''}`}
         style={{
-          backgroundImage: `url(${activeRecord === record.id ? record.data.record_images?.[0]?.record_image?.url : ''})`,
+          backgroundImage: `url(${activeRecord === record.uid ? record.data.record_images?.[0]?.record_image?.url : ''})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat'
@@ -51,7 +51,7 @@ export default function Record({
               : record.data.release_number}
           </p>
           <div
-            className={`${styles.catalogText} ${activeRecord === record.id ? styles.activeRecord : ''}`}
+            className={`${styles.catalogText} ${activeRecord === record.uid ? styles.activeRecord : ''}`}
           >
             <PrismicRichText field={record.data.catalog} />
           </div>

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styles from './RecordComponent.module.css';
 import { useContents } from '@/context/ContentContext';
 import Record from './components/Record';
@@ -12,7 +12,11 @@ import { isSplashscreenFinishedStore } from '@/stores/SplashscreenIsFinished';
 
 import { useMobile } from '@/context/MobileContext';
 
+import { useRouter, usePathname } from 'next/navigation';
+
 export default function RecordComponent() {
+  const router = useRouter();
+  const pathname = usePathname();
   const [activeRecord, setActiveRecord] = useState('');
   const { recordArray } = useContents();
 
@@ -33,8 +37,18 @@ export default function RecordComponent() {
   });
 
   const currentRecord = recordArray.find(
-    (record) => record.id === activeRecord
+    (record) => record.uid === activeRecord
   )?.data;
+
+  useEffect(() => {
+    const chosenRecord = recordArray.filter((record) =>
+      pathname.includes(record.uid)
+    );
+
+    if (chosenRecord[0]) {
+      setActiveRecord(chosenRecord[0].uid);
+    }
+  }, [pathname, recordArray]);
 
   return (
     <section className={styles.container}>
@@ -43,10 +57,11 @@ export default function RecordComponent() {
           <div className={styles.scrollContainer}>
             {sortedArray.map((record, index) => (
               <div
-                key={`${record.id}-${index}`}
+                key={`${record.uid}-${index}`}
                 className={styles.listComponent}
                 onClick={() => {
-                  setActiveRecord(record.id);
+                  setActiveRecord(record.uid);
+                  router.push(`/records/${record.uid}`);
                   type TitleType = { text: string };
                   const recordTitleText = (record.data.title[0] as TitleType)
                     .text;
@@ -79,10 +94,7 @@ export default function RecordComponent() {
         ) : currentRecord?.record_images &&
           currentRecord.record_images.length > 0 ? (
           <div className={styles.imageContainer}>
-            <ImageComponent
-              key={activeRecord}
-              currentRecord={currentRecord}
-            />{' '}
+            <ImageComponent currentRecord={currentRecord} />{' '}
           </div>
         ) : null}
       </section>
