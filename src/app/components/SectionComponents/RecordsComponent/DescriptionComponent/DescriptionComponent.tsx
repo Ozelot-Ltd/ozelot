@@ -3,7 +3,7 @@ import {
   ProjectDocumentData,
   RecordDocumentData,
   Simplify
-} from '@/prismicio-types';
+} from '../../../../../../prismicio-types';
 
 import Earth from '@/app/components/SvgComponents/Earth/Earth';
 import BandcampLogo from '@/app/components/SvgComponents/SocialsLogo/BandcampLogo';
@@ -16,7 +16,6 @@ import Link from 'next/link';
 import Arrow from '@/app/components/SvgComponents/Arrow/Arrow';
 
 import { useMobile } from '@/context/MobileContext';
-import { isFilled } from '@prismicio/client';
 
 export default function DescriptionComponent({
   currentProject,
@@ -101,18 +100,16 @@ export default function DescriptionComponent({
               >
                 <BandcampLogo height={24} width={24} />
               </PrismicNextLink>
-              {isFilled.link(currentRecord.spotify_link) && (
-                <PrismicNextLink
-                  field={currentRecord.spotify_link}
-                  onClick={() => {
-                    window.sa_event?.(
-                      `spotify_${currentRecord.record_title?.toLowerCase()}`
-                    );
-                  }}
-                >
-                  <SpotifyLogo height={22} width={22} />
-                </PrismicNextLink>
-              )}
+              <PrismicNextLink
+                field={currentRecord.spotify_link}
+                onClick={() => {
+                  window.sa_event?.(
+                    `spotify_${currentRecord.record_title?.toLowerCase()}`
+                  );
+                }}
+              >
+                <SpotifyLogo height={22} width={22} />
+              </PrismicNextLink>
 
               {currentRecord.has_own_website && (
                 <PrismicNextLink
@@ -185,7 +182,6 @@ export default function DescriptionComponent({
               <PrismicRichText field={currentProject.description} />
             </div>
             <div className={styles.contactPhrase}>
-              <p>If you interested about {isMainDiscipline()} </p>{' '}
               <Link
                 href="/contact"
                 onClick={() => {
