@@ -37,25 +37,6 @@ export default function DescriptionComponent({
     }
   }, [isMobile]);
 
-  function isMainDiscipline() {
-    switch (currentProject?.is_main_discipline) {
-      case '3d':
-        return '3D & 3D Motion Design';
-      case 'direction':
-        return 'Art Direction';
-      case 'web':
-        return 'Web Development';
-      case 'graphic':
-        return 'Graphics';
-      case 'ai':
-        return 'AI & AI Prototyping';
-      case 'sounddesign':
-        return 'Sound Design';
-      default:
-        return 'working with us';
-    }
-  }
-
   return (
     <>
       {currentRecord && (
