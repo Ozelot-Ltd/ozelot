@@ -94,7 +94,7 @@ export default function DescriptionComponent({
                 field={currentRecord.bandcamp_link}
                 onClick={() => {
                   window.sa_event?.(
-                    `bandcamp_${currentRecord.record_title?.toLowerCase()}`
+                    `bandcamp_${currentRecord.record_title?.toLowerCase()}`,
                   );
                 }}
               >
@@ -104,7 +104,7 @@ export default function DescriptionComponent({
                 field={currentRecord.spotify_link}
                 onClick={() => {
                   window.sa_event?.(
-                    `spotify_${currentRecord.record_title?.toLowerCase()}`
+                    `spotify_${currentRecord.record_title?.toLowerCase()}`,
                   );
                 }}
               >
@@ -116,7 +116,7 @@ export default function DescriptionComponent({
                   field={currentRecord.website_link}
                   onClick={() => {
                     window.sa_event?.(
-                      `website_${currentRecord.record_title?.toLowerCase()}`
+                      `website_${currentRecord.record_title?.toLowerCase()}`,
                     );
                   }}
                 >
@@ -182,7 +182,6 @@ export default function DescriptionComponent({
               <PrismicRichText field={currentProject.description} />
             </div>
             <div className={styles.contactPhrase}>
-              <p>If you interested about {isMainDiscipline()} </p>{' '}
               <Link
                 href="/contact"
                 onClick={() => {
