@@ -4,7 +4,7 @@
     overflow: hidden;
     display: grid;
     grid-template-columns: 0.45fr 1fr;
-    width: var(--service-container-width) !important;
+    width: var(--service-container-width, 100%);
 }
 
 

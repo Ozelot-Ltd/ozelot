@@ -9,31 +9,29 @@ import { useContents } from '@/context/ContentContext';
 import Service from './components/Service';
 import FadeIn from '@/app/components/FadeIn/FadeIn';
 import { PrismicRichText } from '@prismicio/react';
-import useSmoothScroll from '@/hooks/useSmoothScroll';
-
-import { useMobile } from '@/context/MobileContext';
 
 const ServiceComponent = () => {
   const { serviceArray, servicesMain } = useContents();
-  const { isDesktop } = useMobile();
 
   const containerRef = useRef<HTMLDivElement>(null);
 
-  useSmoothScroll(containerRef, {
-    lerp: 0.01,
-    wheelMultiplier: 2,
-    enabled: isDesktop
-  });
-
   useEffect(() => {
-    if (containerRef.current) {
-      const containerWidth = containerRef.current.offsetWidth;
+    const container = containerRef.current;
+    if (!container) return;
+
+    const updateWidth = () => {
       document.documentElement.style.setProperty(
         '--service-container-width',
-        `${containerWidth}px`
+        `${container.offsetWidth}px`
       );
-    }
-  }, [containerRef]);
+    };
+
+    updateWidth();
+    const resizeObserver = new ResizeObserver(updateWidth);
+    resizeObserver.observe(container);
+
+    return () => resizeObserver.disconnect();
+  }, []);
 
   const sortedArray = [...serviceArray].sort((a, b) => {
     const numA = a.data.index ?? 0;
@@ -64,11 +62,13 @@ const ServiceComponent = () => {
       </div>
 
       <div className={styles.scrollContainer}>
-        {sortedArray.map((service, index) => (
+        {/* {sortedArray.map((service, index) => (
           <div key={`${service.id}-${index}`}>
             <Service service={service} />
           </div>
-        ))}
+        ))} */}
+
+        <Service service={sortedArray[0]} />
       </div>
     </div>
   );
