@@ -33,9 +33,6 @@ const Service = ({ service }: Props) => {
       </div>
       <div className={styles.rightcontainer}>
         <div className={styles.uppercontainer}>
-          <div className={styles.subtitle}>
-            <PrismicRichText field={service.data.subtitle} />
-          </div>
           <div className={styles.interludecontainer}>
             <PrismicRichText field={service.data.interlude} />
           </div>
