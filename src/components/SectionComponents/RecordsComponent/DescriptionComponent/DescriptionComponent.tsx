@@ -3,17 +3,17 @@ import {
   ProjectDocumentData,
   RecordDocumentData,
   Simplify
-} from '../../../../../../prismicio-types';
+} from '../../../../../prismicio-types';
 
-import Earth from '@/app/components/SvgComponents/Earth/Earth';
-import BandcampLogo from '@/app/components/SvgComponents/SocialsLogo/BandcampLogo';
-import SpotifyLogo from '@/app/components/SvgComponents/SocialsLogo/SpotifyLogo';
-import Vinyl from '@/app/components/SvgComponents/Vinyl/Vinyl';
+import Earth from '@/components/SvgComponents/Earth/Earth';
+import BandcampLogo from '@/components/SvgComponents/SocialsLogo/BandcampLogo';
+import SpotifyLogo from '@/components/SvgComponents/SocialsLogo/SpotifyLogo';
+import Vinyl from '@/components/SvgComponents/Vinyl/Vinyl';
 import { PrismicNextLink } from '@prismicio/next';
 import { PrismicRichText } from '@prismicio/react';
 
 import Link from 'next/link';
-import Arrow from '@/app/components/SvgComponents/Arrow/Arrow';
+import Arrow from '@/components/SvgComponents/Arrow/Arrow';
 
 import { useMobile } from '@/context/MobileContext';
 

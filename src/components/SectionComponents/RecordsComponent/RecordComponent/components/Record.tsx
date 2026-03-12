@@ -8,9 +8,9 @@ import { PrismicRichText } from '@prismicio/react';
 
 import { RecordDocument } from '@/prismicio-types';
 
-import FadeIn from '@/app/components/FadeIn/FadeIn';
-import Vinyl from '@/app/components/SvgComponents/Vinyl/Vinyl';
-import Arrow from '@/app/components/SvgComponents/Arrow/Arrow';
+import FadeIn from '@/components/FadeIn/FadeIn';
+import Vinyl from '@/components/SvgComponents/Vinyl/Vinyl';
+import Arrow from '@/components/SvgComponents/Arrow/Arrow';
 
 export default function Record({
   record,

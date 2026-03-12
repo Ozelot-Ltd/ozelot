@@ -7,7 +7,7 @@ import styles from './ServiceComponent.module.css';
 import { useContents } from '@/context/ContentContext';
 
 import Service from './components/Service';
-import FadeIn from '@/app/components/FadeIn/FadeIn';
+import FadeIn from '@/components/FadeIn/FadeIn';
 import { PrismicRichText } from '@prismicio/react';
 
 const ServiceComponent = () => {

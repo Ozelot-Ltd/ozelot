@@ -5,9 +5,9 @@ import { PrismicRichText } from '@prismicio/react';
 
 import styles from './StudioContent.module.css';
 import SocialBar from '../../ContactComponent/components/SocialBar';
-import LegalButton from '@/app/components/LegalButton/LegalButton';
-import LegalComponent from '@/app/components/LegalComponent/LegalComponent';
-import Arrow from '@/app/components/SvgComponents/Arrow/Arrow';
+import LegalButton from '@/components/LegalButton/LegalButton';
+import LegalComponent from '@/components/LegalComponent/LegalComponent';
+import Arrow from '@/components/SvgComponents/Arrow/Arrow';
 import { useRouter } from 'next/navigation';
 import RightContainer from './RightContainer/RightContainer';
 

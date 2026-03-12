@@ -5,8 +5,8 @@ import { ProjectDocument } from '@/prismicio-types';
 
 import styles from './Project.module.css';
 import { PrismicRichText } from '@prismicio/react';
-import Arrow from '@/app/components/SvgComponents/Arrow/Arrow';
-import FadeIn from '@/app/components/FadeIn/FadeIn';
+import Arrow from '@/components/SvgComponents/Arrow/Arrow';
+import FadeIn from '@/components/FadeIn/FadeIn';
 
 type Props = {
   project: ProjectDocument;

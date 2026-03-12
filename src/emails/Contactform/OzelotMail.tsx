@@ -7,7 +7,7 @@ import {
   Text
 } from '@react-email/components';
 
-import { FormData } from '@/app/components/SectionComponents/ContactComponent/components/ContactForm';
+import { FormData } from '@/components/SectionComponents/ContactComponent/components/ContactForm';
 
 const Spacer = () => (
   <Container style={{ height: '24px', width: '100%' }}></Container>

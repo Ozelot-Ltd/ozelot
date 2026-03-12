@@ -6,8 +6,8 @@ import { PrismicRichText } from '@prismicio/react';
 
 import SocialBar from './SocialBar';
 import ContactForm from './ContactForm';
-import FadeIn from '@/app/components/FadeIn/FadeIn';
-import LegalComponent from '@/app/components/LegalComponent/LegalComponent';
+import FadeIn from '@/components/FadeIn/FadeIn';
+import LegalComponent from '@/components/LegalComponent/LegalComponent';
 
 export default function Contact() {
   const { contact } = useContents();

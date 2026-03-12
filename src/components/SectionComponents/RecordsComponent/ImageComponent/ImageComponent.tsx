@@ -8,10 +8,10 @@ import {
 import { PrismicNextImage } from '@prismicio/next';
 
 import styles from './ImageComponent.module.css';
-import Arrow from '@/app/components/SvgComponents/Arrow/Arrow';
+import Arrow from '@/components/SvgComponents/Arrow/Arrow';
 
 import Image from 'next/image';
-import ComingSoonPlaceholder from '@/app/components/ComingSoonImage/ComingSoonPlaceholder';
+import ComingSoonPlaceholder from '@/components/ComingSoonImage/ComingSoonPlaceholder';
 import LoadingComponent from './LoadingComponent/LoadingComponent';
 
 export default function ImageComponent({

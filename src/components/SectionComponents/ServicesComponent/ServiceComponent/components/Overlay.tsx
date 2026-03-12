@@ -7,7 +7,7 @@ import styles from './Overlay.module.css';
 import { asText, isFilled } from '@prismicio/client';
 
 import { useActiveServiceStore } from '@/stores/useActiveServiceStore';
-import Arrow from '@/app/components/SvgComponents/Arrow/Arrow';
+import Arrow from '@/components/SvgComponents/Arrow/Arrow';
 import { PrismicRichText } from '@prismicio/react';
 
 type OverlayProps = {

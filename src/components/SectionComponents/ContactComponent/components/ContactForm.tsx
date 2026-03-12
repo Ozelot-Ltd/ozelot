@@ -3,8 +3,8 @@
 import React, { useState, useEffect } from 'react';
 import { ContactDocument } from '@/prismicio-types';
 import styles from './ContactForm.module.css';
-import Arrow from '@/app/components/SvgComponents/Arrow/Arrow';
-import FadeIn from '@/app/components/FadeIn/FadeIn';
+import Arrow from '@/components/SvgComponents/Arrow/Arrow';
+import FadeIn from '@/components/FadeIn/FadeIn';
 import { isLegalVisibleStore } from '@/stores/IsLegalVisible';
 
 export interface FormData {

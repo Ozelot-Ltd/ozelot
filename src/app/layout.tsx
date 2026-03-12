@@ -7,11 +7,11 @@ import { createClient } from '@/prismicio';
 import Script from 'next/script';
 
 import './globals.css';
-import MainComponent from './components/MainComponent';
-import { Providers } from './components/Providers/Providers';
+import MainComponent from '../components/MainComponent';
+import { Providers } from '../components/Providers/Providers';
 
-import Splashscreen from './components/Splashscreen/Splashscreen';
-import { BackgroundComponent } from './components/BackgroundComponent/BackgroundComponent';
+import Splashscreen from '../components/Splashscreen/Splashscreen';
+import { BackgroundComponent } from '../components/BackgroundComponent/BackgroundComponent';
 
 const host = Host_Grotesk({
   weight: 'variable',
