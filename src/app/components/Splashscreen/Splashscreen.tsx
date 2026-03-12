@@ -70,6 +70,11 @@ export default function Splashscreen() {
     }
   }, [isSceneLoaded]);
 
+  const hostname =
+    typeof window !== 'undefined' ? window.location.hostname : '';
+  if (hostname !== 'ozelot.ltd' && hostname !== 'www.ozelot.ltd') {
+    return;
+  }
   return (
     <div className={styles.splashscreen} ref={splashscreenRef}>
       {Array.from({ length: count }).map((_, index) => (
