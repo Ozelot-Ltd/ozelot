@@ -28,8 +28,8 @@ export default function RecordsPlaceholder({
       if (recordArray && recordArray[recordIndex] && setActiveRecord) {
         const recordId =
           recordArray.find(
-            (record) => record.id === recordArray[recordIndex].id
-          )?.id || recordArray[recordIndex].uid;
+            (record) => record.id === recordArray[recordIndex].uid
+          )?.uid || recordArray[recordIndex].uid;
         setActiveRecord(recordId);
       }
     },

@@ -8,7 +8,7 @@ import { asText, isFilled } from '@prismicio/client';
 
 import { useActiveServiceStore } from '@/stores/useActiveServiceStore';
 import Arrow from '@/components/SvgComponents/Arrow/Arrow';
-import { PrismicRichText } from '@prismicio/react';
+import { JSXMapSerializer, PrismicRichText } from '@prismicio/react';
 
 type OverlayProps = {
   service: ServicenewDocument;
@@ -27,6 +27,18 @@ export default function Overlay({ service }: OverlayProps) {
   const displayedService = service.data.description_items.find(
     (item) => asText(item.item_title) === activeService
   );
+
+  const components: JSXMapSerializer = {
+    paragraph: ({ children }) => <p>{children}</p>,
+    heading5: ({ children }) => <h5>{children}</h5>,
+    list: ({ children }) => <ul className={styles.list}>{children}</ul>,
+    listItem: ({ children }) => (
+      <li className={styles.listitem}>
+        <Arrow height="10" />
+        <span>{children}</span>
+      </li>
+    )
+  };
 
   return (
     <div
@@ -87,7 +99,10 @@ export default function Overlay({ service }: OverlayProps) {
           </Select.Root>
         </div>
         <div className={styles.textcontainer}>
-          <PrismicRichText field={displayedService?.item} />
+          <PrismicRichText
+            field={displayedService?.item}
+            components={components}
+          />
         </div>
       </div>
 
