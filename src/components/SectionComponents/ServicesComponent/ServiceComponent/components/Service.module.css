@@ -1,10 +1,10 @@
 .container {
     --padding-bottomtop: calc(2rem + 2vw);
     padding: var(--padding-bottomtop) 0;
-    overflow: hidden;
     display: grid;
     grid-template-columns: 0.45fr 1fr;
     width: var(--service-container-width, 100%);
+    position: relative;
 }
 
 
@@ -32,6 +32,9 @@
     flex-direction: column;
     gap: calc(0.5rem + 0.5vw);
     align-items: flex-start;
+    position: sticky;
+    top: 2rem;
+    left: 0;
 }
 
 .titlecontainer h2 {
@@ -93,7 +96,7 @@
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: repeat(2, 1fr);
         gap: 8px;
-
+        position: static;
     }
 
     .titlecontainer h2 {
