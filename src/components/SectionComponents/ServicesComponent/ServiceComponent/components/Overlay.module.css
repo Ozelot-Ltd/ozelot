@@ -82,6 +82,7 @@
     align-items: center;
     width: fit-content;
     gap: 2rem;
+
 }
 
 .dropdown {
@@ -174,8 +175,8 @@
         margin-top: var(--spacing);
         border-top: var(--border);
         --spacing: calc(1rem + 1vw);
-        --dropdown-fontsize: 1.4rem;
-        padding-top: 4rem
+        --dropdown-fontsize: 1.2rem;
+        padding-top: 4rem;
     }
 
     .open {
@@ -190,13 +191,11 @@
     }
 
     .dropdowncontainer {
-
         width: 100%;
     }
 
     .textcontainer {
         width: 100%;
-
     }
 
     .textcontainer * {
@@ -204,10 +203,18 @@
         line-height: 150%;
     }
 
+    .textcontainer h5 {
+        font-size: 1rem;
+        font-variation-settings: var(--title-weight);
+        padding-top: 1.5rem;
+    }
 
     .select {
-        width: 100%;
-        gap: 1rem;
+        width: 90%;
+        gap: 0rem;
+        justify-content: space-between;
+        align-items: flex-start;
+        text-align: left;
     }
 
 
