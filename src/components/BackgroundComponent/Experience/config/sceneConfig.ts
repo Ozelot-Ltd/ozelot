@@ -13,6 +13,7 @@ export const SCENE_CONFIG = {
   
   // Canvas settings
   CANVAS: {
+    alpha: true,
     antialias: false,
     powerPreference: "high-performance" as WebGLPowerPreference,
     dpr: [1, 1.5] as [number, number],

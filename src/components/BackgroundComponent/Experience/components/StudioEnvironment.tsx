@@ -1,5 +1,5 @@
-import { Environment, Lightformer } from "@react-three/drei";
-import { ENVIRONMENT_CONFIG } from "../config/environmentConfig";
+import { Environment, Lightformer } from '@react-three/drei';
+import { ENVIRONMENT_CONFIG } from '../config/environmentConfig';
 
 export const StudioEnvironment = () => {
   return (

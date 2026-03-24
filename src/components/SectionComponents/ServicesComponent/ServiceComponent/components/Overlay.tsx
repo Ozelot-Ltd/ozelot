@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { ServicenewDocument } from '@/prismicio-types';
 import * as Select from '@radix-ui/react-select';
@@ -9,6 +9,8 @@ import { asText, isFilled } from '@prismicio/client';
 import { useActiveServiceStore } from '@/stores/useActiveServiceStore';
 import Arrow from '@/components/SvgComponents/Arrow/Arrow';
 import { JSXMapSerializer, PrismicRichText } from '@prismicio/react';
+
+import { useRouter } from 'next/navigation';
 
 type OverlayProps = {
   service: ServicenewDocument;
@@ -21,8 +23,19 @@ export default function Overlay({ service }: OverlayProps) {
     isContainerOpen,
     setIsContainerOpen
   } = useActiveServiceStore();
-
+  const router = useRouter();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isContainerOpen) {
+        setIsContainerOpen('');
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isContainerOpen, setIsContainerOpen]);
 
   const displayedService = service.data.description_items.find(
     (item) => asText(item.item_title) === activeService
@@ -107,7 +120,13 @@ export default function Overlay({ service }: OverlayProps) {
       </div>
 
       <div className={styles.buttoncontainer}>
-        <button onClick={() => setIsContainerOpen('')}>close</button>
+        <button
+          onClick={() => {
+            router.push('/contact');
+          }}
+        >
+          Contact us
+        </button>
       </div>
     </div>
   );

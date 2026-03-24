@@ -98,7 +98,6 @@ function ShirtGroup() {
 export const Experience = () => {
   return (
     <Canvas shadows camera={SCENE_CONFIG.CAMERA} gl={SCENE_CONFIG.CANVAS}>
-      <color attach="background" args={[SCENE_CONFIG.BACKGROUND_COLOR]} />
       <fogExp2
         attach="fog"
         args={[SCENE_CONFIG.FOG_COLOR, SCENE_CONFIG.FOG_DENSITY]}

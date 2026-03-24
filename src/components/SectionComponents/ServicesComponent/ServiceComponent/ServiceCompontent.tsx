@@ -8,7 +8,7 @@ import { useContents } from '@/context/ContentContext';
 
 import Service from './components/Service';
 import FadeIn from '@/components/FadeIn/FadeIn';
-import { PrismicRichText } from '@prismicio/react';
+import { JSXMapSerializer, PrismicRichText } from '@prismicio/react';
 
 const ServiceComponent = () => {
   const { serviceArray, servicesMain } = useContents();
@@ -39,12 +39,19 @@ const ServiceComponent = () => {
     return numA - numB;
   });
 
+  const components: JSXMapSerializer = {
+    heading2: ({ children }) => <h1>{children}</h1>
+  };
+
   return (
     <div className={styles.container} ref={containerRef}>
       <div className={styles.upperContainer}>
         <div>
           <FadeIn multiplier={0.1} delay={0} yDown={500} duration={1}>
-            <PrismicRichText field={servicesMain.data.service_title} />
+            <PrismicRichText
+              field={servicesMain.data.service_title}
+              components={components}
+            />
           </FadeIn>
         </div>
         <div>

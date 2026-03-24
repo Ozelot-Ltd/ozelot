@@ -35,8 +35,7 @@
     font-variation-settings: var(--text-weight);
     padding-top: calc(0.5rem + 0.5vw);
     width: fit-content;
-    width: 75%;
-    font-size: 1.5rem;
+    width: 60%;
 }
 
 .description p strong {
@@ -69,7 +68,6 @@
         padding-top: calc(0.5rem + 0.5vw);
         width: fit-content;
         width: 100% !important;
-        font-size: 1.2rem
     }
 
 }
