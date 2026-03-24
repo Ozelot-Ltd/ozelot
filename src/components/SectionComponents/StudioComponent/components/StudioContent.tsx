@@ -1,7 +1,7 @@
 'use client';
 
 import { useContents } from '@/context/ContentContext';
-import { PrismicRichText } from '@prismicio/react';
+import { PrismicRichText, JSXMapSerializer } from '@prismicio/react';
 
 import styles from './StudioContent.module.css';
 import SocialBar from '../../ContactComponent/components/SocialBar';
@@ -23,13 +23,17 @@ export default function StudioContent({}: Props) {
 
   const router = useRouter();
 
+  const components: JSXMapSerializer = {
+    heading3: ({ children }) => <h1>{children}</h1>
+  };
+
   return (
     <div className={styles.container}>
       <LegalComponent />
 
       <div className={styles.leftContainer}>
         <div className={styles.titleContainer}>
-          <PrismicRichText field={data.subtitle} />
+          <PrismicRichText field={data.subtitle} components={components} />
         </div>
         <div className={styles.infoContainer}>
           <div className={styles.descriptionContainer}>

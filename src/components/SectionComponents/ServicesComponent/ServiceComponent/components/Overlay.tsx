@@ -10,7 +10,7 @@ import { useActiveServiceStore } from '@/stores/useActiveServiceStore';
 import Arrow from '@/components/SvgComponents/Arrow/Arrow';
 import { JSXMapSerializer, PrismicRichText } from '@prismicio/react';
 
-import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 type OverlayProps = {
   service: ServicenewDocument;
@@ -23,7 +23,7 @@ export default function Overlay({ service }: OverlayProps) {
     isContainerOpen,
     setIsContainerOpen
   } = useActiveServiceStore();
-  const router = useRouter();
+
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   useEffect(() => {
@@ -43,14 +43,9 @@ export default function Overlay({ service }: OverlayProps) {
 
   const components: JSXMapSerializer = {
     paragraph: ({ children }) => <p>{children}</p>,
-    heading5: ({ children }) => <h5>{children}</h5>,
+    heading5: () => <></>,
     list: ({ children }) => <ul className={styles.list}>{children}</ul>,
-    listItem: ({ children }) => (
-      <li className={styles.listitem}>
-        <Arrow height="10" />
-        <span>{children}</span>
-      </li>
-    )
+    listItem: () => <></>
   };
 
   return (
@@ -120,13 +115,12 @@ export default function Overlay({ service }: OverlayProps) {
       </div>
 
       <div className={styles.buttoncontainer}>
-        <button
-          onClick={() => {
-            router.push('/contact');
-          }}
-        >
-          Contact us
-        </button>
+        <Link href="/contact">
+          contact us
+          <span>
+            <Arrow fill="var(--lightgrey)" />
+          </span>
+        </Link>
       </div>
     </div>
   );

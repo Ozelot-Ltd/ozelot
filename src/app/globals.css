@@ -18,7 +18,7 @@
     /* 24px → 32px */
     --font-2xl: clamp(1.75rem, 1.4rem + 1vw, 2.5rem);
     /* 28px → 40px */
-    --font-3xl: clamp(2rem, 1.6rem + 1.25vw, 3rem);
+    --font-3xl: clamp(2rem, 2.4rem + 1.25vw, 3.6rem);
     /* 32px → 48px */
 
     /* Semantic aliases */
@@ -28,7 +28,6 @@
     --heading2: var(--font-2xl);
     --heading3: var(--font-xl);
     --heading4: var(--font-lg);
-    --heading5: var(--fontmd);
     --paragraph: var(--font-base);
 
 
@@ -117,7 +116,7 @@ h4 {
 }
 
 h5 {
-    font-size: var(--heading5)
+    font-size: var(--fontmd)
 }
 
 
@@ -145,14 +144,17 @@ h5 {
     text-transform: uppercase;
 }
 
-h5 {
-    font-size: calc(0.5rem + 0.5vw);
+p,
+input,
+a,
+span,
+aside {
+    font-size: var(--font-base)
 }
 
 p,
 input {
     hyphens: auto;
-    font-size: calc(0.65rem + 0.3vw);
 }
 
 p,
