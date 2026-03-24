@@ -14,6 +14,7 @@
     border-top: var(--border);
     --spacing: calc(1rem + 1vw);
     --dropdown-fontsize: 1.4rem;
+
 }
 
 .open {
@@ -25,6 +26,7 @@
     flex-direction: column;
     gap: 2rem;
     height: 100%;
+
 }
 
 .dropdowncontainer {
@@ -204,7 +206,7 @@
     }
 
     .textcontainer h5 {
-        font-size: 1rem;
+        font-size: 1.1rem;
         font-variation-settings: var(--title-weight);
         padding-top: 1.5rem;
     }

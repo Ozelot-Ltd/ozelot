@@ -32,9 +32,6 @@
     flex-direction: column;
     gap: calc(0.5rem + 0.5vw);
     align-items: flex-start;
-    position: sticky;
-    top: 2rem;
-    left: 0;
 }
 
 .titlecontainer h2 {

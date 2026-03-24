@@ -4,6 +4,7 @@
     height: fit-content;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
 }
 
 .upperContainer {
@@ -52,8 +53,6 @@
 /* Up to 768px */
 @media (max-width: 48rem) {
 
-    .container {
-    }
 
     .upperContainer {
         display: flex;
