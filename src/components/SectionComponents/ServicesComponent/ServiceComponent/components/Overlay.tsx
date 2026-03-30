@@ -8,7 +8,8 @@ import { asText } from '@prismicio/client';
 import { useActiveServiceStore } from '@/stores/useActiveServiceStore';
 import { JSXMapSerializer, PrismicRichText } from '@prismicio/react';
 
-import { ContactPhrase } from '@/components/SectionComponents/RecordsComponent/DescriptionComponent/ContactPhrase';
+import Arrow from '@/components/SvgComponents/Arrow/Arrow';
+import ContactButton from '@/components/ContactButton/ContactButton';
 
 type OverlayProps = {
   service: ServicenewDocument;
@@ -41,7 +42,12 @@ export default function Overlay({ service }: OverlayProps) {
     paragraph: ({ children }) => <p>{children}</p>,
     heading5: () => <></>,
     list: ({ children }) => <ul className={styles.list}>{children}</ul>,
-    listItem: () => <></>
+    listItem: ({ children }) => (
+      <li className={styles.listItem}>
+        <Arrow height="12" width="12" fill="var(--lightgrey)" />
+        <span>{children}</span>
+      </li>
+    )
   };
 
   return (
@@ -55,13 +61,12 @@ export default function Overlay({ service }: OverlayProps) {
             field={displayedService?.item}
             components={components}
           />
-        </div>
+        </div>{' '}
+        <ContactButton
+          windowEventText={`${service.data.title} clicked`}
+          variant="service"
+        />
       </div>
-
-      <ContactPhrase
-        clickEventText={`${service.data.title} clicked`}
-        color="var(--lightgrey)"
-      />
     </div>
   );
 }

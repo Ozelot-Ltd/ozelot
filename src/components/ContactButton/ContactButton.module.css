@@ -1,0 +1,41 @@
+.contactbutton {
+    outline: none;
+    display: flex;
+    align-items: center;
+    gap: var(--font-xs);
+    border: none;
+    padding: var(--font-xs);
+    cursor: pointer;
+}
+
+.contactbutton span {
+    text-transform: uppercase;
+}
+
+.studio,
+.project {
+    background-color: var(--black);
+    color: var(--lightgrey);
+}
+
+
+.service {
+    background-color: var(--lightgrey);
+}
+
+
+.project span {
+    font-size: var(--description-size);
+}
+
+
+
+.contactbutton svg {
+    transition: transform 0.3s var(--bezier);
+    transform: rotate(-45deg);
+
+}
+
+.contactbutton:hover svg {
+    transform: translateX(4px);
+}

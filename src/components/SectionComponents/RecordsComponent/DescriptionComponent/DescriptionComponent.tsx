@@ -14,7 +14,7 @@ import { PrismicRichText, JSXMapSerializer } from '@prismicio/react';
 
 import { useMobile } from '@/context/MobileContext';
 import { asText } from '@prismicio/client';
-import { ContactPhrase } from './ContactPhrase';
+import ContactButton from '@/components/ContactButton/ContactButton';
 
 export default function DescriptionComponent({
   currentProject,
@@ -171,9 +171,9 @@ export default function DescriptionComponent({
             <div className={styles.description}>
               <PrismicRichText field={currentProject.description} />
             </div>
-            <ContactPhrase
-              currentProject={currentProject}
-              clickEventText={asText(currentProject?.title)}
+            <ContactButton
+              windowEventText={asText(currentProject?.title)}
+              variant="project"
             />
           </div>
         </div>
