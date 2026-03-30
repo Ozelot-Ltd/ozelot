@@ -11,6 +11,8 @@ import { JSXMapSerializer, PrismicRichText } from '@prismicio/react';
 import Arrow from '@/components/SvgComponents/Arrow/Arrow';
 import ContactButton from '@/components/ContactButton/ContactButton';
 
+import Cross from '@/components/Mobile/MobileNavigation/Cross';
+
 type OverlayProps = {
   service: ServicenewDocument;
 };
@@ -55,13 +57,16 @@ export default function Overlay({ service }: OverlayProps) {
       className={`${styles.overlay} ${isContainerOpen === service.id ? styles.open : ''}`}
     >
       <div className={styles.contentcontainer}>
+        <div onClick={() => setIsContainerOpen('')} className={styles.cross}>
+          <Arrow fill="var(--lightgrey)" />
+        </div>
         <PrismicRichText field={displayedService?.item_title} />
         <div className={styles.textcontainer}>
           <PrismicRichText
             field={displayedService?.item}
             components={components}
           />
-        </div>{' '}
+        </div>
         <ContactButton
           windowEventText={`${service.data.title} clicked`}
           variant="service"

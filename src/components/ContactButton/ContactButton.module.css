@@ -10,6 +10,7 @@
 
 .contactbutton span {
     text-transform: uppercase;
+    font-variation-settings: var(--title-weight);
 }
 
 .studio,

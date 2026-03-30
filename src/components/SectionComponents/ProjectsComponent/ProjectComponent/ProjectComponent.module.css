@@ -70,9 +70,7 @@
 
 .pills {
     display: flex;
-    gap: 0.5rem;
-
-
+    gap: var(--font-xs)
 }
 
 .pills p {
@@ -122,13 +120,14 @@
 
 
 .description {
-    font-size: var(--font-base);
     font-variation-settings: var(--text-weight);
     width: fit-content;
     display: flex;
     flex-direction: column;
-    gap: var(--font-xs)
+    gap: var(--font-xs);
 }
+
+
 
 
 .subtitle {
@@ -163,6 +162,10 @@
 
 .description a {
     text-decoration: underline;
+}
+
+.buttoncontainer {
+    padding-top: var(--font-xs)
 }
 
 

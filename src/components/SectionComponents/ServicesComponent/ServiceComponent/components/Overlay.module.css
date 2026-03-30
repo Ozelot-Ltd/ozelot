@@ -22,7 +22,7 @@
     flex-direction: column;
     gap: 2rem;
     height: 100%;
-
+    position: relative;
 }
 
 .contentcontainer h5 {
@@ -82,6 +82,19 @@
 .listItem svg {
     flex-shrink: 0;
 }
+
+
+.cross {
+    transform: rotate(180deg);
+    transition: transform 0.1s var(--bezier);
+    transform-origin: center;
+    cursor: pointer;
+}
+
+.cross:hover {
+    transform: rotate(0deg)
+}
+
 
 
 

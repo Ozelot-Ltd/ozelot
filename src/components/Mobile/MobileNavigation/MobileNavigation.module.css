@@ -17,6 +17,11 @@
     transition: transform var(--time) var(--bezier);
 }
 
+.cross {
+    width: 100%;
+    position: relative;
+}
+
 .crossactive {
     transform: translateX(-50%);
 }
@@ -29,10 +34,7 @@
     cursor: pointer;
 }
 
-.cross {
-    width: 100%;
-    position: relative;
-}
+
 
 .hamburger div,
 .cross div {

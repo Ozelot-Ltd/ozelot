@@ -171,10 +171,12 @@ export default function DescriptionComponent({
             <div className={styles.description}>
               <PrismicRichText field={currentProject.description} />
             </div>
-            <ContactButton
-              windowEventText={asText(currentProject?.title)}
-              variant="project"
-            />
+            <div className={styles.buttoncontainer}>
+              <ContactButton
+                windowEventText={asText(currentProject?.title)}
+                variant="project"
+              />
+            </div>
           </div>
         </div>
       )}

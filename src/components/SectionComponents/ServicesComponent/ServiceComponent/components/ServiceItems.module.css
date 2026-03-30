@@ -2,11 +2,13 @@
      display: grid;
      grid-template-columns: repeat(auto-fill, minmax(calc(7.5rem + 7.5vw), 1fr));
      grid-auto-rows: 12.5rem;
-     gap: 1rem;
+     gap: var(--font-xs);
      position: relative;
-     padding-right: 0.5rem;
      min-height: 30rem;
      max-width: 60rem;
+
+     align-items: center;
+     justify-items: center;
  }
 
  .itemWrapper {

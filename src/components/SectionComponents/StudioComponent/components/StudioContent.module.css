@@ -39,18 +39,7 @@
     width: 60%;
 }
 
-.ctacontact p {
-    text-transform: uppercase;
-    font-variation-settings: var(--text-weight);
-    display: flex;
-    gap: calc(0.2rem + 0.2vw);
-    cursor: pointer;
 
-}
-
-.ctacontact svg {
-    transform: rotate(-45deg);
-}
 
 .bottomContainer {
     display: flex;
