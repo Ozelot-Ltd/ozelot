@@ -14,6 +14,10 @@ import Image from 'next/image';
 import ComingSoonPlaceholder from '@/components/ComingSoonImage/ComingSoonPlaceholder';
 import LoadingComponent from './LoadingComponent/LoadingComponent';
 
+const ARROW_SIZE = 'max(12px, min(1.2vw, 24px))';
+const CLOUD_IMG_URL = 'https://res.cloudinary.com/ddkwj78mq/image/upload/';
+const CLOUD_VID_URL = 'https://res.cloudinary.com/ddkwj78mq/video/upload/';
+
 export default function ImageComponent({
   currentRecord,
   currentProject
@@ -23,42 +27,19 @@ export default function ImageComponent({
 }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
-  const url = 'https://res.cloudinary.com/ddkwj78mq/image/upload/';
-  const videourl = 'https://res.cloudinary.com/ddkwj78mq/video/upload/';
-
-  const totalImages = currentRecord
-    ? currentRecord?.record_images?.length || 0
-    : currentProject
-      ? currentProject?.gallery?.length || 0
-      : 0;
-
-  const nextImage = () => {
-    if (totalImages > 0) {
-      setIsLoading(true);
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % totalImages);
-    }
-  };
-
-  const prevImage = () => {
-    if (totalImages > 0) {
-      setIsLoading(true);
-      setCurrentIndex(
-        (prevIndex) => (prevIndex - 1 + totalImages) % totalImages
-      );
-    }
-  };
-
-  const handleImageLoad = () => {
-    setIsLoading(false);
-  };
-
-  const handleVideoLoad = () => {
-    setIsLoading(false);
-  };
-
-  const touchStartX = useRef(0);
   const [dragOffset, setDragOffset] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
+  const touchStartX = useRef(0);
+
+  const items = currentRecord?.record_images ?? currentProject?.gallery ?? [];
+  const hasMultiple = items.length > 1;
+
+  const navigate = (direction: 1 | -1) => {
+    if (items.length > 0) {
+      setIsLoading(true);
+      setCurrentIndex((prev) => (prev + direction + items.length) % items.length);
+    }
+  };
 
   const handleTouchStart = (e: React.TouchEvent) => {
     touchStartX.current = e.touches[0].clientX;
@@ -72,21 +53,52 @@ export default function ImageComponent({
   const handleTouchEnd = () => {
     setIsDragging(false);
     if (Math.abs(dragOffset) > 50) {
-      if (dragOffset < 0) nextImage();
-      else prevImage();
+      navigate(dragOffset < 0 ? 1 : -1);
     }
     setDragOffset(0);
   };
 
-  // Safety check - ensure we have valid data before rendering
-  const hasValidRecord =
-    currentRecord &&
-    currentRecord.record_images &&
-    currentRecord.record_images[currentIndex];
-  const hasValidProject =
-    currentProject &&
-    currentProject.gallery &&
-    currentProject.gallery[currentIndex];
+  const renderMedia = () => {
+    if (currentRecord?.record_images?.[currentIndex]) {
+      return (
+        <PrismicNextImage
+          field={currentRecord.record_images[currentIndex].record_image}
+          className={styles.sliderImageRecord}
+          onLoad={() => setIsLoading(false)}
+        />
+      );
+    }
+
+    if (currentProject?.gallery?.[currentIndex]) {
+      const item = currentProject.gallery[currentIndex];
+      if (item.media_type === 'video') {
+        return (
+          <video
+            src={`${CLOUD_VID_URL}/${item.asset_id}.mp4`}
+            controls={false}
+            autoPlay
+            loop
+            muted
+            playsInline
+            className={styles.sliderVideoProject}
+            onCanPlay={() => setIsLoading(false)}
+          />
+        );
+      }
+      return (
+        <Image
+          src={`${CLOUD_IMG_URL}/${item.asset_id}.jpg`}
+          alt={item.alt_text || 'Project Image'}
+          width={800}
+          height={600}
+          className={styles.sliderImageProject}
+          onLoadingComplete={() => setIsLoading(false)}
+        />
+      );
+    }
+
+    return <ComingSoonPlaceholder />;
+  };
 
   return (
     <div className={styles.imageContainer}>
@@ -96,19 +108,15 @@ export default function ImageComponent({
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
       >
-        {(currentRecord && currentRecord?.record_images?.length > 1) ||
-        (currentProject && currentProject?.gallery?.length > 1) ? (
+        {hasMultiple && (
           <button
-            onClick={prevImage}
+            onClick={() => navigate(-1)}
             className={`${styles.navButton} ${styles.prevButton}`}
             aria-label="Previous image"
           >
-            <Arrow
-              height="max(12px, min(1.2vw, 24px))"
-              width="max(12px, min(1.2vw, 24px))"
-            />
+            <Arrow height={ARROW_SIZE} width={ARROW_SIZE} />
           </button>
-        ) : null}
+        )}
 
         <div
           className={styles.imageWrapper}
@@ -118,60 +126,22 @@ export default function ImageComponent({
           }}
         >
           {isLoading && <LoadingComponent />}
-          {hasValidRecord ? (
-            <PrismicNextImage
-              field={currentRecord.record_images[currentIndex].record_image}
-              className={styles.sliderImageRecord}
-              onLoad={handleImageLoad}
-            />
-          ) : hasValidProject &&
-            currentProject.gallery[currentIndex].media_type === 'image' ? (
-            <Image
-              src={`${url}/${currentProject.gallery[currentIndex].asset_id}.jpg`}
-              alt={
-                currentProject.gallery[currentIndex].alt_text || 'Project Image'
-              }
-              width={800}
-              height={600}
-              className={styles.sliderImageProject}
-              onLoadingComplete={handleImageLoad}
-            />
-          ) : hasValidProject &&
-            currentProject.gallery[currentIndex].media_type === 'video' ? (
-            <video
-              src={`${videourl}/${currentProject.gallery[currentIndex].asset_id}.mp4`}
-              controls={false}
-              autoPlay
-              loop
-              muted
-              playsInline
-              className={styles.sliderVideoProject}
-              onCanPlay={handleVideoLoad}
-            />
-          ) : (
-            <div>
-              <ComingSoonPlaceholder />
-            </div>
-          )}
+          {renderMedia()}
         </div>
 
-        {(currentRecord && currentRecord?.record_images?.length > 1) ||
-        (currentProject && currentProject?.gallery?.length > 1) ? (
+        {hasMultiple && (
           <button
-            onClick={nextImage}
+            onClick={() => navigate(1)}
             className={`${styles.navButton} ${styles.nextButton}`}
             aria-label="Next image"
           >
-            <Arrow
-              height="max(12px, min(1.2vw, 24px))"
-              width="max(12px, min(1.2vw, 24px))"
-            />
+            <Arrow height={ARROW_SIZE} width={ARROW_SIZE} />
           </button>
-        ) : null}
+        )}
       </div>
 
       <div className={styles.imageCounter}>
-        {Array.from({ length: totalImages }).map((_, index) => (
+        {items.map((_, index) => (
           <div
             key={index}
             className={`${styles.dot} ${index === currentIndex ? styles.active : ''}`}

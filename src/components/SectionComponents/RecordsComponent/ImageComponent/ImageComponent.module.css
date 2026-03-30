@@ -118,18 +118,21 @@
         justify-content: center;
         position: relative;
         height: 90vh;
+        padding-top: 4rem;
+        padding-bottom: 4rem;
     }
 
     .navButton {
         width: 30px;
         height: 30px;
         font-size: 14px;
-
+        top: -2rem;
     }
 
 
     .prevButton {
         left: 35%;
+
     }
 
     .prevButton svg {
@@ -140,4 +143,7 @@
         right: 35%;
     }
 
+    .imageCounter {
+        margin-top: 1rem;
+    }
 }
