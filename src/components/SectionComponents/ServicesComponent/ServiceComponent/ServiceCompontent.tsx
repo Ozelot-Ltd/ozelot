@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useEffect } from 'react';
+import { useRef, useLayoutEffect } from 'react';
 
 import styles from './ServiceComponent.module.css';
 
@@ -10,12 +10,19 @@ import Service from './components/Service';
 import FadeIn from '@/components/FadeIn/FadeIn';
 import { JSXMapSerializer, PrismicRichText } from '@prismicio/react';
 
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import SplitText from 'gsap/src/SplitText';
+
+gsap.registerPlugin(useGSAP, SplitText);
+
 const ServiceComponent = () => {
   const { serviceArray, servicesMain } = useContents();
 
   const containerRef = useRef<HTMLDivElement>(null);
+  const paragraphRef = useRef<HTMLParagraphElement>(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const container = containerRef.current;
     if (!container) return;
 
@@ -32,6 +39,29 @@ const ServiceComponent = () => {
 
     return () => resizeObserver.disconnect();
   }, []);
+
+  useGSAP(() => {
+    if (!paragraphRef.current) return;
+
+    const split = new SplitText(paragraphRef.current, {
+      type: 'lines,words',
+      linesClass: 'split-line'
+    });
+
+    // Wrap each line in overflow:hidden for the mask effect
+    (split.lines as HTMLElement[]).forEach((line) => {
+      const wrapper = document.createElement('div');
+      wrapper.style.overflow = 'hidden';
+      line.parentNode!.insertBefore(wrapper, line);
+      wrapper.appendChild(line);
+    });
+
+    gsap.from(split.words, {
+      duration: 1,
+      y: 100,
+      stagger: 0.02
+    });
+  });
 
   const sortedArray = [...serviceArray].sort((a, b) => {
     const numA = a.data.index ?? 0;
@@ -55,15 +85,13 @@ const ServiceComponent = () => {
           </FadeIn>
         </div>
         <div>
-          <FadeIn multiplier={0.1} delay={0} yDown={2000} duration={2}>
-            <div className={`${styles.description}`}>
-              <p>
-                We decode subcultures and translate them into brand language –
-                our work resonates because they're rooted in how people actually
-                think, move, and communicate.{' '}
-              </p>
-            </div>
-          </FadeIn>
+          <div className={`${styles.description}`}>
+            <p ref={paragraphRef}>
+              We decode subcultures and translate them into brand language – our
+              work resonates because they're rooted in how people actually
+              think, move, and communicate.
+            </p>
+          </div>
         </div>
       </div>
 

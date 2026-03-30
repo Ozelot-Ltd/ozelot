@@ -1,62 +1,67 @@
-.topicitems {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(calc(7.5rem + 7.5vw), 1fr));
-    grid-auto-rows: 12.5rem;
-    gap: 1rem;
-    position: relative;
-    padding-right: 0.5rem;
-    min-height: 30rem;
-    max-width: 60rem;
-}
+ .topicitems {
+     display: grid;
+     grid-template-columns: repeat(auto-fill, minmax(calc(7.5rem + 7.5vw), 1fr));
+     grid-auto-rows: 12.5rem;
+     gap: 1rem;
+     position: relative;
+     padding-right: 0.5rem;
+     min-height: 30rem;
+     max-width: 60rem;
+ }
 
-.itemWrapper {
-    overflow: hidden;
-}
+ .itemWrapper {
+     overflow: hidden;
+ }
 
-/* Mobile */
-/* Up to 768px */
-@media (max-width: 48rem) {
-    .topicitems {
-        padding-top: calc(3rem + 3vw);
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(calc(8rem + 8vw), 1fr));
-        grid-auto-rows: 10rem;
-        gap: 1rem;
-        position: relative;
-        padding-right: 0.5rem;
-    }
-}
+ .itemInner {
+     height: 100%;
+     will-change: transform;
+ }
 
-/* Tablet */
-/* 768px to 1184px */
-@media (min-width: 48rem) and (max-width: 74rem) {}
+ /* Mobile */
+ /* Up to 768px */
+ @media (max-width: 48rem) {
+     .topicitems {
+         padding-top: calc(3rem + 3vw);
+         display: grid;
+         grid-template-columns: repeat(auto-fill, minmax(calc(8rem + 8vw), 1fr));
+         grid-auto-rows: 10rem;
+         gap: 1rem;
+         position: relative;
+         padding-right: 0.5rem;
+     }
+ }
 
-/* Tablet - Portrait Orientation */
-/* 768px to 1184px in portrait mode */
-@media (min-width: 48rem) and (max-width: 74rem) and (orientation: portrait) {}
+ /* Tablet */
+ /* 768px to 1184px */
+ @media (min-width: 48rem) and (max-width: 74rem) {}
 
-/* Desktop */
-/* 1184px and up */
-@media (min-width: 74rem) {}
+ /* Tablet - Portrait Orientation */
+ /* 768px to 1184px in portrait mode */
+ @media (min-width: 48rem) and (max-width: 74rem) and (orientation: portrait) {}
 
-/* Large Desktop */
-/* 1440px and up */
-@media (min-width: 90rem) {}
+ /* Desktop */
+ /* 1184px and up */
+ @media (min-width: 74rem) {}
 
-@media (min-width: 120rem) {}
+ /* Large Desktop */
+ /* 1440px and up */
+ @media (min-width: 90rem) {}
 
-/* Touch Devices */
-/* Any touch device regardless of size */
-@media (hover: none) {}
+ @media (min-width: 120rem) {}
 
-/* Non-Touch Devices */
-/* Devices with precise pointer (mouse) */
-@media (hover: hover) and (pointer: fine) {}
+ /* Touch Devices */
+ /* Any touch device regardless of size */
+ @media (hover: none) {}
 
-/* Prefers Dark Mode */
-/* User has set dark mode preference */
-@media (prefers-color-scheme: dark) {}
+ /* Non-Touch Devices */
+ /* Devices with precise pointer (mouse) */
+ @media (hover: hover) and (pointer: fine) {}
 
-/* Prefers Reduced Motion */
-/* User has requested minimal animations */
-@media (prefers-reduced-motion: reduce) {}
+ /* Prefers Dark Mode */
+ /* User has set dark mode preference */
+ @media (prefers-color-scheme: dark) {}
+
+ /* Prefers Reduced Motion */
+ /* User has requested minimal animations */
+ @media (prefers-reduced-motion: reduce) {}

@@ -29,15 +29,16 @@
     padding-top: calc(0.5rem + 0.5vw);
     display: flex;
     flex-direction: column;
+
+    width: 70vw;
 }
 
 .description p {
     font-variation-settings: var(--text-weight);
     padding-top: calc(0.5rem + 0.5vw);
     width: fit-content;
-    width: 75%;
+    width: 100%;
     font-size: var(--heading4);
-
 }
 
 .description p strong {

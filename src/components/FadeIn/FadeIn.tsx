@@ -10,7 +10,7 @@ type FadeInProps = {
   stylesProps?: { readonly [key: string]: string };
   delay?: number;
   multiplier?: number | undefined;
-  yDown?: number;
+  yDown?: number | string;
   inlineStyle?: React.CSSProperties;
   duration?: number;
   ease?: string;
@@ -27,7 +27,7 @@ export default function FadeIn({
   inlineStyle = {},
   duration = 0.75,
   ease = 'power2.out',
-  onClick,
+  onClick
 }: FadeInProps) {
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -41,7 +41,7 @@ export default function FadeIn({
           duration: duration,
           delay: multiplier ? delay * multiplier : delay,
           ease: ease,
-          ...vars,
+          ...vars
         }
       );
 
