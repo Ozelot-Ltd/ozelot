@@ -57,7 +57,11 @@ const ServiceComponent = () => {
         <div>
           <FadeIn multiplier={0.1} delay={0} yDown={2000} duration={2}>
             <div className={`${styles.description}`}>
-              <PrismicRichText field={servicesMain.data.description} />
+              <p>
+                We decode subcultures and translate them into brand language –
+                our work resonates because they're rooted in how people actually
+                think, move, and communicate.{' '}
+              </p>
             </div>
           </FadeIn>
         </div>

@@ -17,8 +17,11 @@
     gap: calc(0.2rem + 0.2vw);
 }
 
+
+
 .title h5 {
-    text-transform: none;
+    text-transform: uppercase;
+    font-family: var(--host)
 }
 
 .crosscontainer {

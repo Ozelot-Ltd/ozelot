@@ -46,7 +46,7 @@
 
 .catalogContainer h3 {
     font-variation-settings: var(--text-weight);
-    font-size: calc(0.5rem + 0.8vw);
+    font-size: var(--heading4);
     text-transform: uppercase;
     transition: font-variation-settings 1s var(--bezier);
 }

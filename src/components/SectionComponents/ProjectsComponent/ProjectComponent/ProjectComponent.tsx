@@ -2,16 +2,16 @@
 
 import { useState, useEffect } from 'react';
 
-import styles from '../../RecordsComponent/RecordComponent/RecordComponent.module.css';
+import styles from './ProjectComponent.module.css';
 
 import { useContents } from '@/context/ContentContext';
 
-import ImageComponent from '../../RecordsComponent/ImageComponent/ImageComponent';
 import Project from './components/Project';
 import DescriptionComponent from '../../RecordsComponent/DescriptionComponent/DescriptionComponent';
 
 import { useRouter, usePathname } from 'next/navigation';
 import { ProjectDocument } from '@/prismicio-types';
+import ImageContainer from './components/ImageContainer';
 
 export default function ProjectComponent() {
   const router = useRouter();
@@ -26,9 +26,6 @@ export default function ProjectComponent() {
     const numB = b.data.project_number ?? 0;
     return numB - numA;
   });
-
-  const placeholderURL =
-    'https://res.cloudinary.com/ddkwj78mq/video/upload/v1759222722/websitevideo_compressed_ilku8j.mp4';
 
   const currentProject = projectArray.find(
     (project) => project.uid === activeProject
@@ -73,30 +70,10 @@ export default function ProjectComponent() {
         <DescriptionComponent currentProject={currentProject} styles={styles} />
       </section>
       <section className={styles.rightContainer}>
-        <div className={styles.imageContainer}>
-          {!currentProject && (
-            <div
-              className={styles.previewContainer}
-              style={{ pointerEvents: 'none' }}
-            >
-              <video
-                src={`${placeholderURL}`}
-                controls={false}
-                autoPlay
-                loop
-                muted
-                playsInline
-                className={styles.sliderVideoProject}
-              />
-            </div>
-          )}
-          {currentProject && (
-            <ImageComponent
-              key={activeProject as string}
-              currentProject={currentProject}
-            />
-          )}
-        </div>
+        <ImageContainer
+          currentProject={currentProject}
+          activeProject={activeProject}
+        />
       </section>
     </div>
   );

@@ -32,9 +32,6 @@
     width: fit-content;
 }
 
-.main h2 {
-    font-size: calc(2rem + 2vw);
-}
 
 .titlecontainer {
     display: flex;
@@ -157,9 +154,7 @@
         padding-bottom: 15rem;
     }
 
-    .main h2 {
-        font-size: calc(1.5rem + 2vw);
-    }
+
 
 
 
@@ -193,11 +188,7 @@
         width: 100%;
     }
 
-    .category div li,
-    .category div p,
-    .category div p a {
-        font-size: calc(0.8rem + 0.4vw)
-    }
+
 }
 
 /* Tablet */

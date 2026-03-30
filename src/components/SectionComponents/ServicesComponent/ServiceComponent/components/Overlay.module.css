@@ -4,17 +4,13 @@
     left: 0;
     height: 100%;
     width: 100%;
-    background-color: var(--lightgrey);
     z-index: 10;
-    transform: translateX(100%);
-    transition: all 0.4s var(--bezier);
-    padding: var(--spacing) 0;
-    padding-bottom: calc(var(--spacing) * 2);
-    margin-top: var(--spacing);
+    transform: translateX(105%);
+    transition: all 0.3s var(--bezier);
+    padding: var(--spacing);
     border-top: var(--border);
     --spacing: calc(1rem + 1vw);
-    --dropdown-fontsize: 1.4rem;
-
+    background-color: rgb(245, 245, 80);
 }
 
 .open {
@@ -26,12 +22,11 @@
     flex-direction: column;
     gap: 2rem;
     height: 100%;
-
 }
 
-.dropdowncontainer {
-
-    width: 100%;
+.contentcontainer h5 {
+    font-size: var(--heading3);
+    color: var(--lightgrey)
 }
 
 .textcontainer {
@@ -39,109 +34,18 @@
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-
 }
 
 .textcontainer * {
-    font-size: var(--font-size);
+    font-size: var(--font-md);
     line-height: 150%;
-
+    color: var(--lightgrey)
 }
 
 .textcontainer h5 {
-    font-size: 1.2rem;
+
     font-variation-settings: var(--title-weight);
     padding-top: 1.5rem;
-}
-
-
-.list {
-    list-style-position: inside;
-    padding-top: 0.5rem;
-}
-
-.listitem {
-    list-style-type: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    font-variation-settings: var(--text-weight);
-}
-
-
-.select {
-    appearance: none;
-    border: none;
-    background-color: var(--lightgrey);
-    color: var(--black);
-    outline: none;
-    font-size: var(--dropdown-fontsize) !important;
-    text-transform: uppercase;
-    display: flex;
-    justify-content: space-between;
-    width: 55%;
-    align-items: center;
-    width: fit-content;
-    gap: 2rem;
-
-}
-
-.dropdown {
-    background-color: var(--lightgrey);
-    z-index: 100;
-    margin-top: 1%;
-    border: var(--border);
-    padding: 0.5rem;
-}
-
-.pickedValue {
-    color: var(--black);
-}
-
-.arrow {
-    transform: rotate(90deg);
-    transition: transform 0.2s var(--bezier)
-}
-
-.dropdownopen {
-    transform: rotate(-90deg)
-}
-
-.option {
-    cursor: pointer;
-    width: 100%;
-    color: var(--black);
-    padding: 0.25rem 0;
-    text-transform: uppercase;
-}
-
-.option:hover,
-.option[data-highlighted] {
-    background-color: var(--black);
-    color: var(--lightgrey);
-    appearance: none;
-    border: none;
-    outline: none;
-}
-
-.option[data-highlighted] span h5 {
-    color: var(--lightgrey);
-}
-
-.option span {
-    display: flex;
-    gap: 0.5rem;
-    padding-right: 2rem;
-
-}
-
-.option:hover span h5 {
-    color: var(--lightgrey);
-}
-
-.option span h5 {
-    font-size: var(--dropdown-fontsize);
 }
 
 .buttoncontainer {

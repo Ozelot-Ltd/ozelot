@@ -1,7 +1,7 @@
 import { PrismicPreview } from '@prismicio/next';
 import { repositoryName } from '@/prismicio';
 
-import { Host_Grotesk } from 'next/font/google';
+import { Host_Grotesk, Lora } from 'next/font/google';
 import { createClient } from '@/prismicio';
 
 import Script from 'next/script';
@@ -17,7 +17,16 @@ const host = Host_Grotesk({
   weight: 'variable',
   style: 'normal',
   preload: true,
-  subsets: ['latin']
+  subsets: ['latin'],
+  variable: '--host'
+});
+
+const honk = Lora({
+  weight: ['400'],
+  style: 'normal',
+  preload: true,
+  subsets: ['latin'],
+  variable: '--honk'
 });
 
 export default async function RootLayout({
@@ -133,7 +142,7 @@ export default async function RootLayout({
 
     return (
       <html lang="en">
-        <body className={host.className}>
+        <body className={`${host.className} ${honk.variable}`}>
           <Script
             src="https://scripts.simpleanalyticscdn.com/latest.js"
             data-collect-dnt="true"
@@ -172,7 +181,7 @@ export default async function RootLayout({
 
     return (
       <html lang="en">
-        <body className={host.className}>
+        <body className={`${host.className} ${honk.className}`}>
           <div style={{ padding: '2rem', textAlign: 'center' }}>
             <h1>Loading...</h1>
             <p>Please wait while we prepare the content.</p>

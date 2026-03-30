@@ -10,12 +10,11 @@ import BandcampLogo from '@/components/SvgComponents/SocialsLogo/BandcampLogo';
 import SpotifyLogo from '@/components/SvgComponents/SocialsLogo/SpotifyLogo';
 import Vinyl from '@/components/SvgComponents/Vinyl/Vinyl';
 import { PrismicNextLink } from '@prismicio/next';
-import { PrismicRichText } from '@prismicio/react';
-
-import Link from 'next/link';
-import Arrow from '@/components/SvgComponents/Arrow/Arrow';
+import { PrismicRichText, JSXMapSerializer } from '@prismicio/react';
 
 import { useMobile } from '@/context/MobileContext';
+import { asText } from '@prismicio/client';
+import { ContactPhrase } from './ContactPhrase';
 
 export default function DescriptionComponent({
   currentProject,
@@ -37,6 +36,10 @@ export default function DescriptionComponent({
     }
   }, [isMobile]);
 
+  const components: JSXMapSerializer = {
+    heading2: ({ children }) => <h3>{children}</h3>
+  };
+
   return (
     <>
       {currentRecord && (
@@ -52,7 +55,10 @@ export default function DescriptionComponent({
             <div className={styles.title}>
               <Vinyl fill="var(--black)" height={height} width={height} />
               <div className={styles.title}>
-                <PrismicRichText field={currentRecord.title} />
+                <PrismicRichText
+                  field={currentRecord.title}
+                  components={components}
+                />
               </div>
             </div>
 
@@ -123,7 +129,10 @@ export default function DescriptionComponent({
               {' '}
               <Earth fill="var(--black)" height={height} width={height} />
               <div className={styles.title}>
-                <PrismicRichText field={currentProject.title} />
+                <PrismicRichText
+                  field={currentProject.title}
+                  components={components}
+                />
               </div>
             </div>
             <div className={styles.pills}>
@@ -162,18 +171,10 @@ export default function DescriptionComponent({
             <div className={styles.description}>
               <PrismicRichText field={currentProject.description} />
             </div>
-            <div className={styles.contactPhrase}>
-              <Link
-                href="/contact"
-                onClick={() => {
-                  type TitleType = { text: string };
-                  const titleText = (currentProject.title[0] as TitleType).text;
-                  window.sa_event?.(titleText);
-                }}
-              >
-                contact us <Arrow height="12" />
-              </Link>
-            </div>
+            <ContactPhrase
+              currentProject={currentProject}
+              clickEventText={asText(currentProject?.title)}
+            />
           </div>
         </div>
       )}

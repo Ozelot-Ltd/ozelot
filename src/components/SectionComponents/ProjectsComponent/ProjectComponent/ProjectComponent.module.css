@@ -1,0 +1,698 @@
+/* RecordComponent.module.css */
+.container {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    position: relative;
+    padding: 0.5vw 0;
+    --padding-top-title: 1rem;
+}
+
+.container .leftContainer,
+.container .rightContainer {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.leftContainer {
+    border-right: var(--border);
+    padding-right: calc(1rem + 1vw);
+    padding-top: calc(1rem + 1vw);
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    height: 100%;
+}
+
+.rightContainer {
+    padding-left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.listContainer,
+.imageContainer,
+.descriptionContainer {
+    width: 100%;
+}
+
+.listContainer {
+    overflow-y: hidden;
+    max-height: 100%;
+    height: calc(var(--container-height) * 5);
+}
+
+.descriptionContainer {
+    display: flex;
+    gap: var(--font-md);
+    height: 100%;
+}
+
+.scrollContainer {
+    width: 100%;
+    max-height: 100%;
+    overflow: scroll;
+    overflow-x: hidden;
+
+
+}
+
+.listComponent {
+    height: 100%;
+    width: 100%;
+}
+
+
+
+.pills {
+    display: flex;
+    gap: 0.5rem;
+
+
+}
+
+.pills p {
+    text-transform: uppercase;
+    color: #65696d;
+}
+
+
+
+
+.rightContainerLower,
+.titleContainer {
+    padding-top: var(--padding-top-title);
+
+
+}
+
+.rightContainerLower {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.titleContainer {
+    display: flex;
+
+}
+
+.titleContainer p {
+    font-size: var(--font-xs);
+    align-items: flex-start;
+    height: fit-content
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    gap: var(--font-base);
+    justify-content: center;
+    width: fit-content;
+
+}
+
+.title h3 {
+    line-height: 0;
+}
+
+
+.description {
+    font-size: var(--font-base);
+    font-variation-settings: var(--text-weight);
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: var(--font-xs)
+}
+
+
+.subtitle {
+    border: var(--border);
+    padding: calc(0.125rem + 0.125vw) calc(0.25rem + 0.25vw);
+    border-radius: 50px;
+}
+
+.subtitle p {
+    font-size: var(--font-xs);
+    color: var(--black);
+}
+
+
+
+
+.previewContainer {
+    overflow: scroll;
+    padding: 3rem 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.disciplinesContainer {
+    display: none;
+}
+
+
+.description a {
+    text-decoration: underline;
+}
+
+
+/* Mobile */
+/* Up to 768px */
+@media (max-width: 48rem) {
+
+    /* RecordComponent.module.css */
+    .container {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        position: relative;
+        flex-direction: column;
+        gap: calc(2rem + 2vh);
+    }
+
+    .container .leftContainer,
+    .container .rightContainer {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        overflow: visible;
+    }
+
+    .leftContainer {
+        border-right: none;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: calc(2rem + 2vh);
+    }
+
+    .rightContainer {
+        padding-left: 0;
+        display: flex;
+        height: fit-content;
+        padding-bottom: 10rem;
+        min-height: 50rem;
+
+    }
+
+
+
+    .listContainer {
+        overflow-y: hidden;
+        max-height: 100%;
+        min-height: calc(var(--container-height) * 6.6);
+        padding-bottom: 1rem;
+    }
+
+
+    .descriptionContainer {
+        display: flex;
+        gap: 0.5rem;
+        height: 100%;
+    }
+
+    .scrollContainer {
+        width: 100%;
+        max-height: 100%;
+        padding-top: 0;
+    }
+
+    .listComponent {
+        height: 100%;
+        width: 100%;
+        padding: 0;
+
+    }
+
+    .iconContainer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .pills {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+    }
+
+    .pills p {
+        text-transform: uppercase;
+        color: #65696d;
+
+    }
+
+    .iconContainer img {
+        height: 16px;
+        width: 16px;
+
+    }
+
+
+    .rightContainerLower {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        width: 100%;
+
+    }
+
+    .titleContainer {
+        display: flex;
+        flex-direction: row;
+        gap: 0.75rem;
+        width: fit-content;
+    }
+
+    .titleContainer p {
+        font-size: calc(0.3rem + 0.5vw);
+        align-items: flex-start;
+    }
+
+    .title {
+        display: flex;
+        gap: calc(0.4rem + 0.5vw);
+        max-width: fit-content;
+    }
+
+    .title h2 {
+        font-size: calc(0.8rem + 0.9vw);
+    }
+
+    .releasetext {
+        padding: calc(0.5rem + 0.5vw) 0;
+        display: flex;
+        flex-direction: column;
+        gap: calc(var(--container-height) / 4);
+    }
+
+    .releasetext p {
+        font-variation-settings: var(--text-weight);
+        width: fit-content;
+    }
+
+
+
+    .subtitle {
+        border: var(--border);
+        padding: 0.25rem 0.5rem;
+        border-radius: 50px;
+
+    }
+
+    .subtitle p {
+        font-size: calc(0.2rem + 0.25vw);
+        color: var(--black)
+    }
+
+    .socials {
+        display: flex;
+        width: fit-content;
+    }
+
+    .previewContainer video {
+        max-height: 120%;
+    }
+
+
+    .socials * {
+        animation: none;
+    }
+}
+
+/* Tablet */
+/* 768px to 1184px */
+@media (min-width: 48rem) and (max-width: 78rem) {
+
+
+
+    .container .leftContainer,
+    .container .rightContainer {
+        width: 100%;
+        height: 100%;
+        max-height: 100%;
+        position: relative;
+        overflow: visible;
+
+    }
+
+    .leftContainer {
+        border-right: none;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 60%;
+    }
+
+    .rightContainer {
+        padding-left: 0;
+        display: flex;
+        height: 40%;
+    }
+
+
+
+    .listContainer {
+        overflow-y: hidden;
+        max-height: 100%;
+        height: calc(var(--container-height) * 5);
+        padding-bottom: 2rem;
+
+    }
+
+    .descriptionContainer {
+        display: flex;
+        gap: 1vw;
+        height: fit-content;
+        flex-direction: row;
+    }
+
+    .scrollContainer {
+        padding-top: 0;
+    }
+
+    .listComponent {
+        height: 100%;
+        width: 100%;
+
+    }
+
+    .iconContainer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .pills {
+        display: flex;
+        gap: 0.5rem;
+
+    }
+
+    .pills p {
+        text-transform: uppercase;
+        color: #65696d;
+    }
+
+    .iconContainer img {
+        height: 16px;
+        width: 16px;
+    }
+
+
+    .rightContainerLower {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        width: 100%;
+    }
+
+    .titleContainer {
+        display: flex;
+        flex-direction: row;
+        gap: 0.75rem;
+    }
+
+    .titleContainer p {
+        font-size: calc(0.3rem + 0.5vw);
+        align-items: flex-start;
+
+    }
+
+    .title {
+        display: flex;
+        align-items: center;
+        gap: calc(0.4rem + 0.5vw);
+    }
+
+    .title h2 {
+        font-size: calc(0.5rem + 0.9vw);
+    }
+
+    .releasetext {
+        padding: calc(0.5rem + 0.5vw) 0;
+        display: flex;
+        flex-direction: column;
+        gap: calc(var(--container-height) / 8);
+
+    }
+
+    .releasetext p {
+        font-variation-settings: var(--text-weight);
+        width: fit-content;
+    }
+
+    .artist,
+    .releasename,
+    .releaseyear {
+        display: flex;
+    }
+
+    .artist h4,
+    .releasename h4,
+    .releaseyear h4 {
+        width: 4rem;
+        font-size: calc(0.5rem + 0.5vw);
+    }
+
+    .subtitle {
+        border: var(--border);
+        padding: 0.25rem 0.5rem;
+        border-radius: 50px;
+
+    }
+
+    .subtitle p {
+        font-size: calc(0.2rem + 0.25vw);
+        color: var(--black);
+    }
+
+    .socials {
+        display: flex;
+        width: fit-content;
+    }
+
+
+    .socials * {
+        animation: none;
+    }
+
+    .imageContainer {
+        overflow: scroll;
+        padding: 0rem 0;
+    }
+
+}
+
+/* Tablet - Portrait Orientation */
+/* 768px to 1184px in portrait mode */
+@media (min-width: 48rem) and (max-width: 74rem) and (orientation: portrait) {
+
+    /* RecordComponent.module.css */
+    .container {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        position: relative;
+        flex-direction: column;
+        gap: 4rem;
+    }
+
+    .container .leftContainer,
+    .container .rightContainer {
+        width: 100%;
+        height: 100%;
+        max-height: 100%;
+        position: relative;
+        overflow: visible;
+    }
+
+    .leftContainer {
+        border-right: none;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 80%;
+    }
+
+    .rightContainer {
+        padding-left: 0;
+        display: flex;
+        height: 20%;
+    }
+
+
+
+    .listContainer {
+        overflow-y: hidden;
+        max-height: 100%;
+        height: calc(var(--container-height) * 5);
+        padding-bottom: 0.5rem;
+    }
+
+    .listContainer h3 {
+        font-size: calc(1.2rem + 0.9vw) !important;
+    }
+
+    .descriptionContainer {
+        display: flex;
+        gap: 1vw;
+        height: fit-content;
+        flex-direction: row;
+    }
+
+    .scrollContainer {
+        width: 100%;
+        max-height: 100%;
+        overflow: scroll;
+        overflow-x: hidden;
+        padding-top: 0;
+    }
+
+    .listComponent {
+        height: 100%;
+        width: 100%;
+
+    }
+
+    .iconContainer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+
+
+    .iconContainer img {
+        height: 16px;
+        width: 16px;
+    }
+
+
+    .rightContainerLower {
+        padding-top: 4rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        width: 100%;
+    }
+
+    .titleContainer {
+        display: flex;
+        flex-direction: row;
+        gap: 0.75rem;
+        padding-top: 4rem;
+    }
+
+    .titleContainer p {
+        font-size: calc(0.3rem + 0.5vw);
+        align-items: flex-start;
+
+
+    }
+
+    .title {
+        display: flex;
+        align-items: center;
+        gap: calc(0.4rem + 0.5vw);
+    }
+
+    .title h2 {
+        font-size: calc(1.8rem + 0.9vw);
+    }
+
+    .releasetext {
+        padding: calc(0.5rem + 0.5vw) 0;
+        display: flex;
+        flex-direction: column;
+        gap: calc(var(--container-height) / 4);
+
+    }
+
+    .releasetext p {
+        font-variation-settings: var(--text-weight);
+        width: fit-content;
+
+    }
+
+    .artist,
+    .releasename,
+    .releaseyear {
+        display: flex;
+
+    }
+
+    .artist h4,
+    .releasename h4,
+    .releaseyear h4 {
+        width: 4rem;
+        font-size: calc(0.7rem + 0.7vw);
+
+    }
+
+    .subtitle {
+        border: var(--border);
+        padding: 0.25rem 0.5rem;
+        border-radius: 50px;
+
+    }
+
+    .subtitle p {
+        font-size: calc(0.2rem + 0.25vw);
+        color: var(--black)
+    }
+
+    .socials {
+        display: flex;
+        width: fit-content;
+    }
+
+
+    .socials * {
+        animation: none;
+    }
+
+    .imageContainer {
+        overflow: scroll;
+        padding: 0rem 0;
+        height: 80%;
+    }
+}
+
+/* Desktop */
+/* 1184px and up */
+@media (min-width: 74rem) {}
+
+/* Large Desktop */
+/* 1440px and up */
+@media (min-width: 90rem) {}
+
+@media (min-width: 120rem) {}
+
+/* Touch Devices */
+/* Any touch device regardless of size */
+@media (hover: none) {}
+
+/* Non-Touch Devices */
+/* Devices with precise pointer (mouse) */
+@media (hover: hover) and (pointer: fine) {}
+
+/* Prefers Dark Mode */
+/* User has set dark mode preference */
+@media (prefers-color-scheme: dark) {}
+
+/* Prefers Reduced Motion */
+/* User has requested minimal animations */
+@media (prefers-reduced-motion: reduce) {}

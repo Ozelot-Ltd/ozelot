@@ -31,7 +31,7 @@
 }
 
 .catalogContainer p {
-    font-size: calc(0.2rem + 0.3vw);
+    font-size: var(--font-xs);
     align-self: flex-start;
 }
 
@@ -44,7 +44,7 @@
 
 .catalogContainer h3 {
     font-variation-settings: var(--text-weight);
-    font-size: calc(0.5rem + 0.8vw);
+    font-size: var(--heading5);
     text-transform: uppercase;
     transition: font-variation-settings 1s var(--bezier);
 }

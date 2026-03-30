@@ -28,10 +28,7 @@
     border-bottom: var(--border)
 }
 
-.inputGroup input,
-.inputGroup input p {
-    font-size: calc(0.5rem + 0.5vw);
-}
+
 
 .inputGroup textarea {
     min-height: calc(4rem + 4vh);
@@ -96,7 +93,7 @@
 .radioContainer label p,
 .radioContainer label,
 .radioContainer label span {
-    font-size: calc(0.4rem + 0.25vw);
+    font-size: var(--font-xs);
 }
 
 .radioContainer label p a {
@@ -119,7 +116,7 @@
     border: none;
     border-bottom: var(--border);
     color: var(--black);
-    font-size: calc(0.6rem + 0.6vw);
+    font-size: var(--font-md);
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -171,9 +168,6 @@
         gap: 0rem;
     }
 
-    .inputGroup input {
-        font-size: calc(0.5rem + 2vw);
-    }
 
     .inputGroup textarea {
         min-height: calc(4rem + 4vh);
@@ -234,13 +228,6 @@
         cursor: pointer
     }
 
-    .radioContainer label p,
-    .radioContainer label span,
-    .radioContainer label {
-
-        font-size: calc(0.4rem + 1vw);
-
-    }
 
     .buttonContainer {
         width: 100%;
@@ -248,7 +235,7 @@
     }
 
     .buttonContainer button {
-        font-size: calc(0.8rem + 0.8vw);
+
         width: 100%;
         transition: all var(--time-fast) var(--bezier);
     }
@@ -300,9 +287,7 @@
         gap: 0rem;
     }
 
-    .inputGroup input {
-        font-size: calc(0.5rem + 1vw);
-    }
+
 
     .inputGroup textarea {
         min-height: calc(4rem + 4vh);
@@ -359,12 +344,6 @@
         cursor: pointer
     }
 
-    .radioContainer label p,
-    .radioContainer label {
-
-        font-size: calc(0.4rem + 0.25vw);
-
-    }
 
     .buttonContainer {
         width: 100%;
@@ -372,7 +351,7 @@
     }
 
     .buttonContainer button {
-        font-size: calc(0.8rem + 0.8vw);
+
         width: 100%;
         transition: all var(--time-fast) var(--bezier);
     }

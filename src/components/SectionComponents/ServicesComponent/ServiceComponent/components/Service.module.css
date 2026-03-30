@@ -19,10 +19,7 @@
 }
 
 .rightcontainer {
-    border-top: var(--border);
-    padding-top: calc(1rem + 1vw);
     position: relative;
-
 }
 
 .titlecontainer {
@@ -35,6 +32,9 @@
 }
 
 
+.interludecontainer p {
+    font-size: var(--font-md)
+}
 
 
 .uppercontainer {

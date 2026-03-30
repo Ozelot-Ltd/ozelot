@@ -6,6 +6,7 @@
     grid-template-columns: repeat(2, 1fr);
     position: relative;
     padding: 0.5vw 0;
+    --padding-top-title: 1rem;
 }
 
 .container .leftContainer,
@@ -23,7 +24,7 @@
     display: grid;
     grid-template-rows: 1fr 1fr;
     height: 100%;
-    gap: 1vw;
+    gap: var(--heading2);
 }
 
 .rightContainer {
@@ -48,8 +49,9 @@
 
 .descriptionContainer {
     display: flex;
-    gap: 1vw;
+    gap: var(--font-md);
     height: 100%;
+
 }
 
 .scrollContainer {
@@ -87,6 +89,11 @@
 }
 
 
+.rightContainerLower,
+.titleContainer {
+    padding-top: var(--padding-top-title);
+}
+
 .rightContainerLower {
     display: flex;
     flex-direction: column;
@@ -98,21 +105,20 @@
 }
 
 .titleContainer p {
-    font-size: calc(0.2rem + 0.3vw);
+    font-size: var(--font-xs);
     align-items: flex-start;
-
+    height: fit-content
 }
 
 .title {
     display: flex;
     align-items: center;
-    gap: calc(0.4rem + 0.5vw);
+    gap: var(--font-base);
     justify-content: center;
     width: fit-content;
 }
 
 .title h2 {
-    font-size: calc(0.4rem + 1vw);
     line-height: 0;
 }
 
@@ -121,13 +127,13 @@
     padding: calc(0.5rem + 0.5vw) 0;
     display: flex;
     flex-direction: column;
-    gap: calc(var(--container-height) / 4);
+    gap: var(--font-sm);
 
 }
 
 .releasetext p,
 .description {
-    font-size: var(--description-size);
+    font-size: var(--font-base);
     font-variation-settings: var(--text-weight);
     width: fit-content;
 }
@@ -135,12 +141,10 @@
 .text {
     display: flex;
     flex-direction: column;
-    gap: 0.5vw;
+    gap: 1vw;
 }
 
-.description * {
-    font-size: var(--description-size);
-}
+
 
 
 .artist,
@@ -173,24 +177,6 @@
     align-items: center;
 }
 
-.contactPhrase {
-    display: flex;
-    gap: calc(0.2rem + 0.25vw);
-}
-
-
-
-.contactPhrase a {
-    font-variation-settings: var(--title-weight);
-    display: flex;
-    gap: calc(0.2vw + 0.2rem);
-}
-
-.contactPhrase a svg {
-    transform: rotate(-45deg)
-}
-
-
 
 .socials * {
     animation: none;
@@ -219,13 +205,6 @@
     align-self: center;
 }
 
-.projectFallElement h2 {
-    border: var(--border);
-    padding: 0.5rem 1rem;
-    border-radius: 30px;
-    font-variation-settings: var(--text-weight);
-    font-size: calc(1rem + 1vw);
-}
 
 .disciplinesContainer {
     display: none;
@@ -403,29 +382,6 @@
         width: fit-content;
     }
 
-    .contactPhrase {
-        padding-top: 1rem;
-        flex-direction: column;
-        align-items: left;
-    }
-
-
-    .contactPhrase * {
-        font-size: var(--font-size);
-    }
-
-    .contactPhrase a {
-        font-variation-settings: var(--title-weight);
-        display: flex;
-        gap: calc(0.2vw + 0.2rem);
-        display: flex;
-        align-items: center;
-    }
-
-    .contactPhrase a svg {
-        transform: translateY(2px), rotate(-45deg);
-        scale: 0.8;
-    }
 
     .previewContainer video {
         max-height: 120%;
@@ -606,30 +562,6 @@
         width: fit-content;
     }
 
-    .contactPhrase {
-        padding-top: 0rem;
-        display: inline-block;
-    }
-
-
-    .contactPhrase {
-        display: flex;
-        gap: calc(0.2rem + 0.25vw);
-        align-items: center;
-    }
-
-    .contactPhrase a {
-        font-variation-settings: var(--title-weight);
-        display: flex;
-        gap: calc(0.2vw + 0.2rem);
-    }
-
-    .contactPhrase a svg {
-
-        transform: rotate(-45deg)
-    }
-
-
 
     .socials * {
         animation: none;
@@ -805,29 +737,6 @@
         display: flex;
         width: fit-content;
     }
-
-    .contactPhrase {
-        padding-top: 1rem;
-        display: inline-block;
-    }
-
-    .contactPhrase {
-        display: flex;
-        gap: calc(0.2rem + 0.25vw);
-    }
-
-    .contactPhrase a {
-        font-variation-settings: var(--title-weight);
-        display: flex;
-        gap: calc(0.2vw + 0.2rem);
-    }
-
-    .contactPhrase a svg {
-
-        transform: rotate(-45deg)
-    }
-
-
 
     .socials * {
         animation: none;

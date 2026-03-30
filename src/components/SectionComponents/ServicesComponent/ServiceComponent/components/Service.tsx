@@ -20,11 +20,11 @@ const Service = ({ service }: Props) => {
         </div>
       </div>
       <div className={styles.rightcontainer}>
-        <div className={styles.uppercontainer}>
+        {/* <div className={styles.uppercontainer}>
           <div className={styles.interludecontainer}>
             <PrismicRichText field={service.data.interlude} />
           </div>
-        </div>
+        </div> */}
         <ServiceItems service={service} />
       </div>
     </div>

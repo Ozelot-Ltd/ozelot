@@ -39,7 +39,7 @@ export default function StudioContent({}: Props) {
           <div className={styles.descriptionContainer}>
             <PrismicRichText field={data.ozelot_description} />
           </div>
-          <div className={styles.addressContainer}>
+          <div className={styles.ctacontact}>
             <p
               onClick={() => {
                 router.push('/contact');
