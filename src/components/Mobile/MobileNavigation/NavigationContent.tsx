@@ -29,10 +29,7 @@ export default function NavigationContent({
           isNavigationActive={isNavigationActive}
           setIsNavigationActive={setIsNavigationActive}
         />
-        <Cross
-          isNavigationActive={isNavigationActive}
-          setIsNavigationActive={setIsNavigationActive}
-        />
+        <Cross onClick={() => setIsNavigationActive?.((prev) => !prev)} />
       </div>
     </div>
   );

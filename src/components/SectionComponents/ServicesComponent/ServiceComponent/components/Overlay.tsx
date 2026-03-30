@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { ServicenewDocument } from '@/prismicio-types';
 import styles from './Overlay.module.css';
 
-import { asText } from '@prismicio/client';
+import { asText, isFilled } from '@prismicio/client';
 
 import { useActiveServiceStore } from '@/stores/useActiveServiceStore';
 import { JSXMapSerializer, PrismicRichText } from '@prismicio/react';
@@ -35,8 +35,8 @@ export default function Overlay({ service }: OverlayProps) {
   );
 
   const components: JSXMapSerializer = {
-    paragraph: ({ children }) => <p>{children}</p>,
     heading5: () => <></>,
+    paragraph: ({ children }) => <p>{children}</p>,
     list: ({ children }) => <ul className={styles.list}>{children}</ul>,
     listItem: ({ children }) => (
       <li className={styles.listItem}>
@@ -51,20 +51,28 @@ export default function Overlay({ service }: OverlayProps) {
       className={`${styles.overlay} ${isContainerOpen === service.id ? styles.open : ''}`}
     >
       <div className={styles.contentcontainer}>
-        <div onClick={() => setIsContainerOpen('')} className={styles.cross}>
+        <div onClick={() => setIsContainerOpen('')} className={styles.arrow}>
           <Arrow fill="var(--lightgrey)" height="18" />
         </div>
-        <PrismicRichText field={displayedService?.item_title} />
+        <div className={styles.titlecontainer}>
+          <h5>
+            {asText(displayedService?.item_title)}
+            {isFilled.richText(displayedService?.item_title_second) &&
+              ` & ${asText(displayedService.item_title_second)}`}
+          </h5>
+        </div>
         <div className={styles.textcontainer}>
           <PrismicRichText
             field={displayedService?.item}
             components={components}
           />
         </div>
-        <ContactButton
-          windowEventText={`${service.data.title} clicked`}
-          variant="service"
-        />
+        <div className={styles.contactcontainer}>
+          <ContactButton
+            windowEventText={`${service.data.title} clicked`}
+            variant="service"
+          />
+        </div>
       </div>
     </div>
   );
