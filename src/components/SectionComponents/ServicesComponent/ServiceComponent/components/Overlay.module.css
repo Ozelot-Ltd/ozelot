@@ -10,7 +10,7 @@
     padding: var(--spacing);
     border-top: var(--border);
     --spacing: calc(1rem + 1vw);
-    background-color: rgb(249, 249, 128);
+    background-color: var(--black);
 }
 
 .open {
@@ -84,14 +84,14 @@
 }
 
 
-.cross {
+.cross svg {
     transform: rotate(180deg);
     transition: transform 0.1s var(--bezier);
     transform-origin: center;
     cursor: pointer;
 }
 
-.cross:hover {
+.cross:hover svg {
     transform: rotate(0deg)
 }
 

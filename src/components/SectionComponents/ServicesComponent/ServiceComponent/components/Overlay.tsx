@@ -11,19 +11,13 @@ import { JSXMapSerializer, PrismicRichText } from '@prismicio/react';
 import Arrow from '@/components/SvgComponents/Arrow/Arrow';
 import ContactButton from '@/components/ContactButton/ContactButton';
 
-import Cross from '@/components/Mobile/MobileNavigation/Cross';
-
 type OverlayProps = {
   service: ServicenewDocument;
 };
 
 export default function Overlay({ service }: OverlayProps) {
-  const {
-    activeService,
-
-    isContainerOpen,
-    setIsContainerOpen
-  } = useActiveServiceStore();
+  const { activeService, isContainerOpen, setIsContainerOpen } =
+    useActiveServiceStore();
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -58,7 +52,7 @@ export default function Overlay({ service }: OverlayProps) {
     >
       <div className={styles.contentcontainer}>
         <div onClick={() => setIsContainerOpen('')} className={styles.cross}>
-          <Arrow fill="var(--lightgrey)" />
+          <Arrow fill="var(--lightgrey)" height="18" />
         </div>
         <PrismicRichText field={displayedService?.item_title} />
         <div className={styles.textcontainer}>
