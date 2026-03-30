@@ -17,8 +17,6 @@
     transform: translateX(0)
 }
 
-
-
 .contentcontainer {
     display: flex;
     flex-direction: column;
@@ -50,7 +48,6 @@
 }
 
 .textcontainer h5 {
-
     font-variation-settings: var(--title-weight);
     padding-top: 1.5rem;
 }
@@ -111,17 +108,13 @@
         left: 0;
         height: 100%;
         width: 100%;
-        background-color: var(--lightgrey);
         z-index: 10;
         transform: translateX(100%);
         transition: all 0.4s var(--bezier);
         padding: var(--spacing) 0;
         padding-bottom: calc(var(--spacing) * 2);
         margin-top: var(--spacing);
-        border-top: var(--border);
-        --spacing: calc(1rem + 1vw);
-        --dropdown-fontsize: 1.2rem;
-        padding-top: 4rem;
+        padding: var(--spacing)
     }
 
     .open {
@@ -131,8 +124,12 @@
     .contentcontainer {
         display: flex;
         flex-direction: column;
-        gap: 2rem;
+        gap: 1rem;
         height: fit-content;
+    }
+
+    .textcontainer p {
+        width: 100%;
     }
 
     .dropdowncontainer {
@@ -144,7 +141,7 @@
     }
 
     .textcontainer * {
-        font-size: calc(0.7rem + 0.5vw);
+        font-size: var(--description-size);
         line-height: 150%;
     }
 
@@ -154,30 +151,11 @@
         padding-top: 1.5rem;
     }
 
-    .select {
-        width: 90%;
-        gap: 0rem;
-        justify-content: space-between;
-        align-items: flex-start;
-        text-align: left;
-    }
-
-
-    .buttoncontainer {
-        align-self: auto;
+    .contactcontainer {
         padding-top: 2rem;
+        margin-top: auto;
     }
 
-    .buttoncontainer button {
-        text-transform: uppercase;
-        border-radius: none;
-        outline: none;
-        padding: calc(0.25rem + 0.25vw) calc(0.5rem + 0.5vw);
-        background-color: var(--lightgrey);
-        border: var(--border);
-        color: var(--black);
-        cursor: pointer;
-    }
 }
 
 /* Tablet */

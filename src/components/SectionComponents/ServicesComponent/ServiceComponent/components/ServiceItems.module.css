@@ -6,7 +6,6 @@
      position: relative;
      min-height: 30rem;
      max-width: 60rem;
-
      align-items: center;
      justify-items: center;
  }
@@ -26,11 +25,12 @@
      .topicitems {
          padding-top: calc(3rem + 3vw);
          display: grid;
-         grid-template-columns: repeat(auto-fill, minmax(calc(8rem + 8vw), 1fr));
+         grid-template-columns: 1fr;
          grid-auto-rows: 10rem;
          gap: 1rem;
          position: relative;
-         padding-right: 0.5rem;
+         padding-right: 0;
+         max-width: 100%;
      }
  }
 

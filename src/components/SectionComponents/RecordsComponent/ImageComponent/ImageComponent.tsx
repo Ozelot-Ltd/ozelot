@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import {
   ProjectDocumentData,
   RecordDocumentData,
@@ -56,6 +56,28 @@ export default function ImageComponent({
     setIsLoading(false);
   };
 
+  const touchStartX = useRef(0);
+  const [dragOffset, setDragOffset] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+    setIsDragging(true);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setDragOffset(e.touches[0].clientX - touchStartX.current);
+  };
+
+  const handleTouchEnd = () => {
+    setIsDragging(false);
+    if (Math.abs(dragOffset) > 50) {
+      if (dragOffset < 0) nextImage();
+      else prevImage();
+    }
+    setDragOffset(0);
+  };
+
   // Safety check - ensure we have valid data before rendering
   const hasValidRecord =
     currentRecord &&
@@ -68,7 +90,12 @@ export default function ImageComponent({
 
   return (
     <div className={styles.imageContainer}>
-      <div className={styles.sliderContainer}>
+      <div
+        className={styles.sliderContainer}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+      >
         {(currentRecord && currentRecord?.record_images?.length > 1) ||
         (currentProject && currentProject?.gallery?.length > 1) ? (
           <button
@@ -83,7 +110,13 @@ export default function ImageComponent({
           </button>
         ) : null}
 
-        <div className={styles.imageWrapper}>
+        <div
+          className={styles.imageWrapper}
+          style={{
+            transform: `translateX(${dragOffset}px)`,
+            transition: isDragging ? 'none' : 'transform 0.3s ease-out',
+          }}
+        >
           {isLoading && <LoadingComponent />}
           {hasValidRecord ? (
             <PrismicNextImage

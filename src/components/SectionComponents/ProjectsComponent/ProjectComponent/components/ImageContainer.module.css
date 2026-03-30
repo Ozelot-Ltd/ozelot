@@ -31,9 +31,11 @@
 
     .imageContainer {
         overflow: scroll;
-        padding: 0rem 0;
+        padding: 4rem 0;
         width: 100%;
         margin: auto;
+
+        height: 100%;
     }
 
     .imageContainer img {

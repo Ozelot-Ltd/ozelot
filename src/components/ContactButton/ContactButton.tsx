@@ -5,6 +5,8 @@ import Arrow from '../SvgComponents/Arrow/Arrow';
 import styles from './ContactButton.module.css';
 import Link from 'next/link';
 
+import { useMobile } from '@/context/MobileContext';
+
 type Props = {
   text?: string;
   height?: string;
@@ -19,6 +21,8 @@ export default function ContactButton({
   variant
 }: Props) {
   const router = useRouter();
+
+  const { isMobile } = useMobile();
 
   const onClick = () => {
     router.push('/contact');
@@ -48,8 +52,8 @@ export default function ContactButton({
         >
           <span>{text ? text : 'contact us'}</span>
           <Arrow
-            height={height ? height : '16'}
-            width={height ? height : '16'}
+            height={height ? height : `${!isMobile ? '16' : '11'}`}
+            width={height ? height : `${!isMobile ? '16' : '11'}`}
             fill="var(--black)"
           />
         </Link>
@@ -63,8 +67,8 @@ export default function ContactButton({
         >
           <span>{text ? text : 'contact us'}</span>
           <Arrow
-            height={height ? height : '12'}
-            width={height ? height : '12'}
+            height={height ? height : `${!isMobile ? '12' : '11'}`}
+            width={height ? height : `${!isMobile ? '12' : '11'}`}
             fill="var(--lightgrey)"
           />
         </Link>
