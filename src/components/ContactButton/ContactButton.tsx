@@ -15,7 +15,7 @@ type Props = {
 };
 
 export default function ContactButton({
-  text,
+  text = 'contact',
   height,
   windowEventText,
   variant
@@ -36,7 +36,7 @@ export default function ContactButton({
           onClick={onClick}
           className={`${styles.contactbutton} ${styles[variant]}`}
         >
-          <span>{text ? text : 'contact us'}</span>
+          <span>{text}</span>
           <Arrow
             height={height ? height : '16'}
             width={height ? height : '16'}
@@ -50,10 +50,10 @@ export default function ContactButton({
           onClick={onClick}
           className={`${styles.contactbutton} ${styles[variant]}`}
         >
-          <span>{text ? text : 'contact us'}</span>
+          <span>{text}</span>
           <Arrow
-            height={height ? height : `${!isMobile ? '16' : '11'}`}
-            width={height ? height : `${!isMobile ? '16' : '11'}`}
+            height={height ? height : `${!isMobile ? '14' : '11'}`}
+            width={height ? height : `${!isMobile ? '14' : '11'}`}
             fill="var(--black)"
           />
         </Link>
@@ -65,7 +65,7 @@ export default function ContactButton({
           onClick={onClick}
           className={`${styles.contactbutton} ${styles[variant]}`}
         >
-          <span>{text ? text : 'contact us'}</span>
+          <span>{text}</span>
           <Arrow
             height={height ? height : `${!isMobile ? '12' : '11'}`}
             width={height ? height : `${!isMobile ? '12' : '11'}`}

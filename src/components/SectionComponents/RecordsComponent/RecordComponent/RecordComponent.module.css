@@ -142,9 +142,9 @@
 .artist,
 .releasename,
 .releaseyear {
-    display: flex;
-    align-items: center;
-
+    display: grid;
+    grid-template-columns: 4.75rem 1fr;
+    width: fit-content;
 }
 
 .artist *,
@@ -152,14 +152,14 @@
 .releaseyear * {
     font-size: var(--text-md) !important;
     line-height: 100%;
-    font-family: var(--text-font);
+    width: fit-content;
 }
 
 
 .artist h4,
 .releasename h4,
 .releaseyear h4 {
-    width: calc(2rem + 2vw);
+    width: calc(2rem + 2.5vw);
 }
 
 
@@ -314,12 +314,7 @@
         width: fit-content;
     }
 
-    .artist,
-    .releasename,
-    .releaseyear {
-        display: flex;
 
-    }
 
     .artist h4,
     .releasename h4,

@@ -4,8 +4,9 @@
     align-items: center;
     gap: var(--font-xs);
     border: none;
-    padding: var(--font-xs);
+    padding: 0.375rem 0.5rem;
     cursor: pointer;
+    border-radius: 20px;
 }
 
 .contactbutton span {
@@ -25,7 +26,8 @@
 }
 
 
-.project span {
+.project span,
+.service span {
     font-size: var(--description-size);
 }
 

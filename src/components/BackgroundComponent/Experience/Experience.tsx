@@ -1,66 +1,19 @@
 import { Float, CameraShake } from '@react-three/drei';
 import { Canvas } from '@react-three/fiber';
-import { Suspense, useRef, useEffect } from 'react';
+import { Suspense, useRef } from 'react';
 import * as THREE from 'three';
 import { ShirtM } from './components/ShirtM';
 import { LightingSetup } from './components/LightingSetup';
 import { SparklesSetup } from './components/SparklesSetup';
 import { StudioEnvironment } from './components/StudioEnvironment';
 import { DevPerformanceMonitor } from './components/PerformanceMonitor';
-import { useFadeAnimation } from '@/hooks/useFadeAnimation';
-import { isClickedStore } from '@/stores/IsClickedStore';
+
 import { SCENE_CONFIG } from './config/sceneConfig';
 
 function ShirtGroup() {
   const groupRef = useRef<THREE.Group>(null);
-  const isClicked = isClickedStore((state) => state.isClicked);
-  const lastClickStateRef = useRef('');
-
-  // Use the custom fade animation hook
-  const {
-    animateFade,
-    getCurrentOpacity,
-    setOpacity,
-    cleanupAnimation,
-    fadeMaterial
-  } = useFadeAnimation();
 
   // Handle section transitions
-  useEffect(() => {
-    // Detect direction of transition
-    const isGoingToSection = !lastClickStateRef.current && isClicked;
-    const isReturningHome = lastClickStateRef.current && !isClicked;
-
-    if (isGoingToSection) {
-      // Going to a section - fade IN the overlay (making shirt invisible)
-      animateFade({
-        startOpacity: getCurrentOpacity(),
-        targetOpacity: 1,
-        duration: SCENE_CONFIG.ANIMATION.FADE_OUT_DURATION
-      });
-    } else if (isReturningHome) {
-      // Returning home - delay then fade OUT the overlay (making shirt visible)
-      // First ensure we're fully faded in (shirt invisible)
-      setOpacity(1);
-
-      // Set delay before starting fade-out
-      setTimeout(() => {
-        animateFade({
-          startOpacity: 1,
-          targetOpacity: 0,
-          duration: SCENE_CONFIG.ANIMATION.FADE_IN_DURATION
-        });
-      }, SCENE_CONFIG.ANIMATION.RETURN_DELAY);
-    }
-
-    // Update last state
-    lastClickStateRef.current = isClicked;
-
-    // Cleanup on unmount
-    return () => {
-      cleanupAnimation();
-    };
-  }, [isClicked, animateFade, getCurrentOpacity, setOpacity, cleanupAnimation]);
 
   return (
     <>
@@ -89,7 +42,6 @@ function ShirtGroup() {
       {/* High-performance fade overlay */}
       <mesh renderOrder={1000} position={[0, 0, 6]} frustumCulled={false}>
         <planeGeometry args={[100, 100]} />
-        <primitive object={fadeMaterial} attach="material" />
       </mesh>
     </>
   );
