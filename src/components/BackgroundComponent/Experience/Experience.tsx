@@ -13,37 +13,28 @@ import { SCENE_CONFIG } from './config/sceneConfig';
 function ShirtGroup() {
   const groupRef = useRef<THREE.Group>(null);
 
-  // Handle section transitions
-
   return (
-    <>
-      <group
-        ref={groupRef}
-        position={SCENE_CONFIG.SHIRT.position}
-        scale={SCENE_CONFIG.SHIRT.scale}
-      >
-        <Suspense fallback={null}>
-          <LightingSetup />
+    <group
+      ref={groupRef}
+      position={SCENE_CONFIG.SHIRT.position}
+      scale={SCENE_CONFIG.SHIRT.scale}
+    >
+      <Suspense fallback={null}>
+        <LightingSetup />
 
-          <Float
-            speed={5.75}
-            rotationIntensity={0.2}
-            floatIntensity={1}
-            floatingRange={[-0.05, 0.05]}
-          >
-            <ShirtM />
-          </Float>
+        <Float
+          speed={5.75}
+          rotationIntensity={0.2}
+          floatIntensity={1}
+          floatingRange={[-0.05, 0.05]}
+        >
+          <ShirtM />
+        </Float>
 
-          <SparklesSetup type="shirt" />
-          <StudioEnvironment />
-        </Suspense>
-      </group>
-
-      {/* High-performance fade overlay */}
-      <mesh renderOrder={1000} position={[0, 0, 6]} frustumCulled={false}>
-        <planeGeometry args={[100, 100]} />
-      </mesh>
-    </>
+        <SparklesSetup type="shirt" />
+        <StudioEnvironment />
+      </Suspense>
+    </group>
   );
 }
 

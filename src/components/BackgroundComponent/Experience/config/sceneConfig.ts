@@ -1,8 +1,8 @@
 // Scene configuration constants
 export const SCENE_CONFIG = {
   // Background and fog
-  BACKGROUND_COLOR: "#121214",
-  FOG_COLOR: "#121214",
+  BACKGROUND_COLOR: "#ebebeb",
+  FOG_COLOR: "#ebebeb",
   FOG_DENSITY: 0.0045,
   
   // Camera settings

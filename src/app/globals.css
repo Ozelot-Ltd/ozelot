@@ -46,7 +46,8 @@
     /* Colors */
     --black: #ebebeb;
     --black-active: #ebebeb;
-    --lightgrey: #262626;
+    --lightgrey: rgb(38, 38, 38);
+    --lightgrey-opa: rgba(38, 38, 38, 0.75);
     --lightgrey-lighter: #2d2d2d;
     --accent: #E62321;
 

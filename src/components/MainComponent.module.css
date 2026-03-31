@@ -27,7 +27,7 @@
     align-items: flex-start;
     transition: all var(--time) var(--bezier);
     overflow: hidden;
-    background-color: var(--lightgrey);
+    background-color: var(--lightgrey-opa);
 
 }
 
@@ -190,7 +190,7 @@
     transform-origin: bottom;
     position: absolute;
     bottom: 0;
-    background-color: var(--lightgrey);
+    background-color: var(--lightgrey-opa);
     transition: height var(--time) var(--bezier) 0s,
         background-color var(--time) var(--bezier) 0.3s,
         backdrop-filter var(--time) var(--bezier) 0.3s;

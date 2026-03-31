@@ -4,7 +4,7 @@ import { FadeAnimationParams } from '@/types';
 
 // Create a single shared material for the fade plane
 const fadeMaterial = new THREE.MeshBasicMaterial({
-  color: '#121214', // SCENE_BG_COLOR
+  color: '#262626', // --lightgrey
   transparent: true,
   depthTest: false,
   opacity: 0, // Start with fully transparent (shirt visible)

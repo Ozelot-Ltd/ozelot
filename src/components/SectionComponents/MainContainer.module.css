@@ -4,7 +4,6 @@
     width: calc(100vw - (2 * var(--container-width, 5rem)));
     padding: 4rem 2.5rem 0rem 2.5rem;
     max-width: 100%;
-    background-color: var(--lightgrey);
 
 }
 
