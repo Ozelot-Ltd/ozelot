@@ -151,13 +151,17 @@
 .releasename,
 .releaseyear {
     display: flex;
+    align-items: center;
+
 }
 
 .artist h4,
 .releasename h4,
 .releaseyear h4 {
-    width: calc(2rem + 1.5vw);
+    width: calc(2rem + 2vw);
     font-size: var(--description-size);
+
+    line-height: 100%;
 }
 
 .subtitle {
@@ -168,7 +172,7 @@
 
 .subtitle p {
     font-size: calc(0.2rem + 0.3vw);
-    color: var(--black)
+    color: var(--black);
 }
 
 .socials {

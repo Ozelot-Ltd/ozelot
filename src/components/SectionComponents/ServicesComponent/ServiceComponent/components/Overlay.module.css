@@ -104,9 +104,9 @@
 @media (max-width: 48rem) {
     .overlay {
         position: absolute;
-        top: 0;
+        top: 36px;
         left: 0;
-        height: 100%;
+        height: fit-content;
         width: 100%;
         z-index: 10;
         transform: translateX(100%);
@@ -154,6 +154,16 @@
     .contactcontainer {
         padding-top: 2rem;
         margin-top: auto;
+    }
+
+
+    .arrow svg {
+        transform: rotate(0deg);
+
+    }
+
+    .arrow:hover svg {
+        transform: rotate(0deg)
     }
 
 }

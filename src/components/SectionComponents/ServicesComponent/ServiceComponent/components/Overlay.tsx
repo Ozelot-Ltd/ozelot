@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
 import { ServicenewDocument } from '@/prismicio-types';
 import styles from './Overlay.module.css';
@@ -11,13 +11,30 @@ import { JSXMapSerializer, PrismicRichText } from '@prismicio/react';
 import Arrow from '@/components/SvgComponents/Arrow/Arrow';
 import ContactButton from '@/components/ContactButton/ContactButton';
 
+import { useMobile } from '@/context/MobileContext';
+
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+
 type OverlayProps = {
   service: ServicenewDocument;
+  isActive: number | null;
+  length: number;
+  offset: number | null;
 };
 
-export default function Overlay({ service }: OverlayProps) {
+export default function Overlay({
+  service,
+  isActive,
+  length,
+  offset
+}: OverlayProps) {
   const { activeService, isContainerOpen, setIsContainerOpen } =
     useActiveServiceStore();
+
+  const overlayRef = useRef<HTMLDivElement>(null);
+
+  const { isMobile } = useMobile();
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -46,8 +63,37 @@ export default function Overlay({ service }: OverlayProps) {
     )
   };
 
+  console.log(length, isActive);
+
+  useGSAP(
+    () => {
+      if (!isMobile || isActive === null) return;
+
+      if (isActive === length - 1) {
+        const parentHeight =
+          overlayRef.current?.parentElement?.clientHeight ?? 0;
+        const overlayHeight = overlayRef.current?.clientHeight ?? 0;
+        gsap.to(overlayRef.current, {
+          top: parentHeight - overlayHeight,
+          bottom: 'auto',
+          duration: 0.4,
+          ease: 'var(--bezier)'
+        });
+      } else {
+        gsap.to(overlayRef.current, {
+          top: `calc(${offset}px - 24px)`,
+          bottom: 'auto',
+          duration: 0.4,
+          ease: 'var(--bezier)'
+        });
+      }
+    },
+    { dependencies: [isMobile, offset, isActive] }
+  );
+
   return (
     <div
+      ref={overlayRef}
       className={`${styles.overlay} ${isContainerOpen === service.id ? styles.open : ''}`}
     >
       <div className={styles.contentcontainer}>

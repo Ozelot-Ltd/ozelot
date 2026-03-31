@@ -1,3 +1,5 @@
+import { useRef, useEffect } from 'react';
+
 import { PrismicRichText } from '@prismicio/react';
 import {
   ServicenewDocumentDataDescriptionItemsItem,
@@ -9,12 +11,15 @@ import { Dispatch, SetStateAction } from 'react';
 import { isFilled } from '@prismicio/client';
 import { useActiveServiceStore } from '@/stores/useActiveServiceStore';
 
+import { useMobile } from '@/context/MobileContext';
+
 type ServiceItemProps = {
   item: Simplify<ServicenewDocumentDataDescriptionItemsItem>;
   isActive: number | null;
   setIsActive: Dispatch<SetStateAction<number | null>>;
   index: number;
   id: string;
+  setOffset: Dispatch<SetStateAction<number | null>>;
 };
 
 export default function ServiceItem({
@@ -22,17 +27,28 @@ export default function ServiceItem({
   isActive,
   index,
   setIsActive,
-  id
+  id,
+  setOffset
 }: ServiceItemProps) {
   const { setActiveService, setIsContainerOpen } = useActiveServiceStore();
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const { isMobile } = useMobile();
+
+  useEffect(() => {
+    if (isMobile) {
+      console.log(containerRef.current?.offsetTop);
+    }
+  }, [containerRef, isMobile]);
 
   return (
     <div
+      ref={containerRef}
       className={styles.item}
       onClick={() => {
         isActive !== index ? setIsActive(index) : setIsActive(null);
         setActiveService(asText(item.item_title) as string);
         setIsContainerOpen(id);
+        setOffset(containerRef.current?.offsetTop as number);
       }}
     >
       <div className={styles.title}>

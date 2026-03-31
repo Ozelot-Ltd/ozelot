@@ -51,11 +51,12 @@
 
 .content {
     transform: translateY(100%);
+    z-index: 1;
 }
 
 .menu {
     transform: translateY(-100%);
-
+    z-index: 2;
 }
 
 .menuOpen,

@@ -116,7 +116,7 @@ export default function MobileComponent({
       </div>{' '}
       <div
         onTransitionEnd={() => setTransitionEnd(true)}
-        className={`${mobileStyles.menu} ${isNavigationActive && isClicked === '' ? mobileStyles.menuOpen : ''}`}
+        className={`${mobileStyles.menu} ${isNavigationActive ? mobileStyles.menuOpen : ''}`}
       >
         <MobileMenu
           isClicked={isClicked}

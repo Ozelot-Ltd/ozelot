@@ -8,16 +8,11 @@ import Cross from './Cross';
 
 export default function NavigationContent({
   isNavigationActive,
-  setIsNavigationActive,
-  isClicked = '',
-  setIsClicked
+  setIsNavigationActive
 }: MobileNavigationProps) {
   const handleClick = () => {
     if (setIsNavigationActive) {
       setIsNavigationActive(!isNavigationActive);
-    }
-    if (isClicked !== '' && setIsClicked) {
-      setIsClicked('');
     }
   };
   return (

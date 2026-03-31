@@ -10,6 +10,7 @@ export type ServiceItemsProps = {
 
 export default function ServiceItems({ service }: ServiceItemsProps) {
   const [isActive, setIsActive] = useState<number | null>(null);
+  const [offset, setOffset] = useState<number | null>(null);
 
   return (
     <div className={styles.topicitems}>
@@ -21,9 +22,15 @@ export default function ServiceItems({ service }: ServiceItemsProps) {
           setIsActive={setIsActive}
           index={index}
           id={service.id}
+          setOffset={setOffset}
         />
       ))}
-      <Overlay service={service} />
+      <Overlay
+        service={service}
+        isActive={isActive}
+        length={service.data.description_items.length}
+        offset={offset}
+      />
     </div>
   );
 }
