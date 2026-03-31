@@ -73,15 +73,7 @@
     justify-content: center;
 }
 
-.pills {
-    display: flex;
-    gap: 0.5rem;
-}
 
-.pills p {
-    text-transform: uppercase;
-    color: #65696d;
-}
 
 .iconContainer img {
     height: calc(0.6vw + 0.6rem);
@@ -155,30 +147,31 @@
 
 }
 
+.artist *,
+.releasename *,
+.releaseyear * {
+    font-size: var(--text-md) !important;
+    line-height: 100%;
+    font-family: var(--text-font);
+}
+
+
 .artist h4,
 .releasename h4,
 .releaseyear h4 {
     width: calc(2rem + 2vw);
-    font-size: var(--description-size);
-
-    line-height: 100%;
 }
 
-.subtitle {
-    border: var(--border);
-    padding: calc(0.125rem + 0.125vw) calc(0.25rem + 0.25vw);
-    border-radius: 50px;
-}
 
-.subtitle p {
-    font-size: calc(0.2rem + 0.3vw);
-    color: var(--black);
-}
+
+
 
 .socials {
     display: flex;
     gap: 1rem;
     align-items: center;
+
+
 }
 
 
@@ -197,9 +190,7 @@
     justify-content: center;
 }
 
-.previewContainer video {
-    max-height: 80vh;
-}
+
 
 
 .imageContainer img {
@@ -207,16 +198,6 @@
     width: auto;
     margin: auto;
     align-self: center;
-}
-
-
-.disciplinesContainer {
-    display: none;
-}
-
-
-.description a {
-    text-decoration: underline;
 }
 
 
@@ -288,29 +269,6 @@
 
     }
 
-    .iconContainer {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .pills {
-        display: flex;
-        gap: 0.5rem;
-        flex-wrap: wrap;
-    }
-
-    .pills p {
-        text-transform: uppercase;
-        color: #65696d;
-
-    }
-
-    .iconContainer img {
-        height: 16px;
-        width: 16px;
-
-    }
 
 
     .rightContainerLower {
@@ -347,6 +305,7 @@
         padding: calc(0.5rem + 0.5vw) 0;
         display: flex;
         flex-direction: column;
+        justify-content: center;
         gap: calc(var(--container-height) / 4);
     }
 
@@ -366,35 +325,9 @@
     .releasename h4,
     .releaseyear h4 {
         width: 4rem;
-        font-size: calc(0.7rem + 0.7vw)
-    }
-
-    .subtitle {
-        border: var(--border);
-        padding: 0.25rem 0.5rem;
-        border-radius: 50px;
 
     }
 
-    .subtitle p {
-        font-size: calc(0.2rem + 0.25vw);
-        color: var(--black)
-    }
-
-    .socials {
-        display: flex;
-        width: fit-content;
-    }
-
-
-    .previewContainer video {
-        max-height: 120%;
-    }
-
-
-    .socials * {
-        animation: none;
-    }
 
     .imageContainer {
         overflow: scroll;

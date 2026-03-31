@@ -57,7 +57,6 @@
 /* Up to 768px */
 @media (max-width: 48rem) {
     .container {
-
         padding: 0;
         width: 100%;
         overflow: scroll;
@@ -119,19 +118,20 @@
         flex-direction: column;
     }
 
-    .descriptionContainer p {
-        width: 100%;
+    .ctacontact {
+        padding-top: var(--font-lg)
     }
 
-    .ctacontact h5 {
-        text-transform: none;
-        font-variation-settings: var(--text-weight);
+    .descriptionContainer p {
+        width: 100%;
     }
 
     .bottomContainer {
         align-items: flex-start;
         flex-direction: column;
         width: 100%;
+        padding-top: var(--font-lg);
+        gap: var(--paragraph)
     }
 }
 
