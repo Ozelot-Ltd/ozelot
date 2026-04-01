@@ -56,7 +56,7 @@
     --border: 0.5px solid var(--black);
     --border-active: 0.5px solid var(--black-active);
     --grey-lowopacity: rgba(247, 247, 247, 0.9);
-    --blur: blur(6px);
+
     --border-width: 0.5px;
     --mobile-breakpoint: 30rem;
 
@@ -87,7 +87,6 @@
 
 *::selection {
     background: rgba(255, 255, 255, 0.5);
-    backdrop-filter: blur(20px);
     color: var(--black-active);
 }
 
