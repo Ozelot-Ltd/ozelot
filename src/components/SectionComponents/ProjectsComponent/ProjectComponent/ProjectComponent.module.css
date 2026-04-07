@@ -232,9 +232,8 @@
     }
 
     .pills {
-        padding: var(--text-s) 0;
-        gap: 0.5rem;
-        flex-wrap: wrap;
+        background-color: red;
+        display: none;
     }
 
     .rightContainerLower {
@@ -257,13 +256,15 @@
     .title {
         gap: calc(0.4rem + 0.5vw);
         max-width: fit-content;
-        align-items: flex-start;
+        align-items: center;
         justify-content: flex-start;
+
+
     }
 
-    .title h2 {
-        font-size: calc(0.8rem + 0.9vw);
+    .title h3 {
         line-height: normal;
+        text-wrap: warp;
     }
 
     .releasetext {
