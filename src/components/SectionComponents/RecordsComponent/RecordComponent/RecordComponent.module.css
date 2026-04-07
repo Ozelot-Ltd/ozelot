@@ -27,9 +27,8 @@
     padding-right: calc(1rem + 1vw);
     padding-top: calc(1rem + 1vw);
     display: grid;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 0.8fr 1fr;
     height: 100%;
-    gap: var(--heading2);
 }
 
 .rightContainer {

@@ -27,9 +27,9 @@
     padding-right: calc(1rem + 1vw);
     padding-top: calc(1rem + 1vw);
     display: grid;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 0.8fr 1fr;
     height: 100%;
-    gap: var(--heading2);
+
 }
 
 .rightContainer {
@@ -156,6 +156,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
 }
 
 .disciplinesContainer {
@@ -231,6 +232,7 @@
     }
 
     .pills {
+        padding: var(--text-s) 0;
         gap: 0.5rem;
         flex-wrap: wrap;
     }
