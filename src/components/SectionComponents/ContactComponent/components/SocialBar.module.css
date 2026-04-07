@@ -1,0 +1,4 @@
+.fadeIn {
+    display: flex;
+    gap: var(--font-2xl);
+}

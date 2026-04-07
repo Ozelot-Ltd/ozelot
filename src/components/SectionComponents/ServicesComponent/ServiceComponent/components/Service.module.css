@@ -1,0 +1,151 @@
+.container {
+    --padding-bottomtop: calc(2rem + 2vw);
+    padding: var(--padding-bottomtop) 0;
+    display: grid;
+    grid-template-columns: 0.45fr 1fr;
+    width: var(--service-container-width, 100%);
+    position: relative;
+}
+
+
+.leftcontainer,
+.rightcontainer {
+    height: 100%;
+}
+
+.leftcontainer {
+    display: flex;
+    width: 100%;
+}
+
+.rightcontainer {
+    position: relative;
+}
+
+.titlecontainer {
+    display: flex;
+    height: fit-content;
+    padding: 0;
+    flex-direction: column;
+    gap: calc(0.5rem + 0.5vw);
+    align-items: flex-start;
+}
+
+
+/* Mobile */
+/* Up to 768px */
+@media (max-width: 48rem) {
+
+    .container {
+        --padding-bottomtop: calc(2rem + 2vw);
+        padding: var(--padding-bottomtop) 0;
+        overflow: hidden;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        padding-top: 6rem;
+    }
+
+
+    .leftcontainer,
+    .rightcontainer {
+        height: 100%;
+    }
+
+    .leftcontainer {
+        padding-top: 2rem;
+        display: flex;
+        width: 100%;
+    }
+
+    .rightcontainer {
+        border-top: var(--border);
+        padding-top: calc(1rem + 1vw);
+        position: relative;
+
+    }
+
+    .titlecontainer {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        gap: 8px;
+        position: static;
+    }
+
+
+    .titletext {
+        grid-column: span 2 / span 2;
+        grid-row-start: 2;
+    }
+
+
+    .uppercontainer {
+        display: flex;
+        flex-direction: column;
+        gap: calc(0.25rem + 0.25vw)
+    }
+
+}
+
+/* Tablet */
+/* 768px to 1184px */
+@media (min-width: 48rem) and (max-width: 74rem) {
+
+    .container {
+        border-bottom: var(--border);
+        overflow: hidden;
+        height: var(--upper-height);
+        transition: height calc(var(--time))var(--bezier);
+        will-change: height;
+        transition-delay: 0.2s;
+        max-width: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+}
+
+/* Tablet - Portrait Orientation */
+/* 768px to 1184px in portrait mode */
+@media (min-width: 48rem) and (max-width: 74rem) and (orientation: portrait) {
+    .container {
+        border-bottom: var(--border);
+        overflow: hidden;
+        height: var(--upper-height);
+        transition: height calc(var(--time))var(--bezier);
+        will-change: height;
+        transition-delay: 0.2s;
+        max-width: 100%;
+        width: 100%;
+    }
+
+}
+
+/* Desktop */
+/* 1184px and up */
+@media (min-width: 74rem) {}
+
+/* Large Desktop */
+/* 1440px and up */
+@media (min-width: 90rem) {}
+
+@media (min-width: 120rem) {}
+
+/* Touch Devices */
+/* Any touch device regardless of size */
+@media (hover: none) {}
+
+/* Non-Touch Devices */
+/* Devices with precise pointer (mouse) */
+@media (hover: hover) and (pointer: fine) {}
+
+/* Prefers Dark Mode */
+/* User has set dark mode preference */
+@media (prefers-color-scheme: dark) {}
+
+/* Prefers Reduced Motion */
+/* User has requested minimal animations */
+@media (prefers-reduced-motion: reduce) {}

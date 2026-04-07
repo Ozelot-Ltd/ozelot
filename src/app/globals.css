@@ -2,26 +2,69 @@
 
 /******** VARIABLES ********/
 
+@font-face {
+    font-family: "1up";
+    src: url("/MaxFett-Black.woff2");
+}
+
 :root {
-    --font-size: calc(0.65rem + 0.3vw);
+    /* Type scale — fluid (min @ 320px → max @ 1440px) */
+    --font-xs: clamp(0.5rem, 0.55rem + 0.25vw, 0.625rem);
+    /* 10px → 12px */
+    --font-sm: clamp(0.75rem, 0.65rem + 0.3vw, 0.875rem);
+    /* 12px → 14px */
+    --font-base: clamp(0.875rem, 0.75rem + 0.4vw, 1rem);
+    /* 14px → 16px */
+    --font-md: clamp(1rem, 0.85rem + 0.5vw, 1.125rem);
+
+    --font-lm: clamp(1.125rem, 0.9rem + 0.625vw, 1.25rem);
+    /* 16px → 20px */
+    --font-lg: clamp(1.25rem, 1rem + 0.75vw, 1.75rem);
+    /* 20px → 28px */
+    --font-xl: clamp(1.5rem, 1.2rem + 0.75vw, 2rem);
+    /* 24px → 32px */
+    --font-2xl: clamp(1.75rem, 1.4rem + 1vw, 2.5rem);
+    /* 28px → 40px */
+    --font-3xl: clamp(2rem, 2.4rem + 1.25vw, 3.6rem);
+    /* 32px → 48px */
+
+    /* Semantic aliases */
+    --font-size: var(--font-base);
+    --description-size: var(--font-sm);
+    --heading1: var(--font-3xl);
+    --heading2: var(--font-2xl);
+    --heading3: var(--font-xl);
+    --heading4: var(--font-lg);
+    --heading5: var(--font-lm);
+    --paragraph: var(--font-base);
+
+
+    /* Weights */
     --text-weight: "wght" 300;
+    --title-weight: "wght" 500;
+
+    /* Colors */
     --black: #ebebeb;
     --black-active: #ebebeb;
     --lightgrey: #262626;
-    --title-weight: "wght" 500;
-    --radius-large: 20px;
+    --lightgrey-opa: rgba(38, 38, 38, 0.75);
+    --lightgrey-lighter: #2d2d2d;
+    --accent: #E62321;
+
+    /* Layout */
+    --radius-large: 40px;
     --border: 0.5px solid var(--black);
     --border-active: 0.5px solid var(--black-active);
-    --radius-large: 40px;
     --grey-lowopacity: rgba(247, 247, 247, 0.9);
-    --blur: blur(6px);
+
+    --border-width: 0.5px;
+    --mobile-breakpoint: 30rem;
+
+    /* Animation */
     --bezier: cubic-bezier(0.39, 0.575, 0.565, 1);
     --time: 0.5s;
     --time-fast: 0.2s;
-    --mobile-breakpoint: 30rem;
-    --border-width: 0.5px;
-    --aipopupwidth: calc(18rem + 18vw);
-    --description-size: calc(0.45rem + 0.45vw);
+
 }
 
 /******** GLOBAL STYLES ********/
@@ -44,7 +87,6 @@
 
 *::selection {
     background: rgba(255, 255, 255, 0.5);
-    backdrop-filter: blur(20px);
     color: var(--black-active);
 }
 
@@ -55,13 +97,38 @@ body {
     min-width: 100svw;
     overflow: hidden;
     background-color: var(--lightgrey);
-
 }
 
 
 .object {
     position: absolute;
 }
+
+
+h1 {
+
+    font-size: var(--heading1)
+}
+
+h2 {
+    font-size: var(--heading2);
+}
+
+
+h3 {
+    font-size: var(--heading3);
+}
+
+h4 {
+    font-size: var(--heading4)
+}
+
+h5 {
+    font-size: var(--heading5);
+    text-transform: uppercase;
+}
+
+
 
 
 h1,
@@ -84,16 +151,22 @@ h4,
 h5 {
     font-variation-settings: var(--title-weight);
     text-transform: uppercase;
+    font-family: "1up";
 }
 
-h5 {
-    font-size: calc(0.5rem + 0.5vw);
+p,
+input,
+a,
+span,
+aside {
+    font-size: var(--font-base)
 }
+
+
 
 p,
 input {
     hyphens: auto;
-    font-size: calc(0.65rem + 0.3vw);
 }
 
 p,
@@ -109,12 +182,6 @@ li {
     list-style-type: none;
 }
 
-h1 {
-    border: var(--border);
-    border-radius: var(--radius-large);
-    padding: 0.25rem 0.75rem;
-
-}
 
 
 input[type="text"],
@@ -150,35 +217,32 @@ label {
     color: var(--black)
 }
 
+
+
+
+
+
 /******** !!!!!!!! MOBILE STYLES !!!!!!!!! ********/
-
-
-.main {
-    position: relative;
-    height: calc(100vh - 5rem);
-    width: calc(100vw - (2 * var(--container-width)));
-    padding: 4rem 2rem 0rem 2rem;
-    max-width: 100%;
-}
-
 
 /* Mobile */
 /* Up to 768px */
 @media (max-width: 48rem) {
     :root {
+        /* Type scale — mobile overrides */
+        --font-xs: 0.7rem;
+        --font-sm: 0.8rem;
+        --font-base: 0.95rem;
+        --font-md: 1.05rem;
+        --font-lg: 1.25rem;
+        --font-xl: 1.5rem;
+        --font-2xl: 1.75rem;
+        --font-3xl: 2rem;
+
         --title-weight: "wght" 600;
-        --radius-large: 20px;
-        --border: 0.5px solid var(--black);
         --border-active: 0.5px solid var(--black-active);
-        --radius-large: 40px;
         --grey-lowopacity: rgba(247, 247, 247, 0.9);
-        --blur: blur(6px);
         --bezier: cubic-bezier(0.39, 0.575, 0.565, 1);
-        --time: 0.5s;
-        --time-fast: 0.2s;
         --mobile-breakpoint: 48rem;
-        --border-width: 0.5px;
-        --aipopupwidth: calc(18rem + 18vw);
     }
 
 }

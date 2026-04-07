@@ -1,10 +1,15 @@
-import { type Metadata } from 'next';
+import { type Metadata, type Viewport } from 'next';
 
 import { createClient } from '@/prismicio';
 
 export default async function Home() {
   return <div></div>;
 }
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+};
 
 export async function generateMetadata(): Promise<Metadata> {
   const client = createClient();
@@ -13,7 +18,6 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: home.data.meta_title,
     description: home.data.meta_description,
-    viewport: 'width=device-width, initial-scale=1',
     openGraph: {
       title: home.data.meta_title ?? undefined,
       images: [{ url: home.data.meta_image.url ?? '' }],

@@ -1,0 +1,48 @@
+.imageContainer {
+    overflow: scroll;
+    padding: 3rem 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.previewContainer video {
+    max-height: 75vh;
+
+}
+
+.imageContainer img {
+    height: 100%;
+    width: auto;
+    margin: auto;
+    align-self: center;
+}
+
+
+
+
+
+
+/* Mobile */
+/* Up to 768px */
+@media (max-width: 48rem) {
+
+    .imageContainer {
+        overflow: scroll;
+        padding: 0;
+        width: 100%;
+        margin: auto;
+        height: 60vh;
+
+    }
+
+    .imageContainer img {
+        height: 100%;
+        width: 100%;
+        margin: auto;
+        align-self: center;
+    }
+
+}

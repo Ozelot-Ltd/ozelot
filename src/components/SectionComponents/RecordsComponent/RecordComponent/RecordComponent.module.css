@@ -1,0 +1,419 @@
+/* RecordComponent.module.css */
+
+/* ======================
+   Base / Desktop Styles
+   ====================== */
+
+.container {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    position: relative;
+    padding: 0.5vw 0;
+    --padding-top-title: 1rem;
+}
+
+.container .leftContainer,
+.container .rightContainer {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.leftContainer {
+    border-right: var(--border);
+    padding-right: calc(1rem + 1vw);
+    padding-top: calc(1rem + 1vw);
+    display: grid;
+    grid-template-rows: 0.8fr 1fr;
+    height: 100%;
+}
+
+.rightContainer {
+    padding-left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+/* Content blocks */
+
+.listContainer,
+.imageContainer,
+.descriptionContainer {
+    width: 100%;
+}
+
+.listContainer {
+    overflow-y: hidden;
+    max-height: 100%;
+    height: calc(var(--container-height) * 5);
+}
+
+.descriptionContainer {
+    display: flex;
+    gap: var(--font-md);
+    height: 100%;
+}
+
+.scrollContainer {
+    width: 100%;
+    max-height: 100%;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+.listComponent {
+    height: 100%;
+    width: 100%;
+}
+
+/* Icon */
+
+.iconContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.iconContainer img {
+    height: calc(0.6vw + 0.6rem);
+    width: calc(0.6vw + 0.6rem);
+}
+
+/* Title & lower section */
+
+.rightContainerLower,
+.titleContainer {
+    padding-top: var(--padding-top-title);
+}
+
+.rightContainerLower {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.titleContainer {
+    display: flex;
+}
+
+.titleContainer p {
+    font-size: var(--font-xs);
+    align-items: flex-start;
+    height: fit-content;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    gap: var(--font-base);
+    justify-content: center;
+    width: fit-content;
+}
+
+.title h2 {
+    line-height: 0;
+}
+
+/* Release info */
+
+.releasetext {
+    padding: calc(0.5rem + 0.5vw) 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--font-sm);
+}
+
+.releasetext p,
+.description {
+    font-size: var(--font-base);
+    font-variation-settings: var(--text-weight);
+    width: fit-content;
+}
+
+.text {
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+}
+
+.artist,
+.releasename,
+.releaseyear {
+    display: grid;
+    grid-template-columns: 4.75rem 1fr;
+    width: fit-content;
+}
+
+.artist *,
+.releasename *,
+.releaseyear * {
+    font-size: var(--text-md) !important;
+    line-height: 100%;
+    width: fit-content;
+}
+
+.artist h4,
+.releasename h4,
+.releaseyear h4 {
+    width: calc(2rem + 2.5vw);
+}
+
+/* Socials */
+
+.socials {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.socials * {
+    animation: none;
+}
+
+/* Image / Preview */
+
+.imageContainer,
+.previewContainer {
+    overflow: scroll;
+    padding: 3rem 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.imageContainer img {
+    height: 100%;
+    width: auto;
+    margin: auto;
+    align-self: center;
+}
+
+/* ======================
+   Mobile — up to 768px
+   ====================== */
+
+@media (max-width: 48rem) {
+    .container {
+        display: flex;
+        flex-direction: column;
+        gap: calc(2rem + 2vh);
+        padding: 0;
+        height: fit-content
+    }
+
+    .container .leftContainer,
+    .container .rightContainer {
+        overflow: visible;
+    }
+
+    .leftContainer {
+        border-right: none;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: calc(2rem + 2vh);
+        height: calc(var(--container-height) * 5);
+    }
+
+    .rightContainer {
+        height: fit-content;
+        padding-bottom: 10rem;
+        min-height: 20rem;
+        align-items: stretch;
+        justify-content: stretch;
+        height: fit-content;
+    }
+
+    .listContainer {
+        height: calc(var(--container-height) * 5);
+        padding-bottom: 1rem;
+    }
+
+    .descriptionContainer {
+        gap: 0.5rem;
+    }
+
+    .scrollContainer {
+        padding-top: 0;
+        overflow: visible;
+        overflow-x: hidden;
+    }
+
+    .listComponent {
+        padding: 0;
+    }
+
+    .rightContainerLower {
+        width: 100%;
+        padding-top: 0;
+
+    }
+
+    .titleContainer {
+        flex-direction: row;
+        gap: 0.75rem;
+        width: fit-content;
+        padding-top: 0;
+    }
+
+    .titleContainer p {
+        font-size: calc(0.3rem + 0.5vw);
+        height: auto;
+    }
+
+    .title {
+        gap: calc(0.4rem + 0.5vw);
+        max-width: fit-content;
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
+
+    .title h2 {
+        font-size: calc(0.8rem + 0.9vw);
+        line-height: normal;
+    }
+
+    .releasetext {
+        justify-content: center;
+        gap: calc(var(--container-height) / 4);
+    }
+
+    .releasetext p {
+        font-size: inherit;
+    }
+
+    .artist,
+    .releasename,
+    .releaseyear {
+        display: flex;
+        align-items: flex-start;
+        gap: 2rem;
+
+        width: 100%;
+    }
+
+    .imageContainer {
+        padding: 0;
+        margin: auto;
+    }
+
+    .imageContainer img {
+        width: 100%;
+    }
+}
+
+/* ==========================================
+   Tablet Portrait — 768px to 1184px portrait
+   ========================================== */
+
+@media (min-width: 48rem) and (max-width: 74rem) and (orientation: portrait) {
+    .container {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        padding: 0;
+
+    }
+
+    .container .leftContainer,
+    .container .rightContainer {
+        overflow: visible;
+    }
+
+    .leftContainer {
+        border-right: none;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: calc(2rem + 2vh);
+    }
+
+    .rightContainer {
+        height: fit-content;
+        padding-bottom: 10rem;
+        min-height: 50rem;
+        align-items: stretch;
+        justify-content: stretch;
+    }
+
+    .listContainer {
+        height: calc(var(--container-height) * 5);
+
+
+        padding-bottom: 1rem;
+    }
+
+    .descriptionContainer {
+        gap: 0.5rem;
+    }
+
+    .scrollContainer {
+        padding-top: 0;
+        overflow: visible;
+        overflow-x: hidden;
+    }
+
+    .listComponent {
+        padding: 0;
+    }
+
+    .rightContainerLower {
+        width: 100%;
+        padding-top: 0;
+    }
+
+    .titleContainer {
+        flex-direction: row;
+        gap: 0.75rem;
+        width: fit-content;
+        padding-top: 0;
+    }
+
+    .titleContainer p {
+        font-size: calc(0.3rem + 0.5vw);
+        height: auto;
+    }
+
+    .title {
+        gap: calc(0.4rem + 0.5vw);
+        max-width: fit-content;
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
+
+    .title h2 {
+        font-size: calc(0.8rem + 0.9vw);
+        line-height: normal;
+    }
+
+    .releasetext {
+        justify-content: center;
+        gap: calc(var(--container-height) / 4);
+    }
+
+    .releasetext p {
+        font-size: inherit;
+    }
+
+    .artist h4,
+    .releasename h4,
+    .releaseyear h4 {
+        width: 4rem;
+    }
+
+    .imageContainer {
+        padding: 0;
+        margin: auto;
+    }
+
+    .imageContainer img {
+        width: 100%;
+    }
+}

@@ -4,11 +4,10 @@ import {
   Container,
   Font,
   Heading,
-  Text,
+  Text
 } from '@react-email/components';
-import * as React from 'react';
 
-import { FormData } from '@/app/components/SectionComponents/ContactComponent/components/ContactForm';
+import { FormData } from '@/components/SectionComponents/ContactComponent/components/ContactForm';
 
 const Spacer = () => (
   <Container style={{ height: '24px', width: '100%' }}></Container>
@@ -25,7 +24,7 @@ export default function OzelotMail(formData: FormData) {
           fallbackFontFamily={['Arial', 'Helvetica', 'sans-serif']}
           webFont={{
             url: 'https://fonts.googleapis.com/css2?family=Host+Grotesk:wght@400;700&display=swap',
-            format: 'woff2',
+            format: 'woff2'
           }}
           fontWeight={400}
           fontStyle="normal"
@@ -56,5 +55,5 @@ const html = {
   width: '100%',
   padding: '0px',
   margin: '0px',
-  fontFamily: 'Host Grotesk, Arial, Helvetica, sans-serif',
+  fontFamily: 'Host Grotesk, Arial, Helvetica, sans-serif'
 };

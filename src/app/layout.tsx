@@ -1,27 +1,36 @@
 import { PrismicPreview } from '@prismicio/next';
 import { repositoryName } from '@/prismicio';
 
-import { Host_Grotesk } from 'next/font/google';
+import { Host_Grotesk, Lora } from 'next/font/google';
 import { createClient } from '@/prismicio';
 
 import Script from 'next/script';
 
 import './globals.css';
-import MainComponent from './components/MainComponent';
-import { Providers } from './components/Providers/Providers';
+import MainComponent from '../components/MainComponent';
+import { Providers } from '../components/Providers/Providers';
 
-import Splashscreen from './components/Splashscreen/Splashscreen';
-import { BackgroundComponent } from './components/BackgroundComponent/BackgroundComponent';
+import Splashscreen from '../components/Splashscreen/Splashscreen';
+import { BackgroundComponent } from '../components/BackgroundComponent/BackgroundComponent';
 
 const host = Host_Grotesk({
   weight: 'variable',
   style: 'normal',
   preload: true,
   subsets: ['latin'],
+  variable: '--host'
+});
+
+const honk = Lora({
+  weight: ['400'],
+  style: 'normal',
+  preload: true,
+  subsets: ['latin'],
+  variable: '--honk'
 });
 
 export default async function RootLayout({
-  children,
+  children
 }: {
   children: React.ReactNode;
 }) {
@@ -48,14 +57,13 @@ export default async function RootLayout({
       address,
       brandingIcon,
       projectsGif,
-      aiPopup,
-      servicesMain,
+      servicesMain
     ] = await Promise.all([
       client.getSingle('studio'),
       client.getSingle('contact'),
       client.getByType('project'),
       client.getByType('record'),
-      client.getByType('service'),
+      client.getByType('servicenew'),
       client.getSingle('threed_icon'),
       client.getSingle('art_direction_icon'),
       client.getSingle('web_icon'),
@@ -69,8 +77,7 @@ export default async function RootLayout({
       client.getSingle('address'),
       client.getSingle('branding_icon'),
       client.getSingle('projects_gif'),
-      client.getSingle('ai_popup'),
-      client.getSingle('service_main_content'),
+      client.getSingle('service_main_content')
     ]);
 
     if (
@@ -93,7 +100,6 @@ export default async function RootLayout({
       !address ||
       !brandingIcon ||
       !projectsGif ||
-      !aiPopup ||
       !servicesMain
     ) {
       throw new Error('Failed to load required data');
@@ -118,8 +124,7 @@ export default async function RootLayout({
       address,
       brandingIcon,
       projectsGif,
-      aiPopup,
-      servicesMain,
+      servicesMain
     };
 
     const leftField = settings.data.navigation_items_left;
@@ -132,12 +137,12 @@ export default async function RootLayout({
 
     const settingsProps = {
       left: leftField,
-      right: rightField,
+      right: rightField
     };
 
     return (
       <html lang="en">
-        <body className={host.className}>
+        <body className={`${host.className} ${honk.variable}`}>
           <Script
             src="https://scripts.simpleanalyticscdn.com/latest.js"
             data-collect-dnt="true"
@@ -149,7 +154,7 @@ export default async function RootLayout({
             dangerouslySetInnerHTML={{
               __html: `
          window.sa_event=window.sa_event||function(){var a=[].slice.call(arguments);window.sa_event.q?window.sa_event.q.push(a):window.sa_event.q=[a]};
-       `,
+       `
             }}
           />{' '}
           <Splashscreen />
@@ -158,7 +163,7 @@ export default async function RootLayout({
               position: 'fixed',
               inset: 0,
               zIndex: 0,
-              pointerEvents: 'all',
+              pointerEvents: 'all'
             }}
           >
             <BackgroundComponent />
@@ -176,7 +181,7 @@ export default async function RootLayout({
 
     return (
       <html lang="en">
-        <body className={host.className}>
+        <body className={`${host.className} ${honk.className}`}>
           <div style={{ padding: '2rem', textAlign: 'center' }}>
             <h1>Loading...</h1>
             <p>Please wait while we prepare the content.</p>

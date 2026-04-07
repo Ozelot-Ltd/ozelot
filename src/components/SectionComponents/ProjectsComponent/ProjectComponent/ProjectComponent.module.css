@@ -1,0 +1,559 @@
+/* ProjectComponent.module.css */
+
+/* ======================
+   Base / Desktop Styles
+   ====================== */
+
+.container {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    position: relative;
+    padding: 0.5vw 0;
+    --padding-top-title: 1rem;
+}
+
+.container .leftContainer,
+.container .rightContainer {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.leftContainer {
+    border-right: var(--border);
+    padding-right: calc(1rem + 1vw);
+    padding-top: calc(1rem + 1vw);
+    display: grid;
+    grid-template-rows: 0.8fr 1fr;
+    height: 100%;
+
+}
+
+.rightContainer {
+    padding-left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+/* Content blocks */
+
+.listContainer,
+.imageContainer,
+.descriptionContainer {
+    width: 100%;
+}
+
+.listContainer {
+    overflow-y: hidden;
+    max-height: 100%;
+    height: calc(var(--container-height) * 5);
+}
+
+.descriptionContainer {
+    display: flex;
+    gap: var(--font-md);
+    height: 100%;
+}
+
+.scrollContainer {
+    width: 100%;
+    max-height: 100%;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+.listComponent {
+    height: 100%;
+    width: 100%;
+}
+
+/* Pills */
+
+.pills {
+    display: flex;
+    gap: var(--font-xs);
+}
+
+.pills p {
+    text-transform: uppercase;
+    color: #65696d;
+}
+
+/* Title & lower section */
+
+.rightContainerLower,
+.titleContainer {
+    padding-top: var(--padding-top-title);
+}
+
+.rightContainerLower {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.titleContainer {
+    display: flex;
+}
+
+.titleContainer p {
+    font-size: var(--font-xs);
+    align-items: flex-start;
+    height: fit-content;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    gap: var(--font-base);
+    justify-content: center;
+    width: fit-content;
+}
+
+.title h3 {
+    line-height: 0;
+}
+
+/* Description */
+
+.description {
+    font-variation-settings: var(--text-weight);
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: var(--font-xs);
+}
+
+.description a {
+    text-decoration: underline;
+}
+
+/* Subtitle pill */
+
+.subtitle {
+    border: var(--border);
+    padding: calc(0.125rem + 0.125vw) calc(0.25rem + 0.25vw);
+    border-radius: 50px;
+}
+
+.subtitle p {
+    font-size: var(--font-xs);
+    color: var(--black);
+}
+
+/* Preview */
+
+.previewContainer {
+    overflow: scroll;
+    padding: 3rem 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.disciplinesContainer {
+    display: none;
+}
+
+.buttoncontainer {
+    padding-top: var(--font-xs);
+}
+
+/* ======================
+   Mobile — up to 768px
+   ====================== */
+
+@media (max-width: 48rem) {
+    .container {
+        height: fit-content;
+        display: flex;
+        flex-direction: column;
+        gap: calc(2rem + 2vh);
+        padding: 0;
+    }
+
+    .container .leftContainer,
+    .container .rightContainer {
+        overflow: visible;
+    }
+
+    .leftContainer {
+        border-right: none;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: calc(2rem + 2vh);
+    }
+
+    .rightContainer {
+        height: fit-content;
+        padding-bottom: 10rem;
+        min-height: 50rem;
+        align-items: stretch;
+        justify-content: stretch;
+    }
+
+    .listContainer {
+
+        padding-bottom: 1rem;
+    }
+
+    .descriptionContainer {
+        gap: 0.5rem;
+    }
+
+    .scrollContainer {
+        padding-top: 0;
+        overflow: visible;
+        overflow-x: hidden;
+    }
+
+    .listComponent {
+        padding: 0;
+    }
+
+    .iconContainer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .iconContainer img {
+        height: 16px;
+        width: 16px;
+    }
+
+    .pills {
+        padding: var(--text-s) 0;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+    }
+
+    .rightContainerLower {
+        width: 100%;
+        padding-top: 0;
+    }
+
+    .titleContainer {
+        flex-direction: row;
+        gap: 0.75rem;
+        width: fit-content;
+        padding-top: 0;
+    }
+
+    .titleContainer p {
+        font-size: calc(0.3rem + 0.5vw);
+        height: auto;
+    }
+
+    .title {
+        gap: calc(0.4rem + 0.5vw);
+        max-width: fit-content;
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
+
+    .title h2 {
+        font-size: calc(0.8rem + 0.9vw);
+        line-height: normal;
+    }
+
+    .releasetext {
+        padding: calc(0.5rem + 0.5vw) 0;
+        display: flex;
+        flex-direction: column;
+        gap: calc(var(--container-height) / 4);
+    }
+
+    .releasetext p {
+        font-variation-settings: var(--text-weight);
+        width: fit-content;
+    }
+
+    .subtitle {
+        padding: 0.25rem 0.5rem;
+    }
+
+    .subtitle p {
+        font-size: calc(0.2rem + 0.25vw);
+    }
+
+    .socials {
+        display: flex;
+        width: fit-content;
+    }
+
+    .socials * {
+        animation: none;
+    }
+}
+
+/* ======================================
+   Tablet Landscape — 768px to 1248px
+   ====================================== */
+
+@media (min-width: 48rem) and (max-width: 78rem) {
+
+    .container .leftContainer,
+    .container .rightContainer {
+        max-height: 100%;
+        overflow: visible;
+    }
+
+    .leftContainer {
+        border-right: none;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 60%;
+    }
+
+    .rightContainer {
+        height: 40%;
+        align-items: stretch;
+        justify-content: stretch;
+    }
+
+    .listContainer {
+        padding-bottom: 2rem;
+        height: 5rem;
+    }
+
+    .descriptionContainer {
+        gap: 1vw;
+        height: fit-content;
+        flex-direction: row;
+    }
+
+    .scrollContainer {
+        padding-top: 0;
+    }
+
+    .iconContainer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .iconContainer img {
+        height: 16px;
+        width: 16px;
+    }
+
+    .pills {
+        gap: 0.5rem;
+    }
+
+    .rightContainerLower {
+        width: 100%;
+        padding-top: 0;
+    }
+
+    .titleContainer {
+        flex-direction: row;
+        gap: 0.75rem;
+        padding-top: 0;
+    }
+
+    .titleContainer p {
+        font-size: calc(0.3rem + 0.5vw);
+        height: auto;
+    }
+
+    .title {
+        gap: calc(0.4rem + 0.5vw);
+    }
+
+    .title h2 {
+        font-size: calc(0.5rem + 0.9vw);
+    }
+
+    .releasetext {
+        padding: calc(0.5rem + 0.5vw) 0;
+        display: flex;
+        flex-direction: column;
+        gap: calc(var(--container-height) / 8);
+    }
+
+    .releasetext p {
+        font-variation-settings: var(--text-weight);
+        width: fit-content;
+    }
+
+    .artist,
+    .releasename,
+    .releaseyear {
+        display: flex;
+    }
+
+    .artist h4,
+    .releasename h4,
+    .releaseyear h4 {
+        width: 4rem;
+        font-size: calc(0.5rem + 0.5vw);
+    }
+
+    .subtitle {
+        padding: 0.25rem 0.5rem;
+    }
+
+    .subtitle p {
+        font-size: calc(0.2rem + 0.25vw);
+    }
+
+    .socials {
+        display: flex;
+        width: fit-content;
+    }
+
+    .socials * {
+        animation: none;
+    }
+
+    .imageContainer {
+        padding: 0;
+    }
+}
+
+/* ==========================================
+   Tablet Portrait — 768px to 1184px portrait
+   ========================================== */
+
+@media (min-width: 48rem) and (max-width: 74rem) and (orientation: portrait) {
+    .container {
+        display: flex;
+        flex-direction: column;
+        gap: 4rem;
+        padding: 0;
+    }
+
+    .container .leftContainer,
+    .container .rightContainer {
+        max-height: 100%;
+        overflow: visible;
+    }
+
+    .leftContainer {
+        border-right: none;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 80%;
+    }
+
+    .rightContainer {
+        height: 20%;
+        align-items: stretch;
+        justify-content: stretch;
+    }
+
+    .listContainer {
+        padding-bottom: 0.5rem;
+    }
+
+    .listContainer h3 {
+        font-size: calc(1.2rem + 0.9vw) !important;
+    }
+
+    .descriptionContainer {
+        gap: 1vw;
+        height: fit-content;
+        flex-direction: row;
+    }
+
+    .scrollContainer {
+        padding-top: 0;
+    }
+
+    .iconContainer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .iconContainer img {
+        height: 16px;
+        width: 16px;
+    }
+
+    .rightContainerLower {
+        padding-top: 4rem;
+        width: 100%;
+    }
+
+    .titleContainer {
+        flex-direction: row;
+        gap: 0.75rem;
+        padding-top: 4rem;
+    }
+
+    .titleContainer p {
+        font-size: calc(0.3rem + 0.5vw);
+        height: auto;
+    }
+
+    .title {
+        gap: calc(0.4rem + 0.5vw);
+    }
+
+    .title h2 {
+        font-size: calc(1.8rem + 0.9vw);
+    }
+
+    .releasetext {
+        padding: calc(0.5rem + 0.5vw) 0;
+        display: flex;
+        flex-direction: column;
+        gap: calc(var(--container-height) / 4);
+    }
+
+    .releasetext p {
+        font-variation-settings: var(--text-weight);
+        width: fit-content;
+    }
+
+    .artist,
+    .releasename,
+    .releaseyear {
+        display: flex;
+    }
+
+    .artist h4,
+    .releasename h4,
+    .releaseyear h4 {
+        width: 4rem;
+        font-size: calc(0.7rem + 0.7vw);
+    }
+
+    .subtitle {
+        padding: 0.25rem 0.5rem;
+    }
+
+    .subtitle p {
+        font-size: calc(0.2rem + 0.25vw);
+    }
+
+    .socials {
+        display: flex;
+        width: fit-content;
+    }
+
+    .socials * {
+        animation: none;
+    }
+
+    .imageContainer {
+        padding: 0;
+        height: 80%;
+    }
+}

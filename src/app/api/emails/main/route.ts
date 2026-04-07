@@ -2,7 +2,7 @@ import { Resend } from 'resend';
 import { NextResponse } from 'next/server';
 import ContactFormMain from '@/emails/Contactform/Main';
 import OzelotMail from '@/emails/Contactform/OzelotMail';
-import { FormData } from '@/app/components/SectionComponents/ContactComponent/components/ContactForm';
+import { FormData } from '@/components/SectionComponents/ContactComponent/components/ContactForm';
 
 const resend = new Resend(process.env.RESEND_CONTACTFORM_MAIN);
 
@@ -18,14 +18,14 @@ export async function POST(request: Request) {
         from: 'Ozelot Studios <studio@ozelot.ltd>',
         to: formData.email,
         subject: 'Ozelot Studios - Contact Form',
-        react: ContactFormMain(formData),
+        react: ContactFormMain(formData)
       }),
       resend.emails.send({
         from: 'Website Contact Form <studio@ozelot.ltd>',
         to: 'studio@ozelot.ltd',
         subject: `${name} ${surname} - Contact Form Submission`,
-        react: OzelotMail(formData),
-      }),
+        react: OzelotMail(formData)
+      })
     ]);
 
     return NextResponse.json({ success: true, data, ozelotData });

@@ -1,0 +1,87 @@
+{
+  "format": "custom",
+  "id": "servicenew",
+  "label": "serviceNew",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "uid": {
+        "type": "UID",
+        "config": {
+          "label": "UID"
+        }
+      },
+      "index": {
+        "type": "Number",
+        "config": {
+          "label": "index",
+          "placeholder": ""
+        }
+      },
+      "title": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Title",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "heading2"
+        }
+      },
+      "subtitle": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Subtitle",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "heading3"
+        }
+      },
+      "interlude": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Interlude",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,strong,em"
+        }
+      },
+      "description_items": {
+        "type": "Group",
+        "config": {
+          "label": "Description Items",
+          "repeat": true,
+          "fields": {
+            "item_title": {
+              "type": "StructuredText",
+              "config": {
+                "label": "Item Title",
+                "placeholder": "",
+                "allowTargetBlank": true,
+                "single": "heading5,strong,em"
+              }
+            },
+            "item_title_second": {
+              "type": "StructuredText",
+              "config": {
+                "label": "Item Title Second",
+                "placeholder": "",
+                "allowTargetBlank": true,
+                "multi": "heading5,strong,em"
+              }
+            },
+            "item": {
+              "type": "StructuredText",
+              "config": {
+                "label": "item",
+                "placeholder": "",
+                "allowTargetBlank": true,
+                "multi": "paragraph,heading5,heading6,strong,em,hyperlink,list-item,o-list-item,image"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,91 @@
+import React from 'react';
+
+import styles from './MobileMenu.module.css';
+import { GroupField } from '@prismicio/client';
+import {
+  SettingsDocumentDataNavigationItemsLeftItem,
+  SettingsDocumentDataNavigationItemsRightItem,
+  Simplify
+} from '@/prismicio-types';
+
+import SocialBar from '../../SectionComponents/ContactComponent/components/SocialBar';
+import Address from '../../Address/Address';
+
+import { useRouter } from 'next/navigation';
+
+type MobileMenuProps = {
+  isClicked?: string;
+  setIsClicked?: (value: string) => void;
+  isNavigationActive?: boolean;
+  setIsNavigationActive?: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsRecordsActive?: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsProjectsActive?: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsStudioActive?: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsContactActive?: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsServicesActive?: React.Dispatch<React.SetStateAction<boolean>>;
+  isRecordsActive?: boolean;
+  left: GroupField<Simplify<SettingsDocumentDataNavigationItemsLeftItem>>;
+  right: GroupField<Simplify<SettingsDocumentDataNavigationItemsRightItem>>;
+};
+
+export default function MobileMenu({
+  setIsClicked,
+  setIsNavigationActive,
+  isNavigationActive = false,
+  left,
+  right
+}: MobileMenuProps) {
+  const router = useRouter();
+
+  const handleClick = (target: string) => {
+    if (setIsClicked) {
+      setIsClicked(target);
+      router.push(`/${target}`);
+    }
+    if (setIsNavigationActive) {
+      setIsNavigationActive(!isNavigationActive);
+    }
+  };
+
+  const seeSocialBar = false;
+
+  const navigationArray = [...left, ...right];
+
+  const menuOrder = ['services', 'projects', 'studio', 'contact', 'records'];
+
+  return (
+    <nav className={styles.navbar}>
+      <ul className={styles.navlist}>
+        {navigationArray
+          .sort((a, b) => {
+            const nameA = a.navigation_link?.text?.toLowerCase() ?? '';
+            const nameB = b.navigation_link?.text?.toLowerCase() ?? '';
+            const indexA = menuOrder.indexOf(nameA);
+            const indexB = menuOrder.indexOf(nameB);
+            return (
+              (indexA === -1 ? menuOrder.length : indexA) -
+              (indexB === -1 ? menuOrder.length : indexB)
+            );
+          })
+          .map((item, index) => (
+            <li
+              key={index}
+              onClick={() =>
+                handleClick(item?.navigation_link?.text?.toLowerCase() ?? '')
+              }
+              className={styles.navitem}
+            >
+              <p>0{index + 1}</p>
+              <h3> {item.navigation_link.text}</h3>
+            </li>
+          ))}
+      </ul>
+      {seeSocialBar && (
+        <div className={styles.socialbar}>
+          <SocialBar />
+          <Address />
+        </div>
+      )}
+    </nav>
+  );
+}
