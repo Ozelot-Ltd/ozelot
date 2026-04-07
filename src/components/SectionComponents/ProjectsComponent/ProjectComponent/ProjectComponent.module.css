@@ -176,8 +176,8 @@
         height: fit-content;
         display: flex;
         flex-direction: column;
-        gap: calc(2rem + 2vh);
         padding: 0;
+        gap: 4rem;
     }
 
     .container .leftContainer,
@@ -190,19 +190,19 @@
         padding: 0;
         display: flex;
         flex-direction: column;
-        gap: calc(2rem + 2vh);
+        gap: var(--font-3xl)
     }
 
     .rightContainer {
         height: fit-content;
-        padding-bottom: 10rem;
-        min-height: 50rem;
+        padding-bottom: 0rem;
+        min-height: 40rem;
         align-items: stretch;
         justify-content: stretch;
+
     }
 
     .listContainer {
-
         padding-bottom: 1rem;
     }
 
@@ -232,7 +232,6 @@
     }
 
     .pills {
-        background-color: red;
         display: none;
     }
 
@@ -258,8 +257,6 @@
         max-width: fit-content;
         align-items: center;
         justify-content: flex-start;
-
-
     }
 
     .title h3 {
@@ -322,6 +319,7 @@
         height: 40%;
         align-items: stretch;
         justify-content: stretch;
+
     }
 
     .listContainer {
