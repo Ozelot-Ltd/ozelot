@@ -44,6 +44,7 @@ export default function ServiceItem({
     <div
       ref={containerRef}
       className={styles.item}
+      data-service-item
       onClick={() => {
         isActive !== index ? setIsActive(index) : setIsActive(null);
         setActiveService(asText(item.item_title) as string);

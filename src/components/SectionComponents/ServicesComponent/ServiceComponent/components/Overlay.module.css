@@ -41,6 +41,10 @@
     width: 80%;
 }
 
+.textcontainer a {
+    text-decoration: underline;
+}
+
 .textcontainer * {
     font-size: var(--font-md);
     line-height: 150%;

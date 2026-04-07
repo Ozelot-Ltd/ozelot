@@ -15,7 +15,6 @@
     gap: calc(0.2rem + 0.2vw);
 }
 
-
 .title h5 {
     font-family: var(--host);
     text-transform: none;
@@ -29,10 +28,9 @@
 
 .cross {
     position: relative;
-    height: calc(.4rem + .4vw);
-    width: calc(.4rem + .4vw);
+    height: calc(0.4rem + 0.4vw);
+    width: calc(0.4rem + 0.4vw);
 }
-
 
 .inner {
     position: relative;
@@ -40,74 +38,33 @@
     width: 100%;
 }
 
-
-
 .inner div {
     position: absolute;
-    top: 0%;
+    top: 0;
     left: 50%;
     width: 1px;
     height: 100%;
     background-color: var(--black);
-    transform: translate(-50%, -50%)
+    transform: translate(-50%, -50%);
 }
-
 
 .inner .rotated {
-    transform: translate(-50%, -50%) rotate(90deg)
+    transform: translate(-50%, -50%) rotate(90deg);
 }
-
 
 /* Mobile */
 /* Up to 768px */
 @media (max-width: 48rem) {
-
     .item {
         height: 10rem;
     }
 
     .title h5 {
-        text-transform: none;
         font-size: 1rem;
     }
 
     .cross {
-        position: relative;
-        height: calc(.6rem + .6vw);
-        width: calc(.6rem + .6vw);
+        height: calc(0.6rem + 0.6vw);
+        width: calc(0.6rem + 0.6vw);
     }
 }
-
-/* Tablet */
-/* 768px to 1184px */
-@media (min-width: 48rem) and (max-width: 74rem) {}
-
-/* Tablet - Portrait Orientation */
-/* 768px to 1184px in portrait mode */
-@media (min-width: 48rem) and (max-width: 74rem) and (orientation: portrait) {}
-
-/* Desktop */
-/* 1184px and up */
-@media (min-width: 74rem) {}
-
-/* Large Desktop */
-/* 1440px and up */
-@media (min-width: 90rem) {}
-
-@media (min-width: 120rem) {}
-
-/* Touch Devices */
-/* Any touch device regardless of size */
-@media (hover: none) {}
-
-/* Non-Touch Devices */
-/* Devices with precise pointer (mouse) */
-@media (hover: hover) and (pointer: fine) {}
-
-/* Prefers Dark Mode */
-/* User has set dark mode preference */
-@media (prefers-color-scheme: dark) {}
-
-/* Prefers Reduced Motion */
-/* User has requested minimal animations */
-@media (prefers-reduced-motion: reduce) {}

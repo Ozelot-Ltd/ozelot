@@ -7,7 +7,7 @@ import Link from 'next/link';
 
 import { useMobile } from '@/context/MobileContext';
 
-type Props = {
+type ContactButtonProps = {
   text?: string;
   height?: string;
   windowEventText: string;
@@ -19,15 +19,15 @@ export default function ContactButton({
   height,
   windowEventText,
   variant
-}: Props) {
+}: ContactButtonProps) {
   const router = useRouter();
-
   const { isMobile } = useMobile();
 
   const onClick = () => {
     router.push('/contact');
     window.sa_event?.(windowEventText);
   };
+
   return (
     <>
       {variant === 'studio' && (

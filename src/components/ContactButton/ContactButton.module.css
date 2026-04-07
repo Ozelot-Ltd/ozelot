@@ -52,9 +52,10 @@
         outline: none;
         display: flex;
         align-items: center;
-        gap: var(--font-xs);
+        gap: calc(var(--font-xs) / 2);
         border: none;
         cursor: pointer;
+
     }
 
     .contactbutton span {

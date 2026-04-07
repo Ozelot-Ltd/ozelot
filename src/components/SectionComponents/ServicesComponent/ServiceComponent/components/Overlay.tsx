@@ -43,9 +43,29 @@ export default function Overlay({
       }
     };
 
+    const isThisOverlayOpen = isContainerOpen === service.id;
+
+    const handleClickOutside = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (
+        overlayRef.current &&
+        !overlayRef.current.contains(target) &&
+        !target.closest('[data-service-item]')
+      ) {
+        setIsContainerOpen('');
+      }
+    };
+
     window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [isContainerOpen, setIsContainerOpen]);
+    if (isThisOverlayOpen) {
+      window.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isContainerOpen, setIsContainerOpen, service.id]);
 
   const displayedService = service.data.description_items.find(
     (item) => asText(item.item_title) === activeService
