@@ -17,15 +17,14 @@
 
 
 .title h5 {
-    text-transform: uppercase;
-    font-family: var(--host)
+    font-family: var(--host);
+    text-transform: none;
 }
 
 .crosscontainer {
     position: absolute;
     bottom: 0.5rem;
     right: 0.5rem;
-
 }
 
 .cross {

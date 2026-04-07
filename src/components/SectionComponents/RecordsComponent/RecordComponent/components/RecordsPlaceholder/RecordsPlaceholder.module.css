@@ -19,7 +19,7 @@
     justify-content: center;
     opacity: 0.4;
     transition: opacity var(--time-fast) var(--bezier);
-    border: 3px solid var(--black)
+    border: 3px solid var(--black);
 }
 
 .dropzone .active {
@@ -33,11 +33,11 @@
     display: inline-block;
     border: var(--border);
     padding: calc(0.3rem + 0.3vw) calc(0.5rem + 0.5vw);
-    gap: calc(.1vw + .1rem);
+    gap: calc(0.1vw + 0.1rem);
     border-radius: 30px;
     background-size: 100%;
     background-position: center;
-    background-color: var(--lightgrey)
+    background-color: var(--lightgrey);
 }
 
 .object span {
@@ -45,10 +45,10 @@
 }
 
 .object h2 {
-    font-size: calc(.6rem + .6vw);
+    font-size: calc(0.6rem + 0.6vw);
     text-wrap: nowrap;
     font-variation-settings: var(--text-weight);
-    color: var(--lightgrey)
+    color: var(--lightgrey);
 }
 
 .object h2::selection {
@@ -56,52 +56,16 @@
 }
 
 .object:hover {
-    cursor: grab
+    cursor: grab;
 }
 
 .object:active {
     cursor: grabbing;
 }
 
-
-/* Mobile */
-/* Up to 768px */
-@media (max-width: 48rem) {
-    .previewContainer {
+/* Mobile & Tablet */
+@media (max-width: 74rem) {
+    .placeholderContainer {
         display: none;
     }
 }
-
-/* Tablet */
-/* 768px to 1184px */
-@media (min-width: 48rem) and (max-width: 74rem) {}
-
-/* Tablet - Portrait Orientation */
-/* 768px to 1184px in portrait mode */
-@media (min-width: 48rem) and (max-width: 74rem) and (orientation: portrait) {}
-
-/* Desktop */
-/* 1184px and up */
-@media (min-width: 74rem) {}
-
-/* Large Desktop */
-/* 1440px and up */
-@media (min-width: 90rem) {}
-
-@media (min-width: 120rem) {}
-
-/* Touch Devices */
-/* Any touch device regardless of size */
-@media (hover: none) {}
-
-/* Non-Touch Devices */
-/* Devices with precise pointer (mouse) */
-@media (hover: hover) and (pointer: fine) {}
-
-/* Prefers Dark Mode */
-/* User has set dark mode preference */
-@media (prefers-color-scheme: dark) {}
-
-/* Prefers Reduced Motion */
-/* User has requested minimal animations */
-@media (prefers-reduced-motion: reduce) {}

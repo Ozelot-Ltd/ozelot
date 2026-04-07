@@ -1,6 +1,5 @@
 .container {
     width: 100%;
-    min-width: 100%;
     height: fit-content;
     display: flex;
     flex-direction: column;
@@ -35,7 +34,6 @@
 .description p {
     font-variation-settings: var(--text-weight);
     padding-top: calc(0.5rem + 0.5vw);
-    width: fit-content;
     width: 100%;
     font-size: var(--heading4);
 }
@@ -49,73 +47,26 @@
     padding-top: calc((2rem + 2vw) * 2);
 }
 
-
 /* Mobile */
 /* Up to 768px */
 @media (max-width: 48rem) {
-
-
     .upperContainer {
-        display: flex;
-        padding-top: 0rem;
-        flex-direction: column;
+        padding-top: 0;
     }
 
     .scrollContainer {
-        padding-top: calc((0.3rem + 0.6vw));
+        padding-top: calc(0.3rem + 0.6vw);
     }
 
-    .description p {
-        font-variation-settings: var(--text-weight);
-        padding-top: calc(0.5rem + 0.5vw);
-        width: fit-content;
-        width: 100% !important;
+    .description {
+        width: 100%;
     }
-
 }
 
 /* Tablet */
 /* 768px to 1184px */
 @media (min-width: 48rem) and (max-width: 74rem) {
     .scrollContainer {
-        width: 100%;
-        padding-bottom: 10rem;
-
-    }
-}
-
-/* Tablet - Portrait Orientation */
-/* 768px to 1184px in portrait mode */
-@media (min-width: 48rem) and (max-width: 74rem) and (orientation: portrait) {
-
-    .scrollContainer {
-        width: 100%;
         padding-bottom: 10rem;
     }
 }
-
-/* Desktop */
-/* 1184px and up */
-@media (min-width: 74rem) {}
-
-/* Large Desktop */
-/* 1440px and up */
-@media (min-width: 90rem) {}
-
-@media (min-width: 120rem) {}
-
-/* Touch Devices */
-/* Any touch device regardless of size */
-@media (hover: none) {}
-
-/* Non-Touch Devices */
-/* Devices with precise pointer (mouse) */
-@media (hover: hover) and (pointer: fine) {}
-
-/* Prefers Dark Mode */
-/* User has set dark mode preference */
-@media (prefers-color-scheme: dark) {}
-
-/* Prefers Reduced Motion */
-/* User has requested minimal animations */
-@media (prefers-reduced-motion: reduce) {}
