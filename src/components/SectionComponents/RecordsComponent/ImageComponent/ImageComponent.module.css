@@ -112,7 +112,7 @@
     .imageContainer,
     .imageContainerWithout {
         width: 100%;
-        min-height: 60vh;
+        height: 60vh;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -120,6 +120,7 @@
         position: relative;
         padding-top: 2rem;
         padding-bottom: 2rem;
+
     }
 
     .navButton {
