@@ -7,6 +7,8 @@
     align-items: center;
     height: fit-content;
     z-index: 3;
+    background-color: var(--lightgrey-opa);
+
 
 }
 
@@ -17,7 +19,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--lightgrey);
+
 }
 
 .logocontainer {
@@ -52,6 +54,7 @@
 .content {
     transform: translateY(100%);
     z-index: 1;
+    background-color: var(--lightgrey-opa);
 }
 
 .menu {

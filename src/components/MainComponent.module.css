@@ -28,7 +28,6 @@
     transition: all var(--time) var(--bezier);
     overflow: hidden;
     background-color: var(--lightgrey-opa);
-
 }
 
 .right .column {
@@ -394,7 +393,7 @@
         transform-origin: bottom;
         position: absolute;
         bottom: 0;
-        background-color: transparent;
+        background-color: var(--lightgrey-opa);
 
         transition:
             height var(--time) var(--bezier) 0s,
