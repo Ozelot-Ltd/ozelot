@@ -10,13 +10,10 @@
     cursor: pointer;
 }
 
-
-
 .upperTitle {
     display: flex;
     gap: calc(0.2rem + 0.2vw);
 }
-
 
 
 .title h5 {

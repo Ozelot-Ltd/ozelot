@@ -47,3 +47,10 @@ export interface BoneConfig {
   wiggleConfig?: WiggleConfig;
   skip?: boolean;
 }
+
+export type MobileNavigationProps = {
+  isNavigationActive?: boolean;
+  setIsNavigationActive?: React.Dispatch<React.SetStateAction<boolean>>;
+  isClicked?: string;
+  setIsClicked?: (value: string) => void;
+};

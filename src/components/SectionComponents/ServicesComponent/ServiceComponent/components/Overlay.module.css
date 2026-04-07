@@ -114,7 +114,7 @@
         padding: var(--spacing) 0;
         padding-bottom: calc(var(--spacing) * 2);
         margin-top: var(--spacing);
-        padding: var(--spacing)
+        padding: var(--spacing);
     }
 
     .open {
@@ -159,7 +159,6 @@
 
     .arrow svg {
         transform: rotate(0deg);
-
     }
 
     .arrow:hover svg {
@@ -170,7 +169,29 @@
 
 /* Tablet */
 /* 768px to 1184px */
-@media (min-width: 48rem) and (max-width: 74rem) {}
+@media (min-width: 48rem) and (max-width: 74rem) {
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        z-index: 10;
+        transform: translateX(105%);
+        transition: all 0.3s var(--bezier);
+        padding: var(--spacing);
+        border-top: var(--border);
+        --spacing: calc(1rem + 1vw);
+        background-color: var(--black);
+        margin-top: 20px;
+    }
+
+    .open {
+        transform: translateX(0)
+    }
+
+
+}
 
 /* Tablet - Portrait Orientation */
 /* 768px to 1184px in portrait mode */

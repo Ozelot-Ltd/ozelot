@@ -1,7 +1,6 @@
 'use client';
 
-import { MobileNavigationProps } from './MobileNavigation';
-
+import { MobileNavigationProps } from '@/types';
 import styles from './MobileNavigation.module.css';
 import Hamburger from './Hamburger';
 import Cross from './Cross';

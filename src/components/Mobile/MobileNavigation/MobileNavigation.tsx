@@ -1,22 +1,15 @@
 'use client';
 
-import React from 'react';
+import { MobileNavigationProps } from '@/types';
 
 import styles from './MobileNavigation.module.css';
 import NavigationContent from './NavigationContent';
-
-export type MobileNavigationProps = {
-  isNavigationActive?: boolean;
-  setIsNavigationActive?: React.Dispatch<React.SetStateAction<boolean>>;
-  isClicked?: string;
-  setIsClicked?: (value: string) => void;
-};
 
 export default function MobileNavigation({
   isNavigationActive,
   setIsNavigationActive,
   isClicked = '',
-  setIsClicked,
+  setIsClicked
 }: MobileNavigationProps) {
   return (
     <div className={styles.mobileNavigation}>
